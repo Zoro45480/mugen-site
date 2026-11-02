@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>MUGEN · aperçu des nouveaux designs de cartes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Inter:wght@500;700;800&family=Shippori+Mincho:wght@600;800&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0c14;--pn:#141626;--pn2:#1b1e33;--line:#262a45;--tx:#f4f5fb;--mu:#8e93b5;--ac:#ff6b4a}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--tx);font:500 15px/1.5 Inter,system-ui,sans-serif}
+body{padding:0 0 80px}
+header{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:#0b0c14cc;border-bottom:1px solid var(--line);padding:12px 18px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+header .logo{font:800 18px Unbounded,sans-serif;letter-spacing:.3em;color:var(--ac)}
+header .sub{color:var(--mu);font-size:13px}
+.tabs{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.tabs button{border:1px solid var(--line);background:var(--pn);color:var(--tx);padding:8px 14px;border-radius:99px;font:700 13px Inter,sans-serif;cursor:pointer}
+.tabs button.on{background:var(--ac);border-color:var(--ac);color:#fff}
+main{max-width:1200px;margin:0 auto;padding:22px 16px}
+.model{display:none}
+.model.on{display:block}
+.mh{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;margin:8px 0 18px}
+.mh h2{margin:0;font:800 clamp(22px,3.4vw,34px) Unbounded,sans-serif}
+.mh h2 small{display:block;font:700 12px Inter,sans-serif;letter-spacing:.22em;color:var(--ac);margin-bottom:6px}
+.mh p{margin:0;color:var(--mu);max-width:560px}
+.hint{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--mu);background:var(--pn);border:1px solid var(--line);padding:6px 12px;border-radius:99px;margin-left:auto}
+.row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:18px;perspective:1200px}
+.cw{perspective:1000px}
+.cw .card{cursor:pointer;transform-style:preserve-3d;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;will-change:transform}
+.cw:hover .card{transition:transform .08s linear}
+.card{--c:#9aa4b2;--h:30;position:relative;width:100%;aspect-ratio:2/3;border-radius:14px;overflow:hidden;background:#10121a;box-shadow:0 10px 30px #0008;user-select:none}
+.card .art{position:absolute;inset:0;background:linear-gradient(160deg,hsl(var(--h) 70% 40%),hsl(calc(var(--h) + 60) 60% 14%))}
+.card .art img{width:100%;height:100%;object-fit:cover;display:block}
+.card .shine{position:absolute;inset:0;pointer-events:none;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),#ffffff2e,transparent 60%);opacity:0;transition:opacity .3s;mix-blend-mode:screen}
+.cw:hover .shine{opacity:1}
+.card .holo{position:absolute;inset:0;pointer-events:none;opacity:0;mix-blend-mode:color-dodge;background:linear-gradient(115deg,transparent 20%,#ff00aa44 35%,#00ffe066 45%,#ffe60066 55%,#7a5cff44 65%,transparent 80%);background-size:250% 250%;background-position:calc(var(--mx,50%) * 1) calc(var(--my,50%) * 1);transition:opacity .3s}
+.card.r4 .holo,.card.r5 .holo,.card.r6 .holo,.card.r7 .holo{opacity:.55}
+.cw:hover .card.r4 .holo,.cw:hover .card.r5 .holo,.cw:hover .card.r6 .holo,.cw:hover .card.r7 .holo{opacity:.9}
+.card .no{position:absolute;left:12px;top:44px;font:700 10px Inter,monospace;letter-spacing:.08em;color:#fff;opacity:.75;text-shadow:0 1px 2px #000}
+
+/* ===== MODÈLE 1 · SUMI (encre manga) ===== */
+.m1 .card .no{left:16px;top:16px;color:#15110c;text-shadow:none;background:#f3ead7cc;padding:1px 4px;border-radius:3px}
+.m2 .card .no{top:38px}
+.m3 .card .no{top:34px;left:16px}
+.m4 .card .no{top:46px}
+.m1 .card{border-radius:8px;background:#f3ead7;padding:9px;box-shadow:0 10px 30px #0008,0 0 0 1px #000 inset}
+.m1 .card:before{content:"";position:absolute;inset:4px;border:3px solid #15110c;border-radius:4px;pointer-events:none;z-index:4;mask:linear-gradient(#000,#000);-webkit-mask:linear-gradient(#000,#000)}
+.m1 .card:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:5;background:radial-gradient(#0000 1.3px,#00000012 1.4px) 0 0/5px 5px;opacity:.45}
+.m1 .card .art{inset:12px 12px 58px;border-radius:3px;border:2px solid #15110c;filter:contrast(1.08) saturate(1.1)}
+.m1 .card .art:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-35deg,#0000 0 9px,#15110c0d 9px 10px);mix-blend-mode:multiply}
+.m1 .card .nm{position:absolute;left:0;right:0;bottom:34px;padding:0 14px;font:800 13px/1.1 "Zen Kaku Gothic New",Inter,sans-serif;color:#15110c;z-index:6;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.m1 .card .an{position:absolute;left:14px;bottom:17px;max-width:52%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font:700 8px Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#6b5f52;z-index:6}
+.m1 .card .st{position:absolute;right:14px;bottom:13px;display:flex;gap:8px;z-index:6;font:800 11px Inter,sans-serif;color:#15110c}
+.m1 .card .st b{font-size:13px}
+.m1 .card .st span:before{content:attr(data-l);font-size:8px;letter-spacing:.14em;color:#6b5f52;margin-right:3px}
+.m1 .card .hk{position:absolute;right:8px;top:8px;z-index:7;width:34px;height:34px;display:grid;place-items:center;border:2.5px solid var(--c);border-radius:5px;color:var(--c);font:800 19px "Shippori Mincho",serif;transform:rotate(-8deg);background:#f3ead7e6;box-shadow:0 0 0 1px #f3ead7}
+.m1 .card .vt{position:absolute;left:3px;top:14px;writing-mode:vertical-rl;font:800 10px "Shippori Mincho",serif;letter-spacing:.3em;color:#15110c;opacity:.7;z-index:6}
+.m1 .card.r0 .hk{color:#4f5b66;border-color:#4f5b66}
+.m1 .card.r3 .hk,.m1 .card.r4 .hk,.m1 .card.r5 .hk,.m1 .card.r6 .hk,.m1 .card.r7 .hk{background:var(--c);color:#f3ead7;border-color:#15110c}
+.m1 .card.r5{background:#fffaf0}
+.m1 .card.r5 .art,.m1 .card.r6 .art,.m1 .card.r7 .art{box-shadow:0 0 0 3px var(--c) inset}
+.m1 .card.r6{background:linear-gradient(160deg,#f3ead7,#e9ddff)}
+.m1 .card.r7{background:linear-gradient(160deg,#f3ead7,#ffd9df)}
+.m1 .card .fl{position:absolute;inset:0;pointer-events:none;z-index:6;opacity:0;background:radial-gradient(3px 3px at 20% 30%,#d4a017 50%,transparent 51%),radial-gradient(2px 2px at 70% 20%,#d4a017 50%,transparent 51%),radial-gradient(2.5px 2.5px at 40% 70%,#d4a017 50%,transparent 51%),radial-gradient(2px 2px at 85% 60%,#d4a017 50%,transparent 51%),radial-gradient(3px 3px at 15% 85%,#d4a017 50%,transparent 51%)}
+.m1 .card.r3 .fl,.m1 .card.r4 .fl,.m1 .card.r5 .fl,.m1 .card.r6 .fl,.m1 .card.r7 .fl{opacity:.8}
+
+/* ===== MODÈLE 2 · NÉON SHIBUYA ===== */
+.m2 .card{border-radius:16px;background:#0c0e18;padding:5px;box-shadow:0 12px 34px #000a,0 0 0 1px #ffffff14 inset}
+.m2 .card:before{content:"";position:absolute;inset:0;border-radius:16px;padding:2px;background:linear-gradient(160deg,var(--c),transparent 45%,transparent 60%,var(--c));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:5;filter:drop-shadow(0 0 6px var(--c))}
+.m2 .card .art{inset:5px;border-radius:12px}
+.m2 .card .art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 45%,#0c0e18f2 100%),repeating-linear-gradient(0deg,#0000 0 2px,#00000014 2px 3px)}
+.m2 .card .nm{position:absolute;left:12px;right:12px;bottom:34px;font:800 14px/1.1 Unbounded,sans-serif;color:#fff;z-index:6;text-shadow:0 0 12px var(--c);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.m2 .card .an{position:absolute;left:12px;bottom:18px;max-width:55%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font:700 9px Inter,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--c);z-index:6}
+.m2 .card .st{position:absolute;right:12px;bottom:14px;display:flex;flex-direction:column;align-items:flex-end;gap:2px;z-index:6;font:800 11px Inter,sans-serif;color:#fff}
+.m2 .card .st span:before{content:attr(data-l);font-size:8px;letter-spacing:.16em;color:var(--mu);margin-right:4px}
+.m2 .card .hk{position:absolute;left:12px;top:12px;z-index:7;padding:4px 9px;border-radius:99px;background:#000c;border:1px solid var(--c);color:var(--c);font:800 10px Inter,sans-serif;letter-spacing:.18em;box-shadow:0 0 12px var(--c)66}
+.m2 .card .kk{position:absolute;right:10px;top:10px;z-index:6;font:900 22px "Zen Kaku Gothic New",sans-serif;color:#fff;opacity:.85;text-shadow:0 0 14px var(--c),0 0 2px #000}
+.m2 .card .tick{position:absolute;left:0;right:0;top:46px;z-index:6;overflow:hidden;font:700 8px Inter,sans-serif;letter-spacing:.3em;color:var(--c);opacity:.7;white-space:nowrap;mask:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent)}
+.m2 .card .tick i{display:inline-block;font-style:normal;animation:tk 9s linear infinite}
+@keyframes tk{to{transform:translateX(-50%)}}
+.m2 .card.r5:before{background:conic-gradient(from 0deg,#fff,#a8e6ff,#ffd6f5,#fff6b0,#fff)}
+.m2 .card.r4:before{background:linear-gradient(135deg,#ff3d6e,#ffb43a,#4de1ff,#b45cff)}
+.m2 .card.r6:before{background:linear-gradient(135deg,#c9a2ff,#5b2bd9,#c9a2ff)}
+.m2 .card.r7:before{background:linear-gradient(135deg,#ff2d55,#ff8a7a,#7a0016,#ff2d55)}
+
+/* ===== MODÈLE 3 · SHŌNEN GOLD (TCG) ===== */
+.m3 .card{border-radius:12px;padding:7px;background:linear-gradient(135deg,#8c6b1f,#f6dd8a 20%,#a8812b 40%,#fff2b8 55%,#9b7424 70%,#f0d070 85%,#7d5e14);box-shadow:0 12px 34px #000a}
+.m3 .card.r0{background:linear-gradient(135deg,#5b6470,#c7d0dc 25%,#7a8594 50%,#d9e1ea 75%,#5b6470)}
+.m3 .card.r1{background:linear-gradient(135deg,#1d4f8a,#8ec5ff 25%,#2d6ab4 50%,#bfe0ff 75%,#1d4f8a)}
+.m3 .card.r2{background:linear-gradient(135deg,#4a1f8a,#c89bff 25%,#6a35c4 50%,#e2ccff 75%,#4a1f8a)}
+.m3 .card.r5{background:linear-gradient(135deg,#bfc6d6,#fff 25%,#cfd9ea 50%,#fff 75%,#bfc6d6)}
+.m3 .card.r6{background:linear-gradient(135deg,#3a1a6e,#c9a2ff 25%,#5d2fb0 50%,#ead9ff 75%,#3a1a6e)}
+.m3 .card.r7{background:linear-gradient(135deg,#6b0018,#ff6b86 25%,#b30028 50%,#ffc2cc 75%,#6b0018)}
+.m3 .card .in{position:absolute;inset:7px;border-radius:8px;background:#0e0f16;box-shadow:0 0 0 1px #00000088 inset,0 0 0 2px #ffffff33}
+.m3 .card .art{inset:30px 14px 60px;border-radius:5px;box-shadow:0 0 0 2px #0008,0 0 0 3px #ffffff2e}
+.m3 .card .plate{position:absolute;left:12px;right:12px;top:12px;height:16px;z-index:6;border-radius:3px;background:linear-gradient(90deg,#0000,#ffffff14,#0000);display:flex;align-items:center;justify-content:space-between;padding:0 4px;font:800 8px Inter,sans-serif;letter-spacing:.22em;color:#fff9}
+.m3 .card .gem{position:absolute;left:50%;top:18px;z-index:8;width:22px;height:22px;margin-left:-11px;transform:rotate(45deg);background:linear-gradient(135deg,#fff,var(--c) 45%,#000 130%);border:2px solid #ffffffaa;box-shadow:0 0 14px var(--c),0 2px 4px #000}
+.m3 .card .nm{position:absolute;left:12px;right:12px;bottom:34px;z-index:6;text-align:center;font:800 13px/1.1 Unbounded,sans-serif;color:#fff;background:linear-gradient(90deg,#0000,#000c 20%,#000c 80%,#0000);padding:4px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.m3 .card .an{position:absolute;left:0;right:0;bottom:22px;z-index:6;text-align:center;font:700 8px Inter,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#f0d070}
+.m3 .card.r0 .an{color:#c7d0dc}.m3 .card.r1 .an{color:#8ec5ff}.m3 .card.r2 .an{color:#c89bff}.m3 .card.r5 .an{color:#fff}.m3 .card.r6 .an{color:#c9a2ff}.m3 .card.r7 .an{color:#ff8a9a}
+.m3 .card .st{position:absolute;left:12px;right:12px;bottom:8px;z-index:6;display:flex;justify-content:space-between;font:800 10px Inter,sans-serif;color:#fff}
+.m3 .card .st span:before{content:attr(data-l);font-size:7px;letter-spacing:.16em;color:#fff8;margin-right:3px}
+.m3 .card .hk{position:absolute;right:10px;top:34px;z-index:7;width:26px;height:26px;display:grid;place-items:center;border-radius:50%;background:#000c;border:1px solid var(--c);color:var(--c);font:800 13px "Shippori Mincho",serif}
+.m3 .card .foil{position:absolute;inset:7px;border-radius:8px;z-index:5;pointer-events:none;opacity:0;background:linear-gradient(105deg,transparent 30%,#ffffff55 45%,#fff 50%,#ffffff55 55%,transparent 70%);background-size:300% 100%;animation:foil 4s linear infinite;mix-blend-mode:overlay}
+.m3 .card.r4 .foil,.m3 .card.r5 .foil,.m3 .card.r6 .foil,.m3 .card.r7 .foil{opacity:.6}
+@keyframes foil{0%{background-position:150% 0}100%{background-position:-150% 0}}
+
+/* ===== MODÈLE 4 · SAKURA GLASS ===== */
+.m4 .card{border-radius:20px;background:linear-gradient(160deg,hsl(var(--h) 60% 22%),#0b0c14 70%);padding:0;box-shadow:0 14px 38px #0009,0 0 0 1px #ffffff22 inset}
+.m4 .card .art{inset:0;border-radius:20px}
+.m4 .card .art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 40%,#07070dcc 85%)}
+.m4 .card .glass{position:absolute;left:8px;right:8px;bottom:8px;z-index:6;border-radius:14px;padding:9px 11px 8px;background:#ffffff14;backdrop-filter:blur(10px) saturate(1.4);border:1px solid #ffffff33;box-shadow:0 0 0 1px #0004 inset}
+.m4 .card .nm{font:800 13px/1.15 Unbounded,sans-serif;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.m4 .card .an{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font:700 9px Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#ffffffaa;margin-top:2px}
+.m4 .card .st{display:flex;gap:6px;margin-top:6px}
+.m4 .card .st span{flex:1;text-align:center;font:800 11px Inter,sans-serif;color:#fff;background:#0006;border-radius:8px;padding:3px 0}
+.m4 .card .st span:before{content:attr(data-l);display:block;font-size:7px;letter-spacing:.16em;color:#ffffff99}
+.m4 .card .hk{position:absolute;left:10px;top:10px;z-index:7;padding:5px 10px;border-radius:99px;background:var(--c);color:#111;font:800 9px Inter,sans-serif;letter-spacing:.16em;box-shadow:0 4px 14px #0008}
+.m4 .card.r5 .hk{color:#4a3a7a}
+.m4 .card .el{position:absolute;right:10px;top:10px;z-index:7;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:#0009;border:1px solid #ffffff44;backdrop-filter:blur(6px);font:900 15px "Zen Kaku Gothic New",sans-serif;color:hsl(var(--h) 90% 70%)}
+.m4 .card .pt{position:absolute;inset:0;z-index:6;pointer-events:none;overflow:hidden}
+.m4 .card .pt i{position:absolute;width:9px;height:9px;border-radius:50% 0;background:#ffb7d5;opacity:.8;animation:petal 7s linear infinite}
+.m4 .card .pt i:nth-child(2){left:60%;animation-delay:-3s;background:#ffd4e3;width:7px;height:7px}
+.m4 .card .pt i:nth-child(3){left:30%;animation-delay:-5.5s;width:6px;height:6px}
+.m4 .card .pt i:nth-child(4){left:80%;animation-delay:-1.5s}
+@keyframes petal{0%{transform:translate(0,-12px) rotate(0)}100%{transform:translate(-30px,320px) rotate(400deg)}}
+.m4 .card.r0 .pt,.m4 .card.r1 .pt{display:none}
+.m4 .card.r4,.m4 .card.r5,.m4 .card.r6,.m4 .card.r7{box-shadow:0 14px 38px #0009,0 0 0 1.5px var(--c) inset,0 0 26px var(--c)55}
+
+/* ===== fiche 3D (clic) ===== */
+.ov{position:fixed;inset:0;z-index:50;background:#05040cf0;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;animation:fi .25s forwards}
+@keyframes fi{to{opacity:1}}
+.fiche{position:relative;width:min(900px,100%);max-height:100%;overflow:auto;display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:start;padding:26px;border-radius:26px;background:radial-gradient(900px 500px at 0% 0%,hsl(var(--h) 60% 20% / .9),transparent 60%),linear-gradient(160deg,#151729,#0b0c14);border:1px solid #ffffff1c;box-shadow:0 30px 80px #000;animation:pop .45s cubic-bezier(.2,.9,.2,1.2)}
+@keyframes pop{from{transform:translateY(30px) scale(.94);opacity:0}}
+.fiche .kj{position:absolute;right:16px;top:-10px;font:900 170px "Shippori Mincho",serif;color:#fff;opacity:.04;pointer-events:none;line-height:1}
+.fiche .big{perspective:1200px}
+.fiche .big .card{width:100%;transform-style:preserve-3d;transition:transform .12s linear;animation:flip 1s cubic-bezier(.2,.8,.2,1)}
+@keyframes flip{0%{transform:rotateY(-180deg) scale(.8)}60%{transform:rotateY(20deg) scale(1.04)}100%{transform:none}}
+.fiche .big .card .art img{transform:translateZ(0)}
+.fiche .info h1{margin:0;font:800 clamp(22px,3vw,32px)/1.1 Unbounded,sans-serif}
+.fiche .info .an{color:var(--mu);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px;margin:4px 0 12px}
+.tg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tg span{font:700 11px Inter,sans-serif;padding:5px 10px;border-radius:99px;background:#ffffff10;border:1px solid #ffffff1c;color:#fff}
+.tg span.rr{background:var(--c);color:#111;border-color:transparent}
+.tg span.el{color:hsl(var(--h) 90% 72%);border-color:hsl(var(--h) 90% 60% / .5)}
+.stat{display:grid;grid-template-columns:86px 1fr 46px;align-items:center;gap:10px;margin:7px 0;font-size:13px}
+.stat .bar{height:8px;border-radius:99px;background:#ffffff14;overflow:hidden}
+.stat .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,hsl(var(--h) 90% 60%),var(--c));box-shadow:0 0 10px var(--c)}
+.stat b{text-align:right;font:800 14px Unbounded,sans-serif}
+.mv{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.mv div{padding:12px 14px;border-radius:14px;background:#ffffff0a;border:1px solid #ffffff14}
+.mv small{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mu)}
+.mv b{display:block;margin-top:3px;font-size:14px}
+.mv div.sig{border-color:var(--c);background:linear-gradient(135deg,color-mix(in srgb,var(--c) 18%,transparent),#ffffff06)}
+.eq{display:flex;align-items:center;gap:10px;margin:6px 0 18px}
+.eq small{color:var(--mu);font-weight:700;margin-right:6px}
+.eq button{width:68px;height:60px;border-radius:12px;border:1px dashed #ffffff33;background:#ffffff08;color:var(--mu);font:700 10px Inter,sans-serif;cursor:pointer}
+.eq button b{display:block;font-size:18px;color:#fff;margin-bottom:2px}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{border:0;border-radius:14px;padding:13px 16px;font:800 13px Inter,sans-serif;cursor:pointer;color:#fff;background:#ffffff10;border:1px solid #ffffff1c;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.p{grid-column:1/-1;background:linear-gradient(135deg,var(--ac),#ff3d6e);border:0;box-shadow:0 10px 26px #ff3d6e44;font-size:14px}
+.btn:disabled{opacity:.4;cursor:default;transform:none}
+.x{position:absolute;right:14px;top:14px;width:38px;height:38px;border-radius:50%;border:1px solid #ffffff2a;background:#0008;color:#fff;font-size:17px;cursor:pointer;z-index:2}
+@media (max-width:720px){.fiche{grid-template-columns:1fr;padding:18px;gap:18px}.fiche .big{width:min(260px,70vw);margin:0 auto}.acts{grid-template-columns:1fr}.mv{grid-template-columns:1fr}}
+/* variantes de fiche par modèle */
+.ov.m1 .fiche{background:radial-gradient(#0000 1.3px,#0000000f 1.4px) 0 0/5px 5px,#f3ead7;color:#15110c;border:3px solid #15110c}
+.ov.m1 .fiche .kj{color:#15110c;opacity:.06}
+.ov.m1 .info .an,.ov.m1 .mv small,.ov.m1 .eq small,.ov.m1 .stat,.ov.m1 .tg span{color:#15110c}
+.ov.m1 .tg span{background:#fff;border-color:#15110c}
+.ov.m1 .tg span.rr{color:#fff;background:#15110c}
+.ov.m1 .mv div{background:#fff;border:2px solid #15110c;color:#15110c}
+.ov.m1 .mv div.sig{background:var(--c);color:#fff}
+.ov.m1 .mv div.sig small{color:#fff}
+.ov.m1 .stat .bar{background:#15110c22}
+.ov.m1 .stat .bar i{background:#15110c;box-shadow:none}
+.ov.m1 .eq button{border:2px dashed #15110c;color:#15110c;background:#fff}
+.ov.m1 .eq button b{color:#15110c}
+.ov.m1 .btn{background:#fff;color:#15110c;border:2px solid #15110c}
+.ov.m1 .btn.p{background:#e0332f;color:#fff;box-shadow:4px 4px 0 #15110c}
+.ov.m1 .x{background:#15110c;border:0}
+.ov.m2 .fiche{border-color:var(--c);box-shadow:0 0 60px color-mix(in srgb,var(--c) 40%,transparent),0 30px 80px #000;background:linear-gradient(160deg,#10121f,#07080f)}
+.ov.m2 .fiche:before{content:"";position:absolute;inset:0;border-radius:26px;background:repeating-linear-gradient(0deg,#0000 0 3px,#ffffff05 3px 4px);pointer-events:none}
+.ov.m2 .info h1{text-shadow:0 0 18px var(--c)}
+.ov.m3 .fiche{border:6px solid transparent;background:linear-gradient(#0e0f16,#0e0f16) padding-box,linear-gradient(135deg,#8c6b1f,#f6dd8a 20%,#a8812b 40%,#fff2b8 55%,#9b7424 70%,#f0d070 85%,#7d5e14) border-box}
+.ov.m3 .info h1{background:linear-gradient(90deg,#fff2b8,#f0d070);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ov.m3 .btn.p{background:linear-gradient(135deg,#f0d070,#a8812b);color:#1a1200;box-shadow:0 10px 26px #f0d07044}
+.ov.m4 .fiche{border-radius:32px;background:linear-gradient(160deg,hsl(var(--h) 50% 24% / .95),#0b0c14 60%);backdrop-filter:blur(20px)}
+.ov.m4 .mv div,.ov.m4 .eq button,.ov.m4 .btn{backdrop-filter:blur(10px);background:#ffffff14;border-radius:18px}
+.ov.m4 .btn.p{background:linear-gradient(135deg,#ff8fb6,#ff4d8d)}
+footer{max-width:1200px;margin:40px auto 0;padding:0 16px;color:var(--mu);font-size:13px}
+</style>
+</head>
+<body>
+<header><span class="logo">MUGEN</span><span class="sub">Aperçu · nouveaux designs de cartes · choisis ton préféré</span>
+<div class="tabs" id="tabs"></div></header>
+<main id="main"></main>
+<footer>Survole une carte pour l’effet 3D, clique dessus pour ouvrir la nouvelle fiche. Les 8 raretés sont montrées : Commune, Rare, Épique, Légendaire, Mythique, Divin, Monarque, Lame Écarlate.</footer>
+<script>
+const R=[['C','Commune','#9aa4b2'],['R','Rare','#4aa8ff'],['E','Épique','#b45cff'],['L','Légendaire','#ffb43a'],['M','Mythique','#ff3d6e'],['D','Divin','#f4f1ff'],['君','Monarque','#c9a2ff'],['赫','Lame Écarlate','#ff2d55']];
+const FXN={f:'Feu',l:'Foudre',b:'Énergie',s:'Lame',p:'Combat',d:'Ténèbres',w:'Vent / Eau'},FH={f:15,l:55,b:200,s:350,p:30,d:280,w:150},FXK={f:'炎',l:'雷',b:'気',s:'刃',p:'拳',d:'闇',w:'風'};
+const CARDS=[
+ {n:'Jotaro Kujo',s:"JoJo's Bizarre Adventure",r:0,fx:'p',p:48,k:112,t:'Star Platinum',sig:'Ora Ora Ora',img:'https://cdn.myanimelist.net/images/characters/9/312302.jpg',kj:'星'},
+ {n:'Tanjiro Kamado',s:'Demon Slayer',r:1,fx:'w',p:60,k:41,t:'Souffle de l’eau',sig:'Danse du dieu du feu',img:'https://cdn.myanimelist.net/images/characters/6/386735.jpg',kj:'水'},
+ {n:'Itachi Uchiha',s:'Naruto',r:2,fx:'d',p:72,k:7,t:'Tsukuyomi',sig:'Amaterasu',img:'https://cdn.myanimelist.net/images/characters/9/284122.jpg',kj:'月'},
+ {n:'Levi Ackerman',s:'Attack on Titan',r:3,fx:'s',p:81,k:30,t:'Tornade de Lames',sig:'Tourbillon Mortel',img:'https://cdn.myanimelist.net/images/characters/2/241413.jpg',kj:'翼'},
+ {n:'Goku',s:'Dragon Ball',r:4,fx:'b',p:96,k:1,t:'Kamehameha',sig:'Genkidama',img:'https://cdn.myanimelist.net/images/characters/15/72546.jpg',kj:'悟'},
+ {n:'Satoru Gojo',s:'Jujutsu Kaisen',r:5,fx:'b',p:108,k:8,t:'Bleu',sig:'Extension du territoire : Vide infini',img:'https://cdn.myanimelist.net/images/characters/15/422168.jpg',kj:'無'},
+ {n:'Sung Jinwoo',s:'Solo Leveling',r:6,fx:'d',p:118,k:13,t:'Extraction d’ombre',sig:'Lève-toi',img:'https://cdn.myanimelist.net/images/characters/2/540692.jpg',kj:'王'},
+ {n:'Ichigo Kurosaki',s:'Bleach',r:7,fx:'s',p:125,k:19,t:'Getsuga Tenshō',sig:'Mugetsu',img:'https://cdn.myanimelist.net/images/characters/3/512788.jpg',kj:'月'}
+];
+const MODELS=[
+ {id:'m1',k:'01',name:'Sumi · encre manga',desc:'Papier crème, encre noire, trame de points et tampon hanko rouge pour la rareté. Nom vertical en kanji, paillettes d’or sur les hautes raretés. Un style planche de manga, très lisible.'},
+ {id:'m2',k:'02',name:'Néon Shibuya',desc:'Verre sombre, contour néon qui prend la couleur de la rareté, scanlines, kanji lumineux et bandeau katakana défilant. Reflet holographique arc-en-ciel sur les Mythiques et au-dessus.'},
+ {id:'m3',k:'03',name:'Shōnen Gold · TCG',desc:'Cadre métal biseauté (or, argent, saphir, améthyste… selon la rareté), gemme au sommet, plaque de titre centrée. Reflet foil animé sur les hautes raretés, comme une vraie carte à collectionner.'},
+ {id:'m4',k:'04',name:'Sakura Glass',desc:'Illustration plein cadre, bandeau en verre dépoli, halo coloré selon l’élément du perso et pétales de sakura qui tombent. Doux, moderne, très mobile.'}
+];
+const au=c=>Math.round(c.p*.68);
+const vie=c=>120+c.p*2;
+function cardHtml(c,m){const r=R[c.r],h=FH[c.fx];
+ const common=`<div class="art"><img src="${c.img}" referrerpolicy="no-referrer" alt=""></div><span class="no">#${String(c.k).padStart(4,'0')}</span><div class="shine"></div><div class="holo"></div>`;
+ let inner='';
+ if(m=='m1')inner=`${common}<i class="fl"></i><span class="vt">${c.n.split(' ')[0]}・${FXK[c.fx]}</span><span class="hk">${r[0]}</span><span class="nm">${c.n}</span><span class="an">${c.s}</span><span class="st"><span data-l="POW"><b>${c.p}</b></span><span data-l="AURA"><b>${au(c)}</b></span></span>`;
+ if(m=='m2')inner=`${common}<span class="hk">${r[1]}</span><span class="kk">${c.kj}</span><div class="tick"><i>${(r[1].toUpperCase()+' ・ '+FXN[c.fx].toUpperCase()+' ・ ムゲン ・ ').repeat(4)}</i></div><span class="nm">${c.n}</span><span class="an">${c.s}</span><span class="st"><span data-l="POW">${c.p}</span><span data-l="AURA">${au(c)}</span></span>`;
+ if(m=='m3')inner=`<div class="in"></div>${common}<div class="plate"><span>${FXN[c.fx]}</span><span>${r[1]}</span></div><i class="gem"></i><span class="hk">${FXK[c.fx]}</span><div class="foil"></div><span class="nm">${c.n}</span><span class="an">${c.s}</span><span class="st"><span data-l="POW">${c.p}</span><span data-l="AURA">${au(c)}</span></span>`;
+ if(m=='m4')inner=`${common}<div class="pt"><i></i><i></i><i></i><i></i></div><span class="hk">${r[1]}</span><span class="el">${FXK[c.fx]}</span><div class="glass"><div class="nm">${c.n}</div><div class="an">${c.s}</div><div class="st"><span data-l="POW">${c.p}</span><span data-l="AURA">${au(c)}</span></div></div>`;
+ return `<div class="card r${c.r}" style="--c:${r[2]};--h:${h}">${inner}</div>`}
+function build(){const T=document.getElementById('tabs'),M=document.getElementById('main');
+ MODELS.forEach((m,i)=>{const b=document.createElement('button');b.textContent=m.k+' · '+m.name;b.onclick=()=>pick(m.id);b.dataset.m=m.id;T.append(b);
+  const s=document.createElement('section');s.className='model '+m.id;s.id='sec-'+m.id;s.innerHTML=`<div class="mh"><h2><small>MODÈLE ${m.k}</small>${m.name}</h2><p>${m.desc}</p><span class="hint">✦ survole = 3D · clic = fiche</span></div><div class="row">${CARDS.map((c,j)=>`<div class="cw" data-c="${j}" data-m="${m.id}">${cardHtml(c,m.id)}</div>`).join('')}</div>`;M.append(s)});
+ pick(location.hash.replace('#','')||'m1')}
+function pick(id){document.querySelectorAll('.model').forEach(s=>s.classList.toggle('on',s.classList.contains(id)));document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.m==id));history.replaceState(null,'','#'+id);window.scrollTo({top:0})}
+/* tilt 3D */
+function tilt(w,card,e,max){const r=w.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;card.style.setProperty('--mx',x*100+'%');card.style.setProperty('--my',y*100+'%');card.style.transform=`rotateY(${(x-.5)*max}deg) rotateX(${(.5-y)*max}deg) translateZ(14px)`}
+document.addEventListener('pointermove',e=>{const w=e.target.closest('.cw');if(!w)return;tilt(w,w.querySelector('.card'),e,22)});
+document.addEventListener('pointerleave',e=>{},true);
+document.addEventListener('pointerout',e=>{const w=e.target.closest&&e.target.closest('.cw');if(w&&!w.contains(e.relatedTarget))w.querySelector('.card').style.transform=''});
+document.addEventListener('click',e=>{const w=e.target.closest('.cw');if(w)open(+w.dataset.c,w.dataset.m)});
+function open(i,m){const c=CARDS[i],r=R[c.r],h=FH[c.fx];document.querySelectorAll('.ov').forEach(o=>o.remove());const o=document.createElement('div');o.className='ov '+m;
+ o.innerHTML=`<div class="fiche ${m}" style="--c:${r[2]};--h:${h}"><div class="kj">${c.kj}</div><button class="x" aria-label="Fermer">✕</button>
+  <div class="big">${cardHtml(c,m)}</div>
+  <div class="info"><h1>${c.n}</h1><div class="an">${c.s}</div>
+   <div class="tg"><span class="rr">${r[1]}</span><span class="el">${FXK[c.fx]} ${FXN[c.fx]}</span><span>×${c.r>=5?1:3}</span>${c.r>=6?'<span>👑 Boss de raid</span>':''}</div>
+   <div class="stat"><span>Puissance</span><div class="bar"><i style="width:${Math.min(100,c.p/130*100)}%"></i></div><b>${c.p}</b></div>
+   <div class="stat"><span>Vie</span><div class="bar"><i style="width:${Math.min(100,vie(c)/400*100)}%"></i></div><b>${vie(c)}</b></div>
+   <div class="stat"><span>Aura</span><div class="bar"><i style="width:${Math.min(100,au(c)/90*100)}%"></i></div><b>${au(c)}</b></div>
+   <div class="mv"><div><small>Technique</small><b>${c.t}</b></div><div class="sig"><small>Signature</small><b>${c.sig}</b></div></div>
+   <div class="eq"><small>Équipement</small><button><b>+</b>Artefact</button><button><b>+</b>Accessoire</button><button><b>⚡</b>Auto</button></div>
+   <div class="acts"><button class="btn p">♡ Ajouter à ma vitrine</button><button class="btn" ${c.r>=5?'disabled':''}>Vendre un doublon (+${[6,12,24,36,80,0,0,0][c.r]} 🪙)</button><button class="btn">↻ Re-chercher la bonne image</button><button class="btn" style="grid-column:1/-1">🖼 Mettre une image (lien)</button></div>
+  </div></div>`;
+ o.querySelector('.x').onclick=()=>o.remove();o.onclick=e=>{if(e.target==o)o.remove()};document.body.append(o);
+ const big=o.querySelector('.big'),card=big.querySelector('.card');setTimeout(()=>{card.style.animation='none'},1000);
+ big.addEventListener('pointermove',e=>tilt(big,card,e,28));big.addEventListener('pointerleave',()=>card.style.transform='');
+ if(window.DeviceOrientationEvent&&'ontouchstart' in window){const f=ev=>{if(!o.isConnected){removeEventListener('deviceorientation',f);return}const g=Math.max(-25,Math.min(25,ev.gamma||0)),b=Math.max(-25,Math.min(25,(ev.beta||45)-45));card.style.transform=`rotateY(${g}deg) rotateX(${-b}deg)`;card.style.setProperty('--mx',(50+g*2)+'%');card.style.setProperty('--my',(50+b*2)+'%')};addEventListener('deviceorientation',f)}}
+build();
+</script>
+</body>
+</html>
