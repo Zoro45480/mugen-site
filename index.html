@@ -2768,8 +2768,8 @@ html body .card:not(.awk2) .st3 b{color:#fff;margin-left:4px}
 .pk3e{position:absolute;top:4%;bottom:4%;width:10px;background:linear-gradient(90deg,#0006,#fff3,#0006);transform-origin:left}
 .pk3e.l{left:0;transform:rotateY(90deg) translateX(-5px)}.pk3e.r{right:0;transform-origin:right;transform:rotateY(-90deg) translateX(5px)}
 .pk3 .pkn-fl{--sx:calc(var(--sh,.5)*100%)}
-.pk3-show{display:flex;flex-direction:column;align-items:center;gap:8px;margin:-4px 0 14px}
-.pk3-show .pk3{width:min(190px,60%)}
+.pk3-show{display:flex;flex-direction:column;align-items:center;gap:10px;margin:0 0 16px;padding:14px 0 4px}
+.pk3-show .pk3{width:min(190px,62%);margin:0 auto}
 .pk3-show small{font:700 11px Inter,sans-serif;color:var(--mu)}
 /* ouverture : déchirure du haut */
 .pk3tl{width:min(270px,62vw);background:none!important;box-shadow:none!important;transform:none!important}
@@ -4092,7 +4092,8 @@ qd();
 function showOdds(o,c,p){const d=document.createElement('div');d.className='odds'+(c.na?' aw':'');d.innerHTML=(c.na?'<b>ÉVEIL</b> · ':'')+oddsTxt(c,p);o.append(d)}
 
 /* ===== MISES À JOUR ===== */
-const VER='24.9.1',CHG=[
+const VER='24.9.2',CHG=[
+ {v:'24.9.2',d:'2 novembre 2026',t:'Correctifs',n:[],f:['Boutique : le grand booster est bien centré dans le panneau']},
  {v:'24.9.1',d:'2 novembre 2026',t:'Correctifs',n:[],f:['Boosters : retrait des traits en bas du sachet']},
  {v:'24.9',big:1,d:'2 novembre 2026',t:'Nouveau design des cartes',n:['Toutes les cartes ont un cadre en métal qui change selon la rareté : argent, saphir, améthyste, or, or rose, platine, obsidienne du Monarque et rouge de la Lame Écarlate, avec reflets animés sur les plus rares.','Chaque carte a maintenant un dos, différent selon la rareté. Dans la fiche d’une carte, fais-la glisser pour la tourner en 3D ou touche-la pour la retourner.','Nouveaux boosters en emballage alu, avec un recto et un verso : fais-les tourner en 3D dans la boutique. Pour ouvrir un booster, il faut maintenant le déchirer en glissant le doigt le long du haut !'],f:[]},
  {v:'24.8.3',d:'2 novembre 2026',t:'Grosse mise à jour samedi',n:['Une énorme mise à jour arrive samedi 7 novembre à 14 h : compte à rebours sur l’accueil et vidéo leak à regarder.','Au programme : 3 nouvelles raretés, une nouvelle campagne, de nouvelles cartes, attaques, accessoires, artefacts, missions et quêtes… et plein d’autres choses.'],f:['Roue de la chance : elle tourne de nouveau à l’écran']},
@@ -7843,7 +7844,7 @@ function pkPct(v){return v>=10?v.toFixed(0):v>=1?v.toFixed(1):v>=.01?v.toFixed(2
 function pkArt(p){const cv=cover(p);return `<div class="pkn-art">${cv!='none'?`<i class="pkn-cv" style="background-image:${cv}"></i>`:collage(p)}</div>`}
 function packFront(p){const t=pkTier(p);return `<div class="pkn pkt${t}" style="--g:${p.g}"><i class="pkn-pat"></i>${pkArt(p)}<i class="pkn-pil"></i><i class="pkn-cr t"></i><i class="pkn-cr b"></i><div class="pkn-hd">${CLOGO}<b>MUGEN</b><em>ムゲン</em></div><div class="pkn-tl"><span>✂ déchirer ici</span></div><div class="pkn-med"><i class="pkn-rg"></i><u>${p.ic}</u></div><b class="pkn-t">${p.n}</b><small class="pkn-s">${p.s||'Tous les persos'}</small><div class="pkn-ft"><i class="pkn-gem"></i><span>${p.k} cartes</span><i class="pkn-gem"></i></div><i class="pkn-fl"></i></div>`}
 function packBack(p){const t=pkTier(p),L=pkOdds(p);return `<div class="pkn pkb pkt${t}" style="--g:${p.g}"><i class="pkn-pat"></i><i class="pkn-pil"></i><i class="pkn-cr t"></i><i class="pkn-cr b"></i><u class="pkb-wm">${p.ic}</u><div class="pkn-hd">${CLOGO}<b>MUGEN</b><em>ムゲン</em></div><div class="pkb-box"><b>${p.n}</b><small>${p.k} cartes par booster · emballage ${PKM[t]||'argent'}</small><ul>${L.map(([i,v])=>`<li><em style="background:${R[i][2]}"></em>${R[i][1]}<span>${pkPct(v)} %</span></li>`).join('')}</ul></div><div class="pkb-bc"><i></i><small>夢幻 · MUGEN CARD GAME</small></div><i class="pkn-fl"></i></div>`}
-function pack3d(p,big){return `<div class="pk3${big?' big':''}"><div class="pk3r"><div class="pk3s pk3f">${packFront(p)}</div><div class="pk3s pk3b">${packBack(p)}</div><i class="pk3e l"></i><i class="pk3e r"></i></div></div>`}
+function pack3d(p,big){return `<div class="pk3${big?' pk3big':''}"><div class="pk3r"><div class="pk3s pk3f">${packFront(p)}</div><div class="pk3s pk3b">${packBack(p)}</div><i class="pk3e l"></i><i class="pk3e r"></i></div></div>`}
 /* rotation 3D au doigt / à la souris, avec élan, et léger balancement au repos */
 function pk3Spin(w,opt={}){const r=w.querySelector('.pk3r');if(!r||w.dataset.sp)return;w.dataset.sp=1;let ry=opt.ry||-14,rx=4,v=0,drag=null,last=0,idle=1,raf=0,t0=performance.now();
  const draw=()=>{r.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;const k=((ry%360)+360)%360;w.classList.toggle('bk',k>90&&k<270);r.style.setProperty('--sh',(Math.sin(ry*Math.PI/180)*.5+.5).toFixed(3))};
