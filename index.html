@@ -2724,7 +2724,8 @@ html body .card:not(.awk2) .st3 b{color:#fff;margin-left:4px}
 .pkn-cv{position:absolute;inset:0;background:center/cover}
 .pkn-pil{inset:0;z-index:2;pointer-events:none;background:radial-gradient(90% 55% at 50% 48%,#ffffff1c,#0000 70%),linear-gradient(90deg,#00000055,#0000 12%,#0000 88%,#00000066),linear-gradient(180deg,#0000 80%,#0000004d)}
 .pkn-cr{left:0;right:0;height:9%;z-index:3;background:repeating-linear-gradient(90deg,#ffffff38 0 1px,#0000 1px 2.4cqw),linear-gradient(180deg,color-mix(in srgb,var(--pk1) 70%,#0000),color-mix(in srgb,var(--pk2) 70%,#0000));box-shadow:0 1px 0 #0006,0 -1px 0 #fff4}
-.pkn-cr.t{top:0}.pkn-cr.b{bottom:0}
+.pkn-cr.t{top:0}.pkn-cr.b{bottom:0;background:linear-gradient(180deg,color-mix(in srgb,var(--pk1) 70%,#0000),color-mix(in srgb,var(--pk2) 70%,#0000))}
+.pk3e{display:none!important}
 .pkn-hd{z-index:4;left:0;right:0;top:11%;display:flex;align-items:center;justify-content:center;gap:1.8cqw;font:900 5.4cqw Unbounded,sans-serif;letter-spacing:.24em;text-shadow:0 1px 3px #000a}
 .pkn-hd svg{width:7.5cqw;height:7.5cqw;filter:drop-shadow(0 1px 2px #0008)}
 .pkn-hd em{font:700 3.6cqw 'Noto Sans JP',sans-serif;letter-spacing:.2em;font-style:normal;opacity:.75}
@@ -4091,7 +4092,8 @@ qd();
 function showOdds(o,c,p){const d=document.createElement('div');d.className='odds'+(c.na?' aw':'');d.innerHTML=(c.na?'<b>ÉVEIL</b> · ':'')+oddsTxt(c,p);o.append(d)}
 
 /* ===== MISES À JOUR ===== */
-const VER='24.9',CHG=[
+const VER='24.9.1',CHG=[
+ {v:'24.9.1',d:'2 novembre 2026',t:'Correctifs',n:[],f:['Boosters : retrait des traits en bas du sachet']},
  {v:'24.9',big:1,d:'2 novembre 2026',t:'Nouveau design des cartes',n:['Toutes les cartes ont un cadre en métal qui change selon la rareté : argent, saphir, améthyste, or, or rose, platine, obsidienne du Monarque et rouge de la Lame Écarlate, avec reflets animés sur les plus rares.','Chaque carte a maintenant un dos, différent selon la rareté. Dans la fiche d’une carte, fais-la glisser pour la tourner en 3D ou touche-la pour la retourner.','Nouveaux boosters en emballage alu, avec un recto et un verso : fais-les tourner en 3D dans la boutique. Pour ouvrir un booster, il faut maintenant le déchirer en glissant le doigt le long du haut !'],f:[]},
  {v:'24.8.3',d:'2 novembre 2026',t:'Grosse mise à jour samedi',n:['Une énorme mise à jour arrive samedi 7 novembre à 14 h : compte à rebours sur l’accueil et vidéo leak à regarder.','Au programme : 3 nouvelles raretés, une nouvelle campagne, de nouvelles cartes, attaques, accessoires, artefacts, missions et quêtes… et plein d’autres choses.'],f:['Roue de la chance : elle tourne de nouveau à l’écran']},
  {v:'24.8.2',d:'2 novembre 2026',t:'Correctifs',n:[],f:['Transfert de progression : seul l’ancien site officiel peut envoyer une sauvegarde (un lien piégé ne peut plus remplacer ton compte)']},
