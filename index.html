@@ -2511,6 +2511,28 @@ body.dtlock>*:not(#dt23){filter:blur(10px);pointer-events:none!important;user-se
 .rv3-myth .rv3-gl{background:linear-gradient(115deg,transparent 30%,#ff3d5a66 42%,#ffe14d66 48%,#45e0c466 54%,#7c4dff66 60%,transparent 70%);background-size:250% 100%}
 .rv3-div .rv3-st{animation:rv24rise 1.6s cubic-bezier(.2,.9,.2,1) both}.rv3-aw .rv3-st{animation:rv24shake 1.2s both}.rv3-lx .rv3-st{animation:rv24slam .8s cubic-bezier(.5,0,1,.7) both}.rv3-mon .rv3-st{animation:rv24drop 1.8s cubic-bezier(.2,.9,.2,1) both}
 #wd{transition:none!important;transform:none!important;transform-box:view-box}
+/* v24.8 synergies d'anime */
+.syn25{--sc:#3dd9c4;margin-top:18px}
+.syn25.on{border-color:color-mix(in srgb,var(--sc) 60%,transparent);box-shadow:0 0 0 1px color-mix(in srgb,var(--sc) 25%,transparent),0 12px 40px #0005}
+.syn25-n{font:700 11px 'Space Mono',monospace;opacity:.7}
+.syn25-cur{display:flex;flex-direction:column;gap:4px;margin:12px 0 4px;padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--sc) 14%,transparent);border:1px solid color-mix(in srgb,var(--sc) 50%,transparent)}
+.syn25-cur b{font:900 15px Inter,sans-serif;color:var(--sc)}
+.syn25-cur small,.syn25-i small{font-size:12px;opacity:.8;line-height:1.35}
+.syn25-h{margin:10px 0 4px;font-size:14px;opacity:.85}
+.syn25-l{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-top:10px}
+.syn25-i{display:grid;grid-template-columns:30px 1fr;grid-template-rows:auto auto;column-gap:8px;align-items:center;padding:8px 10px;border-radius:10px;background:#ffffff08;border:1px solid #ffffff14;opacity:.72}
+.syn25-i i{grid-row:span 2;font-style:normal;font-size:17px;display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;background:color-mix(in srgb,var(--sc) 22%,transparent)}
+.syn25-i b{font:800 12px Inter,sans-serif;color:var(--sc)}
+.syn25-i.on{opacity:1;background:color-mix(in srgb,var(--sc) 16%,transparent);border-color:var(--sc);box-shadow:0 0 14px color-mix(in srgb,var(--sc) 35%,transparent)}
+.syn25-bt{display:inline-flex;align-items:center;gap:6px;margin-top:6px;padding:4px 10px;border-radius:99px;background:#0b0c12e6;border:1px solid var(--sc);font:800 10px 'Space Mono',monospace;letter-spacing:.06em;color:var(--sc);white-space:nowrap;animation:pop .5s;max-width:46vw;overflow:hidden;text-overflow:ellipsis}
+.syn25-bt i{font-style:normal}
+.hv .syn25-bt small{display:inline;font:600 10px Inter,sans-serif;letter-spacing:0;color:#fff;opacity:.85}
+.syn25-fl{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);z-index:10;pointer-events:none;text-align:center;width:92vw;animation:syn25f 2.3s cubic-bezier(.2,.9,.3,1) both}
+.syn25-fl em{display:block;font-style:normal;font-size:40px;filter:drop-shadow(0 0 16px var(--sc))}
+.syn25-fl b{display:block;font:900 clamp(22px,5vw,44px) Unbounded,Inter,sans-serif;color:var(--sc);-webkit-text-stroke:1px #000;text-shadow:0 4px 0 #000,0 0 26px var(--sc);letter-spacing:.04em}
+.syn25-fl small{display:block;margin-top:6px;font:700 14px Inter,sans-serif;color:#fff;text-shadow:0 2px 8px #000}
+@keyframes syn25f{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}14%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}26%{transform:translate(-50%,-50%) scale(1)}82%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-62%) scale(1)}}
+@media(max-width:700px){.hv .syn25-bt small{display:none}.syn25-bt{max-width:36vw;padding:3px 8px}.syn25-fl em{font-size:30px}}
 </style></head><body>
 <canvas id="bg"></canvas><div id="appbg"></div><header id="tb"><div class="brand" data-oclick="show('home')"><div class="lg"><svg viewBox="0 0 40 40"><defs><linearGradient id="lgg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4d2e"/><stop offset="1" stop-color="#ffc414"/></linearGradient></defs><path d="M20 2l16 9v18l-16 9-16-9V11z" fill="url(#lgg)"/><path d="M12 27V14l8 8 8-8v13" fill="none" stroke="#10121a" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20" cy="10" r="2" fill="#10121a"/></svg></div><b>MUGEN</b></div><nav id="nav"></nav><div class="sp"></div><div class="pill" id="rs" style="display:none"></div><div class="pill" id="en" title="Boosters gratuits"></div><div class="pill"><i class="cn"></i><span id="co">0</span></div><button class="pill ms" data-oclick="show('miss')">務 Missions</button><button class="avb" id="avb" data-oclick="togPop(event)">J</button><div id="pop"><div class="pc" id="prof"></div><div class="prow"><button id="snd" data-oclick="mute()">Son activé</button><button id="mus" data-oclick="musT()">Musique</button></div><a data-oclick="show('album');closePop()">Ma collection</a><a data-oclick="show('rank');closePop()">Carrière</a><a data-oclick="show('cfg');closePop()">Réglages</a></div></header>
 <main id="v"></main><button id="backx" class="backx" data-oclick="closeOv()">← Retour au menu</button>
@@ -3814,8 +3836,9 @@ qd();
 function showOdds(o,c,p){const d=document.createElement('div');d.className='odds'+(c.na?' aw':'');d.innerHTML=(c.na?'<b>ÉVEIL</b> · ':'')+oddsTxt(c,p);o.append(d)}
 
 /* ===== MISES À JOUR ===== */
-const VER='24.7.1',CHG=[
- {v:'24.7.1',d:'2 novembre 2026',t:'Nouvelle adresse du jeu',n:['MUGEN se joue maintenant sur zoro45480.github.io/mugen-site. En ouvrant l’ancienne adresse, tu es redirigé automatiquement et ta progression te suit (cartes, pièces, niveau, équipe, guilde, amis, classement).'],f:[]},
+const VER='24.8.1',CHG=[
+ {v:'24.8.1',d:'2 novembre 2026',t:'Nouvelle adresse du jeu',n:['MUGEN se joue maintenant sur zoro45480.github.io/mugen-site. En ouvrant l’ancienne adresse, tu es redirigé automatiquement et ta progression te suit (cartes, pièces, niveau, équipe, guilde, amis, classement).'],f:[]},
+ {v:'24.8',d:'2 novembre 2026',t:'Synergies d’anime',n:['Mets 3 persos du même anime dans ton équipe et un bonus s’active pour tout le combat : One Piece soigne 5 % à chaque attaque, Naruto esquive 10 % des coups, Demon Slayer a +10 % de critiques, Dragon Ball fait +8 % de dégâts, Jujutsu Kaisen commence avec +1 ◆, Bleach subit −8 % de dégâts, et les autres animes gagnent +5 % de puissance.','La synergie active est affichée dans le hub Combat (sous ton équipe) et annoncée au début du combat.','Ça marche dans tous les modes, y compris la Tour, le Classé et les raids.'],f:[]},
  {v:'24.4.2',d:'2 novembre 2026',t:'Correctifs',n:[],f:['Roue de la chance animée en JavaScript','Boutique : « Passer » pendant l’ouverture ne provoque plus d’erreur']},
  {v:'24.7',big:1,d:'2 novembre 2026',t:'Ouverture de packs en 3D',n:['Chaque grosse carte est révélée dans une vraie scène 3D construite à partir de l’attaque Signature du perso (spirale, rayons, croissants, mitraille, poing géant, foudre, flammes noires, vagues, glace, domaine, ombres, pluie d’épées, chaînes, Haki…), avec son symbole et son kanji,','Deux cartes qui partagent un nom d’attaque n’ont plus la même chorégraphie.','Les Lames Écarlates sont un peu plus fortes (+12 de puissance). sol brillant, lumières, et effets de rareté (rubans arc-en-ciel Mythique, anneaux et rayons divins, foudre de l’Éveil, croissants écarlates, armée des ombres et couronne du Monarque).','Le booster brille selon ce qu’il contient, se déchire en deux moitiés en 3D, et chaque grosse carte a sa révélation : Mythique (holo arc-en-ciel qui tourne), Divin (ascension dorée), Éveil (éclairs et fissures), Lame Écarlate (croissants et pluie de pétales), Monarque (armée des ombres et couronne). Plus la rareté est haute, plus c’est long et spectaculaire.'],f:[]},
  {v:'24.4',big:1,d:'2 novembre 2026',t:'Nouvelles animations de combat',n:['Chaque perso du jeu (350) a maintenant ses propres attaques : Frappe, Technique et Signature sont toutes différentes d’un perso à l’autre : aura de lancement, cinématique (fond, entrée, particules), façon d’approcher (course, téléportation, saut, vrille, images rémanentes), attaque principale, enchaînement d’une seconde attaque, traînée, couleur, kanji et symbole de fin.','Le combat est en 3D : la caméra se penche et zoome à chaque charge et à chaque impact, les persos s’élancent en profondeur et encaissent en basculant.','Les persos importants (Mythiques, Divins, Éveils, Monarques, Pourfendeurs) ont chacun une attaque Signature unique, avec leur symbole : soleil d’Escanor, éclipse de Griffith, horloge de Dio, cage de Doflamingo, couronne de Shanks, œil de Gojo…','Chaque attaque a maintenant sa propre animation, fidèle au perso : Rasengan en spirale, Kamehameha en rayon, Getsuga en croissant, Gomu Gomu en mitraille, Chidori en éclair, Amaterasu en flammes noires, souffles de l’eau et du soleil, extensions de domaine, armée des ombres…','Signature, Pouvoir Divin, Ultime Éveil, Domaine du Monarque et Lame Écarlate ont chacun leur cinématique.'],f:[]},
@@ -7471,6 +7494,42 @@ spin=function(){const t=new Date().toDateString();if(spg||S.wd==t)return;const e
  const tk=setInterval(()=>sfx(900,.03,'square',.05),160);setTimeout(()=>clearInterval(tk),4000);
  const fr=now=>{const q=Math.min(1,(now-t0)/D),e=1-Math.pow(1-q,3),a=from+(to-from)*e;WHA=a;el.setAttribute('transform',`rotate(${a} 150 150)`);if(q<1)requestAnimationFrame(fr)};requestAnimationFrame(fr);
  setTimeout(()=>{spg=0;S.wd=t;try{WR[i][2]()}catch(e){}save();try{boom(2,WC[i],false,WR[i][0].toUpperCase())}catch(e){}sfx(523,.2,'triangle',.2);sfx(784,.3,'triangle',.2,.15);setTimeout(()=>{try{miss()}catch(e){}},1800)},D+100)};
+
+
+/* ---------- v24.8 : synergies d'anime — 3 persos du même anime dans l'équipe = bonus pendant tout le combat ---------- */
+const SYN=[
+ ['One Piece','heal','Équipage','Le perso actif récupère 5 % de ses PV max à chacune de ses attaques','#4aa8ff','⚓'],
+ ['Naruto','dodge','Ninjas','10 % de chances d’esquiver complètement une attaque ennemie','#ff8a3c','🍃'],
+ ['Demon Slayer','crit','Pourfendeurs','+10 % de chances de coup critique (dégâts ×1,5)','#ff4d4d','🔥'],
+ ['Dragon Ball','dmg','Guerriers Z','+8 % de dégâts infligés','#ffc414','🐉'],
+ ['Jujutsu Kaisen','nrg','Exorcistes','+1 ◆ d’énergie au début du combat','#a97bff','👁'],
+ ['Bleach','tank','Shinigamis','−8 % de dégâts subis','#9ad0ff','⚔'],
+ ['*','pow','Même anime','+5 % de puissance pour toute l’équipe','#3dd9c4','✦']];
+const synFor=a=>SYN.find(x=>x[0]==a)||SYN[SYN.length-1];
+function synOf(cs){const n={};let best=null;for(const c of cs){if(!c||!c.s)continue;n[c.s]=(n[c.s]||0)+1;if(n[c.s]>=3&&!best)best=c.s}if(!best)return null;const s=synFor(best);return{a:best,k:s[1],t:s[2],d:s[3],col:s[4],ic:s[5]}}
+const synTeam=()=>{try{return synOf(sel.map(id=>M[id]).filter(Boolean))}catch(e){return null}};
+function synHub(){const y=synTeam(),st=S.sy||{f:0,w:0,a:{}},act=y?synFor(y.a):null;
+ return `<div class="pn syn25 ${y?'on':''}" style="--sc:${y?y.col:'#3dd9c4'}"><div class="hd2"><h3 style="margin:0">Synergie d’anime</h3><small class="syn25-n">${st.f?`${st.f} combat${st.f>1?'s':''} avec synergie · ${st.w||0} victoire${(st.w||0)>1?'s':''}`:'3 persos du même anime = bonus'}</small></div>
+ ${y?`<div class="syn25-cur"><b>${y.ic} ${y.a} · ${y.t}</b><small>${y.d} — actif dans tous les modes.</small></div>`:`<p class="syn25-h">Mets <b>3 persos du même anime</b> dans ton équipe pour activer un bonus pendant tout le combat.${sel.length==3?' Ton équipe actuelle mélange plusieurs animes.':''}</p>`}
+ <div class="syn25-l">${SYN.map(s=>`<div class="syn25-i ${act===s?'on':''}" style="--sc:${s[4]}"><i>${s[5]}</i><b>${s[0]=='*'?'Autres animes':s[0]}</b><small>${s[3]}</small></div>`).join('')}</div></div>`}
+{const _b=battle;battle=function(){const r=_b.apply(this,arguments);try{const v=$('v'),sl=v&&v.querySelector('.slots'),p=sl&&sl.closest('.pn');if(p&&!v.querySelector('.syn25'))p.insertAdjacentHTML('afterend',synHub())}catch(e){console.warn(e)}return r}}
+function synApply(){if(!B||B.syn!==undefined)return;const y=synOf((B.me||[]).map(f=>f.c));B.syn=y||null;if(!y)return;const mine=B.me.filter(f=>f.c.s==y.a);
+ if(y.k=='pow')mine.forEach(f=>{f.p=Math.round(f.p*1.05)});
+ if(y.k=='dmg')mine.forEach(f=>{f.b=(f.b||1)*1.08});
+ if(y.k=='nrg'){B.e[0]=Math.min(6,(B.e[0]||0)+1);try{pips()}catch(e){}}
+ try{const t=document.querySelector('#fp .tag'),f=B.me[B.pi];if(t&&f)t.innerHTML=t.innerHTML.replace(/POW \d+/,'POW '+f.p)}catch(e){}
+ try{const hv=document.querySelector('#bt .hv');if(hv&&!hv.querySelector('.syn25-bt'))hv.insertAdjacentHTML('beforeend',`<div class="syn25-bt" style="--sc:${y.col}" title="${y.d}"><i>${y.ic}</i>${y.t.toUpperCase()}<small>${y.d}</small></div>`)}catch(e){}}
+function synFlash(){const y=B&&B.syn,bt=$('bt');if(!y||!bt||bt.querySelector('.syn25-fl'))return;const o=document.createElement('div');o.className='syn25-fl';o.style.setProperty('--sc',y.col);o.innerHTML=`<em>${y.ic}</em><b>SYNERGIE ${y.a.toUpperCase()}</b><small>${y.t} · ${y.d}</small>`;bt.append(o);try{sfx(660,.18,'triangle',.14);sfx(990,.3,'triangle',.12,.12)}catch(e){}setTimeout(()=>o.remove(),2300)}
+{const _s=scene;scene=function(){const r=_s.apply(this,arguments);try{synApply()}catch(e){console.warn(e)}return r}}
+{const _i=intro;intro=async function(){const r=await _i.apply(this,arguments);try{synFlash()}catch(e){}return r}}
+{const _a=act;act=async function(a,d,mi,ia,id,sd){const y=B&&B.syn;if(!y||mi==3)return _a.apply(this,arguments);
+ if(sd==0&&y.k=='heal'&&a.c.s==y.a&&a.hp>0&&a.hp<a.max){const h=Math.max(1,Math.round(a.max*.05));a.hp=Math.min(a.max,a.hp+h);try{upd(ia,a);flo($(ia),'ÉQUIPAGE +'+h,'#5dff8a',55)}catch(e){}}
+ const hp0=d.hp;let b0=null;if(sd==1&&y.k=='tank'&&d.c.s==y.a){b0=a.b||1;a.b=b0*.92}
+ const dodge=sd==1&&y.k=='dodge'&&d.c.s==y.a&&Math.random()<.1;
+ try{return await _a.apply(this,arguments)}finally{if(b0!==null)a.b=b0;
+  if(dodge&&d.hp<hp0){d.hp=hp0;try{upd(id,d);flo($(id),'ESQUIVÉ !','#5dff8a',8)}catch(e){}}
+  if(sd==0&&y.k=='crit'&&a.c.s==y.a&&d.hp<hp0&&d.hp>0&&Math.random()<.1){const x=Math.max(1,Math.round((hp0-d.hp)*.5));d.hp=Math.max(0,d.hp-x);try{upd(id,d);flo($(id),'CRIT -'+x,'#ffd54a',20);sfx(1500,.35,'triangle',.14,.06,1.6)}catch(e){}}}}}
+{const _e=end;end=function(w){try{if(B&&B.syn&&!B.synd){B.synd=1;S.sy=S.sy||{f:0,w:0,a:{}};S.sy.f++;if(w)S.sy.w++;S.sy.a[B.syn.a]=(S.sy.a[B.syn.a]||0)+1}}catch(e){}return _e.apply(this,arguments)}}
 
 appBgSet(view);
 setTimeout(()=>{try{if(S.sv!=SPL.v&&!document.getElementById('bt'))splash()}catch(e){}},1400);
