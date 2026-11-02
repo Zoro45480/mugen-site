@@ -2512,7 +2512,7 @@ body.dtlock>*:not(#dt23){filter:blur(10px);pointer-events:none!important;user-se
 .rv3-tip{position:absolute;right:16px;bottom:12px;z-index:3;font:700 11px 'Space Mono',monospace;color:#fff6;opacity:0;transition:opacity .4s}.rv3.skip .rv3-tip{opacity:1}
 .rv3-myth .rv3-gl{background:linear-gradient(115deg,transparent 30%,#ff3d5a66 42%,#ffe14d66 48%,#45e0c466 54%,#7c4dff66 60%,transparent 70%);background-size:250% 100%}
 .rv3-div .rv3-st{animation:rv24rise 1.6s cubic-bezier(.2,.9,.2,1) both}.rv3-aw .rv3-st{animation:rv24shake 1.2s both}.rv3-lx .rv3-st{animation:rv24slam .8s cubic-bezier(.5,0,1,.7) both}.rv3-mon .rv3-st{animation:rv24drop 1.8s cubic-bezier(.2,.9,.2,1) both}
-#wd{transition:none!important;transform:none!important;transform-box:view-box}
+#wd{transition:none!important;transform-box:view-box!important;transform-origin:150px 150px!important}
 /* v24.8 synergies d'anime */
 .syn25{--sc:#3dd9c4;margin-top:18px}
 .syn25.on{border-color:color-mix(in srgb,var(--sc) 60%,transparent);box-shadow:0 0 0 1px color-mix(in srgb,var(--sc) 25%,transparent),0 12px 40px #0005}
@@ -2535,6 +2535,54 @@ body.dtlock>*:not(#dt23){filter:blur(10px);pointer-events:none!important;user-se
 .syn25-fl small{display:block;margin-top:6px;font:700 14px Inter,sans-serif;color:#fff;text-shadow:0 2px 8px #000}
 @keyframes syn25f{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}14%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}26%{transform:translate(-50%,-50%) scale(1)}82%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-62%) scale(1)}}
 @media(max-width:700px){.hv .syn25-bt small{display:none}.syn25-bt{max-width:36vw;padding:3px 8px}.syn25-fl em{font-size:30px}}
+/* v24.8.3 · annonce mise à jour de samedi */
+.ann7{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:22px;align-items:center;margin:0 0 22px;padding:24px;border-radius:22px;overflow:hidden;background:radial-gradient(120% 140% at 0% 0%,#ff2e5b33,transparent 55%),radial-gradient(120% 140% at 100% 100%,#2fd6ff2e,transparent 55%),linear-gradient(135deg,#120a1f,#0b0c14);border:1px solid #ff2e5b55;box-shadow:0 0 0 1px #ffffff08 inset,0 18px 50px #0008}
+.ann7:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,#ffffff06 0 1px,transparent 1px 3px);pointer-events:none}
+.ann7-l{position:relative;min-width:0}
+.ann7-tag{display:inline-flex;align-items:center;gap:8px;font:800 11px/1 Inter,sans-serif;letter-spacing:.22em;color:#ff5c7c;background:#ff2e5b1f;border:1px solid #ff2e5b55;padding:7px 11px;border-radius:99px}
+.ann7-tag i{width:8px;height:8px;border-radius:50%;background:#ff2e5b;box-shadow:0 0 10px #ff2e5b;animation:ann7b 1s steps(2) infinite}
+@keyframes ann7b{50%{opacity:.15}}
+.ann7 h2,.ann7m h2{margin:12px 0 4px;font:800 clamp(20px,3.2vw,30px)/1.15 Unbounded,Inter,sans-serif;color:#fff;text-wrap:balance}
+.ann7 h2 em,.ann7m h2 em{font-style:normal;color:#ff5c7c;text-shadow:2px 0 #2fd6ff99,-2px 0 #ff2e5b99;animation:ann7g 3.2s infinite}
+@keyframes ann7g{0%,92%,100%{text-shadow:2px 0 #2fd6ff99,-2px 0 #ff2e5b99;transform:none}94%{text-shadow:-4px 0 #2fd6ff,4px 0 #ff2e5b;transform:translateX(2px)}96%{transform:translateX(-2px)}}
+.ann7-d{margin:0 0 12px;color:var(--mu);font-weight:600}
+.ann7-cd{display:flex;gap:10px;margin:0 0 14px}
+.ann7-cd div{min-width:64px;text-align:center;padding:10px 8px 8px;border-radius:14px;background:#0008;border:1px solid #ffffff1c}
+.ann7-cd b{display:block;font:800 26px/1 Unbounded,Inter,sans-serif;color:#fff;font-variant-numeric:tabular-nums}
+.ann7-cd small{display:block;margin-top:5px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
+.ann7-now{margin:0;font-weight:800;color:#ffd36a}
+.ann7-chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
+.ann7-chips span{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#e9e7ff;background:#ffffff0d;border:1px solid #ffffff1a;padding:6px 10px;border-radius:99px}
+.ann7-chips u{text-decoration:none;color:#ff5c7c;font-weight:900}
+.ann7-chips .ann7-more{color:#ffd36a;border-color:#ffd36a44}
+.ann7-go{background:linear-gradient(135deg,#ff2e5b,#ff6b4a)!important;color:#fff!important;border:0!important}
+.ann7-th{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:1px solid #ffffff22;border-radius:16px;overflow:hidden;background:#000;cursor:pointer;box-shadow:0 10px 30px #0009}
+.ann7-th img{width:100%;height:100%;object-fit:cover;filter:saturate(1.15) contrast(1.05);transition:transform .4s}
+.ann7-th:hover img{transform:scale(1.04)}
+.ann7-th:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,#0000 0 2px,#0004 2px 3px),radial-gradient(circle,#0000 50%,#000a)}
+.ann7-pl{position:absolute;left:50%;top:50%;z-index:2;width:62px;height:62px;margin:-31px 0 0 -31px;display:grid;place-items:center;border-radius:50%;background:#ff2e5bdd;color:#fff;font-size:22px;box-shadow:0 0 0 8px #ff2e5b33,0 0 30px #ff2e5b}
+.ann7-th em,.ann7stamp{position:absolute;z-index:2;font:900 15px/1 Unbounded,Inter,sans-serif;letter-spacing:.2em;color:#ff2e5b;border:2px solid #ff2e5b;padding:5px 9px;border-radius:6px;transform:rotate(-8deg);background:#0009;font-style:normal}
+.ann7-th em{right:12px;top:12px}
+.ann7-th small{position:absolute;z-index:2;left:12px;top:12px;font:800 11px/1 Inter,sans-serif;color:#ff5c7c;letter-spacing:.1em}
+.ann7o{z-index:300!important;background:#05040cf2!important}
+.ann7m{position:relative;width:min(860px,100%);padding:18px;border-radius:22px;background:linear-gradient(160deg,#160c22,#0b0c14);border:1px solid #ff2e5b44}
+.ann7x{position:absolute;right:10px;top:10px;z-index:3;width:36px;height:36px;border-radius:50%;border:1px solid #ffffff2a;background:#000a;color:#fff;font-size:16px;cursor:pointer}
+.ann7v{position:relative;border-radius:14px;overflow:hidden;background:#000;aspect-ratio:16/9}
+.ann7v video{width:100%;height:100%;display:block;object-fit:contain;filter:saturate(1.1) contrast(1.05)}
+.ann7scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,#0000 0 2px,#0003 2px 3px),radial-gradient(circle,#0000 55%,#0008);animation:ann7f 6s infinite}
+@keyframes ann7f{0%,96%,100%{opacity:1}97%{opacity:.6;transform:translateX(3px)}98%{transform:translateX(-3px)}}
+.ann7stamp{left:50%;top:12px;font-size:18px;pointer-events:none;transform:translateX(-50%) rotate(-6deg)}
+.ann7rec{position:absolute;left:12px;top:12px;display:flex;align-items:center;gap:7px;font:800 11px/1 Inter,sans-serif;color:#fff;letter-spacing:.06em;text-shadow:0 1px 3px #000;pointer-events:none}
+.ann7rec i{width:9px;height:9px;border-radius:50%;background:#ff2e5b;animation:ann7b 1s steps(2) infinite}
+.ann7m .ann7-tag{margin-top:16px}
+.ann7sp{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;margin:4px 0 10px}
+.ann7sp div{display:grid;grid-template-columns:34px 1fr;column-gap:10px;align-items:center;padding:10px 12px;border-radius:12px;background:#ffffff08;border:1px solid #ffffff14}
+.ann7sp u{grid-row:span 2;width:34px;height:34px;display:grid;place-items:center;border-radius:10px;text-decoration:none;font-weight:900;color:#fff;background:linear-gradient(135deg,#ff2e5b,#7c5cff)}
+.ann7sp b{font-size:14px;color:#fff}
+.ann7sp small{font-size:12px;color:var(--mu)}
+.ann7sp s{text-decoration:none;color:#ffffff55;background:#ffffff14;border-radius:3px;filter:blur(1.5px)}
+.ann7-f{margin:6px 0 0;color:var(--mu);font-size:13px;text-align:center}
+@media (max-width:760px){.ann7{grid-template-columns:1fr;padding:18px}.ann7-th{order:-1}.ann7-cd{gap:6px}.ann7-cd div{min-width:0;flex:1;padding:8px 4px}.ann7-cd b{font-size:20px}.ann7m{padding:12px}}
 </style></head><body>
 <canvas id="bg"></canvas><div id="appbg"></div><header id="tb"><div class="brand" data-oclick="show('home')"><div class="lg"><svg viewBox="0 0 40 40"><defs><linearGradient id="lgg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4d2e"/><stop offset="1" stop-color="#ffc414"/></linearGradient></defs><path d="M20 2l16 9v18l-16 9-16-9V11z" fill="url(#lgg)"/><path d="M12 27V14l8 8 8-8v13" fill="none" stroke="#10121a" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20" cy="10" r="2" fill="#10121a"/></svg></div><b>MUGEN</b></div><nav id="nav"></nav><div class="sp"></div><div class="pill" id="rs" style="display:none"></div><div class="pill" id="en" title="Boosters gratuits"></div><div class="pill"><i class="cn"></i><span id="co">0</span></div><button class="pill ms" data-oclick="show('miss')">務 Missions</button><button class="avb" id="avb" data-oclick="togPop(event)">J</button><div id="pop"><div class="pc" id="prof"></div><div class="prow"><button id="snd" data-oclick="mute()">Son activé</button><button id="mus" data-oclick="musT()">Musique</button></div><a data-oclick="show('album');closePop()">Ma collection</a><a data-oclick="show('rank');closePop()">Carrière</a><a data-oclick="show('cfg');closePop()">Réglages</a></div></header>
 <main id="v"></main><button id="backx" class="backx" data-oclick="closeOv()">← Retour au menu</button>
@@ -3838,7 +3886,8 @@ qd();
 function showOdds(o,c,p){const d=document.createElement('div');d.className='odds'+(c.na?' aw':'');d.innerHTML=(c.na?'<b>ÉVEIL</b> · ':'')+oddsTxt(c,p);o.append(d)}
 
 /* ===== MISES À JOUR ===== */
-const VER='24.8.2',CHG=[
+const VER='24.8.3',CHG=[
+ {v:'24.8.3',d:'2 novembre 2026',t:'Grosse mise à jour samedi',n:['Une énorme mise à jour arrive samedi 7 novembre à 14 h : compte à rebours sur l’accueil et vidéo leak à regarder.','Au programme : 3 nouvelles raretés, une nouvelle campagne, de nouvelles cartes, attaques, accessoires, artefacts, missions et quêtes… et plein d’autres choses.'],f:['Roue de la chance : elle tourne de nouveau à l’écran']},
  {v:'24.8.2',d:'2 novembre 2026',t:'Correctifs',n:[],f:['Transfert de progression : seul l’ancien site officiel peut envoyer une sauvegarde (un lien piégé ne peut plus remplacer ton compte)']},
  {v:'24.8.1',d:'2 novembre 2026',t:'Nouvelle adresse du jeu',n:['MUGEN se joue maintenant sur zoro45480.github.io/mugen-site. En ouvrant l’ancienne adresse, tu es redirigé automatiquement et ta progression te suit (cartes, pièces, niveau, équipe, guilde, amis, classement).'],f:[]},
  {v:'24.8',d:'2 novembre 2026',t:'Synergies d’anime',n:['Mets 3 persos du même anime dans ton équipe et un bonus s’active pour tout le combat : One Piece soigne 5 % à chaque attaque, Naruto esquive 10 % des coups, Demon Slayer a +10 % de critiques, Dragon Ball fait +8 % de dégâts, Jujutsu Kaisen commence avec +1 ◆, Bleach subit −8 % de dégâts, et les autres animes gagnent +5 % de puissance.','La synergie active est affichée dans le hub Combat (sous ton équipe) et annoncée au début du combat.','Ça marche dans tous les modes, y compris la Tour, le Classé et les raids.'],f:[]},
@@ -7493,9 +7542,9 @@ function rv3Attack(T,sb,sf,o){const{p,h,h2,addF,addB,col,L1,L2}=o;const sh=p.sha
 
 /* ---------- roue de la chance : rotation pilotée en JavaScript (fiable sur tous les navigateurs) ---------- */
 let WHA=0;
-spin=function(){const t=new Date().toDateString();if(spg||S.wd==t)return;const el=$('wd');if(!el)return;spg=1;const i=Math.floor(Math.random()*8),from=WHA%360,to=from+1800+360-(i*45+22.5),D=4500,t0=performance.now();el.style.transform='';el.style.transition='none';
+spin=function(){const t=new Date().toDateString();if(spg||S.wd==t)return;const el=$('wd');if(!el)return;spg=1;const i=Math.floor(Math.random()*8),from=WHA%360,to=from+1800+360-(i*45+22.5),D=4500,t0=performance.now();el.style.setProperty('transition','none','important');
  const tk=setInterval(()=>sfx(900,.03,'square',.05),160);setTimeout(()=>clearInterval(tk),4000);
- const fr=now=>{const q=Math.min(1,(now-t0)/D),e=1-Math.pow(1-q,3),a=from+(to-from)*e;WHA=a;el.setAttribute('transform',`rotate(${a} 150 150)`);if(q<1)requestAnimationFrame(fr)};requestAnimationFrame(fr);
+ const fr=now=>{const q=Math.min(1,(now-t0)/D),e=1-Math.pow(1-q,3),a=from+(to-from)*e;WHA=a;el.removeAttribute('transform');el.style.setProperty('transform',`rotate(${a}deg)`,'important');if(q<1)requestAnimationFrame(fr)};requestAnimationFrame(fr);
  setTimeout(()=>{spg=0;S.wd=t;try{WR[i][2]()}catch(e){}save();try{boom(2,WC[i],false,WR[i][0].toUpperCase())}catch(e){}sfx(523,.2,'triangle',.2);sfx(784,.3,'triangle',.2,.15);setTimeout(()=>{try{miss()}catch(e){}},1800)},D+100)};
 
 
@@ -7533,6 +7582,32 @@ function synFlash(){const y=B&&B.syn,bt=$('bt');if(!y||!bt||bt.querySelector('.s
   if(dodge&&d.hp<hp0){d.hp=hp0;try{upd(id,d);flo($(id),'ESQUIVÉ !','#5dff8a',8)}catch(e){}}
   if(sd==0&&y.k=='crit'&&a.c.s==y.a&&d.hp<hp0&&d.hp>0&&Math.random()<.1){const x=Math.max(1,Math.round((hp0-d.hp)*.5));d.hp=Math.max(0,d.hp-x);try{upd(id,d);flo($(id),'CRIT -'+x,'#ffd54a',20);sfx(1500,.35,'triangle',.14,.06,1.6)}catch(e){}}}}}
 {const _e=end;end=function(w){try{if(B&&B.syn&&!B.synd){B.synd=1;S.sy=S.sy||{f:0,w:0,a:{}};S.sy.f++;if(w)S.sy.w++;S.sy.a[B.syn.a]=(S.sy.a[B.syn.a]||0)+1}}catch(e){}return _e.apply(this,arguments)}}
+
+/* ---------- v24.8.3 : annonce de la grosse mise à jour de samedi (vidéo leak + compte à rebours) ---------- */
+const ANN={id:'maj-7nov',t:Date.UTC(2026,10,7,13,0,0),end:Date.UTC(2026,10,8,23,0,0),vid:'media/leak-samedi.mp4',img:'media/leak-samedi.jpg',
+ sp:[['稀','3 nouvelles raretés','<s>██████</s> · <s>█████████</s> · <s>███████</s>'],['征','Nouvelle campagne','Un nouveau monde à conquérir'],['札','Nouvelles cartes','Des persos jamais vus'],['技','Nouvelles attaques','Plus grosses, plus belles, en 3D'],['宝','Nouveaux accessoires et artefacts','De quoi changer tes équipes'],['任','Nouvelles missions et quêtes','Plus de défis, plus de récompenses'],['他','Et plein d’autres choses…','On ne peut pas tout dire']]};
+const annOn=()=>Date.now()<ANN.end;
+const annCd=()=>`<div class="ann7-cd" data-ann="1">${[['d','jours'],['h','heures'],['m','min'],['s','sec']].map(x=>`<div><b data-u="${x[0]}">--</b><small>${x[1]}</small></div>`).join('')}</div>`;
+function annTick(){const l=ANN.t-Date.now(),p=n=>String(Math.max(0,n)).padStart(2,'0');
+ document.querySelectorAll('[data-ann]').forEach(el=>{if(l<=0){if(!el.dataset.live){el.dataset.live=1;el.innerHTML='<p class="ann7-now">C’est aujourd’hui ! Recharge la page pour découvrir la mise à jour.</p>'}return}
+  const v={d:Math.floor(l/864e5),h:Math.floor(l/36e5)%24,m:Math.floor(l/6e4)%60,s:Math.floor(l/1e3)%60};el.querySelectorAll('b[data-u]').forEach(b=>{const t=p(v[b.dataset.u]);if(b.textContent!=t)b.textContent=t})});
+ try{if(view=='home'&&annOn()&&!document.querySelector('#v .ann7'))annMount()}catch(e){}}
+function annMount(){const v=$('v');if(!v||v.querySelector('.ann7'))return;const d=document.createElement('section');d.className='ann7';
+ d.innerHTML=`<div class="ann7-l"><div class="ann7-tag"><i></i>LEAK · 情報漏洩</div><h2>La plus grosse mise à jour de MUGEN arrive <em>samedi</em></h2><p class="ann7-d">Samedi 7 novembre · 14 h</p>${annCd()}
+  <div class="ann7-chips">${ANN.sp.slice(0,6).map(x=>`<span><u>${x[0]}</u>${x[1]}</span>`).join('')}<span class="ann7-more">+ plein d’autres choses</span></div>
+  <button class="btn ann7-go" data-oclick="annPop()">▶ Voir la vidéo leak</button></div>
+  <button class="ann7-th" data-oclick="annPop()" aria-label="Voir la vidéo leak"><img src="${ANN.img}" alt="" data-oerror="this.style.opacity=0"><span class="ann7-pl">▶</span><em>LEAK</em><small>● REC</small></button>`;
+ v.prepend(d);annTick()}
+function annPop(){document.querySelectorAll('.ann7o').forEach(e=>e.remove());const o=document.createElement('div');o.className='ov ann7o';
+ o.innerHTML=`<div class="ann7m"><button class="ann7x" data-oclick="this.closest('.ov').remove()" aria-label="Fermer">✕</button>
+  <div class="ann7v"><video src="${ANN.vid}" poster="${ANN.img}" muted autoplay loop playsinline controls preload="metadata"></video><div class="ann7scan"></div><div class="ann7stamp">LEAK</div><div class="ann7rec"><i></i>REC · fichier interne · ne pas partager</div></div>
+  <div class="ann7-tag"><i></i>SPOIL · ネタバレ</div><h2>Grosse mise à jour <em>samedi 7 novembre</em> à 14 h</h2>${annCd()}
+  <div class="ann7sp">${ANN.sp.map(x=>`<div><u>${x[0]}</u><b>${x[1]}</b><small>${x[2]}</small></div>`).join('')}</div>
+  <p class="ann7-f">Ce que tu vois dans la vidéo n’est qu’un aperçu. Rendez-vous samedi !</p></div>`;
+ o.onclick=e=>{if(e.target==o)o.remove()};document.body.append(o);annTick()}
+setInterval(()=>{try{annTick()}catch(e){}},1000);
+/* s'ouvre tout seul une fois, à la première visite après l'annonce */
+{let n=0;const tryPop=()=>{try{if(!annOn()||S.annP==ANN.id)return;const busy=[...document.querySelectorAll('.ov,.spl,#up20p,#nt15w')].some(e=>{const c=getComputedStyle(e);return c.display!='none'&&c.visibility!='hidden'&&+c.opacity>0});if(view=='home'&&!busy){S.annP=ANN.id;save();annPop();return}}catch(e){}setTimeout(tryPop,++n<20?1500:4000)};setTimeout(tryPop,4000)}
 
 appBgSet(view);
 setTimeout(()=>{try{if(S.sv!=SPL.v&&!document.getElementById('bt'))splash()}catch(e){}},1400);
