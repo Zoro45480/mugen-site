@@ -2791,6 +2791,7 @@ html body .card:not(.awk2) .st3 b{color:#fff;margin-left:4px}
 .pk3-hand{position:absolute;z-index:9;left:8%;top:6%;font-size:26px;pointer-events:none;filter:drop-shadow(0 2px 4px #000);animation:pkhd 1.8s ease-in-out infinite}
 @keyframes pkhd{0%{transform:translateX(0);opacity:0}15%{opacity:1}70%{transform:translateX(calc(min(270px,62vw)*.7));opacity:1}100%{transform:translateX(calc(min(270px,62vw)*.75));opacity:0}}
 .pk3tl:has(.tearing) .pk3-hand,.pk3tl:has(.torn) .pk3-hand,.pk3tl:has(.pk3.bk) .pk3-hand{display:none}
+.p13c.p13fl{touch-action:none;cursor:grab}.p13c.p13fl:active{cursor:grabbing}.p13c.p13fl .p13ci{will-change:transform}
 </style></head><body>
 <canvas id="bg"></canvas><div id="appbg"></div><header id="tb"><div class="brand" data-oclick="show('home')"><div class="lg"><svg viewBox="0 0 40 40"><defs><linearGradient id="lgg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4d2e"/><stop offset="1" stop-color="#ffc414"/></linearGradient></defs><path d="M20 2l16 9v18l-16 9-16-9V11z" fill="url(#lgg)"/><path d="M12 27V14l8 8 8-8v13" fill="none" stroke="#10121a" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20" cy="10" r="2" fill="#10121a"/></svg></div><b>MUGEN</b></div><nav id="nav"></nav><div class="sp"></div><div class="pill" id="rs" style="display:none"></div><div class="pill" id="en" title="Boosters gratuits"></div><div class="pill"><i class="cn"></i><span id="co">0</span></div><button class="pill ms" data-oclick="show('miss')">務 Missions</button><button class="avb" id="avb" data-oclick="togPop(event)">J</button><div id="pop"><div class="pc" id="prof"></div><div class="prow"><button id="snd" data-oclick="mute()">Son activé</button><button id="mus" data-oclick="musT()">Musique</button></div><a data-oclick="show('album');closePop()">Ma collection</a><a data-oclick="show('rank');closePop()">Carrière</a><a data-oclick="show('cfg');closePop()">Réglages</a></div></header>
 <main id="v"></main><button id="backx" class="backx" data-oclick="closeOv()">← Retour au menu</button>
@@ -4092,7 +4093,8 @@ qd();
 function showOdds(o,c,p){const d=document.createElement('div');d.className='odds'+(c.na?' aw':'');d.innerHTML=(c.na?'<b>ÉVEIL</b> · ':'')+oddsTxt(c,p);o.append(d)}
 
 /* ===== MISES À JOUR ===== */
-const VER='24.9.2',CHG=[
+const VER='24.9.3',CHG=[
+ {v:'24.9.3',d:'2 novembre 2026',t:'Cartes en 3D à l’ouverture',n:['Quand tu ouvres un booster, fais glisser une carte révélée pour la tourner en 3D et voir son dos, ou touche-la pour la retourner.'],f:[]},
  {v:'24.9.2',d:'2 novembre 2026',t:'Correctifs',n:[],f:['Boutique : le grand booster est bien centré dans le panneau']},
  {v:'24.9.1',d:'2 novembre 2026',t:'Correctifs',n:[],f:['Boosters : retrait des traits en bas du sachet']},
  {v:'24.9',big:1,d:'2 novembre 2026',t:'Nouveau design des cartes',n:['Toutes les cartes ont un cadre en métal qui change selon la rareté : argent, saphir, améthyste, or, or rose, platine, obsidienne du Monarque et rouge de la Lame Écarlate, avec reflets animés sur les plus rares.','Chaque carte a maintenant un dos, différent selon la rareté. Dans la fiche d’une carte, fais-la glisser pour la tourner en 3D ou touche-la pour la retourner.','Nouveaux boosters en emballage alu, avec un recto et un verso : fais-les tourner en 3D dans la boutique. Pour ouvrir un booster, il faut maintenant le déchirer en glissant le doigt le long du haut !'],f:[]},
@@ -4782,7 +4784,7 @@ stage=function(p,packs,nw,i,fr,n){MS='pack';document.querySelectorAll('.ov.pk').
   d.classList.add('p13fl');d.classList.add(c.na?'p13ga':'p13g'+c.r);try{p13rb(o,c.na?'a':c.r)}catch(e){}snd(480+c.r*110,.14,'triangle',.12);snd(960+c.r*120,.1,'sine',.06,.06);
   await sleep(fast?120:240);fxR(d,c);
   d.querySelector('.p13l').innerHTML=`${c.na?'<b style="color:#ff9af8">ÉVEIL</b>':`<b style="color:${R[c.r][2]}">${R[c.r][1]}</b>`} · ${oddsShort(c,p)}${nw[ix]?' · <em>NOUVEAU</em>':''}`;
-  left--;busy=0;if(!left){$o('#p13a').hidden=true;$o('#p13c').hidden=false;tip.textContent=best>=3||hasA?'Quel tirage !':'Booster terminé'}};
+  left--;busy=0;if(!left){$o('#p13a').hidden=true;$o('#p13c').hidden=false;tip.textContent=(best>=3||hasA?'Quel tirage !':'Booster terminé')+' · fais glisser une carte pour la tourner en 3D'}};
  const fan=()=>{const f=$o('#p13f'),idx=flat.map((c,j)=>j).sort((a,b)=>(flat[a].na?9:flat[a].r)-(flat[b].na?9:flat[b].r)),k=idx.length,vw=innerWidth,vh=innerHeight,mob=vw<640,per=mob?Math.min(3,k):k,rows=Math.ceil(k/per),cw=mob?Math.min(118,(vw-36)/per-10,(vh-260)/rows/1.72):Math.min(168,(vw-80)/k-14,(vh-280)/1.66),gap=cw+(mob?10:18);
   f.style.setProperty('--cw',cw+'px');left=k;
   idx.forEach((ix,j)=>{const c=flat[ix],row=Math.floor(j/per),inRow=Math.min(per,k-row*per),col=j-row*per,off=col-(inRow-1)/2,x=off*gap,y=(row-(rows-1)/2)*(cw*1.66+38)+(rows==1?Math.abs(off)*12:0),rot=rows==1?off*3.5:0;
@@ -7866,6 +7868,14 @@ function pk3Tear(w,onDone){const f=w.querySelector('.pk3f .pkn'),fc=w.querySelec
  w.pk3tear={auto:()=>{if(done)return;w.pk3.face();let k=0;const it=setInterval(()=>{k+=.08;setP(k);crackle();if(k>=1){clearInterval(it);finish()}},40)}}}
 /* boutique : grand booster qui tourne dans le panneau de détails */
 {const _s=shop;shop=function(){const r=_s.apply(this,arguments);try{const d=document.querySelector('#v .dets'),p=PK[SEL];if(d&&p&&!d.querySelector('.pk3')){const h=document.createElement('div');h.className='pk3-show';h.innerHTML=pack3d(p,1)+'<small>↻ fais-le tourner pour voir le dos</small>';d.prepend(h);pk3Spin(h.querySelector('.pk3'))}}catch(e){console.warn(e)}return r}}
+
+/* ---------- v24.9.3 : à l'ouverture, une carte révélée se tourne en 3D au doigt (glisser) ou se retourne (toucher) ---------- */
+{let fd=null;
+ document.addEventListener('pointerdown',e=>{const d=e.target.closest&&e.target.closest('.p13c.p13fl');if(!d||!d.dataset.r)return;const ci=d.querySelector('.p13ci');if(!ci)return;
+  const cur=+(ci.dataset.ry||180);fd={d,ci,x:e.clientX,y:e.clientY,ry:cur,rx:0,m:0,id:e.pointerId};ci.style.transition='none';try{d.setPointerCapture(e.pointerId)}catch(x){}});
+ document.addEventListener('pointermove',e=>{if(!fd||e.pointerId!==fd.id)return;const dx=e.clientX-fd.x,dy=e.clientY-fd.y;if(Math.abs(dx)+Math.abs(dy)>5)fd.m=1;const ry=fd.ry+dx*.9,rx=Math.max(-30,Math.min(30,-dy*.4));fd.cur=ry;fd.ci.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg) scale(1.06)`});
+ const up=e=>{if(!fd||e.pointerId!==fd.id)return;const {ci,m}=fd;let ry=m?Math.round((fd.cur??fd.ry)/180)*180:fd.ry+180;ci.dataset.ry=ry;ci.style.transition='transform .6s cubic-bezier(.2,.9,.25,1.15)';ci.style.transform=`rotateY(${ry}deg)`;try{if(!m&&typeof snd=='function')snd(620,.08,'triangle',.06)}catch(x){}fd=null};
+ document.addEventListener('pointerup',up);document.addEventListener('pointercancel',up)}
 
 appBgSet(view);
 setTimeout(()=>{try{if(S.sv!=SPL.v&&!document.getElementById('bt'))splash()}catch(e){}},1400);
