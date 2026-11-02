@@ -2792,6 +2792,44 @@ html body .card:not(.awk2) .st3 b{color:#fff;margin-left:4px}
 @keyframes pkhd{0%{transform:translateX(0);opacity:0}15%{opacity:1}70%{transform:translateX(calc(min(270px,62vw)*.7));opacity:1}100%{transform:translateX(calc(min(270px,62vw)*.75));opacity:0}}
 .pk3tl:has(.tearing) .pk3-hand,.pk3tl:has(.torn) .pk3-hand,.pk3tl:has(.pk3.bk) .pk3-hand{display:none}
 .p13c.p13fl{touch-action:none;cursor:grab}.p13c.p13fl:active{cursor:grabbing}.p13c.p13fl .p13ci{will-change:transform}
+
+/* ===== v25.0 (test) · logos et icônes en 3D ===== */
+#tb .brand .lg{perspective:220px;filter:drop-shadow(0 0 12px #ff4d2e77)!important;transform:none!important}
+.lg3{position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:lg3r 9s cubic-bezier(.45,0,.2,1) infinite}
+.lg3 svg{position:absolute;inset:0;width:100%;height:100%;filter:none!important;backface-visibility:visible}
+.lg3-f{transform:translateZ(.6px)}
+.lg3-b{backface-visibility:hidden}
+.lg3-sh{animation:lg3s 4.5s ease-in-out infinite}
+@keyframes lg3r{0%,12%{transform:rotateY(-22deg) rotateX(8deg)}30%{transform:rotateY(22deg) rotateX(-6deg)}48%{transform:rotateY(-18deg) rotateX(6deg)}62%,70%{transform:rotateY(-18deg) rotateX(6deg)}86%{transform:rotateY(342deg) rotateX(-4deg)}100%{transform:rotateY(338deg) rotateX(8deg)}}
+@keyframes lg3s{0%,55%{transform:translateX(0) skewX(-20deg)}100%{transform:translateX(90px) skewX(-20deg)}}
+#tb .brand:hover .lg3{animation-duration:2.4s}
+/* pièces : une vraie pièce qui tourne de temps en temps */
+.cn{transform-style:preserve-3d;animation:cn3 5.5s ease-in-out infinite;will-change:transform}
+.cn:nth-of-type(2n){animation-delay:-2.2s}
+@keyframes cn3{0%,78%{transform:rotateY(0)}90%{transform:rotateY(180deg) scaleX(.96)}100%{transform:rotateY(360deg)}}
+/* tuiles kanji (raccourcis, nouveautés) : bloc en relief qui pivote */
+.nvc u,.nv u{position:relative;transform-style:preserve-3d;background:linear-gradient(145deg,color-mix(in srgb,var(--c) 34%,#1a1d2b),color-mix(in srgb,var(--c) 12%,#0d0f17))!important;box-shadow:0 1px 0 color-mix(in srgb,var(--c) 60%,#fff3) inset,0 -2px 0 #0006 inset,0 4px 0 color-mix(in srgb,var(--c) 30%,#000),0 5px 0 color-mix(in srgb,var(--c) 18%,#000),0 10px 18px #000a;text-shadow:0 1px 0 color-mix(in srgb,var(--c) 70%,#000),0 2px 0 color-mix(in srgb,var(--c) 55%,#000),0 3px 0 color-mix(in srgb,var(--c) 40%,#000),0 4px 6px #000a;transition:transform .45s cubic-bezier(.2,.9,.25,1.2);animation:l3f 4s ease-in-out infinite}
+.nvc:nth-child(2n) u,.nv:nth-child(2n) u{animation-delay:-1.4s}
+.nvc:nth-child(3n) u,.nv:nth-child(3n) u{animation-delay:-2.6s}
+@keyframes l3f{0%,100%{transform:perspective(260px) rotateX(10deg) rotateY(-12deg) translateY(0)}50%{transform:perspective(260px) rotateX(-6deg) rotateY(12deg) translateY(-3px)}}
+.nvc:hover u,.nv:hover u{animation:l3spin .9s cubic-bezier(.2,.8,.2,1)}
+@keyframes l3spin{from{transform:perspective(260px) rotateY(0) scale(1)}60%{transform:perspective(260px) rotateY(380deg) scale(1.12)}to{transform:perspective(260px) rotateY(360deg) scale(1)}}
+/* modes de jeu : la tuile s'incline, l'icône flotte au premier plan, le kanji recule */
+.md13{transform:perspective(900px) rotateX(calc(var(--l3y,0)*-10deg)) rotateY(calc(var(--l3x,0)*12deg))!important;transition:transform .25s,box-shadow .3s!important}
+.md13:not(.l3on){--l3x:0;--l3y:0}
+.md13-e{animation:l3e 3.6s ease-in-out infinite;transform-style:preserve-3d}
+.md13 .md13-e svg{filter:drop-shadow(1px 1px 0 color-mix(in srgb,var(--qa) 55%,#000)) drop-shadow(1px 1px 0 color-mix(in srgb,var(--qa) 45%,#000)) drop-shadow(1px 2px 0 color-mix(in srgb,var(--qa) 35%,#000)) drop-shadow(2px 5px 6px #000c)}
+@keyframes l3e{0%,100%{transform:perspective(300px) rotateY(-18deg) rotateX(8deg) translateY(0)}50%{transform:perspective(300px) rotateY(18deg) rotateX(-6deg) translateY(-4px)}}
+.md13.l3on .md13-e{animation:none;transform:perspective(300px) translate(calc(var(--l3x)*16px),calc(var(--l3y)*12px)) rotateY(calc(var(--l3x)*40deg)) rotateX(calc(var(--l3y)*-30deg)) scale(1.12)!important}
+.md13 .m3-k{transition:transform .3s;text-shadow:2px 2px 0 #0004,4px 4px 0 #0003,6px 6px 0 #0002}
+.md13.l3on .m3-k{transform:translate(calc(var(--l3x)*-14px),calc(var(--l3y)*-10px)) scale(1.04)}
+.md13:hover .md13-e{animation-duration:1.2s}
+/* boosters de la grille : petite inclinaison 3D au survol */
+.bt.l3on .pkn{transform:perspective(700px) rotateY(calc(var(--l3x)*22deg)) rotateX(calc(var(--l3y)*-14deg)) translateY(-4px)!important}
+.bt.l3on .pkn-fl{--sx:calc((var(--l3x) + .5)*100%)}
+/* titres de section : relief léger */
+.hm-h,.dt{text-shadow:0 1px 0 #ffffff14,0 2px 0 #00000055,0 3px 0 #00000040,0 6px 14px #0008}
+@media (prefers-reduced-motion:reduce){.lg3,.cn,.nvc u,.nv u,.md13-e{animation:none!important}}
 </style></head><body>
 <canvas id="bg"></canvas><div id="appbg"></div><header id="tb"><div class="brand" data-oclick="show('home')"><div class="lg"><svg viewBox="0 0 40 40"><defs><linearGradient id="lgg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4d2e"/><stop offset="1" stop-color="#ffc414"/></linearGradient></defs><path d="M20 2l16 9v18l-16 9-16-9V11z" fill="url(#lgg)"/><path d="M12 27V14l8 8 8-8v13" fill="none" stroke="#10121a" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20" cy="10" r="2" fill="#10121a"/></svg></div><b>MUGEN</b></div><nav id="nav"></nav><div class="sp"></div><div class="pill" id="rs" style="display:none"></div><div class="pill" id="en" title="Boosters gratuits"></div><div class="pill"><i class="cn"></i><span id="co">0</span></div><button class="pill ms" data-oclick="show('miss')">務 Missions</button><button class="avb" id="avb" data-oclick="togPop(event)">J</button><div id="pop"><div class="pc" id="prof"></div><div class="prow"><button id="snd" data-oclick="mute()">Son activé</button><button id="mus" data-oclick="musT()">Musique</button></div><a data-oclick="show('album');closePop()">Ma collection</a><a data-oclick="show('rank');closePop()">Carrière</a><a data-oclick="show('cfg');closePop()">Réglages</a></div></header>
 <main id="v"></main><button id="backx" class="backx" data-oclick="closeOv()">← Retour au menu</button>
@@ -4093,7 +4131,8 @@ qd();
 function showOdds(o,c,p){const d=document.createElement('div');d.className='odds'+(c.na?' aw':'');d.innerHTML=(c.na?'<b>ÉVEIL</b> · ':'')+oddsTxt(c,p);o.append(d)}
 
 /* ===== MISES À JOUR ===== */
-const VER='24.9.3',CHG=[
+const VER='25.0',CHG=[
+ {v:'25.0',big:1,d:'2 novembre 2026',t:'Logos et icônes en 3D',n:['Le logo MUGEN est maintenant une vraie pièce en 3D qui tourne, avec un reflet et un kanji au dos.','Les pièces tournent sur elles-mêmes, les icônes des modes de jeu flottent en relief et suivent ta souris, les tuiles kanji sont en relief et pivotent au survol.'],f:[]},
  {v:'24.9.3',d:'2 novembre 2026',t:'Cartes en 3D à l’ouverture',n:['Quand tu ouvres un booster, fais glisser une carte révélée pour la tourner en 3D et voir son dos, ou touche-la pour la retourner.'],f:[]},
  {v:'24.9.2',d:'2 novembre 2026',t:'Correctifs',n:[],f:['Boutique : le grand booster est bien centré dans le panneau']},
  {v:'24.9.1',d:'2 novembre 2026',t:'Correctifs',n:[],f:['Boosters : retrait des traits en bas du sachet']},
@@ -7876,6 +7915,17 @@ function pk3Tear(w,onDone){const f=w.querySelector('.pk3f .pkn'),fc=w.querySelec
  document.addEventListener('pointermove',e=>{if(!fd||e.pointerId!==fd.id)return;const dx=e.clientX-fd.x,dy=e.clientY-fd.y;if(Math.abs(dx)+Math.abs(dy)>5)fd.m=1;const ry=fd.ry+dx*.9,rx=Math.max(-30,Math.min(30,-dy*.4));fd.cur=ry;fd.ci.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg) scale(1.06)`});
  const up=e=>{if(!fd||e.pointerId!==fd.id)return;const {ci,m}=fd;let ry=m?Math.round((fd.cur??fd.ry)/180)*180:fd.ry+180;ci.dataset.ry=ry;ci.style.transition='transform .6s cubic-bezier(.2,.9,.25,1.15)';ci.style.transform=`rotateY(${ry}deg)`;try{if(!m&&typeof snd=='function')snd(620,.08,'triangle',.06)}catch(x){}fd=null};
  document.addEventListener('pointerup',up);document.addEventListener('pointercancel',up)}
+
+/* ---------- v25.0 (test) : logos et icônes en 3D animés ---------- */
+const L3HEX='M20 2l16 9v18l-16 9-16-9V11z';
+function lg3Build(){const lg=document.querySelector('#tb .brand .lg');if(!lg||lg.querySelector('.lg3'))return;
+ const N=9,side=[...Array(N)].map((_,i)=>`<svg class="lg3-l" viewBox="0 0 40 40" style="transform:translateZ(${(-i*.55).toFixed(2)}px)"><path d="${L3HEX}" fill="${i<N-1?`hsl(${28-i*2} 85% ${40-i*2.4}%)`:'#3a1606'}"/></svg>`).join('');
+ lg.innerHTML=`<div class="lg3">${side}<svg class="lg3-f" viewBox="0 0 40 40"><defs><linearGradient id="lg3g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb35a"/><stop offset=".45" stop-color="#ff4d2e"/><stop offset="1" stop-color="#ffc414"/></linearGradient><linearGradient id="lg3s" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".75"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><clipPath id="lg3c"><path d="${L3HEX}"/></clipPath></defs><path d="${L3HEX}" fill="url(#lg3g)"/><path d="M20 4.4l13.9 7.8v15.6L20 35.6 6.1 27.8V12.2z" fill="none" stroke="#fff5" stroke-width=".8"/><path d="M12 27V14l8 8 8-8v13" fill="none" stroke="#10121a" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20" cy="10" r="2" fill="#10121a"/><g clip-path="url(#lg3c)"><rect class="lg3-sh" x="-30" y="-5" width="16" height="50" fill="url(#lg3s)" transform="skewX(-20)"/></g></svg><svg class="lg3-b" viewBox="0 0 40 40" style="transform:translateZ(${(-(N-1)*.55-.3).toFixed(2)}px) rotateY(180deg)"><path d="${L3HEX}" fill="#c2410c"/><text x="20" y="26" text-anchor="middle" font-size="15" font-weight="900" fill="#ffd36a" font-family="Noto Sans JP,sans-serif">夢</text></svg></div>`}
+/* inclinaison 3D qui suit le pointeur sur les tuiles (modes de jeu, raccourcis, nouveautés) */
+const L3T='.md13,.nvc,.nv,.bt';
+document.addEventListener('pointermove',e=>{if(e.pointerType!='mouse')return;const t=e.target.closest&&e.target.closest(L3T);document.querySelectorAll('.l3on').forEach(x=>{if(x!==t){x.classList.remove('l3on');x.style.removeProperty('--l3x');x.style.removeProperty('--l3y')}});if(!t)return;const r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;t.classList.add('l3on');t.style.setProperty('--l3x',x.toFixed(3));t.style.setProperty('--l3y',y.toFixed(3))},{passive:true});
+document.addEventListener('pointerleave',()=>document.querySelectorAll('.l3on').forEach(x=>x.classList.remove('l3on')));
+setTimeout(lg3Build,200);{const _s=show;show=function(){const r=_s.apply(this,arguments);try{lg3Build()}catch(e){}return r}}
 
 appBgSet(view);
 setTimeout(()=>{try{if(S.sv!=SPL.v&&!document.getElementById('bt'))splash()}catch(e){}},1400);
