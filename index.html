@@ -3097,6 +3097,50 @@ html body .card:not(.awk2) .st3 b{color:#fff;margin-left:4px}
 .k-locker.bxopen .bxf.fr>*,.k-book.bxopen .bxf.fr>*,.k-container.bxopen .bxf.fr>*,.k-chest.bxopen .bxf.tp>*,.k-case.bxopen .bxf.tp>*{transition:opacity .25s .1s;opacity:0}
 .bt .bx3 .bxr{scale:1.5}.pk3-show .bx3 .bxr{scale:1.35}.bt .bx3 .bx-sh{left:8%;right:8%;bottom:0}
 @media (max-width:560px){.bt .bx3 .bxr{scale:1.22}}
+/* ===== v25.2 (test) · sondage ===== */
+.pl1{position:relative;border-radius:18px;padding:16px 18px;background:radial-gradient(120% 140% at 0 0,#ff4d2e22,#0000 55%),linear-gradient(160deg,#1b1e2c,#11131c);border:1px solid #ffc41444;box-shadow:0 0 0 1px #0006,0 14px 30px #0007,inset 0 1px 0 #ffffff12;color:#eef;overflow:hidden}
+.pl1-home{margin:14px 0 18px}
+.pl1-hd{display:flex;gap:14px;align-items:center}
+.pl1-pv{width:92px;flex:none;container-type:inline-size}.pl1-pv .bx3 .bxr{scale:1.35}
+.pl1-hd small{font:800 10px 'Space Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#ffc414}
+.pl1-hd h3{margin:2px 0 4px;font:900 clamp(16px,2.4vw,21px)/1.15 Unbounded,Inter,sans-serif;color:#fff}
+.pl1-hd p{margin:0;font:500 13px/1.35 Inter,sans-serif;color:#b9bdd3}
+.pl1-btns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.pl1-b{flex:1 1 140px;padding:12px 14px;border-radius:12px;border:0;font:800 15px Inter,sans-serif;cursor:pointer;transition:transform .15s,filter .15s;color:#fff}
+.pl1-b:hover{transform:translateY(-2px);filter:brightness(1.12)}.pl1-b:active{transform:scale(.97)}
+.pl1-b.y{background:linear-gradient(135deg,#1fbf75,#2dd4bf);box-shadow:0 6px 16px #1fbf7555}
+.pl1-b.n{background:linear-gradient(135deg,#e5484d,#ff4d2e);box-shadow:0 6px 16px #e5484d55}
+.pl1-hint,.pl1-off{margin:10px 0 0;font:500 12px Inter,sans-serif;color:#8f94ad}
+.pl1-load{margin-top:14px;font:600 13px Inter;color:#9aa}
+.pl1-bar{margin-top:14px;height:12px;border-radius:99px;background:linear-gradient(90deg,#e5484d,#ff4d2e);overflow:hidden;box-shadow:inset 0 1px 3px #0008}
+.pl1-bar b{display:block;height:100%;background:linear-gradient(90deg,#1fbf75,#2dd4bf);border-radius:99px;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.pl1-pc{display:flex;justify-content:space-between;margin-top:6px;font:800 13px Inter,sans-serif}.pl1 .y{color:#3ee0a0}.pl1 .n{color:#ff6b6b}
+.pl1-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.pl1-cols h4{margin:0 0 6px;font:800 12px 'Space Mono',monospace;letter-spacing:.06em;text-transform:uppercase}.pl1-cols h4 em{font-style:normal;opacity:.7;margin-left:4px}
+.pl1-cols ul{list-style:none;margin:0;padding:0;max-height:180px;overflow:auto;display:flex;flex-direction:column;gap:4px}
+.pl1-cols li{display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:9px;background:#ffffff08;font:600 13px Inter,sans-serif;color:#dfe2f2;min-width:0}
+.pl1-cols li span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pl1-cols li img,.pl1-cols li i{width:24px;height:24px;border-radius:50%;flex:none;object-fit:cover;background:#2a2e44;display:grid;place-items:center;font:800 11px Inter;font-style:normal;color:#fff}
+.pl1-cols li.me{background:#ffc41422;box-shadow:inset 0 0 0 1px #ffc41466}.pl1-cols li.demo{opacity:.6}.pl1-cols li.none{opacity:.5;font-weight:500}
+.pl1-chg{margin-top:12px;background:none;border:1px solid #ffffff26;color:#cfd3e6;border-radius:99px;padding:6px 14px;font:700 12px Inter;cursor:pointer}
+.pl1-ov{position:fixed;inset:0;z-index:9000;display:grid;place-items:center;padding:16px;background:#05060bcc;backdrop-filter:blur(6px);animation:pl1in .3s ease-out}
+.pl1-ov.out{opacity:0;transition:opacity .25s}
+.pl1-pop{width:min(520px,100%);max-height:88vh;overflow:auto;animation:pl1up .45s cubic-bezier(.2,1.2,.4,1)}
+.pl1-pop .pl1-pv{width:120px}
+.pl1-x{margin-top:10px;background:none;border:0;color:#9aa0bd;font:700 13px Inter;cursor:pointer;text-decoration:underline}
+.pl1-ok{display:block;margin:14px auto 0;padding:9px 26px;border-radius:99px;border:0;background:#ffc414;color:#1a1200;font:800 14px Inter;cursor:pointer}
+.pl1-ov:has(.pl1-ok) .pl1-x{display:none}
+@keyframes pl1in{from{opacity:0}}@keyframes pl1up{from{transform:translateY(30px) scale(.94);opacity:0}}
+@media (max-width:520px){.pl1-pv{width:72px}.pl1-pop .pl1-pv{width:84px}.pl1-cols{grid-template-columns:1fr}}
+/* ===== v25.2 (test) · cartes du résumé en 3D ===== */
+.sr3{perspective:1000px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.sr3.drag{cursor:grabbing;z-index:5;position:relative}
+.sr3i{position:relative;transform-style:preserve-3d;will-change:transform}
+.sr3f,.sr3b{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.sr3f{position:relative}
+.sr3b{position:absolute;inset:0;transform:rotateY(180deg)}
+.sr3b>*{width:100%!important;height:100%!important;margin:0!important;border-radius:13px}
+.sumr .sr3 .card{margin:0}
 </style></head><body>
 <canvas id="bg"></canvas><div id="appbg"></div><header id="tb"><div class="brand" data-oclick="show('home')"><div class="lg"><svg viewBox="0 0 40 40"><defs><linearGradient id="lgg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4d2e"/><stop offset="1" stop-color="#ffc414"/></linearGradient></defs><path d="M20 2l16 9v18l-16 9-16-9V11z" fill="url(#lgg)"/><path d="M12 27V14l8 8 8-8v13" fill="none" stroke="#10121a" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20" cy="10" r="2" fill="#10121a"/></svg></div><b>MUGEN</b></div><nav id="nav"></nav><div class="sp"></div><div class="pill" id="rs" style="display:none"></div><div class="pill" id="en" title="Boosters gratuits"></div><div class="pill"><i class="cn"></i><span id="co">0</span></div><button class="pill ms" data-oclick="show('miss')">務 Missions</button><button class="avb" id="avb" data-oclick="togPop(event)">J</button><div id="pop"><div class="pc" id="prof"></div><div class="prow"><button id="snd" data-oclick="mute()">Son activé</button><button id="mus" data-oclick="musT()">Musique</button></div><a data-oclick="show('album');closePop()">Ma collection</a><a data-oclick="show('rank');closePop()">Carrière</a><a data-oclick="show('cfg');closePop()">Réglages</a></div></header>
 <main id="v"></main><button id="backx" class="backx" data-oclick="closeOv()">← Retour au menu</button>
@@ -4398,7 +4442,8 @@ qd();
 function showOdds(o,c,p){const d=document.createElement('div');d.className='odds'+(c.na?' aw':'');d.innerHTML=(c.na?'<b>ÉVEIL</b> · ':'')+oddsTxt(c,p);o.append(d)}
 
 /* ===== MISES À JOUR ===== */
-const VER='25.1',CHG=[
+const VER='25.2',CHG=[
+ {v:'25.2',d:'3 novembre 2026',t:'Sondage : le nouveau style des boosters',n:['Donne ton avis sur les nouvelles boîtes de boosters en 3D, depuis l’accueil.','Après ton vote, tu vois qui a voté oui et qui a voté non.','Sur l’écran « Booster ouvert », fais glisser une carte pour la faire tourner en 3D et voir son dos.'],f:[]},
  {v:'25.1',big:1,d:'3 novembre 2026',t:'Boîtes de boosters en 3D',n:['Les boosters thématiques et de prestige deviennent de vraies boîtes en 3D que tu peux faire tourner : coffres, casier de sport, caisse, carton, boîtes cadeaux, écrins, grimoires, reliquaires, conteneur mecha, boîtes scellées, coffrets laqués, cercueils…','Chaque boîte a sa propre ouverture : le coffre bascule, la porte du casier claque, le carton déplie ses rabats, le cube vole en éclats, les sceaux de la boîte maudite brûlent…','Pour ouvrir une boîte, glisse vers le haut (ou touche-la deux fois).'],f:[]},
  {v:'25.0',big:1,d:'2 novembre 2026',t:'Logos et icônes en 3D',n:['Le logo MUGEN est maintenant une vraie pièce en 3D qui tourne, avec un reflet et un kanji au dos.','Les pièces tournent sur elles-mêmes, les icônes des modes de jeu flottent en relief et suivent ta souris, les tuiles kanji sont en relief et pivotent au survol.'],f:[]},
  {v:'24.9.3',d:'2 novembre 2026',t:'Cartes en 3D à l’ouverture',n:['Quand tu ouvres un booster, fais glisser une carte révélée pour la tourner en 3D et voir son dos, ou touche-la pour la retourner.'],f:[]},
@@ -8227,6 +8272,57 @@ function bxSnd(k){const S2={chest:()=>{sfx(180,.18,'square',.08);setTimeout(()=>
  const up=()=>{y0=null;if(!done)w.style.setProperty('--lift',0)};w.addEventListener('pointerup',up);w.addEventListener('pointercancel',up);
  w.pk3tear={auto:open};
  setTimeout(()=>{const t=document.querySelector('#p13t span');if(t)t.textContent='Fais tourner la boîte, puis glisse vers le haut (ou touche deux fois) pour l’ouvrir'},0)}}
+
+/* ---------- v25.2 (test) : sondage « nouveau style des boosters » (accueil + à l'arrivée) ---------- */
+const PL1={id:'pbx',q:'Tu aimes le nouveau style des boosters ?',s:'Coffres, casiers, caisses, grimoires… chaque boîte en 3D a sa propre ouverture.'};
+{const _mp=myProfile;myProfile=function(){const p=_mp.apply(this,arguments);if(S.pbx==1||S.pbx==2)p.pbx=S.pbx;return p}}
+let PL1R=null,PL1T=0;
+async function pl1Load(force){if(!force&&PL1R&&Date.now()-PL1T<30000)return PL1R;let Y=[],N=[],off=0;
+ try{if(!netOk())throw 0;const [a,b]=await Promise.all([NET.db.q('players',{w:[['pbx','==',1]],l:300}),NET.db.q('players',{w:[['pbx','==',2]],l:300})]);Y=a;N=b}catch(e){off=1}
+ const me={id:NET.uid||'moi',name:S.name||'Toi'};if(S.pbx==1&&!Y.some(x=>x.id==me.id))Y.unshift(me);if(S.pbx==2&&!N.some(x=>x.id==me.id))N.unshift(me);
+ if(window.MUGEN_TEST&&Y.length+N.length<4){const dy=['Démo · Kenji','Démo · Sakura','Démo · Ryu','Démo · Hana','Démo · Taro'],dn=['Démo · Yumi'];Y=Y.concat(dy.map((n,i)=>({id:'dy'+i,name:n,demo:1})));N=N.concat(dn.map((n,i)=>({id:'dn'+i,name:n,demo:1})))}
+ PL1R={Y,N,off};PL1T=Date.now();return PL1R}
+function pl1Who(L,me){return L.length?L.map(p=>`<li class="${p.id==(NET.uid||'moi')?'me':''}${p.demo?' demo':''}">${p.av?`<img src="${nE(p.av)}" alt="" loading="lazy">`:`<i>${nE(String(p.name||'J').slice(0,1).toUpperCase())}</i>`}<span>${nE(String(p.name||'Joueur').slice(0,16))}${p.id==(NET.uid||'moi')?' (toi)':''}</span></li>`).join(''):'<li class="none">Personne pour l’instant</li>'}
+async function pl1Res(box){box.innerHTML='<div class="pl1-load">Chargement des votes…</div>';const r=await pl1Load(1);if(!box.isConnected)return;const y=r.Y.length,n=r.N.length,t=Math.max(1,y+n),py=Math.round(y*100/t);
+ box.innerHTML=`<div class="pl1-bar"><b style="width:${py}%"></b></div><div class="pl1-pc"><span class="y">👍 Oui · ${py} %</span><span class="n">${100-py} % · Non 👎</span></div>
+ <div class="pl1-cols"><div><h4 class="y">Ont voté oui <em>${y}</em></h4><ul>${pl1Who(r.Y)}</ul></div><div><h4 class="n">Ont voté non <em>${n}</em></h4><ul>${pl1Who(r.N)}</ul></div></div>
+ ${r.off?'<p class="pl1-off">Hors ligne : seul ton vote est affiché. Connecte-toi pour voir ceux des autres joueurs.</p>':''}${window.MUGEN_TEST?'<p class="pl1-off">Serveur de test : les joueurs « Démo » sont des exemples, ils n’apparaîtront pas sur le vrai jeu.</p>':''}
+ <button class="pl1-chg" type="button">Changer mon vote</button>`;
+ box.querySelector('.pl1-chg').onclick=()=>{const root=box.closest('.pl1');if(root)pl1Fill(root,1)}}
+function pl1Vote(v,root){const was=S.pbx;S.pbx=v;save();try{netSync(true)}catch(e){}try{sfx(v==1?880:330,.18,'triangle',.1,0,v==1?1.6:.7)}catch(e){}PL1R=null;
+ if(!was)try{toast(v==1?'Merci pour ton vote 👍':'Merci, on va l’améliorer !')}catch(e){}document.querySelectorAll('.pl1').forEach(x=>pl1Fill(x))}
+function pl1Fill(root,ask){const voted=(S.pbx==1||S.pbx==2)&&!ask;const prev=root.querySelector('.pl1-pv .bx3');
+ root.innerHTML=`<div class="pl1-hd"><div class="pl1-pv"></div><div><small>Sondage</small><h3>${PL1.q}</h3><p>${PL1.s}</p></div></div><div class="pl1-bd"></div>`;
+ const pv=root.querySelector('.pl1-pv');if(prev)pv.append(prev);else{const p=PK.find(x=>x.n=='Booster Légendaire')||PK.find(x=>bxInit(x)&&x.bx);if(p){pv.innerHTML=box3d(p);try{pk3Spin(pv.querySelector('.bx3'))}catch(e){}}}
+ const bd=root.querySelector('.pl1-bd');
+ if(voted)return pl1Res(bd);
+ bd.innerHTML=`<div class="pl1-btns"><button class="pl1-b y" type="button">👍 Oui, j’adore</button><button class="pl1-b n" type="button">👎 Non, pas trop</button></div><p class="pl1-hint">Après ton vote, tu verras qui a voté oui ou non.</p>`;
+ bd.querySelector('.y').onclick=()=>pl1Vote(1,root);bd.querySelector('.n').onclick=()=>pl1Vote(2,root)}
+/* carte sur l'accueil */
+function pl1Home(){if(view!='home')return;const v=document.getElementById('v');if(!v||v.querySelector('.pl1'))return;const d=document.createElement('section');d.className='pl1 pl1-home';const h=v.querySelector('.hero');if(h)h.after(d);else v.prepend(d);pl1Fill(d)}
+{const _s=show;show=function(){const r=_s.apply(this,arguments);try{pl1Home()}catch(e){}return r}}
+setTimeout(()=>{try{pl1Home()}catch(e){}},300);
+/* fenêtre à l'arrivée dans le jeu (une fois par session tant qu'on n'a pas voté) */
+function pl1Pop(){if(S.pbx==1||S.pbx==2)return;try{if(sessionStorage.getItem('pl1s'))return;sessionStorage.setItem('pl1s','1')}catch(e){}
+ const o=document.createElement('div');o.className='pl1-ov';o.innerHTML='<div class="pl1 pl1-pop"></div><button class="pl1-x" type="button" aria-label="Plus tard">Plus tard</button>';document.body.append(o);
+ const c=o.querySelector('.pl1');pl1Fill(c);const close=()=>{o.classList.add('out');setTimeout(()=>o.remove(),250)};o.querySelector('.pl1-x').onclick=close;o.addEventListener('click',e=>{if(e.target===o)close()});
+ c.addEventListener('click',e=>{if(e.target.closest('.pl1-b'))setTimeout(()=>{const x=document.createElement('button');x.className='pl1-ok';x.type='button';x.textContent='Fermer';x.onclick=close;c.append(x)},50)})}
+{let k=0;const tick=()=>{k++;if(S.pbx==1||S.pbx==2||k>40)return;const busy=view=='guide'||document.querySelector('.ov,.ann7o,#up20p,#nt15w,.spl,.pk3tl,#bt,.gd-ov,.guide,#dt23');if(!busy&&k>=2)return pl1Pop();setTimeout(tick,1500)};setTimeout(tick,2500)}
+
+/* ---------- v25.2 (test) : écran « Booster ouvert » — chaque carte se tourne en 3D (glisser) ---------- */
+function sr3Wrap(root){(root||document).querySelectorAll('.sumr>div:not([data-sr3])').forEach(d=>{d.dataset.sr3=1;const c=d.querySelector(':scope>.card');if(!c)return;
+ const m=c.className.match(/\br(\d)\b/),r=c.classList.contains('awk')?'a':(m?+m[1]:0);const w=document.createElement('div');w.className='sr3';w.innerHTML=`<div class="sr3i"><div class="sr3f"></div><div class="sr3b">${cardBack(r)}</div></div>`;
+ c.replaceWith(w);w.querySelector('.sr3f').append(c);w.style.setProperty('--rx','0deg')})}
+{let fd=null,eat=0;
+ document.addEventListener('pointerdown',e=>{const w=e.target.closest&&e.target.closest('.sr3');if(!w)return;const i=w.querySelector('.sr3i');fd={w,i,x:e.clientX,y:e.clientY,ry:+(i.dataset.ry||0),m:0,id:e.pointerId,v:0,lx:e.clientX};i.style.transition='none';w.classList.add('drag')});
+ document.addEventListener('pointermove',e=>{const w=e.target.closest&&e.target.closest('.sr3');if(!fd&&w&&e.pointerType=='mouse'){const r=w.getBoundingClientRect(),i=w.querySelector('.sr3i'),ry=+(i.dataset.ry||0);i.style.transition='transform .15s';i.style.transform=`rotateX(${((.5-(e.clientY-r.top)/r.height)*16).toFixed(1)}deg) rotateY(${(ry+((e.clientX-r.left)/r.width-.5)*24).toFixed(1)}deg)`;w.classList.add('hov');return}
+  if(!fd||e.pointerId!==fd.id)return;const dx=e.clientX-fd.x,dy=e.clientY-fd.y;if(!fd.m&&Math.abs(dx)>6&&Math.abs(dx)>Math.abs(dy)){fd.m=1;try{fd.w.setPointerCapture(e.pointerId)}catch(x){}}if(!fd.m)return;e.preventDefault();
+  fd.v=e.clientX-fd.lx;fd.lx=e.clientX;fd.cur=fd.ry+dx*.9;fd.i.style.transform=`rotateX(${Math.max(-25,Math.min(25,-dy*.3))}deg) rotateY(${fd.cur}deg) scale(1.06)`},{passive:false});
+ const up=e=>{if(!fd||e.pointerId!==fd.id)return;const {i,w,m}=fd;w.classList.remove('drag');if(m){eat=Date.now();const t=(fd.cur??fd.ry)+fd.v*6,ry=Math.round(t/180)*180;i.dataset.ry=ry;i.style.transition='transform .7s cubic-bezier(.2,.9,.25,1.15)';i.style.transform=`rotateY(${ry}deg)`;try{sfx(560,.07,'triangle',.05)}catch(x){}}fd=null};
+ document.addEventListener('pointerup',up);document.addEventListener('pointercancel',up);
+ document.addEventListener('pointerout',e=>{const w=e.target.closest&&e.target.closest('.sr3.hov');if(w&&!w.contains(e.relatedTarget)){w.classList.remove('hov');const i=w.querySelector('.sr3i');i.style.transition='transform .4s';i.style.transform=`rotateY(${+(i.dataset.ry||0)}deg)`}});
+ document.addEventListener('click',e=>{if(Date.now()-eat<350&&e.target.closest&&e.target.closest('.sr3')){e.stopPropagation();e.preventDefault()}},true);
+ new MutationObserver(()=>{if(document.querySelector('.sumr>div:not([data-sr3])'))sr3Wrap()}).observe(document.body,{childList:true,subtree:true})}
 
 appBgSet(view);
 setTimeout(()=>{try{if(S.sv!=SPL.v&&!document.getElementById('bt'))splash()}catch(e){}},1400);
