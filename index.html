@@ -20,7 +20,7 @@ window.MUGEN_FIREBASE = {apiKey:"AIzaSyD_3nKK5qGpB0sB23b-D7V7w3L2p-c1GNE",authDo
 (function(){var m=(location.hash||'').match(/^#(mvz|mvr)=([A-Za-z0-9_-]+)$/);if(!m)return;
 var R=document.documentElement;R.setAttribute('data-mv','1');
 var css=document.createElement('style');css.textContent='html[data-mv] body>*{display:none!important}html[data-mv] body{background:#07070d!important}html[data-mv] body:after{content:"Transfert de ta progression…";position:fixed;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font:700 18px Inter,system-ui,sans-serif;letter-spacing:.02em}';document.head.appendChild(css);
-var SEP='\u0001#';
+var SEP='\u0001#',OLD='https://mugencard.netlify.app';
 function fin(){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}location.replace(location.pathname+location.search)}
 function bytes(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';var b=atob(s),u=new Uint8Array(b.length);for(var i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u}
 function inflate(u){return new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream('gzip'))).text()}
@@ -32,11 +32,13 @@ function putAuth(v,key){return new Promise(function(res){try{localStorage.setIte
 (async function(){try{
  var raw=m[1]=='mvz'?await inflate(bytes(m[2])):new TextDecoder().decode(bytes(m[2]));
  var d=JSON.parse(raw);if(!d||d.v!==1)return fin();
- if(d.b){try{localStorage.setItem('mugenBan',d.b)}catch(e){}}
+ /* seul l'ancien site officiel peut envoyer une progression : un lien piégé venant d'ailleurs est ignoré */
+ var ref=document.referrer||'',ok=ref.indexOf(OLD)===0;if(ref&&!ok)return fin();
  var cur=null;try{cur=localStorage.getItem('animecards')}catch(e){}
- var has=typeof d.s=='string'&&!!d.s,take=has&&(!cur||prog(cur)<prog(d.s));
+ if(ok&&d.b){try{localStorage.setItem('mugenBan',d.b)}catch(e){}}
+ var has=typeof d.s=='string'&&!!d.s,take=has&&(!cur||(ok&&prog(cur)<prog(d.s)));
  if(take){try{localStorage.setItem('animecards',d.s);localStorage.setItem('mugenMoved',String(Date.now()))}catch(e){}}
- var cfg=window.MUGEN_FIREBASE;if(d.a&&d.a.uid&&cfg&&cfg.apiKey&&(take||(!has&&!cur)))await putAuth(d.a,'firebase:authUser:'+cfg.apiKey+':[DEFAULT]');
+ var cfg=window.MUGEN_FIREBASE;if(d.a&&d.a.uid&&cfg&&cfg.apiKey&&(take||(ok&&!has&&!cur)))await putAuth(d.a,'firebase:authUser:'+cfg.apiKey+':[DEFAULT]');
 }catch(e){}fin()})();
 })();
 </script>
@@ -3836,7 +3838,8 @@ qd();
 function showOdds(o,c,p){const d=document.createElement('div');d.className='odds'+(c.na?' aw':'');d.innerHTML=(c.na?'<b>ÉVEIL</b> · ':'')+oddsTxt(c,p);o.append(d)}
 
 /* ===== MISES À JOUR ===== */
-const VER='24.8.1',CHG=[
+const VER='24.8.2',CHG=[
+ {v:'24.8.2',d:'2 novembre 2026',t:'Correctifs',n:[],f:['Transfert de progression : seul l’ancien site officiel peut envoyer une sauvegarde (un lien piégé ne peut plus remplacer ton compte)']},
  {v:'24.8.1',d:'2 novembre 2026',t:'Nouvelle adresse du jeu',n:['MUGEN se joue maintenant sur zoro45480.github.io/mugen-site. En ouvrant l’ancienne adresse, tu es redirigé automatiquement et ta progression te suit (cartes, pièces, niveau, équipe, guilde, amis, classement).'],f:[]},
  {v:'24.8',d:'2 novembre 2026',t:'Synergies d’anime',n:['Mets 3 persos du même anime dans ton équipe et un bonus s’active pour tout le combat : One Piece soigne 5 % à chaque attaque, Naruto esquive 10 % des coups, Demon Slayer a +10 % de critiques, Dragon Ball fait +8 % de dégâts, Jujutsu Kaisen commence avec +1 ◆, Bleach subit −8 % de dégâts, et les autres animes gagnent +5 % de puissance.','La synergie active est affichée dans le hub Combat (sous ton équipe) et annoncée au début du combat.','Ça marche dans tous les modes, y compris la Tour, le Classé et les raids.'],f:[]},
  {v:'24.4.2',d:'2 novembre 2026',t:'Correctifs',n:[],f:['Roue de la chance animée en JavaScript','Boutique : « Passer » pendant l’ouverture ne provoque plus d’erreur']},
