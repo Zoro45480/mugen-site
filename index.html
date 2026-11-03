@@ -3201,6 +3201,186 @@ html body .card:not(.awk2) .st3 b{color:#fff;margin-left:4px}
 .k-holo .bx-lb b{font-size:3.3cqw;color:#fff;text-shadow:0 0 2cqw #c69bff;white-space:nowrap}
 .k-holo .bx-lb small{color:#ffe27a;border-color:#e9d48a;background:#0000}
 .k-holo.bxopen .bxbeam{background:radial-gradient(ellipse 45% 70% at 50% 85%,#fff,#ffe27a 20%,#ff7ad9 38%,#8be9ff 55%,#0000 72%)}
+/* v25.4 sets de reliques */
+.rs26-sec{margin:0 0 28px}
+.rs26-n{font:700 11px 'Space Mono',monospace;opacity:.7;margin-left:auto}
+.rs26-g8{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.rs26{--sc:#3dd9c4;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:16px;background:linear-gradient(160deg,color-mix(in srgb,var(--sc) 10%,#0b0c12),#0b0c12cc);border:1px solid #ffffff14;box-shadow:0 10px 30px #0005;transition:border-color .3s,box-shadow .3s}
+.rs26.rdy{border-color:color-mix(in srgb,var(--sc) 45%,transparent)}
+.rs26.on{border-color:var(--sc);box-shadow:0 0 0 1px color-mix(in srgb,var(--sc) 30%,transparent),0 0 24px color-mix(in srgb,var(--sc) 30%,transparent),0 10px 30px #0005}
+.rs26-kj{position:absolute;right:8px;top:2px;font:900 64px 'Noto Sans JP',sans-serif;color:var(--sc);opacity:.1;pointer-events:none;line-height:1}
+.rs26-hd{display:flex;flex-direction:column}
+.rs26-hd b{font:900 15px Unbounded,sans-serif;color:var(--sc)}
+.rs26-hd small{font:700 11px 'Space Mono',monospace;opacity:.6;letter-spacing:.06em;text-transform:uppercase}
+.rs26-it{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rs26-g{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;padding:10px 6px 8px;border-radius:12px;background:#ffffff08;border:1px solid #ffffff12;cursor:pointer;transition:transform .2s,background .2s}
+.rs26-g:hover{transform:translateY(-2px);background:#ffffff10}
+.rs26-g.lk{opacity:.55}
+.rs26-g small{font:700 10px 'Space Mono',monospace;opacity:.6;letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+.rs26-g b{font:800 12px Inter,sans-serif;line-height:1.2}
+.rs26-g em{font-style:normal;font-size:10px;color:var(--mu);line-height:1.2}
+.rs26-3d{--rc:#fff;width:62px;height:62px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 50% 60%,color-mix(in srgb,var(--rc) 28%,transparent),transparent 70%)}
+.rs26-3d .g3{pointer-events:none}
+.rs26-st{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;font-size:12px;color:var(--mu);line-height:1.35}
+.rs26-st span{flex:1 1 140px}
+.rs26-st b{color:#fff}
+.rs26-ok{color:var(--sc);font-weight:800}
+.rs26-tag{display:inline-block;font:800 10px 'Space Mono',monospace;color:var(--sc);background:color-mix(in srgb,var(--sc) 16%,transparent);border:1px solid color-mix(in srgb,var(--sc) 50%,transparent);border-radius:99px;padding:2px 8px;margin-top:4px;white-space:nowrap;font-style:normal;letter-spacing:.02em}
+.ar14-fi .rs26-tag,.gc2 .rs26-tag{display:block;width:fit-content;max-width:100%;overflow:hidden;text-overflow:ellipsis;margin-top:6px}
+.rs26-det{--sc:#3dd9c4;margin:8px 0;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--sc) 12%,transparent);border:1px solid color-mix(in srgb,var(--sc) 45%,transparent);font-size:13px;line-height:1.4}
+.rs26-det b{color:var(--sc)}
+.gpl .gp .xth{width:44px;height:58px;border-radius:8px;overflow:hidden;flex:none;display:block}
+.gpl .gp .xth img{width:100%;height:100%;object-fit:cover}
+@media(max-width:520px){.rs26-g8{grid-template-columns:1fr}}
+/* v25.5 titres de profil anime en 3D (moteur de maquettes/titres/titres24.html, classes préfixées t-) */
+.ttc{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px color-mix(in srgb,var(--gl) 45%,#0000),0 6px 18px #000a;--c1:#fff;--c2:#888;--c3:#222;--gl:#fff;--fs:46px;--dl:0s;background:#05060a}
+.tta{position:relative;height:190px;overflow:hidden;perspective:800px;display:grid;place-items:center;--k:1;background:#05060a;contain:layout paint;color:#fff;font-style:normal}
+.tta.sm{height:64px;--k:.46}.tta.xs{height:34px;--k:.26;perspective:400px}
+.tta i,.tta b{display:block;font-style:normal}
+.tta .t-bg{position:absolute;inset:0;background:radial-gradient(60% 80% at 50% 50%,color-mix(in srgb,var(--c2) 35%,#000),#05060a 75%)}
+.tta .t-spd{position:absolute;left:50%;top:50%;width:900px;height:900px;margin:-450px;background:repeating-conic-gradient(from 0deg,#0000 0 3deg,color-mix(in srgb,var(--c1) 28%,#0000) 3deg 3.6deg,#0000 3.6deg 7deg);mask:radial-gradient(#0000 18%,#000 30%,#0000 62%);-webkit-mask:radial-gradient(#0000 18%,#000 30%,#0000 62%);animation:tk-spd 1.2s linear infinite,tk-flick .15s steps(2) infinite;opacity:.55}
+.tta.xs .t-spd{width:400px;height:400px;margin:-200px}
+@keyframes tk-spd{to{transform:rotate(7deg)}}@keyframes tk-flick{50%{opacity:.4}}
+.tta .t-kjb{position:absolute;font:900 calc(190px*var(--k))/1 'Noto Serif CJK JP','Noto Serif CJK SC','Noto Sans JP',serif;color:transparent;-webkit-text-stroke:2px color-mix(in srgb,var(--c1) 30%,#0000);opacity:.5;animation:tk-kjb 8s linear infinite;transform-style:preserve-3d}
+.tta:not(.sm):not(.xs) .t-kjb{font-size:170px}
+@keyframes tk-kjb{0%{transform:translateZ(-160px) rotateY(0) scale(1)}50%{transform:translateZ(-160px) rotateY(180deg) scale(1.1)}100%{transform:translateZ(-160px) rotateY(360deg) scale(1)}}
+.tta .t-ring{position:absolute;width:60px;height:60px;border-radius:50%;border:4px solid var(--gl);opacity:0;animation:tk-ring 6s ease-out infinite;animation-delay:var(--dl)}
+@keyframes tk-ring{0%,6%{opacity:0;transform:scale(.3)}8%{opacity:1}22%{opacity:0;transform:scale(9)}100%{opacity:0}}
+.tta .t-flash{position:absolute;inset:0;background:#fff;opacity:0;animation:tk-flash 6s linear infinite;animation-delay:var(--dl);mix-blend-mode:screen;z-index:9;pointer-events:none}
+@keyframes tk-flash{0%,5%{opacity:0}7%{opacity:.85}12%{opacity:0}69%{opacity:0}71%{opacity:.35}74%{opacity:0}100%{opacity:0}}
+.tta .t-stg{position:relative;transform-style:preserve-3d;animation:tk-slam 6s cubic-bezier(.2,.9,.25,1) infinite;animation-delay:var(--dl);z-index:5}
+@keyframes tk-slam{0%{transform:translateZ(500px) rotateX(30deg) rotateY(-40deg) scale(1.4);opacity:0;filter:blur(8px)}7%{transform:translateZ(-30px) rotateX(-6deg) rotateY(6deg) scale(1);opacity:1;filter:blur(0)}10%{transform:translateZ(10px) rotateX(2deg) rotateY(-2deg)}14%{transform:none}
+ 30%{transform:rotateY(-18deg) rotateX(8deg) translateY(-4px)}50%{transform:rotateY(16deg) rotateX(-6deg) translateY(3px)}68%{transform:rotateY(-6deg) rotateX(4deg)}70%{transform:rotateY(-6deg) rotateX(4deg) translate(3px,-2px) scale(1.06)}71%{transform:rotateY(-6deg) translate(-3px,2px) scale(1.08)}72%{transform:rotateY(-6deg) translate(3px,1px) scale(1.06)}73%{transform:rotateY(-6deg) translate(-2px,-2px) scale(1.07)}76%{transform:rotateY(0) scale(1.03)}90%{transform:rotateY(14deg) rotateX(-4deg)}96%{transform:rotateY(0);opacity:1;filter:blur(0)}100%{transform:translateZ(-300px) rotateY(60deg);opacity:0;filter:blur(6px)}}
+/* texte en relief 3D (couches empilées) */
+.tta .t-x3{position:relative;transform-style:preserve-3d;display:grid;place-items:center}
+.tta .t-x3 span{grid-area:1/1;font:italic 900 calc(var(--fs)*var(--k))/1 Inter,sans-serif;letter-spacing:-.01em;white-space:nowrap;transform:skewX(-8deg) translateZ(calc(var(--z)*-1.3px));color:color-mix(in srgb,var(--c3) calc(100% - var(--z)*5%),#000)}
+.tta .t-x3 span.t-f{color:transparent;background:linear-gradient(180deg,#fff 0%,var(--c1) 38%,var(--c2) 62%,var(--c3) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-stroke:1.5px #fff8;filter:drop-shadow(0 0 10px var(--gl));transform:skewX(-8deg) translateZ(1px)}
+.tta.xs .t-x3 span.t-f{-webkit-text-stroke:.6px #fff8}
+.tta .t-x3 span.t-f::after{content:attr(data-t);position:absolute;inset:0;background:linear-gradient(110deg,#0000 40%,#fffd 50%,#0000 60%) -200% 0/300% 100% no-repeat;-webkit-background-clip:text;background-clip:text;color:transparent;animation:tk-shine 3s ease-in-out infinite}
+@keyframes tk-shine{0%,40%{background-position:-200% 0}80%,100%{background-position:200% 0}}
+.tta .t-kjf{position:absolute;left:calc(-58px*var(--k));top:50%;transform:translateY(-50%) translateZ(20px) rotate(-8deg);font:900 calc(44px*var(--k))/1 'Noto Serif CJK JP','Noto Serif CJK SC','Noto Sans JP',serif;color:var(--c1);text-shadow:0 0 14px var(--gl),2px 2px 0 var(--c3),4px 4px 0 #000;animation:tk-kjp 6s ease-in-out infinite;animation-delay:var(--dl)}
+.tta.xs .t-kjf{text-shadow:0 0 6px var(--gl),1px 1px 0 var(--c3)}
+@keyframes tk-kjp{0%,8%{transform:translateY(-50%) translateZ(20px) rotate(-8deg) scale(2.2);opacity:0}12%{opacity:1;transform:translateY(-50%) translateZ(20px) rotate(-8deg) scale(1)}70%{transform:translateY(-50%) translateZ(40px) rotate(-14deg) scale(1.25)}76%{transform:translateY(-50%) translateZ(20px) rotate(-8deg) scale(1)}}
+.tta .t-sub{position:absolute;bottom:-26px;left:0;right:0;text-align:center;font:800 10px 'Space Mono',monospace;letter-spacing:.35em;color:var(--c1);opacity:.85;transform:translateZ(8px);text-shadow:0 0 8px var(--gl)}
+.tta.sm .t-sub,.tta.xs .t-sub{display:none}
+.tta .t-pt{position:absolute;inset:0;pointer-events:none;z-index:6}
+.tta .t-pt i{position:absolute}
+/* particules par thème */
+.tta .t-p-ember i{width:4px;height:4px;border-radius:50%;background:#ffd08a;box-shadow:0 0 8px #ff6a00,0 0 14px #ff3d00;bottom:-10px;animation:tk-up var(--d) var(--pd) linear infinite}
+@keyframes tk-up{from{transform:translate(0,0)}to{transform:translate(var(--dx),-230px);opacity:0}}
+.tta .t-p-petal i{width:9px;height:6px;border-radius:80% 0 80% 0;background:linear-gradient(135deg,#fff,#ffb3d1);top:-10px;animation:tk-fall var(--d) var(--pd) linear infinite;box-shadow:0 0 4px #ff8fc2}
+@keyframes tk-fall{to{transform:translate(var(--dx),220px) rotate(720deg)}}
+.tta .t-p-coin i{width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6c0,#ffd34d 45%,#a8701a);top:-14px;animation:tk-coin var(--d) var(--pd) cubic-bezier(.5,0,.8,1) infinite}
+@keyframes tk-coin{to{transform:translate(var(--dx),220px) rotateY(1080deg)}}
+.tta .t-p-leaf i{width:12px;height:12px;background:#51cf66;border-radius:0 80% 0 80%;box-shadow:0 0 6px #2f9e44;left:50%;top:50%;animation:tk-vort var(--d) var(--pd) linear infinite}
+@keyframes tk-vort{from{transform:rotate(0) translateX(calc(var(--r)*1px)) rotate(0)}to{transform:rotate(360deg) translateX(calc(var(--r)*1px)) rotate(-720deg)}}
+.tta .t-p-spark i{width:2px;height:18px;background:linear-gradient(#fff,var(--c1));box-shadow:0 0 6px var(--gl);bottom:-20px;animation:tk-up var(--d) var(--pd) linear infinite}
+.tta .t-p-void i{width:3px;height:3px;border-radius:50%;background:#bfe3ff;box-shadow:0 0 6px #4dabf7;left:50%;top:50%;animation:tk-suck var(--d) var(--pd) ease-in infinite}
+@keyframes tk-suck{from{transform:rotate(var(--a)) translateX(260px)}to{transform:rotate(calc(var(--a) + 200deg)) translateX(0);opacity:0}}
+.tta .t-p-shadow i{width:40px;height:40px;border-radius:50%;background:radial-gradient(#7048e8aa,#0000 70%);filter:blur(4px);bottom:-30px;animation:tk-up var(--d) var(--pd) ease-out infinite}
+.tta .t-p-blood i{width:3px;height:3px;background:#ff2a3a;box-shadow:0 0 6px #ff2a3a;left:50%;top:50%;animation:tk-burst var(--d) var(--pd) ease-out infinite}
+@keyframes tk-burst{0%,60%{transform:rotate(var(--a)) translateX(0);opacity:0}62%{opacity:1}100%{transform:rotate(var(--a)) translateX(240px);opacity:0}}
+.tta .t-p-page i{width:10px;height:13px;background:#f8f9fa;box-shadow:0 0 4px #fff;top:-16px;animation:tk-fall var(--d) var(--pd) linear infinite}
+/* décors spéciaux */
+.tta .t-fx{position:absolute;pointer-events:none;color:#fff}
+.tta .t-fx-aura{left:50%;bottom:20%;width:520px;height:160px;margin-left:-260px;z-index:4;background:radial-gradient(ellipse 10% 70% at 20% 100%,#ffe066,#0000 70%),radial-gradient(ellipse 9% 85% at 35% 100%,#fff3b0,#0000 70%),radial-gradient(ellipse 11% 95% at 50% 100%,#ffd34d,#0000 70%),radial-gradient(ellipse 9% 85% at 65% 100%,#fff3b0,#0000 70%),radial-gradient(ellipse 10% 70% at 80% 100%,#ffe066,#0000 70%);filter:blur(4px);mix-blend-mode:screen;animation:tk-aura .25s ease-in-out infinite alternate}
+@keyframes tk-aura{to{transform:scaleY(1.2) translateY(-6px);opacity:.75}}
+.tta .t-fx-bolt{width:60px;height:120px;z-index:7;background:#e7f5ff;clip-path:polygon(40% 0,60% 0,45% 40%,70% 40%,30% 100%,42% 55%,20% 55%);filter:drop-shadow(0 0 8px #74c0fc) drop-shadow(0 0 16px #4dabf7);animation:tk-bolt 2.2s steps(1) infinite;opacity:0}
+@keyframes tk-bolt{0%{opacity:0}8%,12%{opacity:1}14%,100%{opacity:0}}
+.tta .t-fx-wave{left:-20%;right:-20%;height:60px;bottom:6px;z-index:4;background:radial-gradient(circle at 50% 100%,#0000 45%,#8ce0ff 48%,#0000 54%) 0 0/70px 40px repeat-x,radial-gradient(circle at 50% 100%,#0000 45%,#4dabf7 48%,#0000 54%) 35px 18px/70px 40px repeat-x;animation:tk-wave 1.6s linear infinite;filter:drop-shadow(0 0 6px #4dabf7)}
+@keyframes tk-wave{to{background-position:70px 0,105px 18px}}
+.tta .t-fx-swirl{width:300px;height:300px;border-radius:50%;z-index:3;background:conic-gradient(from 0deg,#0000,color-mix(in srgb,var(--c1) 50%,#0000) 20%,#0000 35%,color-mix(in srgb,var(--c1) 40%,#0000) 55%,#0000 70%,color-mix(in srgb,var(--c1) 50%,#0000) 90%,#0000);mask:radial-gradient(#0000 35%,#000 40%,#0000 70%);-webkit-mask:radial-gradient(#0000 35%,#000 40%,#0000 70%);animation:tk-sw 1.4s linear infinite;transform:rotateX(65deg)}
+@keyframes tk-sw{to{transform:rotateX(65deg) rotate(360deg)}}
+.tta .t-fx-wheel{width:240px;height:240px;border-radius:50%;z-index:1;border:6px solid #a8701a88;background:repeating-conic-gradient(#0000 0 40deg,#d8a23a66 40deg 45deg);animation:tk-sw2 9s linear infinite;opacity:.6}
+@keyframes tk-sw2{to{transform:rotate(360deg)}}
+.tta .t-fx-domain{width:320px;height:320px;border-radius:50%;z-index:1;border:2px solid #ff2a3a;box-shadow:0 0 30px #ff2a3a88,inset 0 0 40px #ff2a3a55;background:repeating-conic-gradient(#0000 0 12deg,#ff2a3a33 12deg 13deg);animation:tk-sw2 6s linear infinite reverse}
+.tta .t-fx-domain::after{content:"";position:absolute;inset:30px;border-radius:50%;border:1px dashed #ff6b7a;animation:tk-sw2 3s linear infinite}
+.tta .t-fx-slash{width:200px;height:200px;border-radius:50%;border-right:10px solid #e7f5ff;z-index:8;filter:drop-shadow(0 0 10px #74c0fc) drop-shadow(0 0 20px #339af0);animation:tk-slash 6s cubic-bezier(.6,0,.2,1) infinite;opacity:0}
+@keyframes tk-slash{0%,66%{opacity:0;transform:translateX(-380px) rotate(-30deg) scaleY(.6)}69%{opacity:1}76%{opacity:1;transform:translateX(380px) rotate(-30deg) scaleY(1.2)}78%,100%{opacity:0}}
+.tta .t-fx-void{width:110px;height:110px;border-radius:50%;z-index:2;background:radial-gradient(#000 38%,#0b1a40 45%,#0000 70%);box-shadow:0 0 40px #4dabf7,0 0 80px #845ef755}
+.tta .t-fx-void::before{content:"";position:absolute;inset:-30px;border-radius:50%;background:conic-gradient(#0000,#4dabf7,#e599f7,#0000,#4dabf7,#0000);mask:radial-gradient(#0000 45%,#000 50%,#0000 70%);-webkit-mask:radial-gradient(#0000 45%,#000 50%,#0000 70%);animation:tk-sw2 1.2s linear infinite}
+.tta .t-fx-sys{left:50%;top:14px;transform:translateX(-50%);z-index:8;font:700 10px 'Space Mono',monospace;color:#74c0fc;letter-spacing:.2em;padding:3px 10px;border:1px solid #4dabf7;background:#0d1b2ecc;box-shadow:0 0 10px #4dabf766;animation:tk-glitch 3s steps(1) infinite;white-space:nowrap}
+@keyframes tk-glitch{0%,100%{transform:translateX(-50%)}92%{transform:translateX(-48%) skewX(10deg);color:#e599f7}94%{transform:translateX(-52%);color:#74c0fc}}
+.tta .t-fx-eyes{z-index:2;width:420px;height:80px;background:radial-gradient(ellipse 6px 3px at 15% 40%,#b197fc,#0000),radial-gradient(ellipse 6px 3px at 19% 40%,#b197fc,#0000),radial-gradient(ellipse 6px 3px at 78% 30%,#b197fc,#0000),radial-gradient(ellipse 6px 3px at 82% 30%,#b197fc,#0000),radial-gradient(ellipse 6px 3px at 45% 85%,#b197fc,#0000),radial-gradient(ellipse 6px 3px at 49% 85%,#b197fc,#0000);filter:drop-shadow(0 0 4px #845ef7);animation:tk-flick2 3s ease-in-out infinite}
+@keyframes tk-flick2{0%,100%{opacity:0}40%,60%{opacity:1}}
+.tta .t-fx-tat{inset:0;z-index:4;background:repeating-linear-gradient(90deg,#0000 0 40px,#ff2a3a 40px 42px,#0000 42px 50px);mask:linear-gradient(90deg,#000 0 10%,#0000 22% 78%,#000 90%);-webkit-mask:linear-gradient(90deg,#000 0 10%,#0000 22% 78%,#000 90%);opacity:.5;animation:tk-flick .4s steps(2) infinite}
+.tta .t-fx-comic{inset:0;z-index:1;background:radial-gradient(circle,#0003 1.2px,#0000 1.6px) 0 0/7px 7px,linear-gradient(135deg,#ffd43b,#ff922b);opacity:.55}
+.tta .t-fx-burst{width:160px;height:160px;z-index:2;background:#fff;clip-path:polygon(50% 0,58% 32%,90% 10%,68% 40%,100% 50%,68% 60%,90% 90%,58% 68%,50% 100%,42% 68%,10% 90%,32% 60%,0 50%,32% 40%,10% 10%,42% 32%);opacity:.18;animation:tk-sw2 6s linear infinite}
+.tta .t-fx-circle{width:220px;height:220px;border-radius:50%;z-index:1;border:2px solid #a5d8ff;box-shadow:0 0 14px #4dabf7;animation:tk-sw2 5s linear infinite;background:conic-gradient(from 0deg,#0000 0 16%,#a5d8ff55 16.5% 17%,#0000 17.5% 49%,#a5d8ff55 49.5% 50%,#0000 50.5% 83%,#a5d8ff55 83.5% 84%,#0000 84.5%)}
+.tta .t-fx-circle::before{content:"";position:absolute;inset:26px;border:1.5px solid #a5d8ff;clip-path:polygon(50% 0,93% 75%,7% 75%)}.tta .t-fx-circle::after{content:"";position:absolute;inset:26px;border:1.5px solid #a5d8ff;clip-path:polygon(50% 100%,7% 25%,93% 25%)}
+.tta .t-fx-blades{width:260px;height:6px;z-index:3;background:linear-gradient(90deg,#0000,#e9ecef,#fff,#e9ecef,#0000);box-shadow:0 0 10px #fff;transform:rotate(18deg);animation:tk-bl1 6s ease-in-out infinite}.tta .t-fx-blades.b{transform:rotate(-18deg);animation-delay:-.15s}
+@keyframes tk-bl1{0%,66%{opacity:0;translate:-200px 0}70%{opacity:1;translate:0 0}80%{opacity:1}86%,100%{opacity:0}}
+.tta .t-fx-steam{left:0;right:0;bottom:-20px;height:70px;z-index:2;background:radial-gradient(ellipse 15% 60% at 15% 100%,#dee2e6aa,#0000 70%),radial-gradient(ellipse 18% 70% at 50% 100%,#dee2e6aa,#0000 70%),radial-gradient(ellipse 15% 60% at 85% 100%,#dee2e6aa,#0000 70%);filter:blur(6px);animation:tk-aura 1.4s ease-in-out infinite alternate}
+.tta .t-fx-apple{right:16%;top:50%;width:26px;height:26px;margin-top:-13px;border-radius:50%;z-index:7;background:radial-gradient(circle at 35% 30%,#ff8787,#c92a2a 60%,#5c0a0a);box-shadow:0 0 14px #fa5252;animation:tk-kjp 6s ease-in-out infinite}
+.tta .t-fx-nen{left:-10%;right:-10%;top:0;bottom:-10px;z-index:2;background:radial-gradient(ellipse 12% 60% at 20% 100%,#69db7c,#0000 70%),radial-gradient(ellipse 12% 80% at 50% 100%,#8ce99a,#0000 70%),radial-gradient(ellipse 12% 60% at 80% 100%,#69db7c,#0000 70%);filter:blur(5px);mix-blend-mode:screen;animation:tk-aura .5s ease-in-out infinite alternate}
+.tta .t-fx-saw{left:-10px;right:-10px;bottom:6px;height:12px;z-index:6;background:linear-gradient(135deg,#0000 50%,#ced4da 50%) 0 0/12px 12px,linear-gradient(225deg,#0000 50%,#ced4da 50%) 6px 0/12px 12px;filter:drop-shadow(0 0 4px #ff922b);animation:tk-saw .25s linear infinite}.tta .t-fx-saw.t{top:6px;bottom:auto;transform:scaleY(-1)}
+@keyframes tk-saw{to{background-position:12px 0,18px 0}}
+.tta .t-fx-tend{width:260px;height:90px;z-index:2;background:radial-gradient(ellipse 50% 14% at 50% 30%,#0000 70%,#fa5252 72%,#0000 80%),radial-gradient(ellipse 45% 12% at 55% 55%,#0000 70%,#e03131 72%,#0000 80%),radial-gradient(ellipse 50% 14% at 45% 80%,#0000 70%,#fa5252 72%,#0000 80%);filter:drop-shadow(0 0 6px #fa5252);animation:tk-tend 1.6s ease-in-out infinite alternate}
+@keyframes tk-tend{to{transform:scaleX(1.15) skewX(10deg)}}
+.tta .t-fx-eye1{left:12%;top:50%;width:16px;height:8px;margin-top:-4px;border-radius:50%;background:radial-gradient(#000 25%,#fa5252 30%,#c92a2a 60%,#000 65%);box-shadow:0 0 10px #fa5252;z-index:7;animation:tk-flick2 3s ease-in-out infinite}
+.tta .t-fx-punch{width:60px;height:60px;border-radius:50%;z-index:2;border:6px solid #ffe066;opacity:0;animation:tk-ring 6s ease-out infinite;animation-delay:-4.2s}
+.tta .t-fx-crack{inset:0;z-index:1;background:linear-gradient(28deg,#0000 49.6%,#ffe06688 50%,#0000 50.4%),linear-gradient(-35deg,#0000 49.6%,#ffe06666 50%,#0000 50.4%),linear-gradient(80deg,#0000 49.7%,#ffe06655 50%,#0000 50.3%);animation:tk-flash 6s linear infinite;animation-delay:-4.2s}
+.tta .t-fx-rainbow{inset:0;z-index:1;background:conic-gradient(from 0deg,#ff6b6b,#ffd43b,#69db7c,#4dabf7,#b197fc,#ff6b6b);opacity:.28;filter:blur(18px);animation:tk-sw2 3s linear infinite}
+.tta .t-fx-pct{right:10px;top:50%;transform:translateY(-50%);z-index:8;font:900 16px 'Space Mono',monospace;color:#fff;text-shadow:0 0 8px #b197fc,2px 0 #ff6b6b,-2px 0 #4dabf7;animation:tk-glitch2 .4s steps(2) infinite}
+@keyframes tk-glitch2{50%{transform:translateY(-50%) translateX(1px) skewX(-8deg)}}
+.tta .t-fx-gogo{inset:0;z-index:2;pointer-events:none}
+.tta .t-fx-gogo b{position:absolute;font:900 20px 'Noto Serif CJK JP','Noto Serif CJK SC','Noto Sans JP',serif;color:#cc5de8;text-shadow:2px 2px 0 #2b0a3d,0 0 8px #cc5de8;animation:tk-gogo 1.4s ease-in-out infinite}
+@keyframes tk-gogo{0%,100%{transform:translateY(0) scale(1);opacity:.6}50%{transform:translateY(-6px) scale(1.12);opacity:1}}
+.tta .t-fx-chid{left:12%;top:50%;width:40px;height:40px;margin-top:-20px;border-radius:50%;z-index:6;background:radial-gradient(#fff,#74c0fc 40%,#0000 70%);box-shadow:0 0 20px #4dabf7;animation:tk-aura .08s steps(2) infinite alternate}
+.tta .t-fx-chid::before{content:"";position:absolute;inset:-14px;background:conic-gradient(#0000 0 10%,#bfe3ff 11% 12%,#0000 13% 35%,#bfe3ff 36% 37%,#0000 38% 60%,#bfe3ff 61% 62%,#0000 63% 85%,#bfe3ff 86% 87%,#0000 88%);border-radius:50%;animation:tk-sw2 .3s linear infinite}
+.tta .t-fx-blueaura{left:50%;bottom:10%;width:520px;height:140px;margin-left:-260px;z-index:4;background:radial-gradient(ellipse 10% 70% at 25% 100%,#74c0fc,#0000 70%),radial-gradient(ellipse 11% 90% at 50% 100%,#b197fc,#0000 70%),radial-gradient(ellipse 10% 70% at 75% 100%,#74c0fc,#0000 70%);filter:blur(4px);mix-blend-mode:screen;animation:tk-aura .22s ease-in-out infinite alternate}
+.tta .t-fx-neon{inset:6px;z-index:1;border:2px solid #63e6be;border-radius:8px;box-shadow:0 0 10px #63e6be,inset 0 0 10px #63e6be;animation:tk-neon 3s steps(1) infinite}
+@keyframes tk-neon{0%,100%{opacity:1}42%{opacity:.2}44%{opacity:1}46%{opacity:.3}48%{opacity:1}}
+.tta .t-fx-smoke{left:0;right:0;bottom:-30px;height:80px;z-index:2;background:radial-gradient(ellipse 30% 50% at 30% 100%,#adb5bd66,#0000 70%),radial-gradient(ellipse 30% 60% at 70% 100%,#adb5bd55,#0000 70%);filter:blur(8px);animation:tk-smoke 3s ease-in-out infinite alternate}
+@keyframes tk-smoke{to{transform:translateY(-10px) scaleX(1.1);opacity:.6}}
+.tta .t-fx-scope{width:120px;height:120px;border-radius:50%;z-index:6;border:2px solid #69db7c;box-shadow:0 0 10px #69db7c;background:linear-gradient(#69db7c,#69db7c) 50% 0/1px 100% no-repeat,linear-gradient(#69db7c,#69db7c) 0 50%/100% 1px no-repeat;animation:tk-scope 4s ease-in-out infinite}
+@keyframes tk-scope{0%,100%{transform:translateX(-180px) scale(.8)}50%{transform:translateX(180px) scale(.8)}70%{transform:translateX(0) scale(.5)}}
+.tta .t-fx-tri{width:220px;height:6px;z-index:8;background:linear-gradient(90deg,#0000,#b2f2bb,#fff,#b2f2bb,#0000);box-shadow:0 0 10px #51cf66;opacity:0;animation:tk-bl1 6s ease-in-out infinite}
+.tta .t-fx-tri.a{transform:rotate(25deg)}.tta .t-fx-tri.b{transform:rotate(0);animation-delay:-.1s}.tta .t-fx-tri.c{transform:rotate(-25deg);animation-delay:-.2s}
+.tta .t-fx-haori{inset:0;z-index:1;background:linear-gradient(90deg,#0000 70%,#f8f9fa22 70% 100%),repeating-linear-gradient(90deg,#0000 0 30px,#ffffff08 30px 31px)}
+/* versions réduites (badge compact, listes) */
+.tta.sm .t-fx-sys,.tta.xs .t-fx-sys{font-size:6.5px;top:2px;padding:1px 6px;letter-spacing:.12em}.tta.sm .t-fx-void,.tta.xs .t-fx-void{width:60px;height:60px}.tta.sm .t-fx-domain,.tta.xs .t-fx-domain{width:200px;height:200px}
+.tta.xs .t-fx-void{width:30px;height:30px}.tta.xs .t-fx-domain{width:120px;height:120px}.tta.xs .t-fx-pct{font-size:9px;right:4px}.tta.xs .t-fx-gogo b{font-size:11px}.tta.xs .t-fx-apple{width:12px;height:12px;margin-top:-6px}.tta.xs .t-fx-scope{width:50px;height:50px}.tta.xs .t-fx-chid{width:20px;height:20px;margin-top:-10px}.tta.xs .t-fx-eye1{width:9px;height:5px}
+/* pause hors écran / onglet caché / animations réduites */
+.tta.off *,.tta.hid *{animation-play-state:paused!important}
+.rm16 .tta *{animation:none!important}.rm16 .tta .t-spd,.rm16 .tta .t-flash{display:none}
+@media (prefers-reduced-motion:reduce){.tta *{animation:none!important}.tta .t-spd,.tta .t-flash{display:none}}
+/* emplacements */
+.tt27-home{width:310px;max-width:100%;margin:-4px 0 14px;cursor:pointer}
+.tt27-none{display:inline-flex;align-items:center;gap:8px;margin:-4px 0 14px;padding:7px 12px;border-radius:99px;border:1px dashed #ffffff33;background:#ffffff08;color:var(--mu);font:700 12px Inter,sans-serif;cursor:pointer}
+.tt27-none u{text-decoration:none;font:900 13px 'Noto Sans JP',sans-serif;color:#ffd34d}
+.tt27-prof{width:300px;max-width:100%;margin:6px 0 4px;cursor:pointer}
+.tt27-row{width:96px;flex:none;border-radius:8px;margin:2px 0}
+.mp20-pd .tt27-row{width:110px}
+.tt27-bt{width:118px;margin-top:4px;border-radius:8px}.tt27-bt.r{margin-left:auto}
+.tt27-sec .hd2{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tt27-sec h3{margin:0}.tt27-sec h3 small{font:700 13px 'Space Mono',monospace;color:var(--mu);margin-left:8px}
+.tt27-rar{display:flex;gap:6px 12px;flex-wrap:wrap;font:700 11px 'Space Mono',monospace;letter-spacing:.06em}
+.tt27-r0{color:#4da3ff}.tt27-r1{color:#b36bff}.tt27-r2{color:#ffc414}.tt27-r3{color:#ff3d6e}.tt27-r4{color:#fff;text-shadow:0 0 8px #b18cff}
+.tt27-act{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:12px 0 4px}
+.tt27-act .ttc{width:310px;max-width:100%;cursor:pointer}
+.tt27-bn{margin-top:10px;padding:10px 12px;border-radius:12px;background:#ffffff08;border:1px solid #ffffff14;font:700 13px Inter,sans-serif;color:#dfe2f5}.tt27-bn b{color:#3ee0a0}
+.tt27-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:14px}
+.tt27-m{border-radius:12px;overflow:hidden;position:relative;cursor:pointer;background:#0d0f17;border:1px solid #ffffff12;padding:6px}
+.tt27-m .ttc{cursor:pointer}
+.tt27-m.on{box-shadow:0 0 0 2px #ffd34d}.tt27-m.on::after{content:"ACTIF";position:absolute;right:10px;top:8px;z-index:20;font:900 9px Inter,sans-serif;padding:2px 6px;border-radius:99px;background:#ffd34d;color:#1a1200}
+.tt27-mn{display:block;margin-top:6px;font:600 11px Inter,sans-serif;color:var(--mu);line-height:1.35}.tt27-mn b{font-weight:800;color:#fff}.tt27-mn em{font-style:normal;color:#3ee0a0;font-weight:700}
+.tt27-lk{min-height:64px;border-radius:12px;border:1px dashed #ffffff22;display:grid;place-content:center;text-align:center;color:#5c6080;font:800 12px Inter,sans-serif;background:repeating-linear-gradient(135deg,#ffffff05 0 8px,#0000 8px 16px);cursor:pointer;padding:10px 8px;gap:3px}
+.tt27-lk small{display:block;font:600 10.5px Inter,sans-serif;color:#6b7090;line-height:1.35}.tt27-lk small i{font-style:normal;color:#ffd34d}
+.tt27-info{text-align:center}.tt27-info .ttc{margin:0 auto 14px;width:min(520px,100%)}
+.tt27-info h2{margin:0 0 4px;font:900 24px Unbounded,Inter,sans-serif}.tt27-info .tt27-src{color:var(--mu);font-size:13px;margin:8px 0 0}.tt27-info .tt27-src i{font-style:normal;color:#ffd34d;font-weight:700}
+.tt27-info .row{justify-content:center;margin-top:14px}
+/* cinématique « TITRE OBTENU » */
+.tt27-cine{position:fixed;inset:0;z-index:10000;background:radial-gradient(70% 60% at 50% 40%,#1a0b2e,#000 70%);display:grid;place-items:center;padding:16px;animation:tk-fade .35s ease-out}
+@keyframes tk-fade{from{opacity:0}}
+.tt27-cb{width:min(640px,96vw);text-align:center;animation:tk-cin .7s cubic-bezier(.2,.9,.25,1)}
+@keyframes tk-cin{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.04);opacity:1}100%{transform:none}}
+.tt27-cb .ttc{width:100%;box-shadow:0 0 0 1px color-mix(in srgb,var(--gl) 60%,#0000),0 20px 60px #000,0 0 60px color-mix(in srgb,var(--gl) 35%,#0000)}
+.tt27-cb .tta{height:220px}
+.tt27-ct{margin-bottom:14px}.tt27-ct small{display:block;font:700 12px 'Noto Sans JP',sans-serif;letter-spacing:.4em;color:#ffd34d;opacity:.9}.tt27-ct b{display:block;font:900 34px Unbounded,Inter,sans-serif;letter-spacing:.06em;color:#fff;text-shadow:0 0 20px #ffd34d88,0 4px 0 #000;animation:tk-tob 1.2s ease-out}
+@keyframes tk-tob{0%{letter-spacing:.6em;opacity:0;filter:blur(6px)}40%{opacity:1;filter:blur(0)}}
+.tt27-ci{margin-top:16px}.tt27-ci b{display:block;font:900 22px Unbounded,Inter,sans-serif}.tt27-ci span{display:inline-block;margin-top:4px;font:900 11px 'Space Mono',monospace;letter-spacing:.2em}.tt27-ci p{color:#c9cce0;margin:8px 0 14px;font-weight:600}
+@media (max-width:700px){.tt27-cb .tta{height:170px}.tt27-cb .tta .t-x3 span{font-size:calc(var(--fs)*.7)}.tt27-ct b{font-size:26px}.tt27-g{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}.tt27-home{width:100%}.tt27-bt{width:96px}}
 </style></head><body>
 <canvas id="bg"></canvas><div id="appbg"></div><header id="tb"><div class="brand" data-oclick="show('home')"><div class="lg"><svg viewBox="0 0 40 40"><defs><linearGradient id="lgg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4d2e"/><stop offset="1" stop-color="#ffc414"/></linearGradient></defs><path d="M20 2l16 9v18l-16 9-16-9V11z" fill="url(#lgg)"/><path d="M12 27V14l8 8 8-8v13" fill="none" stroke="#10121a" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20" cy="10" r="2" fill="#10121a"/></svg></div><b>MUGEN</b></div><nav id="nav"></nav><div class="sp"></div><div class="pill" id="rs" style="display:none"></div><div class="pill" id="en" title="Boosters gratuits"></div><div class="pill"><i class="cn"></i><span id="co">0</span></div><button class="pill ms" data-oclick="show('miss')">務 Missions</button><button class="avb" id="avb" data-oclick="togPop(event)">J</button><div id="pop"><div class="pc" id="prof"></div><div class="prow"><button id="snd" data-oclick="mute()">Son activé</button><button id="mus" data-oclick="musT()">Musique</button></div><a data-oclick="show('album');closePop()">Ma collection</a><a data-oclick="show('rank');closePop()">Carrière</a><a data-oclick="show('cfg');closePop()">Réglages</a></div></header>
 <main id="v"></main><button id="backx" class="backx" data-oclick="closeOv()">← Retour au menu</button>
@@ -4502,7 +4682,10 @@ qd();
 function showOdds(o,c,p){const d=document.createElement('div');d.className='odds'+(c.na?' aw':'');d.innerHTML=(c.na?'<b>ÉVEIL</b> · ':'')+oddsTxt(c,p);o.append(d)}
 
 /* ===== MISES À JOUR ===== */
-const VER='25.3.2',CHG=[
+const VER='25.5.1',CHG=[
+ {v:'25.5.1',d:'3 novembre 2026',t:'Réglages simplifiés',n:[],f:['Les options d’images des cartes, de sauvegarde par fichier et « Tout effacer » sont retirées des Réglages.']},
+{v:'25.5',d:'3 novembre 2026',t:'Titres de profil anime en 3D',n:['24 titres animés à collectionner (Pourfendeur, Hokage, Roi des Pirates, Le Plus Fort…) : 8 Rares, 7 Épiques, 5 Légendaires, 3 Mythiques et 1 Divin, chacun avec son kanji, ses couleurs et ses effets.','Chaque titre a sa source et sa chance : victoires en Campagne, Classé, Tour, Chasse aux Primes, Chaudron, boss battus, certains boosters… Quand tu en obtiens un, une petite cinématique « TITRE OBTENU » s’affiche.','Ta collection est dans Carrière › Titres : touche un titre pour l’équiper. Seul le titre équipé donne son bonus (puissance, esquive, critiques, PV, pièces…).','Ton titre s’affiche sous ton pseudo sur l’accueil, sur ton profil, dans les classements, chez tes amis et en combat.'],f:[]},
+ {v:'25.4',d:'3 novembre 2026',t:'Sets de reliques',n:['8 sets de reliques font leur entrée dans l’Arsenal : chaque set réunit l’artefact et l’accessoire d’un même anime (Naruto, One Piece, Jujutsu Kaisen, Demon Slayer, Dragon Ball, Attack on Titan, My Hero Academia et Hunter x Hunter), ceux que l’on gagne dans la campagne.','Porte les deux reliques d’un set sur un perso de cet anime : il gagne +6 % de puissance en plus des bonus habituels. Le bonus compte dans tous les combats.','Nouvelle section « Sets de reliques » dans l’Arsenal : tu vois les 8 sets, ce qu’il te manque, et un bouton « Équiper le set » met les deux reliques d’un coup sur le perso de ton choix. La fiche d’une relique indique à quel set elle appartient.','La première fois qu’un set est complet, tu reçois 60 pièces.'],f:[]},
  {v:'25.3.2',d:'3 novembre 2026',t:'Deux mises à jour par jour',n:['Jusqu’à fin novembre, le jeu reçoit deux nouveautés par jour, à 11 h 23 et 17 h 23, pour être prêt pour Noël et le Nouvel An.'],f:[]},
  {v:'25.3.1',d:'3 novembre 2026',t:'Correctifs',n:[],f:['Le calendrier des prochaines mises à jour sur l’accueil est remis dans le bon ordre (les événements de Noël arriveront en décembre).']},
  {v:'25.3',d:'3 novembre 2026',t:'Nouvelles boîtes : Coffret Holographique et Boîte Mystère',n:['Le Booster Foil devient un Coffret Holographique irisé : il fait un tour sur lui-même et son couvercle s’envole dans une pluie arc-en-ciel.','La Boîte Mystère est scellée de chaînes et d’un cadenas : le cadenas saute, les chaînes cassent et des « ? » s’envolent.','Le Booster Halloween est retiré de la boutique, ainsi que la catégorie Événements (le Booster du Week-end passe dans Essentiels).'],f:[]},
@@ -7570,7 +7753,7 @@ function cpH(g){const cp=cpGet(g),goal=cpGoal(g),me=cp.by[gMe()]||0,done=S.gmc&&
   const pk=`<div class="pn cp23-pk"><h3>Paliers de guilde</h3><div class="cp23-pkg">${GPK.map(p=>`<div class="${l>=p[0]?'ok':''}"><u>${p[1]}</u><b>Niv. ${p[0]}</b><small>${p[2]}</small></div>`).join('')}</div></div>`;h=h.replace('<div class="gd18-lv">',pk+'<div class="gd18-lv">')}catch(e){console.warn(e)}return h}}
 {const _h=gHead;gHead=function(g){let h=_h.apply(this,arguments);try{const l=g.lvl||1;h=h.replace(/\/\d+ membres/,'/'+gCap2(l)+' membres');if(l>=100)h=h.replace('<section class="gd18-h">','<section class="gd18-h g23leg">')}catch(e){}return h}}
 /* ---------- annonce des prochaines mises à jour (sur l'accueil) ---------- */
-const NEXTUP=[['Synergies d’anime','3 cartes du même anime = bonus d’équipe'],['Titres et bordures de profil','20 titres à gagner, affichés partout'],['Sets de reliques','2 objets du même anime = bonus'],['Boss mondial','un boss pour tous les joueurs, 3 jours'],['Tournoi hebdomadaire','8 joueurs, finale le dimanche'],['Loto hebdo','1 ticket par jour, gros lot Divin'],['Succès cachés','15 succès secrets à découvrir'],['Carte du jour','une carte vedette, chances ×2'],['Chat de guilde','discute avec ta guilde'],['Album par anime','complète un anime, bordure dorée'],['Attaques combinées','10 duos, une attaque Duo'],['Statuts de combat','brûlure, gel, poison, étourdissement']];
+const NEXTUP=[['Synergies d’anime','3 cartes du même anime = bonus d’équipe'],['Sets de reliques','2 objets du même anime = bonus'],['Titres de profil 3D','24 titres anime animés, bonus du titre équipé'],['Boss mondial','un boss pour tous les joueurs, 3 jours'],['Tournoi hebdomadaire','8 joueurs, finale le dimanche'],['Loto hebdo','1 ticket par jour, gros lot Divin'],['Succès cachés','15 succès secrets à découvrir'],['Carte du jour','une carte vedette, chances ×2'],['Chat de guilde','discute avec ta guilde'],['Album par anime','complète un anime, bordure dorée'],['Attaques combinées','10 duos, une attaque Duo'],['Statuts de combat','brûlure, gel, poison, étourdissement'],['Journal de bord','tes 50 derniers tirages et combats'],['Défi handicap','3 règles du jour, récompenses ×1,5'],['Week-end double XP','XP ×2 une semaine sur deux'],['Mode Miroir','affronte ta propre équipe'],['Duel 1 contre 1','une carte, 5 rounds'],['Objets consommables','parchemin de revanche, ticket de relance'],['Prestige','niveau 60 : repars avec une étoile 3D'],['Parrainage','un code à partager, booster pour les deux'],['Recherche globale','tape un nom, ouvre sa fiche'],['Mode Roguelike','1 carte au départ, bonus à chaque victoire'],['Arbre de talents 3D','Fortune, Énergie, Précision'],['Familier','6 mascottes à nourrir'],['Mini-jeu Pêche','1 lancer toutes les 2 h'],['Réglages d’affichage','mode clair, taille du texte, animations'],['Tutoriel','5 étapes pour bien démarrer'],['Cartes signées','1 chance sur 500, numéro unique'],['Boutique rotative','6 objets qui changent toutes les 8 h'],['Enchères','hôtel des ventes, 24 h'],['Échanges entre amis','carte contre carte'],['Gardien du Temple','équipe de défense, 2 attaques/jour'],['Guilde contre guilde','points et récompenses le dimanche'],['Mode Infini chronométré','10 minutes, classement en ligne'],['Replays','tes 5 derniers combats'],['Statistiques détaillées','carte la plus utilisée, taux de victoire'],['Variantes de style','Neige, Néon, Manga, Or massif, Ombre'],['Gemmes','monnaie premium gratuite']];
 const NEXT0=new Date(2026,10,2,11,23);
 const nxD=k=>k<1?new Date(NEXT0):new Date(2026,10,3+((k-1)>>1),(k-1)%2?17:11,23);
 function nextUpH(){const now=Date.now();let i=0;const L=[];for(let k=0;k<NEXTUP.length&&L.length<5;k++){const d=nxD(k);if(d.getTime()<now-3*36e5)continue;L.push([NEXTUP[k],d])}if(!L.length)return'';const ds=d=>d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'})+' · '+d.getHours()+' h 23';
@@ -8387,6 +8570,165 @@ function sr3Wrap(root){(root||document).querySelectorAll('.sumr>div:not([data-sr
  document.addEventListener('pointerout',e=>{const w=e.target.closest&&e.target.closest('.sr3.hov');if(w&&!w.contains(e.relatedTarget)){w.classList.remove('hov');const i=w.querySelector('.sr3i');i.style.transition='transform .4s';i.style.transform=`rotateY(${+(i.dataset.ry||0)}deg)`}});
  document.addEventListener('click',e=>{if(Date.now()-eat<350&&e.target.closest&&e.target.closest('.sr3')){e.stopPropagation();e.preventDefault()}},true);
  new MutationObserver(()=>{if(document.querySelector('.sumr>div:not([data-sr3])'))sr3Wrap()}).observe(document.body,{childList:true,subtree:true})}
+
+/* ---------- v25.4 : sets de reliques — artefact + accessoire du même anime sur la même carte = +6 % de puissance en plus pour les persos de cet anime ---------- */
+const RSET=[['Set du Shinobi','🍃'],['Set du Pirate','⚓'],['Set de l’Exorciste','👁'],['Set du Pourfendeur','🔥'],['Set du Saiyan','🐉'],['Set de l’Éclaireur','🪽'],['Set du Héros','✊'],['Set du Hunter','🎯']].map(([n,ic],i)=>{const w=WL[i];return{i,n,ic,a:'wa'+i,c:'wc'+i,s:w[2],kj:w[1],re:w[4],col:w[3][0]}});
+const RSP=6;
+S.rs=S.rs||{d:{}};
+const rsOf=gid=>RSET.find(s=>s.a==gid||s.c==gid)||null;
+const rsOwn=s=>(gLv(G[s.a])?1:0)+(gLv(G[s.c])?1:0);
+function rsOn(c){if(!c||!S.eq)return null;const e=S.eq[c.id];if(!e||!e.a||!e.c)return null;const s=RSET.find(s=>s.a==e.a&&s.c==e.c);if(!s||!gLv(G[s.a])||!gLv(G[s.c]))return null;return s.re.test(c.s||'')?s:null}
+const rsWho=s=>{for(const k in S.eq){const e=S.eq[k];if(e&&e.a==s.a&&e.c==s.c&&M[k]&&S.inv[M[k].id])return M[k]}return null};
+const rsCards=s=>D.filter(c=>S.inv[c.id]&&s.re.test(c.s||'')).sort((a,b)=>pw(b)-pw(a));
+{const _f=gearPct;gearPct=function(c){let t=_f.apply(this,arguments);try{if(rsOn(c))t+=RSP/100}catch(e){}return t}}
+function rsCheck(cid,quiet){try{const c=M[cid];if(!c)return;const s=rsOn(c);if(!s)return;S.rs=S.rs||{d:{}};S.rs.d=S.rs.d||{};if(!S.rs.d[s.i]){S.rs.d[s.i]=Date.now();const r=giveR({c:60});save();if(!quiet)toast(`${s.ic} ${s.n} complet sur ${c.n} : +${RSP} % de puissance · ${r}`)}else if(!quiet)toast(`${s.ic} ${s.n} complet sur ${c.n} : +${RSP} % de puissance`)}catch(e){}}
+{const _e=gEquip;gEquip=function(cid,gid){const b=(()=>{try{return rsOn(M[cid])}catch(e){return null}})();const r=_e.apply(this,arguments);try{if(!b&&rsOn(M[cid]))rsCheck(cid)}catch(e){}return r}}
+function rsEquipAll(i,cid){const s=RSET[i];if(!s)return;const c=M[cid];if(!c||!S.inv[c.id]||rsOwn(s)<2)return;gEquip(cid,s.a);gEquip(cid,s.c);try{trk('eqp')}catch(e){}document.querySelectorAll('.ov').forEach(o=>o.remove());rsCheck(cid);gRef()}
+function rsPick(i){const s=RSET[i];if(!s)return;const L=rsCards(s);
+ const o=modal(`<div class="gpk"><h3>${s.ic} ${s.n} · choisir un perso de ${s.s}</h3><p style="color:var(--mu);margin:0 0 10px">Les deux reliques seront équipées sur le perso choisi (elles quittent leur porteur actuel).</p><div class="gpl">${L.map(c=>{const on=rsOn(c)===s;return `<div class="gp ${on?'on':''}" data-oclick="rsEquipAll(${i},'${c.id}')">${thumb(c)}<div><b>${c.n}</b><small>${c.s} · POW ${pw(c)}${on?' · <em>set déjà porté</em>':''}</small></div><span>+${RSP} %</span></div>`}).join('')||`<p style="color:var(--mu)">Tu n’as aucun perso de ${s.s} pour l’instant.</p>`}</div></div>`);o.classList.add('xpo')}
+function rsTile(s){const own=rsOwn(s),who=own==2?rsWho(s):null,full=who&&rsOn(who)===s;
+ return `<div class="rs26 ${full?'on':own==2?'rdy':''}" style="--sc:${s.col};--rc:${GRA[G[s.a].r][2]}"><b class="rs26-kj">${s.kj}</b><div class="rs26-hd"><b>${s.ic} ${s.n}</b><small>${s.s}</small></div>
+ <div class="rs26-it">${[s.a,s.c].map(id=>{const g=G[id],lv=gLv(g);return `<div class="rs26-g ${lv?'':'lk'}" data-oclick="gDet('${id}')"><div class="rs26-3d" style="--rc:${GRA[g.r][2]}">${g3d(g,46,!lv)}</div><small>${GT[g.t]}</small><b>${lv?g.n:'Relique scellée'}</b>${lv?`<em>Nv${lv}</em>`:`<em>${g.t=='a'?'boss final':'étape 3'} · ${WL[s.i][0]}</em>`}</div>`}).join('')}</div>
+ <div class="rs26-st">${full?`<span class="rs26-ok">✓ Complet sur <b>${who.n}</b> · +${RSP} %</span>`:own==2?(who?`<span>Les 2 reliques sont sur <b>${who.n}</b>, mais ce perso n’est pas de ${s.s}.</span>`:`<span>${own}/2 possédées · équipe-les sur un perso de ${s.s}</span>`):`<span>${own}/2 possédée${own>1?'s':''} · à gagner dans la campagne « ${WL[s.i][0]} »</span>`}${own==2?`<button class="btn sm ${full?'gh':''}" data-oclick="rsPick(${s.i})">${full?'Changer de perso':'Équiper le set'}</button>`:''}</div></div>`}
+function rsSection(){const n=RSET.filter(s=>{const w=rsOwn(s)==2&&rsWho(s);return w&&rsOn(w)===s}).length;
+ return `<section class="rs26-sec"><h2 class="xp13-h"><u>組</u>Sets de reliques <small class="rs26-n">${n}/${RSET.length} complet${n>1?'s':''}</small></h2><p style="color:var(--mu);margin:0 0 12px">Chaque set réunit l’artefact et l’accessoire d’un même anime. Porte les deux sur un perso de cet anime pour gagner <b>+${RSP} % de puissance</b> en plus des bonus des reliques. Première fois qu’un set est complet : 60 pièces.</p><div class="rs26-g8">${RSET.map(rsTile).join('')}</div></section>`}
+{const _g=gear;gear=function(){const r=_g.apply(this,arguments);try{const v=$('v');if(v&&!v.querySelector('.rs26-sec')){const h=[...v.querySelectorAll('h2.xp13-h')].find(x=>/Équiper tes cartes/.test(x.textContent))||v.querySelector('.ar14-eq,.geq');if(h)h.insertAdjacentHTML('beforebegin',rsSection())}
+ v&&v.querySelectorAll('.ar14-f,.gc2').forEach(f=>{const b=f.querySelector('[data-oclick^="gPick("]');const m=b&&/gPick\('([^']+)'/.exec(b.getAttribute('data-oclick'));const c=m&&M[m[1]];const s=c&&rsOn(c);if(s){const fi=f.querySelector('.ar14-fi,.gc2>div');if(fi&&!fi.querySelector('.rs26-tag'))fi.insertAdjacentHTML('beforeend',`<em class="rs26-tag" style="--sc:${s.col}" title="${s.n}">${s.ic} Set complet · +${RSP} %</em>`)}})}catch(e){console.warn(e)}return r}}
+{const _d=gDet;gDet=function(id){const r=_d.apply(this,arguments);try{const s=rsOf(id);if(!s)return r;const ov=[...document.querySelectorAll('.ov')].pop(),w=ov&&ov.querySelector('.gwin');if(!w||w.querySelector('.rs26-det'))return r;const oth=G[s.a==id?s.c:s.a],who=rsOwn(s)==2?rsWho(s):null,full=who&&rsOn(who)===s;
+ const p=document.createElement('p');p.className='rs26-det';p.style.setProperty('--sc',s.col);p.innerHTML=`${s.ic} <b>${s.n}</b> · avec <b>${gLv(oth)?oth.n:'la relique scellée de '+WL[s.i][0]}</b> sur un même perso de ${s.s} : <b>+${RSP} % de puissance</b> en plus.${full?` <span class="rs26-ok">✓ Complet sur ${who.n}</span>`:''}`;const src=w.querySelector('.gsrc');(src||w.lastElementChild).insertAdjacentElement(src?'beforebegin':'afterend',p)}catch(e){}return r}}
+{const _r=gearRow;gearRow=function(id){let h=_r.apply(this,arguments);try{const s=rsOn(M[id]);if(s)h=h.replace('</b>',` <em class="rs26-tag" style="--sc:${s.col}">${s.ic} ${s.n}</em></b>`)}catch(e){}return h}}
+
+/* ---------- v25.5 : titres de profil anime en 3D — 24 titres à collectionner (maquettes/titres/), le titre équipé donne son bonus, visible par les autres joueurs ---------- */
+if(!S.tt||typeof S.tt!='object')S.tt={};if(typeof S.tta!='string')S.tta='';
+const TTR=['Rare','Épique','Légendaire','Mythique','Divin'],TTRC=['#4da3ff','#b36bff','#ffc414','#ff3d6e','#e8dcff'];
+/* sources de drop : [texte court, texte long]. Si la vraie source n'existe pas encore (Boss mondial, Mode Infini), on utilise la plus proche. */
+const TTS={boss:['boss battu','en battant un boss (gardien de la Tour, boss de campagne, Boss Rush, raid ou chasse de guilde)'],pirate:['Coffre de Pirate','en ouvrant un Coffre de Pirate (Booster Pirates)'],tower30:['Tour étage 30+','par victoire dans la Tour à partir de l’étage 30'],tower50:['Tour étage 50+','par victoire dans la Tour à partir de l’étage 50'],rush:['Boss Rush','par boss abattu en Boss Rush'],sealed:['Boîte scellée','en ouvrant une Boîte scellée (Booster Sorciers ou pack Jujutsu Kaisen)'],ranked:['victoire Classé','par victoire en Classé'],wboss:['Raid hebdo','par attaque du Raid hebdo (en attendant le Boss mondial)'],inf:['Survie, 5 vagues','toutes les 5 vagues tenues en Survie (en attendant le Mode Infini)'],camp:['Campagne','par victoire en Campagne'],bounty:['Chasse aux Primes','par prime capturée (Chasse aux Primes)'],oneturn:['victoire en 1 tour','par victoire sans laisser l’ennemi attaquer une seule fois'],alch:['Chaudron','par récolte réussie au Chaudron'],daily:['mission du jour','par mission du jour récupérée'],guild:['victoire en Guilde','par victoire en Guilde (portail, raid, siège ou chasse)'],night:['combat de nuit','par victoire entre 22 h et 6 h'],tower:['la Tour','par victoire dans la Tour'],stand:['Boîte à Stand','en ouvrant une Boîte à Stand (pack JoJo)']};
+const TTL=[
+{i:'pf',n:'POURFENDEUR',dn:'Pourfendeur',k:'滅',s:'DEMON SLAYER',c:['#9fe3ff','#2b8fd9','#0b2d4a','#4dc3ff'],p:['ember',22],fx:'<i class="t-fx t-fx-wave"></i><i class="t-fx t-fx-swirl"></i>',r:2,st:'+5 % de dégâts contre les boss',b:{boss:.05},d:['boss',150]},
+{i:'rp',n:'ROI DES PIRATES',dn:'Roi des Pirates',k:'王',s:'ONE PIECE',c:['#fff1a8','#ffb000','#6a3a05','#ffd34d'],p:['coin',16],fx:'<i class="t-fx t-fx-wheel"></i><i class="t-fx t-fx-wave" style="filter:hue-rotate(-10deg)"></i>',r:2,st:'+8 % de pièces gagnées en combat',b:{coins:.08},d:['pirate',300]},
+{i:'hk',n:'HOKAGE',dn:'Hokage',k:'火',s:'NARUTO',c:['#ffe8cc','#ff7a1a','#7a2a05','#ff922b'],p:['leaf',14],fx:'<i class="t-fx t-fx-swirl" style="--c1:#74c0fc"></i>',r:1,st:'+4 % d’esquive',b:{dodge:.04},d:['tower30',120]},
+{i:'sg',n:'SUPER GUERRIER',dn:'Super Guerrier',k:'超',s:'DRAGON BALL',c:['#fffbe0','#ffd34d','#7a5200','#ffe066'],p:['spark',20],fx:'<i class="t-fx t-fx-aura"></i><i class="t-fx t-fx-bolt" style="left:12%;top:20px"></i><i class="t-fx t-fx-bolt" style="right:14%;top:30px;animation-delay:-1.1s;transform:scaleX(-1)"></i>',r:3,st:'+6 % de puissance d’équipe',b:{pow:.06},d:['rush',500]},
+{i:'rf',n:'ROI DES FLÉAUX',dn:'Roi des Fléaux',k:'呪',s:'JUJUTSU KAISEN',c:['#ffd9de','#ff2a3a','#3a0008','#ff2a3a'],p:['blood',15],fx:'<i class="t-fx t-fx-domain"></i><i class="t-fx t-fx-tat"></i>',r:2,st:'+5 % de coups critiques',b:{crit:.05},d:['sealed',200]},
+{i:'sh',n:'SHINIGAMI',dn:'Shinigami',k:'死',s:'BLEACH',c:['#ffffff','#a5d8ff','#111318','#74c0fc'],p:['spark',14],fx:'<i class="t-fx t-fx-slash"></i>',r:1,st:'+10 % de chances d’1 ◆ en plus au départ',b:{nrg:.10},d:['ranked',100]},
+{i:'lf',n:'LE PLUS FORT',dn:'Le Plus Fort',k:'無',s:'JUJUTSU KAISEN',c:['#e7f5ff','#74c0fc','#1c2a6a','#4dabf7'],p:['void',26],fx:'<i class="t-fx t-fx-void"></i>',r:4,st:'+8 % de PV d’équipe',b:{hp:.08},d:['wboss',2000]},
+{i:'mo',n:'MONARQUE DES OMBRES',dn:'Monarque des Ombres',k:'影',s:'SOLO LEVELING',c:['#e5dbff','#9775fa','#1a0b3a','#845ef7'],p:['shadow',12],fx:'<i class="t-fx t-fx-sys">[ SYSTÈME ] TITRE OBTENU</i><i class="t-fx t-fx-eyes"></i>',r:3,st:'+3 % de pièces, de critiques et d’esquive',b:{coins:.03,crit:.03,dodge:.03},d:['inf',800]},
+{i:'sp',n:'SYMBOLE DE LA PAIX',dn:'Symbole de la Paix',k:'平',s:'MY HERO ACADEMIA',c:['#fff3bf','#ffd43b','#1c3d8a','#ffd43b'],p:['spark',10],fx:'<i class="t-fx t-fx-comic"></i><i class="t-fx t-fx-burst"></i>',r:0,st:'+2 % de PV d’équipe',b:{hp:.02},d:['camp',40]},
+{i:'ce',n:'CHASSEUR D’ÉLITE',dn:'Chasseur d’Élite',k:'念',s:'HUNTER X HUNTER',c:['#ebfbee','#69db7c','#0b3d1a','#51cf66'],p:['spark',10],fx:'<i class="t-fx t-fx-nen"></i>',r:0,st:'+3 % d’esquive',b:{dodge:.03},d:['bounty',50]},
+{i:'dt',n:'DÉMON TRONÇONNEUSE',dn:'Démon Tronçonneuse',k:'鋸',s:'CHAINSAW MAN',c:['#ffe8cc','#ff922b','#5c1d00','#ff922b'],p:['blood',12],fx:'<i class="t-fx t-fx-saw"></i><i class="t-fx t-fx-saw t"></i>',r:0,st:'+3 % de dégâts',b:{dmg:.03},d:['inf',50]},
+{i:'hf',n:'HÉROS POUR LE FUN',dn:'Héros pour le Fun',k:'拳',s:'ONE PUNCH MAN',c:['#fff9db','#ffe066','#7a1d1d','#ffe066'],p:['spark',8],fx:'<i class="t-fx t-fx-crack"></i><i class="t-fx t-fx-punch"></i>',r:0,st:'+2 % de coups critiques',b:{crit:.02},d:['oneturn',40]},
+{i:'es',n:'ESPER 100 %',dn:'Esper 100 %',k:'超',s:'MOB PSYCHO 100',c:['#f3f0ff','#b197fc','#2b1a5a','#b197fc'],p:['void',12],fx:'<i class="t-fx t-fx-rainbow"></i><i class="t-fx t-fx-pct">100%</i>',r:0,st:'+3 % de chances d’1 ◆ en plus au départ',b:{nrg:.03},d:['alch',60]},
+{i:'cp',n:'CHASSEUR DE PRIMES',dn:'Chasseur de Primes',k:'賞',s:'COWBOY BEBOP',c:['#e6fcf5','#63e6be','#0b3a30','#63e6be'],p:['shadow',6],fx:'<i class="t-fx t-fx-neon"></i><i class="t-fx t-fx-smoke"></i>',r:0,st:'+3 % de pièces à la Chasse aux Primes',b:{bounty:.03},d:['bounty',30]},
+{i:'at',n:'AGENT TWILIGHT',dn:'Agent Twilight',k:'諜',s:'SPY × FAMILY',c:['#f4fce3','#94d82d','#1a2b0a','#69db7c'],p:['petal',8],fx:'<i class="t-fx t-fx-scope"></i>',r:0,st:'+2 % d’esquive, +1 % de critiques',b:{dodge:.02,crit:.01},d:['daily',50]},
+{i:'cd',n:'CAPITAINE DE DIVISION',dn:'Capitaine de Division',k:'隊',s:'BLEACH',c:['#ffffff','#ffc9de','#1a1d2b','#f783ac'],p:['petal',16],fx:'<i class="t-fx t-fx-haori"></i>',r:0,st:'+2 % de puissance',b:{pow:.02},d:['guild',45]},
+{i:'ae',n:'ALCHIMISTE D’ÉTAT',dn:'Alchimiste d’État',k:'錬',s:'FULLMETAL ALCHEMIST',c:['#e7f5ff','#a5d8ff','#1b2a3a','#74c0fc'],p:['spark',10],fx:'<i class="t-fx t-fx-circle"></i>',r:1,st:'+4 % de pièces au Chaudron',b:{alch:.04},d:['alch',120]},
+{i:'ct',n:'CHASSEUR DE TITANS',dn:'Chasseur de Titans',k:'巨',s:'L’ATTAQUE DES TITANS',c:['#f1f3f5','#adb5bd','#2b3a2b','#dee2e6'],p:['spark',8],fx:'<i class="t-fx t-fx-steam"></i><i class="t-fx t-fx-blades"></i><i class="t-fx t-fx-blades b"></i>',r:1,st:'+4 % de dégâts contre les gros ennemis',b:{big:.04},d:['rush',130]},
+{i:'dn',n:'DIEU DU NOUVEAU MONDE',dn:'Dieu du Nouveau Monde',k:'神',s:'DEATH NOTE',c:['#ffffff','#ced4da','#1a1a1a','#fa5252'],p:['page',10],fx:'<i class="t-fx t-fx-apple"></i>',r:1,st:'+4 % de critiques en Classé',b:{rcrit:.04},d:['ranked',150]},
+{i:'gb',n:'GOULE BORGNE',dn:'Goule Borgne',k:'喰',s:'TOKYO GHOUL',c:['#ffe3e3','#fa5252','#2a0505','#fa5252'],p:['blood',10],fx:'<i class="t-fx t-fx-tend"></i><i class="t-fx t-fx-eye1"></i>',r:1,st:'+4 % de vol de vie',b:{ls:.04},d:['night',120]},
+{i:'nc',n:'NINJA COPIEUR',dn:'Ninja Copieur',k:'写',s:'NARUTO',c:['#e7f5ff','#74c0fc','#1b2633','#4dabf7'],p:['spark',12],fx:'<i class="t-fx t-fx-chid"></i>',r:1,st:'+4 % d’esquive',b:{dodge:.04},d:['tower',110]},
+{i:'ps',n:'PRINCE DES SAIYANS',dn:'Prince des Saiyans',k:'王',s:'DRAGON BALL',c:['#e5dbff','#748ffc','#1a1f5a','#748ffc'],p:['spark',16],fx:'<i class="t-fx t-fx-blueaura"></i><i class="t-fx t-fx-bolt" style="left:14%;top:6px;transform:scale(.6)"></i>',r:2,st:'+6 % de puissance',b:{pow:.06},d:['rush',250]},
+{i:'sl',n:'SABREUR LÉGENDAIRE',dn:'Sabreur Légendaire',k:'剣',s:'ONE PIECE',c:['#ebfbee','#51cf66','#0b2b14','#51cf66'],p:['spark',8],fx:'<i class="t-fx t-fx-tri a"></i><i class="t-fx t-fx-tri b"></i><i class="t-fx t-fx-tri c"></i>',r:2,st:'+6 % de dégâts critiques',b:{cdmg:.06},d:['tower50',280]},
+{i:'ms',n:'MAÎTRE DU STAND',dn:'Maître du Stand',k:'像',s:'JOJO',c:['#f8f0fc','#cc5de8','#2b0a3d','#cc5de8'],p:['spark',8],fx:'<i class="t-fx t-fx-gogo"><b style="left:6%;top:10%">ゴ</b><b style="left:12%;top:52%;animation-delay:-.3s">ゴ</b><b style="right:8%;top:14%;animation-delay:-.6s">ゴ</b><b style="right:14%;top:55%;animation-delay:-.9s">ゴ</b></i>',r:3,st:'+5 % de puissance, +3 % d’esquive',b:{pow:.05,dodge:.03},d:['stand',600]}];
+const TTM={};TTL.forEach((t,i)=>{t.x=i;TTM[t.i]=t});
+const ttR=(n,f)=>{let s='';for(let i=0;i<n;i++)s+=f(i);return s};
+const TTP={ember:n=>ttR(n,i=>`<i style="left:${(i*37)%100}%;--d:${1.6+(i%5)*.4}s;--pd:-${(i*0.23).toFixed(2)}s;--dx:${(i%2?1:-1)*(10+i%7*6)}px"></i>`),
+petal:n=>ttR(n,i=>`<i style="left:${(i*29)%100}%;--d:${3+(i%4)}s;--pd:-${(i*.4).toFixed(1)}s;--dx:${(i%2?1:-1)*(30+i%5*10)}px"></i>`),
+coin:n=>ttR(n,i=>`<i style="left:${(i*31+7)%100}%;--d:${1.8+(i%4)*.4}s;--pd:-${(i*.3).toFixed(1)}s;--dx:${(i%2?1:-1)*(10+i%5*8)}px"></i>`),
+leaf:n=>ttR(n,i=>`<i style="--r:${90+(i%4)*40};--d:${1.6+(i%3)*.5}s;--pd:-${(i*.25).toFixed(2)}s"></i>`),
+spark:n=>ttR(n,i=>`<i style="left:${(i*23)%100}%;--d:${.9+(i%4)*.3}s;--pd:-${(i*.17).toFixed(2)}s;--dx:0px"></i>`),
+void:n=>ttR(n,i=>`<i style="--a:${i*29}deg;--d:${1.4+(i%4)*.3}s;--pd:-${(i*.11).toFixed(2)}s"></i>`),
+shadow:n=>ttR(n,i=>`<i style="left:${(i*19)%100}%;--d:${2.5+(i%4)*.6}s;--pd:-${(i*.4).toFixed(1)}s;--dx:${(i%2?1:-1)*20}px"></i>`),
+blood:n=>ttR(n,i=>`<i style="--a:${i*24}deg;--d:6s;--pd:-${(i*.01).toFixed(2)}s"></i>`),
+page:n=>ttR(n,i=>`<i style="left:${(i*29)%100}%;--d:${3+(i%4)}s;--pd:-${(i*.4).toFixed(1)}s;--dx:${(i%2?1:-1)*(20+i%5*10)}px"></i>`)};
+/* badge animé : sz = '' (grand), 'sm' (compact ~64 px), 'xs' (listes, combat) ; lite = moins de particules */
+function ttH(t,sz,cls,lite){if(!t)return'';sz=sz||'';const np=sz=='xs'?Math.min(4,Math.ceil(t.p[1]/5)):lite?Math.max(3,Math.ceil(t.p[1]/3)):t.p[1],fs=Math.min(46,(sz=='xs'?520:700)/t.n.length),dl=-((t.x*.7)%6).toFixed(1);
+ return `<div class="ttc ${cls||''}" data-tt="${t.i}" style="--fs:${fs}px;--c1:${t.c[0]};--c2:${t.c[1]};--c3:${t.c[2]};--gl:${t.c[3]};--dl:${dl}s"><div class="tta ${sz}"><i class="t-bg"></i><i class="t-spd"></i><b class="t-kjb">${t.k}</b>${t.fx}<i class="t-ring"></i><div class="t-stg"><div class="t-x3">${ttR(12,z=>`<span style="--z:${12-z}">${t.n}</span>`)}<span class="t-f" data-t="${t.n}">${t.n}</span><b class="t-kjf">${t.k}</b><div class="t-sub">${t.s}</div></div></div><div class="t-pt t-p-${t.p[0]}">${TTP[t.p[0]](np)}</div><i class="t-flash"></i></div></div>`}
+/* animations en pause hors écran / onglet caché */
+let TTIO=null;const TTEL=new Set();
+function ttWatch(){try{if(!TTIO&&'IntersectionObserver' in window)TTIO=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('off',!e.isIntersecting)),{rootMargin:'120px'});
+ TTEL.forEach(el=>{if(!el.isConnected){TTEL.delete(el);if(TTIO)TTIO.unobserve(el)}});
+ document.querySelectorAll('.tta:not([data-io])').forEach(el=>{el.dataset.io=1;if(document.hidden)el.classList.add('hid');if(TTIO){TTIO.observe(el);TTEL.add(el)}})}catch(e){}}
+document.addEventListener('visibilitychange',()=>{try{document.querySelectorAll('.tta').forEach(el=>el.classList.toggle('hid',document.hidden))}catch(e){}});
+{const _s=show;show=function(){const r=_s.apply(this,arguments);setTimeout(ttWatch,0);return r}}
+/* état */
+const ttMy=()=>S.tta&&S.tt[S.tta]&&TTM[S.tta]?S.tta:'';
+const ttAct=()=>TTM[ttMy()]||null;
+const ttN=()=>TTL.filter(t=>S.tt[t.i]).length;
+const ttSrc=t=>`1 chance sur ${t.d[1].toLocaleString('fr-FR')} ${TTS[t.d[0]][1]}`;
+function ttGain(t){if(!t||S.tt[t.i])return false;S.tt[t.i]=Date.now();let eq=false;if(!ttMy()){S.tta=t.i;eq=true}save();
+ setTimeout(()=>{try{ttCine(t,eq)}catch(e){console.warn(e)}try{toast(`Titre obtenu : ${t.dn} !`)}catch(e){}},900);
+ try{if(netOk())netSync(1)}catch(e){}return true}
+function ttRoll(src,m){if(!src)return null;m=m||1;for(const t of TTL){if(t.d[0]!=src||S.tt[t.i])continue;if(Math.random()*t.d[1]<m){ttGain(t);return t}}return null}
+function ttCine(t,eq){document.querySelectorAll('.tt27-cine').forEach(e=>e.remove());const o=document.createElement('div');o.className='tt27-cine';
+ o.innerHTML=`<div class="tt27-cb"><div class="tt27-ct"><small>称号獲得</small><b>TITRE OBTENU</b></div>${ttH(t,'')}<div class="tt27-ci"><b style="color:${TTRC[t.r]}">${t.dn}</b><span class="tt27-r${t.r}">${TTR[t.r].toUpperCase()}</span><p>${t.st}${eq?' · équipé automatiquement':' · retrouve-le dans Carrière › Titres'}</p><button class="btn" data-oclick="this.closest('.tt27-cine').remove()">${eq?'Génial !':'Continuer'}</button></div></div>`;
+ o.onclick=e=>{if(e.target==o)o.remove()};document.body.append(o);try{sfx(660,.2,'triangle',.16);sfx(990,.3,'triangle',.14,.14);sfx(1320,.5,'triangle',.12,.3)}catch(e){}setTimeout(ttWatch,0)}
+function ttRefresh(){try{if(view=='rank'){const s=$('v')&&$('v').querySelector('.tt27-sec');if(s){s.outerHTML=ttSection();setTimeout(ttWatch,0)}}else if(view=='home')show('home')}catch(e){}}
+function ttEquip(id){const t=TTM[id];if(!t)return;if(!S.tt[id]||S.tta==id)return ttInfo(id);S.tta=id;save();toast(`Titre équipé : ${t.dn} · ${t.st}`);document.querySelectorAll('.ov.tt27-ov').forEach(o=>o.remove());ttRefresh();try{if(netOk())netSync(1)}catch(e){}}
+function ttUnequip(){S.tta='';save();toast('Titre retiré');document.querySelectorAll('.ov.tt27-ov').forEach(o=>o.remove());ttRefresh();try{if(netOk())netSync(1)}catch(e){}}
+function ttInfo(id){const t=TTM[id];if(!t)return;const own=S.tt[t.i],on=ttMy()==t.i;
+ const o=modal(`<div class="tt27-info">${ttH(t,'')}<h2 style="color:${TTRC[t.r]}">${t.dn}</h2><span class="tt27-r${t.r}" style="font:900 11px 'Space Mono',monospace;letter-spacing:.2em">${TTR[t.r].toUpperCase()} · ${t.s}</span><div class="tt27-bn">Bonus du titre : <b>${t.st}</b>${own?'':' <small style="color:var(--mu)">(seul le titre équipé donne son bonus)</small>'}</div><p class="tt27-src">${own?`Obtenu le ${new Date(own).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'})}.`:'🔒 Pas encore obtenu.'} <i>${ttSrc(t)}</i>.</p><div class="row">${own?(on?`<button class="btn gh" data-oclick="ttUnequip()">Retirer le titre</button>`:`<button class="btn" data-oclick="ttEquip('${t.i}')">Équiper ce titre</button>`):''}</div></div>`);o.classList.add('tt27-ov');setTimeout(ttWatch,0)}
+function ttGo(){show('rank');setTimeout(()=>{try{const s=document.querySelector('.tt27-sec');if(s)s.scrollIntoView({behavior:'smooth',block:'start'})}catch(e){}},120)}
+/* section « Collection de titres » (page Carrière) */
+function ttSection(){const a=ttAct(),n=ttN(),own=TTL.filter(t=>S.tt[t.i]).sort((x,y)=>y.r-x.r||x.x-y.x),lk=TTL.filter(t=>!S.tt[t.i]).sort((x,y)=>x.r-y.r||x.x-y.x);
+ return `<section class="pn tt27-sec"><div class="ey">TITRES · 称号</div><div class="hd2"><h3>Collection de titres <small>${n} / ${TTL.length}</small></h3><div class="tt27-rar">${TTR.map((r,i)=>`<span class="tt27-r${i}">${TTL.filter(t=>t.r==i&&S.tt[t.i]).length}/${TTL.filter(t=>t.r==i).length} ${r}${i<4?'s':''}</span>`).join('')}</div></div>
+ <p style="color:var(--mu);margin:8px 0 0">24 titres animés à gagner en jouant : chacun a sa source et sa chance. Touche un titre pour l’équiper : <b>seul le titre équipé donne son bonus</b>. Les autres joueurs voient ton titre sur ton profil, dans les classements et en combat.</p>
+ ${a?`<div class="tt27-act"><div data-oclick="ttInfo('${a.i}')">${ttH(a,'sm','',1)}</div><div class="tt27-bn" style="margin:0;flex:1;min-width:200px">Titre actif « ${a.dn} » : <b>${a.st}</b></div></div>`:`<div class="tt27-bn">Aucun titre équipé pour l’instant${n?' : touche un titre ci-dessous pour l’équiper':' : gagne ton premier titre en jouant (Campagne, Classé, Tour, Chasse aux Primes…)'}.</div>`}
+ <div class="tt27-g">${own.map(t=>`<div class="tt27-m ${ttMy()==t.i?'on':''}" data-oclick="ttEquip('${t.i}')">${ttH(t,'sm','',1)}<small class="tt27-mn"><b style="color:${TTRC[t.r]}">${t.dn}</b> · ${TTR[t.r]} · <em>${t.st}</em></small></div>`).join('')}${lk.map(t=>`<div class="tt27-lk" data-oclick="ttInfo('${t.i}')"><b>🔒 ${t.dn}</b><small><span class="tt27-r${t.r}">${TTR[t.r]}</span> · <i>1/${t.d[1].toLocaleString('fr-FR')}</i> ${TTS[t.d[0]][0]}</small></div>`).join('')}</div></section>`}
+{const _r=rank;rank=function(){const r=_r.apply(this,arguments);try{const v=$('v'),st=v&&v.querySelector('.stats');if(st&&!v.querySelector('.tt27-sec')){st.insertAdjacentHTML('afterend',ttSection());setTimeout(ttWatch,0)}}catch(e){console.warn(e)}return r}}
+/* accueil : badge compact sous le pseudo */
+{const _d=dash;dash=function(){const r=_d.apply(this,arguments);try{const v=$('v'),h=v&&v.querySelector('.hx-t');if(h&&!v.querySelector('.tt27-home,.tt27-none')){const a=ttAct();h.insertAdjacentHTML('afterend',a?ttH(a,'sm','tt27-home',1).replace('<div class="ttc','<div data-oclick="ttGo()" class="ttc'):`<button class="tt27-none" data-oclick="ttGo()"><u>称</u>Titres : ${ttN()} / ${TTL.length} · voir la collection</button>`);setTimeout(ttWatch,0)}}catch(e){console.warn(e)}return r}}
+/* profil public : tta (id court) envoyé avec myProfile, lu sur le profil des autres, dans les classements et chez les amis */
+{const _mp=myProfile;myProfile=function(){const p=_mp.apply(this,arguments);try{p.tta=ttMy()}catch(e){}return p}}
+const TTPC={};
+function ttHook(){try{const db=typeof NET!='undefined'&&NET&&NET.db;if(!db||db.__tt27)return;const g=db.get,q=db.q;if(typeof g=='function')db.get=async function(c){const r=await g.apply(this,arguments);try{if(c=='players'&&r&&r.id)TTPC[r.id]=typeof r.tta=='string'?r.tta:''}catch(e){}return r};
+ if(typeof q=='function')db.q=async function(c){const r=await q.apply(this,arguments);try{if(c=='players'&&Array.isArray(r))r.forEach(p=>{if(p&&p.id)TTPC[p.id]=typeof p.tta=='string'?p.tta:''})}catch(e){}return r};db.__tt27=1}catch(e){}}
+const ttOf=uid=>{if(!uid)return null;const id=(typeof NET!='undefined'&&NET&&uid==NET.uid)?ttMy():TTPC[uid];return id&&TTM[id]||null};
+{const _m=mpProf;mpProf=async function(uid){ttHook();const r=await _m.apply(this,arguments);try{const ov=[...document.querySelectorAll('.ov.mp20-ov')].pop(),h2=ov&&ov.querySelector('.mp20-ph h2');if(h2&&!ov.querySelector('.tt27-prof')){const t=ttOf(uid);if(t){h2.insertAdjacentHTML('afterend',ttH(t,'sm','tt27-prof',1).replace('<div class="ttc',`<div data-oclick="ttInfo('${t.i}')" class="ttc`));const ps=ov.querySelector('.mp20-ps');if(ps)ps.insertAdjacentHTML('afterend',`<div class="tt27-bn">Titre actif « ${t.dn} » : <b>${t.st}</b></div>`);setTimeout(ttWatch,0)}}}catch(e){console.warn(e)}return r}}
+function ttLbDeco(){try{document.querySelectorAll('#mp20-lb [data-oclick^="mpProf("]').forEach(el=>{if(el.querySelector('.tt27-row'))return;const m=/mpProf\('([^']+)'/.exec(el.getAttribute('data-oclick')||'');const t=m&&ttOf(m[1]);if(!t)return;const b=el.querySelector('b');if(b)b.insertAdjacentHTML('afterend',ttH(t,'xs','tt27-row',1))});setTimeout(ttWatch,0)}catch(e){}}
+{const _l=lbLoad;lbLoad=async function(){ttHook();const r=await _l.apply(this,arguments);ttLbDeco();return r}}
+{const _f=frRow;frRow=function(p){let h=_f.apply(this,arguments);try{const t=p&&(p.id==NET.uid?ttAct():(typeof p.tta=='string'&&TTM[p.tta])||null);if(t)h=h.replace('</b><small>','</b>'+ttH(t,'xs','tt27-row',1)+'<small>')}catch(e){}return h}}
+{const _f=frLoad;frLoad=async function(){ttHook();const r=await _f.apply(this,arguments);setTimeout(ttWatch,0);return r}}
+/* combat : bonus du titre équipé + badge dans le bandeau */
+const ttBossFight=()=>{try{const md=B.md;return !!(B.bo||md=='rush'||md=='graid'||md=='gboss'||md=='raid'||(md=='camp'&&B.st!=null&&B.st%5==4))}catch(e){return false}};
+function ttOpp(){try{if(B.md=='friend'&&MPD&&typeof MPD.tta=='string')return TTM[MPD.tta]||null;const o=B.opp;if(o&&o.uid)return ttOf(o.uid)}catch(e){}return null}
+function ttApply(){if(!B||B.tt27!==undefined)return;const t=ttAct();B.tt27=t||null;B.tt27e=0;if(!t)return;const b=t.b;
+ if(b.pow)B.me.forEach(f=>{f.p=Math.round(f.p*(1+b.pow))});
+ if(b.hp)B.me.forEach(f=>{const k=1+b.hp;f.max=Math.round(f.max*k);f.hp=Math.min(f.max,Math.round(f.hp*k))});
+ if(b.dmg)B.me.forEach(f=>{f.b=(f.b||1)*(1+b.dmg)});
+ if(b.boss&&ttBossFight())B.me.forEach(f=>{f.b=(f.b||1)*(1+b.boss)});
+ if(b.nrg&&Math.random()<b.nrg){B.e[0]=Math.min(6,(B.e[0]||0)+1);try{pips()}catch(e){}}
+ try{const tg=document.querySelector('#fp .tag'),f=B.me[B.pi];if(tg&&f)tg.innerHTML=tg.innerHTML.replace(/POW \d+/,'POW '+f.p);if(f)upd('fp',f)}catch(e){}}
+{const _s=scene;scene=function(){const r=_s.apply(this,arguments);try{ttApply()}catch(e){console.warn(e)}
+ try{const bt=$('bt');if(bt&&!bt.querySelector('.tt27-bt')){const t=B&&B.tt27,hl=bt.querySelector('#hnl');if(t&&hl)hl.insertAdjacentHTML('afterend',ttH(t,'xs','tt27-bt',1));const ot=ttOpp(),hr=bt.querySelector('#hnr');if(ot&&hr)hr.insertAdjacentHTML('afterend',ttH(ot,'xs','tt27-bt r',1));setTimeout(ttWatch,0)}}catch(e){}return r}}
+{const _a=act;act=async function(a,d,mi,ia,id,sd){const t=B&&B.tt27;if(B&&sd==1)B.tt27e=(B.tt27e||0)+1;if(!t||mi==3)return _a.apply(this,arguments);const b=t.b,hp0=d.hp;let b0=null;
+ if(sd==0&&b.big&&d.max>a.max*1.25){b0=a.b||1;a.b=b0*(1+b.big)}
+ const dodge=sd==1&&b.dodge&&Math.random()<b.dodge;
+ try{return await _a.apply(this,arguments)}finally{if(b0!==null)a.b=b0;
+  if(dodge&&d.hp<hp0){d.hp=hp0;try{upd(id,d);flo($(id),'ESQUIVÉ !','#5dff8a',8)}catch(e){}}
+  if(sd==0&&d.hp<hp0){const dealt=hp0-d.hp,cr=(b.crit||0)+(B.md=='ranked'?(b.rcrit||0):0);
+   if(d.hp>0&&cr&&Math.random()<cr){const x=Math.max(1,Math.round(dealt*.5));d.hp=Math.max(0,d.hp-x);try{upd(id,d);flo($(id),'CRIT -'+x,'#ffd54a',20);sfx(1500,.35,'triangle',.14,.06,1.6)}catch(e){}}
+   if(d.hp>0&&b.cdmg&&Math.random()<.1){const x=Math.max(1,Math.round(dealt*b.cdmg));d.hp=Math.max(0,d.hp-x);try{upd(id,d);flo($(id),'-'+x,'#ffd54a',26)}catch(e){}}
+   if(b.ls&&a.hp>0&&a.hp<a.max){const h=Math.max(1,Math.round(dealt*b.ls));a.hp=Math.min(a.max,a.hp+h);try{upd(ia,a);flo($(ia),'VOL DE VIE +'+h,'#ff6b7a',55)}catch(e){}}}}}}
+/* fin de combat : bonus de pièces du titre + tirage d'un titre selon le mode */
+{const _e=end;end=function(w){const b=B,md=b&&b.md,st=b&&b.st,bo=b&&b.bo,en0=b?(b.tt27e||0):1,done=!b||b.ttd,c0=S.coins;if(b)b.ttd=1;const r=_e.apply(this,arguments);
+ try{if(!done){const t=ttAct();if(t){const d=S.coins-c0;let p=t.b.coins||0;if(md=='bounty')p+=t.b.bounty||0;if(md=='alch')p+=t.b.alch||0;if(d>0&&p>0){S.coins+=Math.max(1,Math.round(d*p));save()}}
+  const L=[];if(w){const h=new Date().getHours();if(h>=22||h<6)L.push('night');if(en0==0&&md!='friend')L.push('oneturn');
+   if(md=='camp'){L.push('camp');if(st!=null&&st%5==4)L.push('boss')}
+   else if(md=='tower'){L.push('tower');const fl=st-999;if(fl>=30)L.push('tower30');if(fl>=50)L.push('tower50');if(bo)L.push('boss')}
+   else if(md=='ranked')L.push('ranked');else if(md=='rush')L.push('rush','boss');else if(md=='bounty')L.push('bounty');else if(md=='alch')L.push('alch');
+   else if(md=='gate'||md=='gsiege')L.push('guild');else if(md=='graid'||md=='gboss')L.push('guild','boss')}
+  if(md=='raid')L.push('wboss');
+  for(const s of L)if(ttRoll(s))break}}catch(e){console.warn(e)}return r}}
+{const _s=svEnd;svEnd=function(w){const wv=SV?SV.w:0;const r=_s.apply(this,arguments);try{if(w&&wv>0&&wv%5==0)ttRoll('inf')}catch(e){}return r}}
+/* boosters : Coffre de Pirate, Boîte scellée, Boîte à Stand */
+{const _s=stage;stage=function(p,packs){const r=_s.apply(this,arguments);try{const n=Array.isArray(packs)?packs.length:1,k=p&&BXK[p.n]?BXK[p.n][0]:'',src=p&&p.n=='Booster Pirates'?'pirate':p&&p.n=='JoJo'?'stand':k=='cursed'?'sealed':'';if(src)for(let i=0;i<n;i++)if(ttRoll(src))break}catch(e){}return r}}
+/* missions du jour */
+{const _c=claim;claim=function(k){const b=!!qd()['c'+k];const r=_c.apply(this,arguments);try{if(!b&&qd()['c'+k])ttRoll('daily')}catch(e){}return r}}
+{const _c=claimAll;claimAll=function(){const cnt=()=>{try{const q=qd();return QS.filter(z=>q['c'+z[0]]).length}catch(e){return 0}};const n0=cnt();const r=_c.apply(this,arguments);try{const n=cnt()-n0;for(let i=0;i<n;i++)if(ttRoll('daily'))break}catch(e){}return r}}
+
+/* ---------- réglages : retrait des options d'images, de sauvegarde et de remise à zéro (demande du propriétaire) ---------- */
+const CFGX=/^(Importer tes images|Réparer les images manquantes|Recharger les images en ligne|Roster en ligne|Sauvegarde|Tout effacer|Images des cartes)$/;
+function cfgClean(){if(view!='cfg')return;document.querySelectorAll('#v .qs>.q,#v .pn').forEach(r=>{const b=r.querySelector('b');if(b&&CFGX.test(b.textContent.trim()))r.remove()})}
+{const _s=show;show=function(){const r=_s.apply(this,arguments);try{cfgClean();setTimeout(cfgClean,0);setTimeout(cfgClean,400)}catch(e){}return r}}
 
 appBgSet(view);
 setTimeout(()=>{try{if(S.sv!=SPL.v&&!document.getElementById('bt'))splash()}catch(e){}},1400);
