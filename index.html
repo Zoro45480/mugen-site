@@ -4502,7 +4502,8 @@ qd();
 function showOdds(o,c,p){const d=document.createElement('div');d.className='odds'+(c.na?' aw':'');d.innerHTML=(c.na?'<b>ÉVEIL</b> · ':'')+oddsTxt(c,p);o.append(d)}
 
 /* ===== MISES À JOUR ===== */
-const VER='25.3.1',CHG=[
+const VER='25.3.2',CHG=[
+ {v:'25.3.2',d:'3 novembre 2026',t:'Deux mises à jour par jour',n:['Jusqu’à fin novembre, le jeu reçoit deux nouveautés par jour, à 11 h 23 et 17 h 23, pour être prêt pour Noël et le Nouvel An.'],f:[]},
  {v:'25.3.1',d:'3 novembre 2026',t:'Correctifs',n:[],f:['Le calendrier des prochaines mises à jour sur l’accueil est remis dans le bon ordre (les événements de Noël arriveront en décembre).']},
  {v:'25.3',d:'3 novembre 2026',t:'Nouvelles boîtes : Coffret Holographique et Boîte Mystère',n:['Le Booster Foil devient un Coffret Holographique irisé : il fait un tour sur lui-même et son couvercle s’envole dans une pluie arc-en-ciel.','La Boîte Mystère est scellée de chaînes et d’un cadenas : le cadenas saute, les chaînes cassent et des « ? » s’envolent.','Le Booster Halloween est retiré de la boutique, ainsi que la catégorie Événements (le Booster du Week-end passe dans Essentiels).'],f:[]},
  {v:'25.2',d:'3 novembre 2026',t:'Sondage : le nouveau style des boosters',n:['Donne ton avis sur les nouvelles boîtes de boosters en 3D, depuis l’accueil.','Après ton vote, tu vois qui a voté oui et qui a voté non.','Sur l’écran « Booster ouvert », fais glisser une carte pour la faire tourner en 3D et voir son dos.'],f:[]},
@@ -7571,8 +7572,9 @@ function cpH(g){const cp=cpGet(g),goal=cpGoal(g),me=cp.by[gMe()]||0,done=S.gmc&&
 /* ---------- annonce des prochaines mises à jour (sur l'accueil) ---------- */
 const NEXTUP=[['Synergies d’anime','3 cartes du même anime = bonus d’équipe'],['Titres et bordures de profil','20 titres à gagner, affichés partout'],['Sets de reliques','2 objets du même anime = bonus'],['Boss mondial','un boss pour tous les joueurs, 3 jours'],['Tournoi hebdomadaire','8 joueurs, finale le dimanche'],['Loto hebdo','1 ticket par jour, gros lot Divin'],['Succès cachés','15 succès secrets à découvrir'],['Carte du jour','une carte vedette, chances ×2'],['Chat de guilde','discute avec ta guilde'],['Album par anime','complète un anime, bordure dorée'],['Attaques combinées','10 duos, une attaque Duo'],['Statuts de combat','brûlure, gel, poison, étourdissement']];
 const NEXT0=new Date(2026,10,2,11,23);
-function nextUpH(){const now=Date.now();let i=0;const L=[];for(let k=0;k<NEXTUP.length&&L.length<5;k++){const d=new Date(NEXT0.getTime()+k*864e5);if(d.getTime()<now-6*36e5)continue;L.push([NEXTUP[k],d])}if(!L.length)return'';const ds=d=>d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
- return `<section class="pn nx23"><div class="ey">PROCHAINES MISES À JOUR · 更新予定</div><h3>Une nouveauté par jour, à 11 h 23</h3><p>Le jeu se met à jour tout seul : pas besoin de réinstaller, recharge juste la page.</p><div class="nx23-l">${L.map(([x,d],k)=>`<div class="${k==0?'nx':''}"><small>${ds(d)}${k==0?' · prochaine':''}</small><b>${x[0]}</b><span>${x[1]}</span></div>`).join('')}</div></section>`}
+const nxD=k=>k<1?new Date(NEXT0):new Date(2026,10,3+((k-1)>>1),(k-1)%2?17:11,23);
+function nextUpH(){const now=Date.now();let i=0;const L=[];for(let k=0;k<NEXTUP.length&&L.length<5;k++){const d=nxD(k);if(d.getTime()<now-3*36e5)continue;L.push([NEXTUP[k],d])}if(!L.length)return'';const ds=d=>d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'})+' · '+d.getHours()+' h 23';
+ return `<section class="pn nx23"><div class="ey">PROCHAINES MISES À JOUR · 更新予定</div><h3>Deux nouveautés par jour, à 11 h 23 et 17 h 23</h3><p>Le jeu se met à jour tout seul : pas besoin de réinstaller, recharge juste la page.</p><div class="nx23-l">${L.map(([x,d],k)=>`<div class="${k==0?'nx':''}"><small>${ds(d)}${k==0?' · prochaine':''}</small><b>${x[0]}</b><span>${x[1]}</span></div>`).join('')}</div></section>`}
 {const _d=dash;dash=function(){const r=_d.apply(this,arguments);try{const v=$('v');if(v&&!v.querySelector('.nx23')){const up=v.querySelector('.up20');const h=nextUpH();if(h){if(up)up.insertAdjacentHTML('afterend',h);else v.insertAdjacentHTML('beforeend',h)}}}catch(e){}return r}}
 
 /* ---------- v23.3 (suite) : 4 statistiques de guilde en plus ---------- */
