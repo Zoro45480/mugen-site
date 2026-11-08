@@ -4764,6 +4764,9 @@ html body .card.r9:not(.awk2) .nm{background:linear-gradient(90deg,#fff,#dff4ff 
 #bt.a3on .dec{display:none}
 #bt.a3on .bgo{background:linear-gradient(180deg,#0006,transparent 25%,transparent 60%,#000a)!important}
 #bt.a3on .bgi{display:none!important}
+</style><style>#u3f{position:fixed;inset:0;width:100%;height:100%;border:0;z-index:2147481000;opacity:0;pointer-events:none;transition:opacity .25s;background:#000}
+#u3f.on{opacity:1}
+#u3sk{position:fixed;right:16px;bottom:70px;z-index:2147481001;padding:9px 16px;border-radius:999px;border:1px solid #ffffff33;background:#0009;color:#fff;font:700 13px Inter,system-ui,sans-serif;cursor:pointer}
 </style></head><body>
 <canvas id="bg"></canvas><div id="appbg"></div><header id="tb"><div class="brand" data-oclick="show('home')"><div class="lg"><svg viewBox="0 0 40 40"><defs><linearGradient id="lgg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4d2e"/><stop offset="1" stop-color="#ffc414"/></linearGradient></defs><path d="M20 2l16 9v18l-16 9-16-9V11z" fill="url(#lgg)"/><path d="M12 27V14l8 8 8-8v13" fill="none" stroke="#10121a" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20" cy="10" r="2" fill="#10121a"/></svg></div><b>MUGEN</b></div><nav id="nav"></nav><div class="sp"></div><div class="pill" id="rs" style="display:none"></div><div class="pill" id="en" title="Boosters gratuits"></div><div class="pill"><i class="cn"></i><span id="co">0</span></div><button class="pill ms" data-oclick="show('miss')">務 Missions</button><button class="avb" id="avb" data-oclick="togPop(event)">J</button><div id="pop"><div class="pc" id="prof"></div><div class="prow"><button id="snd" data-oclick="mute()">Son activé</button><button id="mus" data-oclick="musT()">Musique</button></div><a data-oclick="show('album');closePop()">Ma collection</a><a data-oclick="show('rank');closePop()">Carrière</a><a data-oclick="show('cfg');closePop()">Réglages</a></div></header>
 <main id="v"></main><button id="backx" class="backx" data-oclick="closeOv()">← Retour au menu</button>
@@ -13496,6 +13499,7 @@ setTimeout(()=>{try{if(S.sv!=SPL.v&&!document.getElementById('bt'))splash()}catc
 <button data-t="camp">Débloquer toute la campagne</button>
 <button data-t="guild">Rejoindre une guilde test (niv. 10)</button>
 <button data-t="lvl">Niveau 60</button>
+<button data-t="a3">3D des combats : activer / couper</button>
 <button data-t="reset">Recommencer à zéro (sauvegarde test)</button></div>
 <script>(function(){const P=document.getElementById('tstp');document.getElementById('tstbt').onclick=()=>P.classList.toggle('on');
 const T={coins(){S.coins=(S.coins||0)+200000;S.ec=(S.ec||0)+20000;S.mf=(S.mf||0)+5000;S.gr=(S.gr||0)+5000},
@@ -13503,6 +13507,7 @@ cards(){D.forEach(c=>S.inv[c.id]=Math.max(3,S.inv[c.id]||0));try{autoSel()}catch
 packs(){S.fb=Math.max(S.fb||0,10);try{asS().pk=(asS().pk||0)+5}catch(e){}},
 camp(){S.cp=Math.max(S.cp||0,250)},
 async guild(){try{if(!GLD||!GLD.id)await gJoin('bot3')}catch(e){}try{GLD.lvl=10}catch(e){}},
+a3(){const off=!window.__A3OFF;window.__A3OFF=off;try{localStorage.setItem('a3off',off?'1':'0')}catch(e){}toast(off?'3D des combats coupée':'3D des combats activée');return 'x'},
 lvl(){S.xp=Math.max(S.xp||0,400000)},
 reset(){if(!confirm('Effacer la sauvegarde TEST ?'))return 'x';localStorage.removeItem('animecards');location.reload();return 'x'}};
 P.addEventListener('click',async e=>{const b=e.target.closest('button[data-t]');if(!b)return;try{const r=await T[b.dataset.t]();if(r=='x')return;save();toast('Mode test : '+b.textContent);try{show(typeof view!='undefined'?view:'home')}catch(e){}}catch(x){console.warn(x);toast('Mode test : erreur '+x.message)}})})();
@@ -13707,7 +13712,7 @@ function arenaId(){if(typeof B=='undefined'||!B)return 'dojo';const md=B.md||'';
  if(md=='event'){const n=(B.name||'')+' '+((B.en&&B.en[0]&&B.en[0].c&&B.en[0].c.s)||'');const v=VIL.find(x=>n.includes(x[0]));return v?v[1]:'v_shibuya'}
  return MD[md]||'dojo'}
 window.A3={arenaId};
-let IF=null,READY=0,PEND=[];
+let IF=null,READY=0,PEND=[];try{window.__A3OFF=localStorage.getItem('a3off')=='1'}catch(e){}
 const post=m=>{if(!IF)return;if(READY)IF.contentWindow.postMessage(m,'*');else PEND.push(m)};
 addEventListener('message',e=>{if(e.data&&e.data.t=='arene-ready'&&IF&&e.source==IF.contentWindow){READY=1;PEND.splice(0).forEach(m=>IF.contentWindow.postMessage(m,'*'))}});
 function mount(){const bt=document.getElementById('bt');if(!bt||bt.querySelector('.a3f'))return;
@@ -13717,4 +13722,19 @@ const _f=fight;fight=function(){const r=_f.apply(this,arguments);try{if(!window.
 })();
 /* chaque vraie attaque déclenche l'attaque 3D du perso (table atkFor de la maquette attaques-plus) */
 (function(){const _a=act;act=function(a,d,mi,ia,id,sd){try{if(mi!==3&&window.A3post&&document.querySelector('#bt .a3f')&&a&&a.c)A3post({t:'atk',s:sd,mi,c:{s:a.c.s,fx:a.c.fx,id:a.c.id,n:a.c.n}})}catch(e){}return _a.apply(this,arguments)}})();
+</script><script>/* SERVEUR TEST · ultimes 3D des cartes rares (Divin, Monarque, Lame Écarlate, Primordial, Ascendant) dans les vrais combats */
+(function(){
+let IF=null,NAMES=/*NAMES*/["Shanks", "Edward Newgate", "Kaido", "Muzan Kibutsuji", "Ainz Ooal Gown", "All Might", "Freezer", "Broly", "Makima", "Toji Fushiguro", "Isaac Netero", "Escanor", "Dio Brando", "Meliodas", "Tanjiro Kamado", "Nezuko Kamado", "Zenitsu Agatsuma", "Inosuke Hashibira", "Kyojuro Rengoku", "Giyu Tomioka", "Shinobu Kocho", "Gyomei Himejima", "Sanemi Shinazugawa", "Muichiro Tokito", "Mitsuri Kanroji", "Yoriichi Tsugikuni", "Ryomen Sukuna", "Saitama", "Beerus", "Alucard", "Gilgamesh", "Anos Voldigoad", "Madoka Kaname", "Griffith", "Suguru Getou", "Accelerator", "Shiro", "Sora", "Kisuke Urahara", "Yoruichi Shihouin", "Ulquiorra Cifer", "Diablo", "Cid Kagenou", "Garou", "Yoshikage Kira", "Funny Valentine", "Donquixote Doflamingo", "Charlotte Katakuri", "Kurumi Tokisaki", "Albedo", "Zero Two", "Shinobu Oshino", "Haruhi Suzumiya", "Homura Akemi", "Tomura Shigaraki", "Dabi", "Neferpitou", "Iskandar", "C.C.", "Vash the Stampede", "Zeke Yeager", "Kaguya Ōtsutsuki", "Hagoromo Ōtsutsuki", "Whis", "Gol D. Roger", "Yhwach", "Kenjaku", "Ymir Fritz", "Meruem", "Father", "Veldora Tempest", "All For One", "Pochita", "Antares", "Ryuk", "Zeref Dragneel", "Giorno Giovanna", "Asta", "Frieren", "Jiren", "Isshiki Ōtsutsuki", "Kars", "Hashirama Senju", "Shigeo Kageyama", "Tatsumaki", "Yuno", "Shinra Kusakabe"],WAIT=null,RD=0;const ready=()=>new Promise(r=>{let n=0;const t=setInterval(()=>{if(RD||++n>150){clearInterval(t);r(RD)}},100)});
+const fold=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const has=n=>{if(!NAMES)return false;const f=fold(n);return NAMES.some(x=>{const g=fold(x);return g==f||f.startsWith(g)||g.startsWith(f)})};
+addEventListener('message',e=>{const m=e.data||{};if(!IF||e.source!=IF.contentWindow)return;if(m.t=='ulti-ready'){RD=1}if(m.t=='ulti-done'&&WAIT){const w=WAIT;WAIT=null;w()}});
+function mount(){if(IF&&document.body.contains(IF))return;IF=document.createElement('iframe');IF.id='u3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;IF.src='assets/ulti.html';document.body.append(IF)}
+function hide(){if(IF)IF.classList.remove('on');const s=document.getElementById('u3sk');if(s)s.remove()}
+async function play(n){if(!has(n))return 0;mount();if(!(await ready()))return 0;try{window.A3post&&A3post({t:'pause',v:1})}catch(e){}IF.classList.add('on');const sk=document.createElement('button');sk.id='u3sk';sk.type='button';sk.textContent='Passer ›';document.body.append(sk);
+ await new Promise(r=>{WAIT=r;sk.onclick=()=>{WAIT=null;r()};setTimeout(()=>{if(WAIT===r){WAIT=null;r()}},14000);IF.contentWindow.postMessage({t:'ulti',n},'*')});hide();try{window.A3post&&A3post({t:'pause',v:0})}catch(e){}setTimeout(()=>{if(IF&&!IF.classList.contains('on')){IF.remove();IF=null;RD=0}},400);return 1}
+const _f=fight;fight=function(){const r=_f.apply(this,arguments);try{if(typeof B!='undefined'&&B)B.u3={};0}catch(e){}return r};
+for(const fn of ['cut','ultFx','monFx'])try{const o=eval(fn);if(typeof o=='function')eval(fn+'=function(){if(window.__U3SKIP)return Promise.resolve();return o.apply(this,arguments)}')}catch(e){}
+const _a=act;act=async function(a,d,mi,ia,id,sd){let played=0;try{const c=a&&a.c;if(c&&(c.r>=5||c.na)&&(mi==4||mi==5||(mi==2&&!(B.u3||{})[c.id]))&&!document.hidden&&has(c.n)){B.u3=B.u3||{};B.u3[c.id]=1;played=await play(c.n)}}catch(e){console.warn(e);hide()}if(!played)return _a.apply(this,arguments);window.__U3SKIP=1;try{return await _a.apply(this,arguments)}finally{window.__U3SKIP=0}};
+const _q=quitB;quitB=function(){hide();return _q.apply(this,arguments)};
+})();
 </script></body></html>

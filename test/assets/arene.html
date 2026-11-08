@@ -1474,10 +1474,12 @@ Object.assign(ATK,ATK2);
 /* SERVEUR TEST : arène en arrière-plan d'un vrai combat (pilotée par le jeu via postMessage) */
 try{F.forEach(f=>{f.body.visible=false;f.aura.visible=false})}catch(e){}
 try{dmgNum=function(){}}catch(e){}
+try{R.setPixelRatio(Math.min(1.5,devicePixelRatio));rs();const _rr=R.render.bind(R);let lt=performance.now(),avg=16,lvl=0,fc=0;R.render=(a,b)=>{const n=performance.now();avg=avg*.9+Math.min(200,n-lt)*.1;lt=n;if(window.__P)return;if(avg>34&&lvl<2){lvl++;avg=16;R.setPixelRatio(lvl==1?1:.75);rs()}if(lvl==2&&(fc++&1))return;_rr(a,b)}}catch(e){console.warn(e)}
 let ATQ=Promise.resolve();
 addEventListener('message',e=>{const m=e.data||{};try{
  if(m.t=='arena'){if(/^camp\d+$/.test(m.id))campArena(+m.id.slice(4));else setArena(ARENES[m.id]?m.id:'dojo')}
  if(m.t=='atk'){if(window.__A3RUN)return;let k=m.k||(m.mi===0?'frappe':m.c?atkFor(m.c):'frappe');if(!(ATK[k]&&ATK[k].run))k='frappe';window.__A3RUN=1;const a=F[m.s?1:0],d=F[m.s?0:1];Promise.race([ATK[k].run(a,d),new Promise(r=>setTimeout(r,5000))]).catch(x=>console.warn(x)).then(()=>{busy=false;window.__A3RUN=0;try{camTo(CAM0.p,CAM0.l,.4)}catch(e){}})}
+ if(m.t=='pause'){window.__P=!!m.v}
  if(m.t=='hit'){shakeA=Math.max(shakeA,m.v||.25)}
 }catch(x){console.warn(x)}});
 try{parent.postMessage({t:'arene-ready'},'*')}catch(e){}
