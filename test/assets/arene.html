@@ -46,7 +46,7 @@ html,body{height:100%;background:var(--bg);color:var(--tx);font-family:Inter,sys
 .ttl small{display:block;font:800 12px ui-monospace,monospace;letter-spacing:6px;color:#ffd36a;margin-top:-30px}
 .ttl b{display:block;font-size:44px;font-weight:900;font-style:italic;letter-spacing:1px;color:#fff;text-shadow:0 0 30px #ff3d6e,0 4px 0 #7a0a2a}
 @media (max-width:640px){.ttl b{font-size:26px}.ttl i{font-size:80px}}
-</style><style>#c{width:100%!important;height:100%!important}body.bgm .hud,#hudw,.moves,.tag,.cut,.ttl,.bars-cine{display:none!important}.flash{filter:opacity(.35)}.vig{background:radial-gradient(ellipse at center,transparent 55%,#0008 100%)!important}</style></head><body class="bgm">
+</style><style>#c{width:100%!important;height:100%!important}body.bgm .hud,#hudw,.moves,.tag,.cut,.bars-cine{display:none!important}.ttl b{font-size:34px!important}@media (max-width:640px){.ttl b{font-size:22px!important}.ttl i{font-size:70px!important}}.flash{filter:opacity(.35)}.vig{background:radial-gradient(ellipse at center,transparent 55%,#0008 100%)!important}</style></head><body class="bgm">
 <canvas id="c"></canvas><div class="vig"></div>
 <div class="bars-cine t"></div><div class="bars-cine b"></div>
 <div id="hudw"><div class="hud">
@@ -1476,8 +1476,9 @@ try{F.forEach(f=>{f.body.visible=false;f.aura.visible=false})}catch(e){}
 try{dmgNum=function(){}}catch(e){}
 try{R.setPixelRatio(Math.min(1.5,devicePixelRatio));rs();const _rr=R.render.bind(R);let lt=performance.now(),avg=16,lvl=0,fc=0;R.render=(a,b)=>{const n=performance.now();avg=avg*.9+Math.min(200,n-lt)*.1;lt=n;if(window.__P)return;if(avg>34&&lvl<2){lvl++;avg=16;R.setPixelRatio(lvl==1?1:.75);rs()}if(lvl==2&&(fc++&1))return;_rr(a,b)}}catch(e){console.warn(e)}
 let ATQ=Promise.resolve();
+window.__A3S={cam,F,THREE,CAM0,look};
 addEventListener('message',e=>{const m=e.data||{};try{
- if(m.t=='arena'){if(/^camp\d+$/.test(m.id))campArena(+m.id.slice(4));else setArena(ARENES[m.id]?m.id:'dojo')}
+ if(m.t=='arena'){let id=m.id;if(/^camp\d+$/.test(id))campArena(+id.slice(4));else{id=ARENES[id]?id:'dojo';setArena(id)}if(m.intro&&ARENES[id]){title(id).catch(()=>{});setTimeout(()=>{try{$('ttl').style.opacity=0}catch(e){}},4500)}}
  if(m.t=='atk'){if(window.__A3RUN)return;let k=m.k||(m.mi===0?'frappe':m.c?atkFor(m.c):'frappe');if(!(ATK[k]&&ATK[k].run))k='frappe';window.__A3RUN=1;const a=F[m.s?1:0],d=F[m.s?0:1];Promise.race([ATK[k].run(a,d),new Promise(r=>setTimeout(r,5000))]).catch(x=>console.warn(x)).then(()=>{busy=false;window.__A3RUN=0;try{camTo(CAM0.p,CAM0.l,.4)}catch(e){}})}
  if(m.t=='pause'){window.__P=!!m.v}
  if(m.t=='hit'){shakeA=Math.max(shakeA,m.v||.25)}
