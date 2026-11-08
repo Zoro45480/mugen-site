@@ -4767,6 +4767,9 @@ html body .card.r9:not(.awk2) .nm{background:linear-gradient(90deg,#fff,#dff4ff 
 </style><style>#u3f{position:fixed;inset:0;width:100%;height:100%;border:0;z-index:2147481000;opacity:0;pointer-events:none;transition:opacity .25s;background:#000}
 #u3f.on{opacity:1}
 #u3sk{position:fixed;right:16px;bottom:70px;z-index:2147481001;padding:9px 16px;border-radius:999px;border:1px solid #ffffff33;background:#0009;color:#fff;font:700 13px Inter,system-ui,sans-serif;cursor:pointer}
+</style><style>#d3f{position:fixed;inset:0;width:100%;height:100%;border:0;z-index:2147481000;opacity:0;pointer-events:none;transition:opacity .25s;background:#000}
+#d3f.on{opacity:1}
+#d3sk{position:fixed;right:16px;bottom:70px;z-index:2147481001;padding:9px 16px;border-radius:999px;border:1px solid #ffffff33;background:#0009;color:#fff;font:700 13px Inter,system-ui,sans-serif;cursor:pointer}
 </style></head><body>
 <canvas id="bg"></canvas><div id="appbg"></div><header id="tb"><div class="brand" data-oclick="show('home')"><div class="lg"><svg viewBox="0 0 40 40"><defs><linearGradient id="lgg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4d2e"/><stop offset="1" stop-color="#ffc414"/></linearGradient></defs><path d="M20 2l16 9v18l-16 9-16-9V11z" fill="url(#lgg)"/><path d="M12 27V14l8 8 8-8v13" fill="none" stroke="#10121a" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20" cy="10" r="2" fill="#10121a"/></svg></div><b>MUGEN</b></div><nav id="nav"></nav><div class="sp"></div><div class="pill" id="rs" style="display:none"></div><div class="pill" id="en" title="Boosters gratuits"></div><div class="pill"><i class="cn"></i><span id="co">0</span></div><button class="pill ms" data-oclick="show('miss')">務 Missions</button><button class="avb" id="avb" data-oclick="togPop(event)">J</button><div id="pop"><div class="pc" id="prof"></div><div class="prow"><button id="snd" data-oclick="mute()">Son activé</button><button id="mus" data-oclick="musT()">Musique</button></div><a data-oclick="show('album');closePop()">Ma collection</a><a data-oclick="show('rank');closePop()">Carrière</a><a data-oclick="show('cfg');closePop()">Réglages</a></div></header>
 <main id="v"></main><button id="backx" class="backx" data-oclick="closeOv()">← Retour au menu</button>
@@ -13736,5 +13739,17 @@ const _f=fight;fight=function(){const r=_f.apply(this,arguments);try{if(typeof B
 for(const fn of ['cut','ultFx','monFx'])try{const o=eval(fn);if(typeof o=='function')eval(fn+'=function(){if(window.__U3SKIP)return Promise.resolve();return o.apply(this,arguments)}')}catch(e){}
 const _a=act;act=async function(a,d,mi,ia,id,sd){let played=0;try{const c=a&&a.c;if(c&&(c.r>=5||c.na)&&(mi==4||mi==5||(mi==2&&!(B.u3||{})[c.id]))&&!document.hidden&&has(c.n)){B.u3=B.u3||{};B.u3[c.id]=1;played=await play(c.n)}}catch(e){console.warn(e);hide()}if(!played)return _a.apply(this,arguments);window.__U3SKIP=1;try{return await _a.apply(this,arguments)}finally{window.__U3SKIP=0}};
 const _q=quitB;quitB=function(){hide();return _q.apply(this,arguments)};
+})();
+</script><script>/* SERVEUR TEST · attaques duo 3D (10 duos) dans les vrais combats */
+(function(){if(typeof du26Cine!='function')return;
+const IDS=['gv','ns','tn','lz','gk','ea','em','ir','gg','db'];let IF=null,RD=0,WAIT=null;
+addEventListener('message',e=>{const m=e.data||{};if(!IF||e.source!=IF.contentWindow)return;if(m.t=='duo-ready')RD=1;if(m.t=='duo-done'&&WAIT){const w=WAIT;WAIT=null;w()}});
+const ready=()=>new Promise(r=>{let n=0;const t=setInterval(()=>{if(RD||++n>150){clearInterval(t);r(RD)}},100)});
+const _d=du26Cine;du26Cine=async function(a,p,d){const id=d&&d.id;if(!id||!IDS.includes(id)||document.hidden||window.__A3OFF)return _d.apply(this,arguments);
+ try{IF=document.createElement('iframe');IF.id='d3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;RD=0;IF.src='assets/duo.html';document.body.append(IF);
+  if(!(await ready())){IF.remove();IF=null;return _d.apply(this,arguments)}
+  try{window.A3post&&A3post({t:'pause',v:1})}catch(e){}IF.classList.add('on');const sk=document.createElement('button');sk.id='d3sk';sk.type='button';sk.textContent='Passer ›';document.body.append(sk);
+  await new Promise(r=>{WAIT=r;sk.onclick=()=>{WAIT=null;r()};setTimeout(()=>{if(WAIT===r){WAIT=null;r()}},20000);IF.contentWindow.postMessage({t:'duo',id},'*')});
+  sk.remove();IF.classList.remove('on');try{window.A3post&&A3post({t:'pause',v:0})}catch(e){}const f=IF;IF=null;setTimeout(()=>f.remove(),300)}catch(e){console.warn(e);try{IF&&IF.remove()}catch(_){}IF=null;return _d.apply(this,arguments)}};
 })();
 </script></body></html>
