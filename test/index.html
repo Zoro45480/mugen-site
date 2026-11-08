@@ -4736,6 +4736,27 @@ html body .card.r9:not(.awk2) .nm{background:linear-gradient(90deg,#fff,#dff4ff 
 #tstp.on{display:grid;gap:6px}#tstp b{font-size:14px}#tstp small{color:#a59cbd}
 #tstp button{text-align:left;padding:9px 11px;border-radius:10px;border:1px solid #ffffff1a;background:#ffffff0a;color:inherit;font:700 13px Inter,system-ui,sans-serif;cursor:pointer}#tstp button:hover{background:#ffffff16}
 @media (max-width:640px){#tstb{font-size:9px;padding:3px 4px 3px 9px;bottom:4px;white-space:nowrap}#tstb button{font-size:10px;padding:5px 9px}}
+</style><style>/* SERVEUR TEST · look des menus du site v3 */
+#nav.v3nav>button,#nav.v3nav>.dw>button{position:relative;padding:9px 15px;border-radius:10px;font:700 14px Inter,system-ui,sans-serif;color:#a59cbd;background:none;transition:color .2s,background .2s}
+#nav.v3nav>button:hover,#nav.v3nav>.dw>button:hover{color:#fff;background:#ffffff0a}
+#nav.v3nav>button.on,#nav.v3nav>.dw.on>button{color:#fff}
+#nav.v3nav>button.on::after,#nav.v3nav>.dw.on>button::after{content:'';position:absolute;left:12px;right:12px;bottom:2px;height:2px;border-radius:2px;background:linear-gradient(90deg,#ff7a45,#ff3d6e,#7c4dff);box-shadow:0 0 10px #ff3d6e}
+#nav.v3nav .dw>button .v3k{font:900 13px serif;font-style:normal;color:var(--sc,#ff3d6e);margin-right:6px;text-shadow:0 0 10px var(--sc,#ff3d6e)}
+#nav.v3nav .dmenu{background:#120e1af2!important;border:1px solid #ffffff1c!important;box-shadow:0 20px 50px #000c,0 0 0 1px color-mix(in srgb,var(--sc,#ff3d6e) 25%,transparent)!important;backdrop-filter:blur(14px);border-radius:16px!important;padding:8px!important;animation:v3dm .22s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes v3dm{from{opacity:0;transform:translateY(-6px) scale(.97)}}
+#nav.v3nav .dmenu button{border-radius:11px;transition:background .15s,transform .15s}#nav.v3nav .dmenu button:hover{background:#ffffff0c;transform:translateX(3px)}
+#nav.v3nav .dmenu .kj{width:34px;height:34px;flex:none;border-radius:10px;display:grid;place-items:center;font:900 16px serif;font-style:normal;color:var(--c);background:color-mix(in srgb,var(--c) 16%,transparent);border:1px solid color-mix(in srgb,var(--c) 40%,transparent);box-shadow:0 0 14px color-mix(in srgb,var(--c) 22%,transparent)}
+#v3mob{display:none}
+@media (max-width:760px){
+ #v3mob{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:2147482500;padding:6px 6px calc(6px + env(safe-area-inset-bottom));background:#0b0812f0;backdrop-filter:blur(14px);border-top:1px solid #ffffff14}
+ #v3mob button{flex:1;display:grid;justify-items:center;gap:2px;padding:4px 0;border:0;background:none;color:#a59cbd;font:700 10px Inter,system-ui,sans-serif}
+ #v3mob button i{font:900 18px serif;font-style:normal;line-height:1}
+ #v3mob button.on{color:#fff}#v3mob button.on i{color:#ff3d6e;text-shadow:0 0 12px #ff3d6e}
+ body{padding-bottom:64px}
+ #tstb{bottom:68px!important}
+}
+#nav.v3nav>.dw>button{display:inline-flex!important;flex-direction:row!important;align-items:center;white-space:nowrap}
+#nav.v3nav>.dw{margin-left:8px}
 </style></head><body>
 <canvas id="bg"></canvas><div id="appbg"></div><header id="tb"><div class="brand" data-oclick="show('home')"><div class="lg"><svg viewBox="0 0 40 40"><defs><linearGradient id="lgg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4d2e"/><stop offset="1" stop-color="#ffc414"/></linearGradient></defs><path d="M20 2l16 9v18l-16 9-16-9V11z" fill="url(#lgg)"/><path d="M12 27V14l8 8 8-8v13" fill="none" stroke="#10121a" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20" cy="10" r="2" fill="#10121a"/></svg></div><b>MUGEN</b></div><nav id="nav"></nav><div class="sp"></div><div class="pill" id="rs" style="display:none"></div><div class="pill" id="en" title="Boosters gratuits"></div><div class="pill"><i class="cn"></i><span id="co">0</span></div><button class="pill ms" data-oclick="show('miss')">務 Missions</button><button class="avb" id="avb" data-oclick="togPop(event)">J</button><div id="pop"><div class="pc" id="prof"></div><div class="prow"><button id="snd" data-oclick="mute()">Son activé</button><button id="mus" data-oclick="musT()">Musique</button></div><a data-oclick="show('album');closePop()">Ma collection</a><a data-oclick="show('rank');closePop()">Carrière</a><a data-oclick="show('cfg');closePop()">Réglages</a></div></header>
 <main id="v"></main><button id="backx" class="backx" data-oclick="closeOv()">← Retour au menu</button>
@@ -13644,4 +13665,28 @@ window.O2READY=1;
  if(!(window.OPEN2C&&p&&Array.isArray(packs)&&packs.length==1&&packs[0]&&packs[0].length&&!document.hidden&&!window.__O2B))return _s.apply(self,a);
  window.__O2B=1;let done=0;const go=()=>{if(done)return;done=1;window.__O2B=0;const o=document.getElementById('o2');if(o)o.remove();_s.apply(self,a);setTimeout(()=>{const b=document.getElementById('p13s')||document.getElementById('sk0');if(b)b.click()},120)};
  try{OPEN2C(p,packs[0]).then(go,e=>{console.warn(e);go()});setTimeout(()=>{const b=document.querySelector('#o2 .o2sk');if(b)b.onclick=go},50);setTimeout(go,30000)}catch(e){console.warn(e);go()}}}
+</script><script>/* SERVEUR TEST · menus du site v3 : 6 sections (Accueil, Jouer, Cartes, Marché, Progrès, Social) + Plus, icônes kanji, barre du bas sur téléphone */
+(function(){
+const SEC=[['Jouer','戦','#ff3d6e',['battle','dsm','asc','exp','board','mem','event','hev']],['Cartes','札','#ffb43a',['shop','album','lab','gear','wiki']],['Marché','市','#ffd36a',['mkt','hdv','bm','mer','lot']],['Progrès','進','#7c4dff',['miss','pass','rank','ladder']],['Social','繋','#4aa8ff',['guild','friends','feed']],['Plus','他','#9aa4b2',['guide','maj','cfg']]];
+const KJ={battle:['戦','#ff3d6e'],dsm:['滅','#ff2d55'],asc:['昇','#9be7ff'],exp:['旅','#2ee67a'],board:['掲','#ffb43a'],mem:['憶','#c77dff'],event:['壁','#ff7a45'],hev:['時','#ff7a45'],shop:['包','#ffb43a'],album:['集','#4de1ff'],lab:['鍛','#ff7a45'],gear:['装','#c77dff'],wiki:['図','#9aa4b2'],mkt:['市','#ffd36a'],hdv:['競','#4aa8ff'],bm:['闇','#7c4dff'],mer:['狐','#ff7a45'],lot:['籤','#2ee67a'],miss:['務','#2ee67a'],pass:['季','#7c4dff'],rank:['経','#ff3d6e'],ladder:['位','#ffc414'],guild:['団','#4aa8ff'],friends:['友','#2ee67a'],feed:['速','#ff3d6e'],guide:['導','#2ee67a'],maj:['新','#4aa8ff'],cfg:['設','#9aa4b2'],home:['家','#ff7a45']};
+const LBL={battle:['Combat','15 modes · Portes de l’Origine'],shop:['Boosters','Pack du jour · 44 boosters'],album:['Collection','Album, doublons, fusion'],mkt:['Marché','Offres du jour']};
+const FB={dsm:['dsm','Pourfendeurs','Chasse aux démons'],asc:['asc','L’Ascension','Les Épreuves du Ciel · cartes 昇']};
+function reorg(){const all=Object.assign({},FB);NG.forEach(g=>g[1].forEach(x=>all[x[0]]=x));NTOP.forEach(x=>{if(!all[x[0]])all[x[0]]=[x[0],(LBL[x[0]]||[x[1]])[0],(LBL[x[0]]||[0,''])[1]]});
+ Object.keys(LBL).forEach(k=>{if(all[k])all[k]=[k,LBL[k][0],all[k][2]||LBL[k][1]]});
+ const used=new Set(['home']);const G=SEC.map(([n,,,ids])=>[n,ids.filter(id=>all[id]).map(id=>{used.add(id);return all[id]})]);
+ const rest=Object.keys(all).filter(k=>!used.has(k)).map(k=>all[k]);if(rest.length)G[G.length-1][1].push(...rest);
+ NTOP.length=0;NTOP.push(['home','Accueil']);NG.length=0;G.filter(g=>g[1].length).forEach(g=>NG.push(g))}
+function deco(){const nav=document.getElementById('nav');if(!nav)return;nav.classList.add('v3nav');
+ nav.querySelectorAll('.dw').forEach((dw,k)=>{const sec=SEC.find(s=>s[0]==(NG[k]&&NG[k][0]));if(sec){dw.style.setProperty('--sc',sec[2]);const b=dw.querySelector(':scope>button');if(b&&!b.querySelector(".v3k"))b.insertAdjacentHTML('afterbegin',`<i class="v3k">${sec[1]}</i>`)}});
+ nav.querySelectorAll('.dmenu [data-v]').forEach(b=>{const k=KJ[b.dataset.v]||['夢','#ff3d6e'];const sv=b.querySelector('svg');if(sv&&!b.querySelector('.kj')){sv.outerHTML=`<i class="kj" style="--c:${k[1]}">${k[0]}</i>`}});
+ let mb=document.getElementById('v3mob');if(!mb){mb=document.createElement('nav');mb.id='v3mob';document.body.append(mb)}
+ mb.innerHTML=[['home','Accueil'],['battle','Jouer'],['shop','Cartes'],['mkt','Marché'],['miss','Progrès']].map(([id,n])=>`<button data-v="${id}"><i>${(KJ[id]||['夢'])[0]}</i>${n}</button>`).join('');
+ mb.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>show(b.dataset.v));mark()}
+function mark(){try{const v=typeof view!='undefined'?view:'';document.querySelectorAll('#v3mob [data-v]').forEach(b=>b.classList.toggle('on',b.dataset.v==v));
+ const k=NG.findIndex(g=>g[1].some(x=>x[0]==v));document.querySelectorAll('#nav.v3nav>.dw').forEach((d,i)=>d.classList.toggle('on',i==k))}catch(e){}}
+const _p=navPaint;navPaint=function(){try{reorg()}catch(e){console.warn(e)}const r=_p.apply(this,arguments);try{deco()}catch(e){console.warn(e)}return r};
+const _s=show;show=function(){const r=_s.apply(this,arguments);try{mark()}catch(e){}return r};
+const _b=navBuild;navBuild=function(){const r=_b.apply(this,arguments);try{navPaint()}catch(e){}return r};
+try{navPaint()}catch(e){console.warn(e)}
+})();
 </script></body></html>
