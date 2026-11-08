@@ -13715,4 +13715,6 @@ function mount(){const bt=document.getElementById('bt');if(!bt||bt.querySelector
 window.A3post=post;
 const _f=fight;fight=function(){const r=_f.apply(this,arguments);try{if(!window.__A3OFF&&!document.hidden)setTimeout(mount,30)}catch(e){console.warn(e)}return r};
 })();
+/* chaque vraie attaque déclenche l'attaque 3D du perso (table atkFor de la maquette attaques-plus) */
+(function(){const _a=act;act=function(a,d,mi,ia,id,sd){try{if(mi!==3&&window.A3post&&document.querySelector('#bt .a3f')&&a&&a.c)A3post({t:'atk',s:sd,mi,c:{s:a.c.s,fx:a.c.fx,id:a.c.id,n:a.c.n}})}catch(e){}return _a.apply(this,arguments)}})();
 </script></body></html>

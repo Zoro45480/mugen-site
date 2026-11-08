@@ -46,7 +46,7 @@ html,body{height:100%;background:var(--bg);color:var(--tx);font-family:Inter,sys
 .ttl small{display:block;font:800 12px ui-monospace,monospace;letter-spacing:6px;color:#ffd36a;margin-top:-30px}
 .ttl b{display:block;font-size:44px;font-weight:900;font-style:italic;letter-spacing:1px;color:#fff;text-shadow:0 0 30px #ff3d6e,0 4px 0 #7a0a2a}
 @media (max-width:640px){.ttl b{font-size:26px}.ttl i{font-size:80px}}
-</style><style>body.bgm .hud,#hudw,.moves,.tag,.cut,.ttl,.bars-cine{display:none!important}.vig{background:radial-gradient(ellipse at center,transparent 55%,#0008 100%)!important}</style></head><body class="bgm">
+</style><style>body.bgm .hud,#hudw,.moves,.tag,.cut,.ttl,.bars-cine{display:none!important}.flash{filter:opacity(.35)}.vig{background:radial-gradient(ellipse at center,transparent 55%,#0008 100%)!important}</style></head><body class="bgm">
 <canvas id="c"></canvas><div class="vig"></div>
 <div class="bars-cine t"></div><div class="bars-cine b"></div>
 <div id="hudw"><div class="hud">
@@ -1279,13 +1279,205 @@ function frameDt(dt){
  cam.position.add(o);cam.lookAt(look);R.render(sc,cam);cam.position.sub(o)}
 window.REC=location.search.includes('rec');
 if(REC){const px=new Uint8Array(4);window.STEP=(dt)=>{last=0;frameDt(dt);const gl=R.getContext();gl.readPixels(0,0,1,1,gl.RGBA,gl.UNSIGNED_BYTE,px)}}else requestAnimationFrame(frame);
+const C3=c=>new THREE.Color(c);
+const enP=d=>d.G.position.clone().add(V(0,1.9,.4));
+const dirOf=(a,d)=>Math.sign(d.G.position.x-a.G.position.x);
+function proj(p0,p1,col,size,dur,o={}){const g=new THREE.Group(),core=new THREE.Mesh(new THREE.SphereGeometry(size*.45,16,12),addMat(0xffffff,.95));g.add(core,glowS(C3(col),size*2.4,.9));g.position.copy(p0);sc.add(g);
+ return tween(dur,t=>{g.position.lerpVectors(p0,p1,t);if(o.arc)g.position.y+=Math.sin(t*Math.PI)*o.arc;burst(g.position,2,{v:1,c:col,c2:'#ffffff',s:size*.5,life:.3,g:0})},o.e||(t=>t)).then(()=>{sc.remove(g)})}
+function spike(p,col,h,dur=.25){const m=new THREE.Mesh(new THREE.ConeGeometry(h*.18,h,6),new THREE.MeshStandardMaterial({color:col,roughness:.8,flatShading:true}));m.position.copy(p);m.position.y=-h/2;m.rotation.set(rnd(-.3,.3),rnd(0,3),rnd(-.3,.3));sc.add(m);
+ burst(p.clone().setY(.1),10,{v:4,up:1.5,c:'#b8a890',s:.22,life:.7,g:-9});return tween(dur,t=>{m.position.y=-h/2+h*.55*t},ease.o).then(()=>{addFX(null,1.4,k=>{if(k>.7){m.position.y-=.05;m.material.opacity=1}},()=>sc.remove(m))})}
+function spritePic(draw,w,h,add=true){const t=tex(256,256,draw);const s=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true,depthWrite:false,blending:add?THREE.AdditiveBlending:THREE.NormalBlending}));s.scale.set(w,h,1);return s}
+const drawSpirit=col=>(g,w,h)=>{g.translate(w/2,h);g.scale(.42,.42);g.fillStyle=col;g.shadowColor=col;g.shadowBlur=40;g.globalAlpha=.85;g.beginPath();g.moveTo(-220,0);g.bezierCurveTo(-200,-220,-150,-330,-80,-360);g.lineTo(-60,-420);g.bezierCurveTo(-95,-470,-95,-540,-55,-575);g.lineTo(0,-600);g.lineTo(55,-575);g.bezierCurveTo(95,-540,95,-470,60,-420);g.lineTo(80,-360);g.bezierCurveTo(150,-330,200,-220,220,0);g.closePath();g.fill();g.globalAlpha=1;g.shadowBlur=0;g.fillStyle='#fff';g.beginPath();g.ellipse(-24,-505,13,5,-.2,0,7);g.ellipse(24,-505,13,5,.2,0,7);g.fill()};
+function fireTube(cv,c1,c2,r=.42){return new THREE.Mesh(new THREE.TubeGeometry(cv,220,r,12),new THREE.ShaderMaterial({uniforms:{t:{value:0},p:{value:0},a:{value:C3(c1)},b:{value:C3(c2)}},transparent:true,depthWrite:false,side:2,blending:THREE.AdditiveBlending,
+ vertexShader:`varying vec2 vU;varying vec3 vN;varying vec3 vV;void main(){vU=uv;vec4 mv=modelViewMatrix*vec4(position,1.);vN=normalize(normalMatrix*normal);vV=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;}`,
+ fragmentShader:`uniform float t,p;uniform vec3 a,b;varying vec2 vU;varying vec3 vN;varying vec3 vV;void main(){if(vU.x>p)discard;float n=sin(vU.x*70.-t*20.+vU.y*14.)*.5+.5;float rim=pow(1.-abs(dot(vN,vV)),1.5);vec3 c=mix(a,b,n)*(.6+rim*.8)+vec3(1.)*pow(n,6.)*.5;float fade=smoothstep(p-.45,p-.02,vU.x)*.7+.3;gl_FragColor=vec4(c*fade,1.);}`}))}
+async function quick(a,d,cpos){busy=true;await camTo(cpos||V(-dirOf(a,d)*1.5,3,9.5),V(0,1.8,0),.35,ease.o)}
+async function quickEnd(){await camTo(CAM0.p,CAM0.l,.5);busy=false}
+const ATK2={};
+// 1. Esprit combattant + rafale de poings (inspirée JoJo)
+ATK2.esprit={n:'RAFALE DE L’ESPRIT',k:'魂',col:'#b06aff',u:'JoJo',async run(a,d){const dir=dirOf(a,d),col=this.col;let sp=null;
+ await cineIn(a,d,C3(col),this.n,this.k,t=>{if(!sp){sp=spritePic(drawSpirit(col),3.4,4.6);sc.add(sp)}sp.position.copy(a.G.position).add(V(-dir*.6,2.4+t*.3,-.6));sp.material.opacity=t;sp.scale.set(3.4+t*.6,4.6+t*.8,1)});
+ await camTo(V(-dir*2,2.8,8.8),V(d.G.position.x*.4,1.9,0),.3,ease.o);
+ tween(.3,t=>{sp.position.x=a.G.position.x+dir*(.4+t*2.4)});await sleep(250);
+ for(let i=0;i<40;i++){const s=a.G.position.clone().add(V(dir*2.6,rnd(1.3,2.8),.4)),e=enP(d).add(V(rnd(-.5,.5),rnd(-.7,.8),0));proj(s,e,col,.55,.07);after(.07,()=>{flare(e,C3(col),1.6,.12);burst(e,5,{v:5,c:'#e0c0ff',s:.12,life:.25});shake(.12);d.m.uniforms.hit.value=1});if(i%5==0)dmgNum(e.clone().add(V(0,.9,0)),'-'+(30+(i*7)%25),'#d8b0ff',false);await sleep(38)}
+ d.hp-=1200;hud();const e=enP(d);await proj(a.G.position.clone().add(V(dir*2.6,2,.4)),e,'#ffffff',1.6,.14);explode(e,col,3.8,300);hurt(d,900,true);timeScale=.4;await sleep(400);timeScale=1;
+ await tween(.3,t=>sp.material.opacity=1-t);sc.remove(sp);await cineOut(a)}};
+// 2. Aura + poing de pierre (inspirée Hunter x Hunter)
+ATK2.nen={n:'POING DE PIERRE',k:'念',col:'#ffd36a',u:'Hunter x Hunter',async run(a,d){const dir=dirOf(a,d),col=this.col;const fist=glowS(C3(col),.5,1);sc.add(fist);
+ await cineIn(a,d,C3(col),this.n,this.k,t=>{burst(a.G.position.clone().add(V(rnd(-1,1),rnd(0,3.4),.3)),2,{v:1,up:3,g:3,dr:.5,life:.7,c:col,c2:'#ffffff',s:.25});fist.position.copy(handP(a,dir));fist.scale.setScalar(.6+t*2.4)});
+ await camTo(V(dir*1,2.2,7.5),V(d.G.position.x*.5,1.8,0),.25,ease.o);const back=await dashTo(a,d,.16,1.6);const e=enP(d);
+ fist.position.copy(e);hitstop=.22;flashScr(.7);explode(e,col,4.2,320);for(let i=0;i<14;i++){const r=new THREE.Mesh(new THREE.DodecahedronGeometry(rnd(.1,.3),0),M(0x8a7a60,{flatShading:true}));r.position.copy(e);sc.add(r);const v=V(rnd(-6,6),rnd(2,8),rnd(-3,3));addFX(r,1.2,k=>{r.position.addScaledVector(v,1/30);v.y-=.5;r.rotation.x+=.2},()=>sc.remove(r))}
+ hurt(d,2100,true);sc.remove(fist);timeScale=.4;await sleep(450);timeScale=1;await back();await cineOut(a)}};
+// 3. Grappins + entaille tournoyante (inspirée Attack on Titan)
+ATK2.grappin={n:'ENTAILLE TOURNOYANTE',k:'翼',col:'#9fd8ff',u:'Attack on Titan',async run(a,d){const dir=dirOf(a,d),col=this.col;await quick(a,d,V(0,4.2,11));
+ const anc=[enP(d).add(V(-dir*.3,2.6,-2.5)),enP(d).add(V(dir*1.2,2.4,2))];const lines=anc.map(p=>{const g=new THREE.BufferGeometry().setFromPoints([handP(a,dir),p]);const l=new THREE.Line(g,new THREE.LineBasicMaterial({color:0xdfe8f0}));sc.add(l);return l});
+ await sleep(200);const x0=a.G.position.x,c=d.G.position.clone();
+ await tween(.9,t=>{const an=t*Math.PI*3,r=2.2-t*1.2;a.G.position.set(c.x+Math.cos(an)*r*-dir,Math.sin(t*Math.PI)*1.6,c.z+Math.sin(an)*r);a.body.rotation.y=an*2;lines.forEach((l,i)=>l.geometry.setFromPoints([a.G.position.clone().add(V(0,1.8,0)),anc[i]]));
+  if(Math.random()<.5){slash(enP(d).add(V(rnd(-.4,.4),rnd(-.6,.6),.2)),C3(col),rnd(0,6),1.8);burst(enP(d),8,{v:6,c:'#ffffff',c2:col,s:.14,life:.3});shake(.12);d.m.uniforms.hit.value=1}},ease.io);
+ lines.forEach(l=>sc.remove(l));burst(enP(d),60,{v:3,up:2,g:2,dr:1,c:'#e8eef4',s:.5,life:1});hurt(d,1650,true);ring(enP(d),C3(col),5,.6,.08,false);
+ await tween(.4,t=>{a.G.position.set(x0+(a.G.position.x-x0)*(1-t),a.G.position.y*(1-t),a.G.position.z*(1-t))});a.G.position.set(x0,0,0);a.body.rotation.y=0;await quickEnd()}};
+// 4. Smash et onde de choc (inspirée My Hero Academia)
+ATK2.smash={n:'SMASH DÉVASTATEUR',k:'撃',col:'#5cff9a',u:'My Hero Academia',async run(a,d){const dir=dirOf(a,d),col=this.col;
+ await cineIn(a,d,C3(col),this.n,this.k,t=>{if(Math.random()<.4){const h=a.G.position.clone().add(V(rnd(-1,1),rnd(.5,3.2),.5));bolt(h,h.clone().add(V(rnd(-.8,.8),rnd(-.8,.8),0)),C3(col),.08,{n:5,j:.15,r:.02})}});
+ await camTo(V(-dir*3,2.4,8),V(dir*2,1.8,0),.25,ease.o);const back=await dashTo(a,d,.12,2.2);const e=enP(d);
+ hitstop=.2;flashScr(.8);const cone=new THREE.Mesh(new THREE.CylinderGeometry(.5,6,18,40,1,true),addMat(0xeaffef,.5));cone.rotation.z=-dir*Math.PI/2;cone.position.copy(e).add(V(dir*9,0,0));sc.add(cone);
+ addFX(cone,.9,t=>{cone.scale.set(.3+t,1,.3+t);cone.material.opacity=.5*(1-t)},()=>sc.remove(cone));for(let i=0;i<5;i++)after(i*.06,()=>ring(e.clone().add(V(dir*i*2,0,0)),0xffffff,3+i,.6,.05,false));
+ burst(e,400,{dir:V(dir,0,0),sp:.6,v:22,c:'#eaffef',c2:col,s:.3,life:1,g:0,dr:1});explode(e,col,3.5,200);hurt(d,2250,true);
+ const x0=d.G.userData.base;tween(1,t=>{d.G.position.x=x0+dir*Math.sin(t*Math.PI)*3.5;d.body.rotation.z=-dir*Math.sin(t*Math.PI)*.8},ease.o).then(()=>{d.G.position.x=x0;d.body.rotation.z=0});
+ timeScale=.4;await sleep(500);timeScale=1;await back();await cineOut(a)}};
+// 5. Rugissement du dragon de feu (inspiré Fairy Tail)
+ATK2.rugissement={n:'RUGISSEMENT DU DRAGON',k:'竜',col:'#ff7a1a',u:'Fairy Tail',async run(a,d){const dir=dirOf(a,d),col=this.col;
+ await cineIn(a,d,C3(col),this.n,this.k,t=>{a.body.rotation.x=-.2*t;burst(handP(a,dir),3,{v:2,up:2,g:3,c:'#ffb43a',c2:'#ff3a1a',s:.25,life:.5})});
+ await camTo(V(0,3.4,10.5),V(0,1.9,0),.3,ease.o);const s0=a.G.position.clone().add(V(dir*1.1,2.3,.4)),e=enP(d);
+ const cone=new THREE.Mesh(new THREE.ConeGeometry(1.8,s0.distanceTo(e),32,1,true),addMat(0xff7a1a,.35));cone.rotation.z=dir*Math.PI/2;cone.position.copy(s0.clone().lerp(e,.5));sc.add(cone);
+ const fl=every(.02,()=>{burst(s0,14,{dir:V(dir,0,0),sp:.35,v:16,c:'#ffb43a',c2:'#ff3a1a',s:.5,life:.45,g:2,dr:.6})});
+ await tween(1.3,t=>{cone.material.opacity=.35*Math.min(1,t*4)*(t>.8?(1-t)*5:1);cone.scale.x=cone.scale.z=.6+Math.sin(T*40)*.08+t*.4;shake(.18);d.m.uniforms.hit.value=.5+Math.sin(t*30)*.5;if(Math.random()<.3)burst(e,10,{v:6,c:'#ffd36a',c2:'#ff3a1a',s:.3,life:.5})});
+ stopE(fl);sc.remove(cone);explode(e,col,4,300);hurt(d,2200,true);timeScale=.45;await sleep(400);timeScale=1;a.body.rotation.x=0;await cineOut(a)}};
+// 6. Lames de tronçonneuse (inspirée Chainsaw Man)
+ATK2.tronco={n:'LAMES HURLANTES',k:'鋸',col:'#ff5a3a',u:'Chainsaw Man',async run(a,d){const dir=dirOf(a,d),col=this.col;
+ const saw=s=>{const g=new THREE.Group();const bar=new THREE.Mesh(new THREE.BoxGeometry(1.8,.22,.06),M(0xb8c0c8,{metalness:.9,roughness:.3}));g.add(bar);for(let i=0;i<12;i++){const tth=new THREE.Mesh(new THREE.ConeGeometry(.05,.14,4),M(0x606870,{metalness:.8}));tth.position.set(-.85+i*.155,.14,0);g.add(tth)}const eng=new THREE.Mesh(new THREE.BoxGeometry(.45,.4,.3),M(0xff7a1a));eng.position.x=-1.05;g.add(eng);g.userData.s=s;sc.add(g);return g};
+ const S=[saw(1),saw(-1)];
+ await cineIn(a,d,C3(col),this.n,this.k,t=>{S.forEach(g=>{g.position.copy(a.G.position).add(V(dir*(.6+t*.9),1.8+g.userData.s*.9,.5));g.rotation.z=g.userData.s*.3*dir;g.scale.x=dir;g.children.slice(1,13).forEach((c,i)=>c.position.x=-.85+((i*.155+T*6)%1.8))});if(Math.random()<.5)burst(S[0].position,3,{v:4,c:'#ffd36a',s:.08,life:.2})});
+ await camTo(V(-dir*1.5,2.6,8.6),V(d.G.position.x*.5,1.8,0),.25,ease.o);const back=await dashTo(a,d,.14,2.4);
+ await tween(1,t=>{S.forEach(g=>{g.position.copy(a.G.position).add(V(dir*1.5,1.8+g.userData.s*Math.sin(t*30)*.7,.5));g.rotation.z=g.userData.s*Math.sin(t*30)*.6;g.children.slice(1,13).forEach((c,i)=>c.position.x=-.85+((i*.155+T*9)%1.8))});
+  const e=enP(d);burst(e,6,{v:9,c:'#ffd36a',c2:'#ffffff',s:.08,life:.3,g:-8});if(Math.random()<.4){burst(e,5,{v:4,c:'#8a0010',s:.18,life:.6,g:-10});slash(e,C3(col),rnd(0,6),1.6);d.m.uniforms.hit.value=1}shake(.2)});
+ explode(enP(d),col,3,200);hurt(d,1900,true);S.forEach(g=>sc.remove(g));await sleep(350);await back();await cineOut(a)}};
+// 7. Levée des ombres (inspirée Solo Leveling)
+ATK2.ombres={n:'LEVÉE DES OMBRES',k:'影',col:'#7c4dff',u:'Solo Leveling',async run(a,d){const dir=dirOf(a,d),col=this.col;const pool=new THREE.Mesh(new THREE.CircleGeometry(1,48),new THREE.MeshBasicMaterial({color:0x05020c,transparent:true,opacity:.9}));pool.rotation.x=-Math.PI/2;pool.position.set(a.G.position.x+dir*2.5,.05,0);sc.add(pool);
+ await cineIn(a,d,C3(col),this.n,this.k,t=>{pool.scale.setScalar(.1+t*4)});await camTo(V(-dir*1,3.6,11),V(0,1.4,0),.3,ease.o);
+ const sol=[];for(let i=0;i<11;i++){const g=new THREE.Group(),m=new THREE.MeshStandardMaterial({color:0x07030f,roughness:.9});const b=new THREE.Mesh(new THREE.ConeGeometry(.35,1.5,7),m);b.position.y=.75;const h=new THREE.Mesh(new THREE.SphereGeometry(.22,10,8),m);h.position.y=1.65;g.add(b,h);[-1,1].forEach(s=>{const e=glowS(C3('#b48cff'),.25,1);e.position.set(s*.08,1.68,.2);g.add(e)});
+  g.position.set(pool.position.x+rnd(-2.6,2.6),-2,rnd(-2.4,2.4));g.scale.setScalar(rnd(.9,1.3));sc.add(g);sol.push(g);after(i*.06,()=>tween(.5,t=>{g.position.y=-2+2*t;burst(g.position.clone().setY(.1),2,{v:1.2,up:2,c:'#7c4dff',s:.25,life:.6,g:1})},ease.o))}
+ await sleep(1100);const e=enP(d);
+ await Promise.all(sol.map((g,i)=>sleep(i*40).then(()=>{const p0=g.position.clone();return tween(.35,t=>{g.position.lerpVectors(p0,e.clone().setY(0),t)}).then(()=>{flare(e,C3(col),2,.2);burst(e,10,{v:6,c:'#b48cff',s:.18,life:.4});shake(.2);d.m.uniforms.hit.value=1;sc.remove(g)})})));
+ explode(e,col,4,320);hurt(d,2280,true);timeScale=.4;await sleep(450);timeScale=1;tween(.5,t=>pool.material.opacity=.9*(1-t)).then(()=>sc.remove(pool));await cineOut(a)}};
+// 8. Coup sérieux (inspiré One Punch Man)
+ATK2.serieux={n:'COUP SÉRIEUX',k:'一',col:'#ffffff',u:'One Punch Man',async run(a,d){const dir=dirOf(a,d);busy=true;document.body.classList.add('cine');cineT=1;
+ await camTo(a.G.position.clone().add(V(dir*1.6,2,3.2)),a.G.position.clone().add(V(0,2,0)),.6);await sleep(700);
+ $('cutn').textContent=this.n;$('cutk').textContent=this.k;const cut=$('cut'),band=cut.querySelector('.band'),tt=cut.querySelector('.t');cut.style.opacity=1;band.style.transform='translateY(-50%) skewY(-6deg) scaleX(1)';tt.style.opacity=1;tt.style.transform='skewY(-6deg)';await sleep(450);cut.style.opacity=0;band.style.transform='translateY(-50%) skewY(-6deg) scaleX(0)';
+ await camTo(V(0,4,13),V(0,3,0),.2,ease.o);const back=await dashTo(a,d,.08,1.5);const e=enP(d);hitstop=.4;flashScr(1);shake(1.2);
+ const beam=new THREE.Mesh(new THREE.PlaneGeometry(4,60),addMat(0xffffff,.9));beam.position.copy(e).add(V(dir*3,25,-4));beam.rotation.z=-dir*.25;sc.add(beam);addFX(beam,1.6,t=>{beam.scale.x=1+t*3;beam.material.opacity=.9*(1-t)},()=>sc.remove(beam));
+ for(let i=0;i<6;i++)after(i*.1,()=>{ring(e.clone().setY(.1),0xffffff,10+i*4,1.2,.05);ring(e,0xffffff,6+i*2,.9,.03,false)});
+ burst(e,500,{v:30,c:'#ffffff',c2:'#e8eef8',s:.35,life:1.4,g:0,dr:.8});burst(e,200,{dir:V(dir,.4,0),sp:.4,v:40,c:'#ffffff',s:.4,life:1.2,g:0});hurt(d,9999,true);
+ timeScale=.3;await sleep(900);timeScale=1;await back();d.hp=d.max*.4;hud();document.body.classList.remove('cine');cineT=0;await camTo(CAM0.p,CAM0.l,.7);busy=false}};
+// 9. Grimoire + épée anti-magie (inspirée Black Clover)
+ATK2.antimagie={n:'ÉPÉE ANTI-MAGIE',k:'黒',col:'#5a8a5a',u:'Black Clover',async run(a,d){const dir=dirOf(a,d);const bk=new THREE.Group();const cv=new THREE.Mesh(new THREE.BoxGeometry(.8,1,.12),M(0x1a1a1a,{metalness:.4}));const pg=new THREE.Mesh(new THREE.BoxGeometry(.72,.92,.1),M(0xe8e0c8));pg.position.z=.02;bk.add(cv,pg);sc.add(bk);
+ const sw=new THREE.Group();const bl=new THREE.Mesh(new THREE.BoxGeometry(.28,3.4,.05),new THREE.MeshStandardMaterial({color:0x050505,metalness:.9,roughness:.2,emissive:0x0a1a0a}));bl.position.y=1.7;const ed=new THREE.Mesh(new THREE.BoxGeometry(.34,3.4,.02),addMat(0x9aff9a,.25));ed.position.y=1.7;sw.add(bl,ed);sc.add(sw);sw.visible=false;
+ await cineIn(a,d,C3('#3aff6a'),this.n,this.k,t=>{bk.position.copy(a.G.position).add(V(-dir*.9,2.6+Math.sin(T*3)*.1,.8));bk.rotation.y=T;cv.scale.x=1+t*.3;if(t>.5){sw.visible=true;sw.position.copy(handP(a,dir));sw.rotation.z=-dir*.4;sw.scale.setScalar((t-.5)*2)}if(Math.random()<.4)burst(a.G.position.clone().add(V(rnd(-1,1),rnd(0,3),.3)),2,{v:1,up:2,g:2,c:'#101010',c2:'#3aff6a',s:.3,life:.7})});
+ await camTo(V(-dir*1.5,2.6,9),V(d.G.position.x*.4,1.8,0),.25,ease.o);const back=await dashTo(a,d,.14,1.8);
+ for(let i=0;i<3;i++){await tween(.12,t=>{sw.position.copy(handP(a,dir));sw.rotation.z=-dir*(.4-t*2.6*(i%2?-1:1))});const e=enP(d);const blk=new THREE.Mesh(new THREE.RingGeometry(2,2.4,48,1,0,Math.PI),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,side:2}));blk.position.copy(e);blk.lookAt(cam.position);blk.rotateZ(i*1.2);sc.add(blk);addFX(blk,.4,t=>{blk.material.opacity=1-t;blk.scale.setScalar(1+t*.4)},()=>sc.remove(blk));burst(e,40,{v:8,c:'#101010',c2:'#3aff6a',s:.22,life:.5});shake(.3);d.m.uniforms.hit.value=1}
+ explode(enP(d),'#3aff6a',3.5,240);hurt(d,2050,true);sc.remove(sw);sc.remove(bk);await sleep(400);await back();await cineOut(a)}};
+// 10. Combo d'estocs à deux épées (inspiré Sword Art Online)
+ATK2.etoile={n:'ÉTOILE JUMELLE',k:'双',col:'#7ad0ff',u:'Sword Art Online',async run(a,d){const dir=dirOf(a,d),col=this.col;
+ await cineIn(a,d,C3(col),this.n,this.k,t=>{});await camTo(V(dir*.5,2.2,7.4),V(d.G.position.x*.6,1.9,0),.25,ease.o);const back=await dashTo(a,d,.12,1.6);
+ for(let i=0;i<16;i++){const e=enP(d).add(V(rnd(-.4,.4),rnd(-.7,.7),.2));const st=new THREE.Mesh(new THREE.PlaneGeometry(2.6,.09),addMat(i%2?0x7ad0ff:0xffffff,.95));st.position.copy(e);st.lookAt(cam.position);st.rotateZ(rnd(0,Math.PI));sc.add(st);
+  addFX(st,.18,t=>{st.scale.x=.2+t*1.2;st.material.opacity=.95*(1-t)},()=>sc.remove(st));flare(e,C3(col),1.2,.12);burst(e,6,{v:6,c:col,c2:'#ffffff',s:.1,life:.25});a.body.rotation.y=dir*(i%2?.4:-.4);shake(.12);d.m.uniforms.hit.value=1;if(i%4==0)dmgNum(e.clone().add(V(0,1,0)),'-'+(90+i*3),'#a8e8ff',false);await sleep(60)}
+ const e=enP(d);slash(e,C3(col),.8,3.2);slash(e,0xffffff,-.8,3.2);explode(e,col,3.6,260);hurt(d,1500,true);timeScale=.4;await sleep(400);timeScale=1;a.body.rotation.y=0;await back();await cineOut(a)}};
+// 11. Écailles écarlates (tentacules, inspirée Tokyo Ghoul)
+ATK2.ecailles={n:'ÉCAILLES ÉCARLATES',k:'喰',col:'#ff2a2a',u:'Tokyo Ghoul',async run(a,d){const dir=dirOf(a,d),col=this.col;const ap=a.G.position.clone(),e=enP(d);
+ const T4=[0,1,2,3].map(i=>{const pts=[];for(let k=0;k<=12;k++){const t=k/12;pts.push(V(ap.x-dir*.4+(e.x-ap.x+dir*.4)*t,2.2+Math.sin(t*Math.PI)*(1.5+i*.5)*(i%2?1:-.6)+(e.y-2.2)*t,-.4+Math.sin(t*Math.PI*2+i)*1.2*(1-t)+(e.z+.4)*t))}return fireTube(new THREE.CatmullRomCurve3(pts),'#5a0008','#ff2a2a',.18+(3-i)*.03)});
+ await cineIn(a,d,C3(col),this.n,this.k,t=>{});await camTo(V(-dir*.5,3.2,10),V(0,2,0),.3,ease.o);T4.forEach(m=>sc.add(m));
+ await Promise.all(T4.map((m,i)=>sleep(i*90).then(()=>tween(.45,t=>{m.material.uniforms.p.value=t;m.material.uniforms.t.value=T},ease.o).then(()=>{flare(e,C3(col),2.5,.2);burst(e,30,{v:8,c:'#ff2a2a',c2:'#3a0006',s:.2,life:.5});shake(.3);d.m.uniforms.hit.value=1}))));
+ await tween(.5,t=>T4.forEach(m=>m.material.uniforms.t.value=T));explode(e,col,3.4,240);hurt(d,2000,true);await tween(.4,t=>T4.forEach(m=>m.material.uniforms.p.value=1-t));T4.forEach(m=>sc.remove(m));await cineOut(a)}};
+// 12. Contre total (miroir, inspiré Seven Deadly Sins)
+ATK2.miroir={n:'CONTRE TOTAL',k:'鏡',col:'#cfe9ff',u:'Seven Deadly Sins',async run(a,d){const dir=dirOf(a,d),col=this.col;busy=true;await camTo(V(0,3,10.5),V(0,1.9,0),.35);
+ const hx=new THREE.Mesh(new THREE.CircleGeometry(1.6,6),new THREE.MeshStandardMaterial({color:0xcfe9ff,metalness:1,roughness:.05,transparent:true,opacity:.0,side:2,emissive:0x2a4a6a}));hx.position.copy(a.G.position).add(V(dir*1.4,1.9,.4));hx.rotation.y=Math.PI/2;sc.add(hx);
+ const s0=enP(d).add(V(-dir*1,0,0)),m0=hx.position.clone();const orb=proj(s0,m0,'#ff7a45',.9,.5);await tween(.4,t=>{hx.material.opacity=t*.85;hx.rotation.x=t*.4});await orb;
+ $('cutn').textContent=this.n;$('cutk').textContent=this.k;const cut=$('cut'),band=cut.querySelector('.band'),tt=cut.querySelector('.t');cut.style.opacity=1;band.style.transform='translateY(-50%) skewY(-6deg) scaleX(1)';tt.style.opacity=1;hitstop=.3;flashScr(.6);ring(m0,0xffffff,4,.5,.06,false);
+ await sleep(500);cut.style.opacity=0;band.style.transform='translateY(-50%) skewY(-6deg) scaleX(0)';await proj(m0,enP(d),'#cfe9ff',1.8,.22);explode(enP(d),col,4.4,340);hurt(d,2350,true);await tween(.4,t=>hx.material.opacity=.85*(1-t));sc.remove(hx);await quickEnd()}};
+// 13. Transmutation (inspirée Fullmetal Alchemist)
+ATK2.transmut={n:'TRANSMUTATION',k:'錬',col:'#4ad8ff',u:'Fullmetal Alchemist',async run(a,d){const dir=dirOf(a,d),col=this.col;const ct=tex(512,512,(g,w)=>{g.translate(256,256);g.strokeStyle='#bff4ff';g.shadowColor='#4ad8ff';g.shadowBlur=14;g.lineWidth=5;g.beginPath();g.arc(0,0,230,0,7);g.stroke();g.lineWidth=3;g.beginPath();g.arc(0,0,180,0,7);g.stroke();
+  for(const o of [0,Math.PI]){g.beginPath();for(let i=0;i<=3;i++){const an=i/3*Math.PI*2+o-Math.PI/2;g.lineTo(Math.cos(an)*180,Math.sin(an)*180)}g.stroke()}g.beginPath();g.arc(0,0,70,0,7);g.stroke();for(let i=0;i<12;i++){g.save();g.rotate(i/12*6.283);g.fillStyle='#bff4ff';g.fillRect(-3,-215,6,20);g.restore()}});
+ const circ=new THREE.Mesh(new THREE.PlaneGeometry(5,5),new THREE.MeshBasicMaterial({map:ct,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,opacity:0}));circ.rotation.x=-Math.PI/2;circ.position.copy(d.G.position).setY(.06);sc.add(circ);
+ await cineIn(a,d,C3(col),this.n,this.k,t=>{a.body.rotation.x=.15*Math.sin(t*Math.PI)});await camTo(V(-dir*2,4,9.5),V(d.G.position.x*.6,1,0),.3,ease.o);
+ await tween(.5,t=>{circ.material.opacity=t;circ.rotation.z=t;bolt(circ.position.clone().add(V(rnd(-2,2),0,rnd(-2,2))),circ.position.clone().add(V(rnd(-2,2),.3,rnd(-2,2))),C3(col),.06,{n:5,j:.2,r:.02})});
+ for(let i=0;i<9;i++){spike(d.G.position.clone().add(V(rnd(-1.6,1.6),0,rnd(-1.6,1.6))),0x8a7a68,rnd(2.4,4.2));if(i%2==0){shake(.3);d.m.uniforms.hit.value=1}await sleep(70)}
+ explode(enP(d),col,3,200);hurt(d,2150,true);await sleep(500);await tween(.4,t=>circ.material.opacity=1-t);sc.remove(circ);await cineOut(a)}};
+// 14. Pluie de shurikens (inspirée Naruto)
+ATK2.shurikens={n:'PLUIE DE SHURIKENS',k:'手',col:'#c8d0e0',u:'Naruto',async run(a,d){const dir=dirOf(a,d),col=this.col;await quick(a,d,V(0,5,10));const sh=new THREE.Shape();for(let i=0;i<8;i++){const an=i/8*Math.PI*2,r=i%2?.08:.3;sh.lineTo(Math.cos(an)*r,Math.sin(an)*r)}const G=new THREE.ExtrudeGeometry(sh,{depth:.03,bevelEnabled:false}),Mt=M(0xc8d0e0,{metalness:.95,roughness:.2});
+ const e0=enP(d);for(let i=0;i<30;i++){const m=new THREE.Mesh(G,Mt);const s=V(e0.x+rnd(-5,3)*dir,rnd(7,10),rnd(-3,3)),e=e0.clone().add(V(rnd(-.6,.6),rnd(-.8,.6),.2));m.position.copy(s);sc.add(m);
+  tween(.35,t=>{m.position.lerpVectors(s,e,t);m.rotation.z+=.6;m.rotation.x=.4}).then(()=>{flare(e,C3('#ffffff'),.8,.1);burst(e,4,{v:5,c:'#ffd36a',s:.08,life:.2});d.m.uniforms.hit.value=1;shake(.08);addFX(m,.4,k=>{},()=>sc.remove(m))});await sleep(35)}
+ await sleep(400);hurt(d,1400,false);await quickEnd()}};
+// 15. Grand dragon de feu (inspiré Naruto)
+ATK2.dragonfeu={n:'GRAND DRAGON DE FEU',k:'火',col:'#ff5a1a',u:'Naruto',async run(a,d){const dir=dirOf(a,d),col=this.col;await cineIn(a,d,C3(col),this.n,this.k,t=>{});await camTo(V(0,4,11.5),V(0,2.4,0),.35,ease.o);
+ const ap=a.G.position.clone(),dp=d.G.position.clone(),pts=[];for(let i=0;i<=40;i++){const t=i/40,ang=t*Math.PI*2.4;pts.push(V(ap.x+(dp.x-ap.x)*t,2+Math.sin(ang)*1.8*(1-t*.5)+t*.6,Math.cos(ang)*2*(1-t)+.3))}
+ const cv=new THREE.CatmullRomCurve3(pts),tb=fireTube(cv,'#ff3a00','#ffd36a',.55);sc.add(tb);const hd=glowS(C3('#ffb43a'),3.4,1);sc.add(hd);
+ await tween(1.1,t=>{tb.material.uniforms.p.value=t;tb.material.uniforms.t.value=T;const h=cv.getPointAt(Math.min(1,t));hd.position.copy(h);burst(h,6,{v:3,c:'#ffb43a',c2:'#ff3a00',s:.35,life:.6,g:2});shake(.08)},ease.io);
+ explode(enP(d),col,4.5,340);hurt(d,2250,true);timeScale=.45;await sleep(400);timeScale=1;await tween(.5,t=>{tb.material.uniforms.p.value=1;tb.material.uniforms.t.value=T;hd.material.opacity=1-t});sc.remove(tb);sc.remove(hd);await cineOut(a)}};
+// 16. Mille pétales de lames (inspirée Bleach)
+ATK2.petales={n:'MILLE PÉTALES DE LAMES',k:'桜',col:'#ff9ac2',u:'Bleach',async run(a,d){const dir=dirOf(a,d),col=this.col;await cineIn(a,d,C3(col),this.n,this.k,t=>{burst(a.G.position.clone().add(V(rnd(-1,1),rnd(0,3),.3)),3,{v:1,up:1,g:0,c:col,c2:'#ffffff',s:.15,life:1})});
+ await camTo(V(dir*1,3,9),V(d.G.position.x*.6,1.9,0),.3,ease.o);const e=enP(d);
+ const vx=every(.02,()=>burst(e.clone().add(V(rnd(-3,3),rnd(-1,2.5),rnd(-3,3))),12,{v:2,swirl:e,g:0,dr:.3,life:1,c:'#ff9ac2',c2:'#ffffff',s:.16}));
+ await tween(1.4,t=>{if(Math.random()<.35){slash(e.clone().add(V(rnd(-.5,.5),rnd(-.6,.6),.2)),C3(col),rnd(0,6),rnd(1.4,2.4));d.m.uniforms.hit.value=1;shake(.12)}});stopE(vx);
+ explode(e,col,3.8,300);hurt(d,2200,true);await sleep(450);await cineOut(a)}};
+// 17. Éveil doré + rafale d'énergie (inspiré Dragon Ball)
+ATK2.dore={n:'ÉVEIL DORÉ',k:'金',col:'#ffd84a',u:'Dragon Ball',async run(a,d){const dir=dirOf(a,d),col=this.col;
+ await cineIn(a,d,C3(col),this.n,this.k,t=>{a.aura.material.color.set(col);a.aura.material.opacity=.4+t*.6;a.aura.scale.set(4.6+t*3,5.6+t*4,1);burst(a.G.position.clone().add(V(rnd(-1.2,1.2),0,rnd(-.6,.6))),4,{v:1,up:6,g:4,dr:.4,c:'#ffd84a',c2:'#ffffff',s:.3,life:.8});
+  if(Math.random()<.3){const h=a.G.position.clone().add(V(rnd(-1,1),rnd(.5,3.5),.5));bolt(h,h.clone().add(V(rnd(-1,1),rnd(-1,1),0)),C3('#9fe3ff'),.06,{n:5,j:.2,r:.02})}});
+ await camTo(V(-dir*1,3,10),V(0,2,0),.25,ease.o);
+ for(let i=0;i<24;i++){const s=handP(a,dir).add(V(0,rnd(-.6,.6),0)),e=enP(d).add(V(rnd(-.6,.6),rnd(-.8,.8),0));proj(s,e,col,.6,.18,{arc:rnd(-1,1)}).then(()=>{flare(e,C3(col),1.8,.15);burst(e,6,{v:5,c:col,s:.14,life:.3});shake(.15);d.m.uniforms.hit.value=1});await sleep(45)}
+ await sleep(200);explode(enP(d),col,5,420);hurt(d,2400,true);timeScale=.4;await sleep(500);timeScale=1;a.aura.material.color.set(a.o.c3);a.aura.material.opacity=.35;a.aura.scale.set(4.6,5.6,1);await cineOut(a)}};
+/* ---- 7 attaques élémentaires de secours (types du jeu : f Feu, l Foudre, b Énergie, s Lame, p Combat, d Ténèbres, w Vent/Eau) ---- */
+ATK2.el_feu={n:'VAGUE DE FEU',k:'炎',col:'#ff6a1a',u:'Élément Feu',async run(a,d){const dir=dirOf(a,d);await quick(a,d);const x0=a.G.position.x+dir*1.2,x1=d.G.position.x+dir*.5;
+ await tween(.8,t=>{const x=x0+(x1-x0)*t;burst(V(x,.1,rnd(-1.5,1.5)),12,{v:3,up:4,g:4,dr:.6,c:'#ffb43a',c2:'#ff3a00',s:.5,life:.6});shake(.08)});explode(enP(d),'#ff6a1a',3,200);hurt(d,820,false);await sleep(300);await quickEnd()}};
+ATK2.el_foudre={n:'FRAPPE DU TONNERRE',k:'雷',col:'#ffe14d',u:'Élément Foudre',async run(a,d){await quick(a,d,V(0,3.4,10.5));const e=enP(d);for(let i=0;i<4;i++){bolt(e.clone().add(V(rnd(-1,1),9,rnd(-1,1))),e.clone().add(V(rnd(-.3,.3),-1.5,0)),C3('#ffe14d'),.25,{n:12,j:.4,r:.04});flashScr(.4);shake(.3);d.m.uniforms.hit.value=1;await sleep(130)}
+ ring(e.clone().setY(.1),C3('#ffe14d'),5,.6,.1);burst(e,120,{v:9,c:'#ffe14d',c2:'#ffffff',s:.2,life:.6});hurt(d,860,false);await sleep(300);await quickEnd()}};
+ATK2.el_energie={n:'RAYON D’ÉNERGIE',k:'気',col:'#4aa8ff',u:'Élément Énergie',async run(a,d){const dir=dirOf(a,d);await quick(a,d);const h=handP(a,dir),g=glowS(C3('#4aa8ff'),.5,1);sc.add(g);g.position.copy(h);await tween(.45,t=>{g.scale.setScalar(.5+t*2);burst(h,3,{v:1,swirl:h,g:0,c:'#9fd8ff',s:.15,life:.4})});sc.remove(g);
+ await proj(h,enP(d),'#4aa8ff',1.3,.3);explode(enP(d),'#4aa8ff',3.2,220);hurt(d,840,false);await sleep(300);await quickEnd()}};
+ATK2.el_lame={n:'TAILLADE ÉCLAIR',k:'刃',col:'#e8edf5',u:'Élément Lame',async run(a,d){const dir=dirOf(a,d);await quick(a,d,V(0,2.6,9));const x0=a.G.position.x,x1=d.G.position.x+dir*1.8;await tween(.12,t=>{a.G.position.x=x0+(x1-x0)*t},ease.o);
+ const tr=new THREE.Mesh(new THREE.PlaneGeometry(Math.abs(x1-x0),.08),addMat(0xffffff,.9));tr.position.set((x0+x1)/2,1.9,.4);sc.add(tr);addFX(tr,.4,t=>tr.material.opacity=.9*(1-t),()=>sc.remove(tr));await sleep(350);
+ const e=enP(d);for(let i=0;i<3;i++){slash(e,C3(i%2?'#ffffff':'#b0bec5'),-.6+i*.6,2.6);shake(.2);d.m.uniforms.hit.value=1;await sleep(70)}burst(e,80,{v:8,c:'#ffffff',c2:'#b0bec5',s:.15,life:.5});hurt(d,880,false);
+ await tween(.4,t=>{a.G.position.x=x1+(x0-x1)*t});a.G.position.x=x0;await quickEnd()}};
+ATK2.el_combat={n:'RAFALE DE COUPS',k:'拳',col:'#ff9f43',u:'Élément Combat',async run(a,d){const dir=dirOf(a,d);await quick(a,d,V(dir*.5,2.4,8));const back=await dashTo(a,d,.12,1.8);
+ for(let i=0;i<6;i++){const e=enP(d).add(V(0,rnd(-.6,.6),0));flare(e,C3('#ff9f43'),1.8,.15);ring(e,0xffffff,1.6,.25,.1,false);burst(e,12,{v:6,c:'#ffd36a',s:.12,life:.3});a.body.rotation.y=dir*(i%2?.4:-.4);shake(.18);d.m.uniforms.hit.value=1;await sleep(90)}
+ const y0=d.G.position.y;explode(enP(d),'#ff9f43',2.6,160);hurt(d,900,false);await tween(.6,t=>{d.G.position.y=y0+Math.sin(t*Math.PI)*2.2;d.body.rotation.z=Math.sin(t*Math.PI)*.5});d.G.position.y=y0;d.body.rotation.z=0;a.body.rotation.y=0;await back();await quickEnd()}};
+ATK2.el_tenebres={n:'GOUFFRE OBSCUR',k:'闇',col:'#a35cff',u:'Élément Ténèbres',async run(a,d){await quick(a,d,V(0,4,10));const v=new THREE.Mesh(new THREE.CircleGeometry(1,48),new THREE.MeshBasicMaterial({color:0x000000,transparent:true}));v.rotation.x=-Math.PI/2;v.position.copy(d.G.position).setY(.06);sc.add(v);const e=enP(d);
+ const sw=every(.03,()=>burst(e.clone().add(V(rnd(-3,3),rnd(-1.5,1),rnd(-3,3))),6,{v:1,swirl:d.G.position.clone().setY(.3),g:0,dr:.2,life:.8,c:'#a35cff',c2:'#100018',s:.2}));
+ await tween(1,t=>{v.scale.setScalar(.2+t*2.6);v.rotation.z=t*3;d.body.position.y=1.75-t*.5;shake(.06)});stopE(sw);explode(e,'#a35cff',3,200);hurt(d,860,false);await tween(.4,t=>{v.material.opacity=1-t;d.body.position.y=1.25+t*.5});sc.remove(v);await quickEnd()}};
+ATK2.el_ventEau={n:'TORNADE MARINE',k:'風',col:'#3dd9c4',u:'Élément Vent/Eau',async run(a,d){await quick(a,d,V(0,3.6,10.5));const c=d.G.position.clone();
+ await tween(1.2,t=>{for(let i=0;i<10;i++){const an=T*8+i*.63,y=rnd(0,4.5),r=.6+y*.35;burst(c.clone().add(V(Math.cos(an)*r,y,Math.sin(an)*r)),1,{v:.5,g:0,dr:1,life:.4,c:i%2?'#3dd9c4':'#e8fbff',s:.22})}d.body.rotation.y=Math.sin(t*20)*.3;shake(.06);if(Math.random()<.2)d.m.uniforms.hit.value=1});
+ d.body.rotation.y=0;burst(enP(d),120,{v:8,c:'#bff4ff',c2:'#3dd9c4',s:.2,life:.8,g:-8});hurt(d,850,false);await sleep(300);await quickEnd()}};
 
+/* =====================================================================
+   TABLE DE CORRESPONDANCE pour l'intégration au jeu.
+   atkFor(carte) → nom d'attaque (clé de ATK ou ATK2) :
+     1) on cherche l'univers de la carte (c.s) dans ATKU (premier motif qui correspond) ;
+        quand un univers a plusieurs attaques, on en choisit une de façon stable selon l'identifiant de la carte ;
+     2) sinon on prend l'attaque de l'élément de la carte (c.fx : f Feu, l Foudre, b Énergie, s Lame, p Combat, d Ténèbres, w Vent/Eau) ;
+     3) sinon l'attaque Combat.
+   ===================================================================== */
+const ATKU=[
+ [/Naruto|Boruto/i,['spirale','foudre','shurikens','dragonfeu']],
+ [/One Piece/i,['gomu']],
+ [/Jujutsu/i,['eclair','domaine']],
+ [/Kimetsu|Demon Slayer/i,['eau']],
+ [/Dragon Ball/i,['vague','dore']],
+ [/Bleach/i,['croc','petales']],
+ [/JoJo/i,['esprit']],
+ [/Hunter/i,['nen']],
+ [/Shingeki|Attack on Titan/i,['grappin']],
+ [/Boku no Hero|Hero Academia/i,['smash']],
+ [/Fairy Tail/i,['rugissement']],
+ [/Chainsaw/i,['tronco']],
+ [/Solo Leveling|Ore dake/i,['ombres']],
+ [/One Punch|Wanpanman/i,['serieux']],
+ [/Black Clover/i,['antimagie']],
+ [/Sword Art/i,['etoile']],
+ [/Tokyo Ghoul/i,['ecailles']],
+ [/Seven Deadly|Nanatsu/i,['miroir']],
+ [/Hagane|Fullmetal/i,['transmut']]];
+const ATKEL={f:'el_feu',l:'el_foudre',b:'el_energie',s:'el_lame',p:'el_combat',d:'el_tenebres',w:'el_ventEau'};
+function atkFor(c){const h=s=>{let k=0;for(const ch of String(s))k=(k*31+ch.charCodeAt(0))>>>0;return k};
+ for(const [re,L] of ATKU)if(re.test(c.s||''))return L[h(c.id||c.n)%L.length];
+ return ATKEL[c.fx]||'el_combat'}
+window.atkFor=atkFor;
+Object.assign(ATK,ATK2);
 /* SERVEUR TEST : arène en arrière-plan d'un vrai combat (pilotée par le jeu via postMessage) */
 try{F.forEach(f=>{f.body.visible=false;f.aura.visible=false})}catch(e){}
+try{dmgNum=function(){}}catch(e){}
 let ATQ=Promise.resolve();
 addEventListener('message',e=>{const m=e.data||{};try{
  if(m.t=='arena'){if(/^camp\d+$/.test(m.id))campArena(+m.id.slice(4));else setArena(ARENES[m.id]?m.id:'dojo')}
- if(m.t=='atk'){const k=ATK[m.k]&&ATK[m.k].run?m.k:'frappe';ATQ=ATQ.then(()=>{const a=F[m.s?1:0],d=F[m.s?0:1];return Promise.race([ATK[k].run(a,d),new Promise(r=>setTimeout(r,6000))])}).catch(x=>console.warn(x)).then(()=>{busy=false})}
+ if(m.t=='atk'){if(window.__A3RUN)return;let k=m.k||(m.mi===0?'frappe':m.c?atkFor(m.c):'frappe');if(!(ATK[k]&&ATK[k].run))k='frappe';window.__A3RUN=1;const a=F[m.s?1:0],d=F[m.s?0:1];Promise.race([ATK[k].run(a,d),new Promise(r=>setTimeout(r,5000))]).catch(x=>console.warn(x)).then(()=>{busy=false;window.__A3RUN=0;try{camTo(CAM0.p,CAM0.l,.4)}catch(e){}})}
  if(m.t=='hit'){shakeA=Math.max(shakeA,m.v||.25)}
 }catch(x){console.warn(x)}});
 try{parent.postMessage({t:'arene-ready'},'*')}catch(e){}
