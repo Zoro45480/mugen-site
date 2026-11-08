@@ -70,7 +70,7 @@ html,body{height:100%;background:var(--bg);color:var(--tx);font-family:Inter,sys
  .inv{grid-column:auto}.fi2 .btns{display:none}
  .tag2{display:none}
 }
-</style></head><body>
+</style><style>body.thumb>*:not(canvas){display:none!important}body.thumb,html{background:transparent!important}</style></head><body>
 <canvas id="c"></canvas>
 <div class="top"><div class="lg">MUGEN · ARSENAL</div><div class="tabs" id="tabs"><b data-m="0" class="on">Vitrine</b><b data-m="1">Arsenal</b><b data-m="2">Réserve</b></div></div>
 <div id="vit"><div class="hd"><div class="ey">ARSENAL · 装備 · 3D</div><div class="h1">Les objets <em>en vrai</em></div><p class="lead">Chaque artefact et accessoire du jeu, modélisé en 3D d’après l’objet qu’il représente : matières, gravures, proportions. Ils tournent sur leur socle, éclairés comme en studio.</p></div>
@@ -90,7 +90,7 @@ const GRA=[['Commune','#9aa4b2'],['Rare','#4aa8ff'],['Épique','#b45cff'],['Lég
 const GP=[2,4,6,9,13,18,24,32,38,45,54,52,48];
 const KJ={kunai:'苦',headband:'帯',compass:'羅',hat:'笠',claw:'爪',mask:'面',katana:'刀',earring:'飾',orb:'珠',visor:'鏡',blades:'刃',cloak:'衣',gauntlet:'籠',card:'札',ring:'輪',badge:'章',gem:'晶',book:'書',pendant:'玉',saw:'鋸',key:'鍵',crown:'冠',halo:'輪',wand:'杖',shield:'盾',scythe:'鎌',chalice:'杯'};
 /* ---------- rendu ---------- */
-const cv=$('c'),R=new THREE.WebGLRenderer({canvas:cv,antialias:true,powerPreference:'high-performance'});
+const cv=$('c'),R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true,preserveDrawingBuffer:true,powerPreference:'high-performance'});
 R.setPixelRatio(Math.min(2,devicePixelRatio));R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.25;R.outputColorSpace=THREE.SRGBColorSpace;R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFSoftShadowMap;
 const sc=new THREE.Scene();const cam=new THREE.PerspectiveCamera(32,1,.05,200);
 // environnement studio (reflets réalistes des métaux)
@@ -516,6 +516,19 @@ window.DEMO=async()=>{go(0,0);for(let i=0;i<Math.min(VIT.length,22);i++){go(0,i)
 window.GO=go;window.VIT=VIT;window.RES=RES;window.ALL=ALL;
 go(0,0);
 if(!REC){let l=performance.now();const f=n=>{requestAnimationFrame(f);step(Math.min(.05,(n-l)/1000));const q=Q.splice(0);q.forEach(x=>x());l=n};requestAnimationFrame(f)}
+
+/* SERVEUR TEST : modèles des 10 objets du jeu absents de la maquette */
+function boots(){const g=G();for(const s of [-1,1]){const b=G();add(b,mesh(new THREE.BoxGeometry(.42,.9,.5),MT.mat('#1a1a22',.6),[0,.25,0]),mesh(new THREE.BoxGeometry(.46,.22,.95),MT.mat('#2a2a34',.5),[0,-.25,.2]),mesh(new THREE.BoxGeometry(.48,.08,.98),MT.glow('#ff7a1a',.95),[0,-.38,.2]),mesh(new THREE.TorusGeometry(.24,.035,8,32),MT.gold(),[0,.62,0],[Math.PI/2,0,0]));b.position.x=s*.33;b.rotation.y=s*.15;g.add(b)}return g}
+NAMED.unshift([/Bottes de Shinra/,()=>boots()],[/Masque de Pierre/,()=>mask({mat:MT.mat('#8a8070',.9)})],[/Collier de Hashirama/,()=>magatama('#2a6a2a')],[/Grimoire de Yuno/,()=>book({c:'#1a4a2a'})],[/Cape de Tatsumaki/,()=>scarf('#2a8a4a')],[/Karma/,()=>gemCut('#1a1a2a')],[/Bâton de Whis/,()=>staff()],[/Potara/,()=>earrings()],[/Doigt de Sukuna/,()=>finger()],[/Bandeau de Gojo/,()=>scarf('#14141a')]);
+const XTRA=[['ax1','a','Masque de Pierre de Kars','mask',8,'JoJo','#c9b38a','#2a2418'],['ax2','c','Collier de Hashirama','pendant',8,'Naruto','#4ad06a','#10301a'],['ax3','a','Grimoire de Yuno','book',8,'Black Clover','#3dd9a4','#0e2a22'],['ax4','c','Cape de Tatsumaki','cloak',8,'One Punch Man','#5ff2a0','#0e2a1a'],['ax5','a','Karma d’Isshiki','gem',8,'Boruto','#b07aff','#1a0e2a'],['ax6','c','Bottes de Shinra','badge',8,'Fire Force','#ff7a1a','#2a1205'],['wa49','a','Bâton de Whis','wand',7,'Dragon Ball','#9be7ff','#0e1a2a'],['wc49','c','Potara de Kaiō-shin','earring',6,'Dragon Ball','#ffd36a','#2a1a05'],['wa50','a','Doigt de Sukuna','claw',7,'Jujutsu Kaisen','#ff3d6e','#2a0510'],['wc50','c','Bandeau de Gojo','headband',6,'Jujutsu Kaisen','#4aa8ff','#05102a']];
+XTRA.forEach(r=>{if(!ALL.find(o=>o.it[0]==r[0])){ITEMS.push(r);ALL.push({it:r,b:null})}});
+/* mode vignette : fond transparent, sans socle ni interface */
+if(location.search.includes('thumb')){document.body.classList.add('thumb');sc.background=null;R.setClearColor(0x000000,0);try{ped.visible=false}catch(e){}try{pRate=0}catch(e){}
+ window.THUMB=async id=>{const o=ALL.find(x=>x.it[0]==id);if(!o)return false;showItem(getB(o).g,o.it[4],{size:2.5});sc.background=null;sc.fog=null;STAGE.children.forEach(c=>{if(c!==curWrap)c.visible=false});sc.children.forEach(c=>{if(c.isPoints||(c.isMesh&&c!==STAGE))c.visible=false});try{drag={x:0,a:.55}}catch(e){}cam.clearViewOffset();cam.position.set(0,.5,6);cam.lookAt(0,.05,0);await new Promise(r=>setTimeout(r,900));return true};
+ window.THUMB_IDS=()=>ALL.map(o=>o.it[0]);
+ window.THUMBR=async i=>{const x=RES[i];if(!x)return false;if(!x.b)x.b=x.f();showItem(x.b,x.r,{size:2.5});sc.background=null;sc.fog=null;STAGE.children.forEach(c=>{if(c!==curWrap)c.visible=false});sc.children.forEach(c=>{if(c.isPoints||(c.isMesh&&c!==STAGE))c.visible=false});try{drag={x:0,a:.55}}catch(e){}cam.clearViewOffset();cam.position.set(0,.5,6);cam.lookAt(0,.05,0);await new Promise(r=>setTimeout(r,900));return true};
+ window.RES_N=()=>RES.map(x=>x.n);
+ const qi=new URLSearchParams(location.search).get('id');if(qi)setTimeout(async()=>{await THUMB(qi);if(location.search.includes('live'))drag=null},200)}
 
 /* SERVEUR TEST : ouvrir un objet précis */
 const fold=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();

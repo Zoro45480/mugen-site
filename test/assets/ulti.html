@@ -781,6 +781,11 @@ function frameDt(dt){
  cam.position.add(o);cam.lookAt(look);R.render(sc,cam);cam.position.sub(o)}
 window.REC=location.search.includes('rec');
 if(REC){const px=new Uint8Array(4);window.STEP=(dt)=>{last=0;frameDt(dt);const gl=R.getContext();gl.readPixels(0,0,1,1,gl.RGBA,gl.UNSIGNED_BYTE,px)}}else requestAnimationFrame(frame);
+/* SERVEUR TEST : vraie image de la carte du jeu sur la carte 3D (si le serveur d'images l'autorise, sinon silhouette) */
+window.__IMGS={};
+const __fold=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+function __applyImg(f,u){if(!u)return;const im=new Image();im.crossOrigin='anonymous';im.referrerPolicy='no-referrer';im.onload=()=>{try{const c=document.createElement('canvas');c.width=512;c.height=768;const g=c.getContext('2d');const s=Math.max(512/im.width,768/im.height);g.drawImage(im,(512-im.width*s)/2,(768-im.height*s)/2,im.width*s,im.height*s);g.getImageData(0,0,1,1);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;f.m.uniforms.map.value=t}catch(e){}};im.src=u}
+{const _r=restyle;restyle=function(f,o){_r.apply(this,arguments);try{const key=__fold(o&&(o.nm||o.n));if(!key)return;const e=Object.entries(window.__IMGS).find(([k])=>{const a=__fold(k);return a==key||a.includes(key)||key.includes(a)||a.split(' ')[0]==key.split(' ')[0]});if(e)__applyImg(f,e[1])}catch(e){}}}
 
 /* SERVEUR TEST : ultime jouée à la demande du jeu */
 try{$('tag').style.display='none'}catch(e){}
@@ -788,6 +793,6 @@ const fold=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLo
 function findC(n){const f=fold(n);return CH.find(x=>fold(x.nm)==f)||CH.find(x=>f.startsWith(fold(x.nm))||fold(x.nm).startsWith(f))||null}
 let RUN=0;
 addEventListener('message',async e=>{const m=e.data||{};if(m.t!='ulti')return;const c=findC(m.n);if(!c||RUN){parent.postMessage({t:'ulti-done',ok:0},'*');return}
- RUN=1;c.i=1;c.N=1;try{await play(c)}catch(x){console.warn(x)}RUN=0;parent.postMessage({t:'ulti-done',ok:1},'*')});
+ RUN=1;c.i=1;c.N=1;window.__IMGS={};if(m.img)window.__IMGS[c.nm]=m.img;try{await play(c)}catch(x){console.warn(x)}RUN=0;parent.postMessage({t:'ulti-done',ok:1},'*')});
 parent.postMessage({t:'ulti-ready',names:CH.map(x=>x.nm)},'*');
 </script></body></html>
