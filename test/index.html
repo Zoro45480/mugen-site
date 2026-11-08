@@ -4,7 +4,7 @@
 SP.getItem=function(k){return g.call(this,P+k)};SP.setItem=function(k,v){return st.call(this,P+k,v)};SP.removeItem=function(k){return rm.call(this,P+k)};
 SP.clear=function(){const L=[];for(let i=0;i<this.length;i++){const k=ky.call(this,i);if(k&&k.startsWith(P))L.push(k)}L.forEach(k=>rm.call(this,k))};
 try{const o=indexedDB.open.bind(indexedDB);indexedDB.open=function(n,v){return v===undefined?o(P+n):o(P+n,v)};const d=indexedDB.deleteDatabase.bind(indexedDB);indexedDB.deleteDatabase=n=>d(P+n)}catch(e){}
-window.MUGEN_TEST=1})();</script><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com/firebasejs/ https://www.gstatic.com/recaptcha/ https://www.google.com/recaptcha/ https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data: blob:; media-src 'self' https: data: blob:; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com https://*.firebaseapp.com https://www.google.com https://www.gstatic.com https://api.jikan.moe https://graphql.anilist.co https://kitsu.io https://api.giphy.com https://g.tenor.com data: blob:; frame-src https://www.google.com https://recaptcha.google.com https://*.firebaseapp.com; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"><meta name="viewport" content="width=device-width,initial-scale=1">
+window.MUGEN_TEST=1})();</script><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com/firebasejs/ https://www.gstatic.com/recaptcha/ https://www.google.com/recaptcha/ https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data: blob:; media-src 'self' https: data: blob:; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com https://*.firebaseapp.com https://www.google.com https://www.gstatic.com https://api.jikan.moe https://graphql.anilist.co https://kitsu.io https://api.giphy.com https://g.tenor.com data: blob:; frame-src 'self' https://www.google.com https://recaptcha.google.com https://*.firebaseapp.com; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"><meta name="viewport" content="width=device-width,initial-scale=1">
 <script>window.__mcfgErr="";addEventListener("error",function(e){if(!window.__mcfgDone&&e&&e.message)window.__mcfgErr=e.message+(e.lineno?" (ligne "+e.lineno+")":"")});</script>
 <script>
 /* =====================================================================
@@ -4757,6 +4757,13 @@ html body .card.r9:not(.awk2) .nm{background:linear-gradient(90deg,#fff,#dff4ff 
 }
 #nav.v3nav>.dw>button{display:inline-flex!important;flex-direction:row!important;align-items:center;white-space:nowrap}
 #nav.v3nav>.dw{margin-left:8px}
+@media (max-width:760px){body:has(#bt) #v3mob,body:has(.ov) #v3mob,body:has(#o2) #v3mob{display:none}body:has(#bt) #tstb{bottom:4px!important;opacity:.6}}
+</style><style>#bt.a3on{background:#05040a!important}
+#bt .a3f{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:0;pointer-events:none;opacity:0;animation:a3in .8s .3s forwards}
+@keyframes a3in{to{opacity:1}}
+#bt.a3on .dec{display:none}
+#bt.a3on .bgo{background:linear-gradient(180deg,#0006,transparent 25%,transparent 60%,#000a)!important}
+#bt.a3on .bgi{display:none!important}
 </style></head><body>
 <canvas id="bg"></canvas><div id="appbg"></div><header id="tb"><div class="brand" data-oclick="show('home')"><div class="lg"><svg viewBox="0 0 40 40"><defs><linearGradient id="lgg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4d2e"/><stop offset="1" stop-color="#ffc414"/></linearGradient></defs><path d="M20 2l16 9v18l-16 9-16-9V11z" fill="url(#lgg)"/><path d="M12 27V14l8 8 8-8v13" fill="none" stroke="#10121a" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20" cy="10" r="2" fill="#10121a"/></svg></div><b>MUGEN</b></div><nav id="nav"></nav><div class="sp"></div><div class="pill" id="rs" style="display:none"></div><div class="pill" id="en" title="Boosters gratuits"></div><div class="pill"><i class="cn"></i><span id="co">0</span></div><button class="pill ms" data-oclick="show('miss')">務 Missions</button><button class="avb" id="avb" data-oclick="togPop(event)">J</button><div id="pop"><div class="pc" id="prof"></div><div class="prow"><button id="snd" data-oclick="mute()">Son activé</button><button id="mus" data-oclick="musT()">Musique</button></div><a data-oclick="show('album');closePop()">Ma collection</a><a data-oclick="show('rank');closePop()">Carrière</a><a data-oclick="show('cfg');closePop()">Réglages</a></div></header>
 <main id="v"></main><button id="backx" class="backx" data-oclick="closeOv()">← Retour au menu</button>
@@ -13688,5 +13695,24 @@ const _p=navPaint;navPaint=function(){try{reorg()}catch(e){console.warn(e)}const
 const _s=show;show=function(){const r=_s.apply(this,arguments);try{mark()}catch(e){}return r};
 const _b=navBuild;navBuild=function(){const r=_b.apply(this,arguments);try{navPaint()}catch(e){}return r};
 try{navPaint()}catch(e){console.warn(e)}
+})();
+</script><script>/* SERVEUR TEST · arènes 3D dans les vrais combats */
+(function(){
+const MD={quick:'dojo',tower:'tour',ranked:'classe',daily:'defi',surv:'survie',raid:'raid',draft:'draft',bounty:'primes',hunt:'primes',brush:'bossrush',bossrush:'bossrush',caul:'chaudron',chaudron:'chaudron',wboss:'bossmonde',tourn:'tournoi',tour:'tournoi',ori:'origine',pt:'origine',dsm:'pourf',asc:'camp13',graid:'raidg',gsiege:'siege',gboss:'monarque',hev:'eventh',friend:'amis'};
+const GK={E:'gateE',D:'gateD',C:'gateC',B:'gateB',A:'gateA',S:'gateS','S+':'gateS','红':'gateR','紅':'gateR'};
+const VIL=[['Shibuya','v_shibuya'],['Forgeron','v_forgerons'],['Konoha','v_konoha'],['Shiganshina','v_shiganshina'],['Fuchsia','v_fuchsia'],['Magnolia','v_magnolia']];
+function arenaId(){if(typeof B=='undefined'||!B)return 'dojo';const md=B.md||'';
+ if(md=='camp'&&B.st!=null)return 'camp'+Math.floor(B.st/5);
+ if(md=='gate'){try{const g=GATES[B.gate];return GK[g.k]||(/rouge/i.test(g.n)?'gateR':'gateS')}catch(e){return 'gateE'}}
+ if(md=='event'){const n=(B.name||'')+' '+((B.en&&B.en[0]&&B.en[0].c&&B.en[0].c.s)||'');const v=VIL.find(x=>n.includes(x[0]));return v?v[1]:'v_shibuya'}
+ return MD[md]||'dojo'}
+window.A3={arenaId};
+let IF=null,READY=0,PEND=[];
+const post=m=>{if(!IF)return;if(READY)IF.contentWindow.postMessage(m,'*');else PEND.push(m)};
+addEventListener('message',e=>{if(e.data&&e.data.t=='arene-ready'&&IF&&e.source==IF.contentWindow){READY=1;PEND.splice(0).forEach(m=>IF.contentWindow.postMessage(m,'*'))}});
+function mount(){const bt=document.getElementById('bt');if(!bt||bt.querySelector('.a3f'))return;
+ IF=document.createElement('iframe');IF.className='a3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;READY=0;PEND=[];IF.src='assets/arene.html';bt.prepend(IF);bt.classList.add('a3on');post({t:'arena',id:arenaId()})}
+window.A3post=post;
+const _f=fight;fight=function(){const r=_f.apply(this,arguments);try{if(!window.__A3OFF&&!document.hidden)setTimeout(mount,30)}catch(e){console.warn(e)}return r};
 })();
 </script></body></html>
