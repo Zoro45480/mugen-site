@@ -4741,6 +4741,12 @@ html body .card.r9:not(.awk2) .nm{background:linear-gradient(90deg,#fff,#dff4ff 
 #tstp.on{display:grid;gap:6px}#tstp b{font-size:14px}#tstp small{color:#a59cbd}
 #tstp button{text-align:left;padding:9px 11px;border-radius:10px;border:1px solid #ffffff1a;background:#ffffff0a;color:inherit;font:700 13px Inter,system-ui,sans-serif;cursor:pointer}#tstp button:hover{background:#ffffff16}
 @media (max-width:640px){#tstb{font-size:9px;padding:3px 4px 3px 9px;bottom:4px;white-space:nowrap}#tstb button{font-size:10px;padding:5px 9px}}
+
+/* badge test discret dans un coin (ne couvre jamais le contenu) */
+#tstb{left:auto!important;right:14px!important;bottom:14px!important;transform:none!important;padding:3px 3px 3px 9px!important;font-size:9.5px!important;letter-spacing:.5px!important;opacity:.92}
+#tstb .tl{display:none}
+#tstb button{padding:5px 10px!important;font-size:10.5px!important}
+@media (max-width:760px){#tstb{right:auto!important;left:8px!important;bottom:74px!important;font-size:8.5px!important}}
 </style><style>/* SERVEUR TEST · cartes holo (cartes-holo + cartes-gif) */
 @property --h3a{syntax:'<angle>';initial-value:0deg;inherits:false}
 .h3c{--mx:50%;--my:30%;--o:0;transition:transform .2s ease-out}
@@ -4838,7 +4844,6 @@ html body .card.r9:not(.awk2) .nm{background:linear-gradient(90deg,#fff,#dff4ff 
  #v3mob button i{font:900 18px serif;font-style:normal;line-height:1}
  #v3mob button.on{color:#fff}#v3mob button.on i{color:#ff3d6e;text-shadow:0 0 12px #ff3d6e}
  body{padding-bottom:64px}
- #tstb{bottom:68px!important}
 }
 #nav.v3nav>.dw>button{display:inline-flex!important;flex-direction:row!important;align-items:center;white-space:nowrap}
 #nav.v3nav>.dw{margin-left:8px}
@@ -4856,19 +4861,18 @@ body.nav-a #v3mob,body.nav-b #v3mob{display:none!important}
 #v3rail button.on,#v3dock button.on{color:#fff;border-color:color-mix(in srgb,var(--nc) 60%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--nc) 22%,transparent),#ffffff05);box-shadow:0 0 22px color-mix(in srgb,var(--nc) 30%,transparent)}
 #v3rail button.on i,#v3dock button.on i{text-shadow:0 0 14px var(--nc)}
 /* A : rail latéral */
-#v3rail{left:12px;top:78px;bottom:14px;flex-direction:column;width:64px;padding:8px;border-radius:22px;background:#0b0812d9;border:1px solid #ffffff14;backdrop-filter:blur(14px);box-shadow:0 20px 50px #000a;transition:width .25s ease;overflow:hidden}
-#v3rail:hover{width:200px}
-#v3rail button{gap:12px;padding:3px;white-space:nowrap}
-#v3rail button span{opacity:0;transition:opacity .2s}#v3rail:hover button span{opacity:1}
-#v3rail button:hover{transform:translateX(3px);background:#ffffff10}
+#v3rail{left:12px;top:78px;bottom:14px;flex-direction:column;width:76px;padding:8px;border-radius:22px;background:#0b0812d9;border:1px solid #ffffff14;backdrop-filter:blur(14px);box-shadow:0 20px 50px #000a;transition:width .25s ease;overflow:hidden}
+
+#v3rail button{flex-direction:column;gap:3px;padding:5px 2px 4px;white-space:nowrap;font-size:10px}
+#v3rail button span{opacity:1}
+#v3rail button:hover{transform:translateY(-2px) scale(1.04);background:#ffffff10}
 #v3rail .mn{margin-top:auto}
-body.nav-a{padding-left:88px}
+body.nav-a{padding-left:96px}
 /* B : dock flottant */
 #v3dock{flex-direction:row!important;top:auto!important;width:auto!important;left:50%;bottom:14px;transform:translateX(-50%);padding:8px;border-radius:24px;background:#0b0812e0;border:1px solid #ffffff1c;backdrop-filter:blur(14px);box-shadow:0 20px 50px #000c}
 #v3dock button{flex-direction:column;gap:3px;padding:5px 8px 4px;font-size:10.5px}
 #v3dock button:hover{transform:translateY(-6px) scale(1.08)}
 body.nav-b{padding-bottom:90px}
-body.nav-b #tstb{bottom:96px!important}
 /* téléphone : toujours un dock en bas, compact */
 @media (max-width:760px){
  body.nav-a{padding-left:0}#v3rail,#v3dock{left:6px!important;right:6px;top:auto!important;bottom:6px!important;width:auto!important;transform:none!important;flex-direction:row!important;justify-content:space-between;padding:5px;border-radius:20px;background:#0b0812f0;backdrop-filter:blur(14px)}
@@ -4876,7 +4880,6 @@ body.nav-b #tstb{bottom:96px!important}
  #v3rail button span{opacity:1}#v3rail button i,#v3dock button i{width:30px;height:30px;font-size:15px;border-radius:9px}
  #v3rail .mn{margin-top:0}
  body.nav-a,body.nav-b{padding-bottom:70px}
- body.nav-a #tstb,body.nav-b #tstb{bottom:72px!important}
  body:has(#bt) #v3rail,body:has(#bt) #v3dock{display:none}
 }
 body:has(#bt) #v3rail,body:has(#bt) #v3dock{display:none}
@@ -13835,7 +13838,7 @@ function stuHub(){const z=stuS(),tot=Object.values(z.n).reduce((a,b)=>a+(+b||0),
 {const _b=battle;battle=function(){const r=_b.apply(this,arguments);try{const v=$('v');if(v&&!v.querySelector('.stu-pn')){const p=v.querySelector('.du26')||v.querySelector('.syn25')||(v.querySelector('.slots')&&v.querySelector('.slots').closest('.pn'));if(p)p.insertAdjacentHTML('afterend',stuHub())}}catch(e){console.warn(e)}return r}}
 appBgSet(view);
 setTimeout(()=>{try{if(S.sv!=SPL.v&&!document.getElementById('bt'))splash()}catch(e){}},1400);
-</script><div id="tstb">🧪 SERVEUR TEST · sauvegarde locale <button id="tstbt" type="button">Mode test</button></div>
+</script><div id="tstb" title="Serveur test · sauvegarde locale, séparée du vrai jeu">🧪 TEST <button id="tstbt" type="button">Mode test</button></div>
 <div id="tstp"><b>Mode test</b><small>Tout reste dans ce navigateur. Le vrai jeu n’est pas touché.</small>
 <button data-t="coins">+200 000 pièces, éclats, fragments</button>
 <button data-t="cards">Toutes les cartes (×3)</button>
