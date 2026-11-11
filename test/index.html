@@ -5151,12 +5151,12 @@ body.nav3-a #tb{flex-wrap:nowrap}
 /* l'arène se voit tout de suite : image de l'arène en attendant la 3D, fond de combat transparent */
 #bt.a3on{background:#05040a var(--a3bg,url(assets/arenes/dojo.jpg)) center/cover no-repeat!important}
 #bt.a3on .a3f{animation:none;opacity:0;transition:opacity .5s}#bt.a3on.a3vis .a3f{opacity:1}
-#bt.a3on:not(.a3pj) .side .fgt{opacity:0}#bt.a3on .side .fgt{transition:opacity .35s}
+
 
 #bt.a3on .bf,#bt.a3on .arena,#bt.a3on .stg{background:transparent!important}
 #bt .fgt.a3p{transition:none!important;will-change:translate,scale;backface-visibility:hidden}
-#bt.a3on:not(.a3pj) #fp .fgt,#bt.a3on:not(.a3pj) #fe .fgt{opacity:0!important}#bt.a3on #fp .fgt,#bt.a3on #fe .fgt{transition:opacity .35s}
-#bt.a3on .intro{display:none!important}
+
+
 </style><style>/* SERVEUR TEST · design combat3d sur le vrai écran de combat */
 #bt.a3on #arena{perspective:1100px}
 #bt.a3on .fgt{transform-origin:50% 50%;will-change:transform}
@@ -15307,7 +15307,7 @@ let IF=null,READY=0,PEND=[];try{window.__A3OFF=localStorage.getItem('a3off')=='1
 const post=m=>{if(!IF)return;if(READY)IF.contentWindow.postMessage(m,'*');else PEND.push(m)};
 addEventListener('message',e=>{if(e.data&&e.data.t=='arene-ready'&&IF&&e.source==IF.contentWindow){READY=1;PEND.splice(0).forEach(m=>IF.contentWindow.postMessage(m,'*'));setTimeout(()=>{const bt=document.getElementById('bt');if(bt){bt.classList.add('a3vis');bt.dataset.t0=Date.now()}},450)}});
 function mount(){const bt=document.getElementById('bt');if(!bt||bt.querySelector('.a3f'))return;
- IF=document.createElement('iframe');IF.className='a3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;READY=0;PEND=[];IF.src='assets/arene.html';bt.prepend(IF);bt.classList.add('a3on');bt.dataset.t0=Date.now()+6e4;setTimeout(()=>{if(!bt.classList.contains('a3pj')){bt.classList.add('a3pj')}},12000);const aid=arenaId();bt.style.setProperty('--a3bg',`url(assets/arenes/${/^camp\d+$/.test(aid)&&aid!='camp13'?'feuille':aid}.jpg)`);post({t:'arena',id:arenaId(),intro:1})}
+ IF=document.createElement('iframe');IF.className='a3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;READY=0;PEND=[];IF.src='assets/arene.html';bt.prepend(IF);bt.classList.add('a3on');const aid=arenaId();bt.style.setProperty('--a3bg',`url(assets/arenes/${/^camp\d+$/.test(aid)&&aid!='camp13'?'feuille':aid}.jpg)`);post({t:'arena',id:arenaId(),intro:1})}
 window.A3post=post;
 const _f=fight;fight=function(){const r=_f.apply(this,arguments);try{if(!window.__A3OFF)setTimeout(mount,30)}catch(e){console.warn(e)}return r};
 })();
@@ -15319,8 +15319,13 @@ const _f=fight;fight=function(){const r=_f.apply(this,arguments);try{if(!window.
 let nat=new Map(),d0=[0,0];
 /* position « naturelle » mesurée à l'écran (projection retirée un instant) : tient compte des parents mis à l'échelle (téléphones) */
 function natural(el,bt){const st=el.style,t=[st.translate,st.scale,st.rotate];st.translate=st.scale=st.rotate='none';const r=el.getBoundingClientRect(),b=bt.getBoundingClientRect();st.translate=t[0];st.scale=t[1];st.rotate=t[2];const ps=(el.offsetWidth?r.width/el.offsetWidth:1)||1;return {x:r.left-b.left+r.width/2,y:r.top-b.top+r.height/2,h:r.height,w:r.width,ps,el}}
-function step(){requestAnimationFrame(step);const bt=document.getElementById('bt');const f=bt&&bt.querySelector('.a3f');if(!f||!bt.classList.contains('a3on')){nat.clear();return}
- let S=null;try{S=f.contentWindow.__A3S}catch(e){}if(!S||!S.F||S.F.length<2)return;
+function step(){requestAnimationFrame(step);const bt=document.getElementById('bt');const f=bt&&bt.querySelector('.a3f');if(!f||!bt.classList.contains('a3on')){nat.clear();if(bt)fit2d(bt);return}
+ let S=null;try{S=f.contentWindow.__A3S}catch(e){}
+ /* les cartes restent TOUJOURS visibles à leur place normale ; la projection 3D ne démarre qu'une fois l'arène prête et la caméra d'intro posée */
+ const vis=bt.classList.contains('a3vis'),t0=+bt.dataset.t0||0;
+ const settled=S&&S.cam&&S.CAM0&&S.CAM0.p?S.cam.position.distanceTo(S.CAM0.p)<1.2:false;
+ const go=!!(S&&S.F&&S.F.length>=2&&vis&&(settled||Date.now()-t0>2500));
+ if(!go){reset(bt);fit2d(bt);return}
  const W=bt.clientWidth,H=bt.clientHeight,mob=W<700;
  ['fp','fe'].forEach((id,i)=>{const side=document.getElementById(id),el=side&&side.querySelector('.fgt');if(!el)return;let n=nat.get(id);if(!n||n.el!==el||n.W!==W||n.h<40||(n.t=(n.t||0)+1)%45==0){n=natural(el,bt);n.W=W;nat.set(id,n)}if(n.h<40)return;
   const G=S.F[i].G,v=new S.THREE.Vector3(G.position.x,G.position.y+1.75,G.position.z),d=S.cam.position.distanceTo(v);v.project(S.cam);
@@ -15330,10 +15335,15 @@ function step(){requestAnimationFrame(step);const bt=document.getElementById('bt
   const maxW=W*(mob?.40:.30),maxH=Math.max(60,(bot-hud)*.96);sc=Math.min(sc,maxW/n.w,maxH/n.h);const cw=n.w*sc,ch=n.h*sc;
   let X=x,Y=y;X=Math.min(Math.max(X,cw/2+6),W-cw/2-6);Y=Math.min(Math.max(Y,hud+ch/2+4),bot-ch/2-4);
   const dx=S.cam.position.x-G.position.x,dz=S.cam.position.z-G.position.z,yaw=Math.atan2(dx,dz)*57.3;
-  const ry=Math.max(-14,Math.min(14,yaw*.3))+(i?-9:9);let sm=SM[id];if(!sm||sm.el!==el){sm=SM[id]={el,x:X-n.x,y:Y-n.y,s:sc,r:ry}}const k=.22;sm.x+=(X-n.x-sm.x)*k;sm.y+=(Y-n.y-sm.y)*k;sm.s+=(sc-sm.s)*k;sm.r+=(ry-sm.r)*k;
+  const ry=Math.max(-14,Math.min(14,yaw*.3))+(i?-9:9);if(![X,Y,sc,ry,d].every(Number.isFinite)||sc<=0){clr(el);delete SM[id];return}let sm=SM[id];if(!sm||sm.el!==el){sm=SM[id]={el,x:0,y:0,s:1,r:0}}const k=.22;sm.x+=(X-n.x-sm.x)*k;sm.y+=(Y-n.y-sm.y)*k;sm.s+=(sc-sm.s)*k;sm.r+=(ry-sm.r)*k;
   /* propriétés séparées : les animations du jeu (secousse, coup, K.O.) gardent leur propre transform sans se battre avec la projection */
-  el.style.translate=`${(sm.x/(n.ps||1)).toFixed(1)}px ${(sm.y/(n.ps||1)).toFixed(1)}px`;el.style.scale=sm.s.toFixed(3);el.style.rotate=`y ${sm.r.toFixed(1)}deg`;el.style.zIndex=Math.round(100-d);el.classList.add('a3p');if(!bt.classList.contains('a3pj')&&bt.classList.contains('a3vis')&&Date.now()-(+bt.dataset.t0||0)>3000&&(!S.CAM0||!S.CAM0.p||S.cam.position.distanceTo(S.CAM0.p)<1.2))bt.classList.add('a3pj')})}
+  el.style.translate=`${(sm.x/(n.ps||1)).toFixed(1)}px ${(sm.y/(n.ps||1)).toFixed(1)}px`;el.style.scale=sm.s.toFixed(3);el.style.rotate=`y ${sm.r.toFixed(1)}deg`;el.style.zIndex=Math.round(100-d);el.classList.add('a3p')})}
 const SM={};
+/* disposition 2D (sans 3D, ou en attendant l'arène) : sur petit écran, la carte est réduite et placée entre le HUD et les boutons, jamais dessous */
+let F2=0;function fit2d(bt){if(++F2%6)return;const W=bt.clientWidth,H=bt.clientHeight;if(W>=700)return;const b=bt.getBoundingClientRect();let hud=0;bt.querySelectorAll('.hud,.hud *').forEach(e=>{const r=e.getBoundingClientRect();if(r.height&&r.bottom-b.top<H*.45)hud=Math.max(hud,r.bottom-b.top)});const ctl=bt.querySelector('.ctl');const bot=ctl?ctl.getBoundingClientRect().top-b.top:H*.7;const band=bot-hud-8;if(band<60)return;
+ ['fp','fe'].forEach(id=>{const el=bt.querySelector('#'+id+' .fgt');if(!el||el.classList.contains('a3p'))return;const st=el.style;st.translate=st.scale='';const r=el.getBoundingClientRect();if(!r.height)return;const ps=(el.offsetWidth?r.width/el.offsetWidth:1)||1;const s=Math.min(1,band/r.height);const cy=r.top-b.top+r.height/2,ty=hud+4+band/2;const dy=(r.top-b.top<hud+2||r.bottom-b.top>bot)?ty-cy:0;if(s<1||dy){st.scale=s.toFixed(3);st.translate=`0px ${(dy/ps).toFixed(1)}px`;el.classList.add('a3f2')}})}
+function clr(el){el.style.translate=el.style.scale=el.style.rotate='';el.style.zIndex='';el.classList.remove('a3p')}
+function reset(bt){bt.querySelectorAll('.fgt.a3p').forEach(clr);for(const k in SM)delete SM[k]}
 requestAnimationFrame(step);
 addEventListener('resize',()=>nat.clear());
 })();
