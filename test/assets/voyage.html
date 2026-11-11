@@ -48,12 +48,12 @@ let PROG=0,DONE=0,TOTAL=8,X=0,T=0,ZN=-1,last=performance.now(),arrived=0;const d
 function ensure(){const cur=Math.floor(X/SEG);for(let i=cur-1;i<=cur+3;i++)if(i>=0&&!ground.children.some(g=>g.userData.i===i))buildSeg(i);ground.children.slice().forEach(g=>{if(g.userData.i<cur-1){ground.remove(g)}})}
 const sky=new THREE.Color();
 function frame(n){requestAnimationFrame(frame);const dt=Math.min(.05,(n-last)/1000);last=n;T+=dt;
- const target=DONE?TOTAL*SEG-6:Math.max(X,PROG*TOTAL*SEG);const sp=DONE&&X>=target?0:Math.max(2.2,(target-X)*.8);X=Math.min(DONE?target:1e9,X+sp*dt);ensure();
+ if(!isFinite(PROG))PROG=0;const target=DONE?TOTAL*SEG-6:Math.max(X,PROG*TOTAL*SEG);const sp=DONE&&X>=target?0:Math.max(2.2,(target-X)*.8);X=Math.min(DONE?target:1e9,X+sp*dt);ensure();
  team.position.x=X;MEM.forEach((p,i)=>{const ph=T*9+i*1.3;p.position.y=1.5+Math.abs(Math.sin(ph))*.18*(sp?1:.2);p.rotation.z=Math.sin(ph)*.06*(sp?1:.2);p.rotation.y=-.35});
  if(sp&&Math.random()<.4){const d=new THREE.Mesh(new THREE.SphereGeometry(.08,6,4),new THREE.MeshBasicMaterial({color:'#e8d8b8',transparent:true,opacity:.6}));d.position.set(X-rnd(0,3),.1,rnd(-.6,.8));sc.add(d);dust.push({m:d,l:0})}
  for(let i=dust.length-1;i>=0;i--){const d=dust[i];d.l+=dt;d.m.position.y+=dt*.4;d.m.material.opacity=.6*(1-d.l);d.m.scale.setScalar(1+d.l*2);if(d.l>1){sc.remove(d.m);dust.splice(i,1)}}
  ground.children.forEach(g=>{const e=g.userData.ev;if(e){e.position.y=2.4+Math.sin(T*2+g.userData.i)*.2;if(X>e.position.x&&!e.userData.pop){e.userData.pop=1;e.material.opacity=1}if(e.userData.pop){e.scale.multiplyScalar(1+dt*2);e.material.opacity=Math.max(0,e.material.opacity-dt*1.5)}}});
- const zi=Math.floor((X+1)/SEG),b=BI[zi%BI.length];if(zi!==ZN){ZN=zi;$('zn').textContent=b[0];$('zone').style.opacity=0;setTimeout(()=>$('zone').style.opacity=1,150)}
+ if(!isFinite(X))X=0;const zi=Math.floor((X+1)/SEG),b=BI[((zi%BI.length)+BI.length)%BI.length]||BI[0];if(zi!==ZN){ZN=zi;$('zn').textContent=b[0];$('zone').style.opacity=0;setTimeout(()=>$('zone').style.opacity=1,150)}
  sky.set(b[1]);sc.background=(sc.background||new THREE.Color()).lerp(sky,dt*1.5);sc.fog.color.copy(sc.background);
  cam.position.set(X+2.5,3.4,10.5);cam.lookAt(X+1,1.4,0);
  const pc=DONE?100:Math.round(PROG*100);$('pc').textContent=pc+' %';$('bar').firstElementChild.style.width=pc+'%';

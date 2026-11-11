@@ -793,6 +793,6 @@ const fold=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLo
 function findC(n){const f=fold(n);return CH.find(x=>fold(x.nm)==f)||CH.find(x=>f.startsWith(fold(x.nm))||fold(x.nm).startsWith(f))||null}
 let RUN=0;
 addEventListener('message',async e=>{const m=e.data||{};if(m.t!='ulti')return;const c=findC(m.n);if(!c||RUN){parent.postMessage({t:'ulti-done',ok:0},'*');return}
- RUN=1;c.i=1;c.N=1;window.__IMGS={};if(m.img)window.__IMGS[c.nm]=m.img;try{await play(c)}catch(x){console.warn(x)}RUN=0;parent.postMessage({t:'ulti-done',ok:1},'*')});
+ RUN=1;c.i=1;c.N=1;window.__IMGS={};if(m.img)window.__IMGS[c.nm]=m.img;if(!window.__BOSS0)window.__BOSS0=Object.assign({},BOSS);Object.assign(BOSS,window.__BOSS0);if(m.foe&&m.foe.nm){Object.assign(BOSS,{nm:m.foe.nm,sb:m.foe.sb,n:m.foe.nm.split(' ')[0].toUpperCase().slice(0,10)});if(m.foe.img)window.__IMGS[m.foe.nm]=m.foe.img}try{await play(c)}catch(x){console.warn(x)}RUN=0;parent.postMessage({t:'ulti-done',ok:1},'*')});
 parent.postMessage({t:'ulti-ready',names:CH.map(x=>x.nm)},'*');
 </script></body></html>
