@@ -1,0 +1,74 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Maquette · Nouveaux portails de guilde</title>
+<style>
+:root{--bg:#07060c;--pn:#120f1c;--ln:#ffffff14;--tx:#f3eefe;--mu:#a59cb8}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#2a1450,#07060c 60%);color:var(--tx);font:15px/1.45 Inter,system-ui,sans-serif;padding:24px 16px 60px}
+.w{max-width:1150px;margin:auto}.ey{font:700 11px 'Space Mono',monospace;letter-spacing:.3em;color:#c9a7ff}
+h1{font:900 clamp(28px,5vw,48px)/1.05 Inter;margin:6px 0 8px}h1 em{font-style:normal;background:linear-gradient(90deg,#ff7ae0,#7ad7ff);-webkit-background-clip:text;color:transparent}
+.lead{color:var(--mu);max-width:720px}h2{font:800 20px Inter;margin:34px 0 12px;display:flex;gap:10px;align-items:center}h2 b{font:900 22px 'Noto Sans JP',sans-serif;color:#c9a7ff}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.pt{position:relative;border-radius:20px;overflow:hidden;min-height:400px;padding:18px;background:var(--pn);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);box-shadow:0 20px 50px -20px color-mix(in srgb,var(--c) 60%,transparent)}
+.ring{position:absolute;left:50%;top:31%;width:170px;height:170px;margin:-85px;border-radius:50%;background:conic-gradient(from 0deg,var(--c),transparent 30%,var(--c2) 50%,transparent 70%,var(--c));animation:sp 6s linear infinite;filter:blur(1px);opacity:.9}
+.ring:after{content:'';position:absolute;inset:16px;border-radius:50%;background:radial-gradient(circle,#000 30%,color-mix(in srgb,var(--c) 40%,#000) 62%,transparent 70%)}
+.core{position:absolute;left:50%;top:31%;width:96px;height:96px;margin:-48px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff,var(--c) 30%,#000 75%);animation:pu 2.6s ease-in-out infinite;box-shadow:0 0 60px var(--c)}
+.kj{position:absolute;left:50%;top:31%;transform:translate(-50%,-50%);font:900 44px 'Noto Sans JP',sans-serif;color:#fff;text-shadow:0 0 24px var(--c)}
+@keyframes sp{to{transform:rotate(360deg)}}@keyframes pu{50%{transform:scale(1.08)}}
+.pt .top{position:relative;display:flex;justify-content:space-between;align-items:center}.tag{font:700 10px 'Space Mono';letter-spacing:.2em;padding:4px 8px;border-radius:99px;background:#0008;border:1px solid var(--c);color:var(--c)}
+.pw{font:800 12px 'Space Mono';color:#fff;background:#0009;padding:4px 9px;border-radius:9px}
+.pt .bot{position:absolute;left:18px;right:18px;bottom:16px}.pt h3{margin:0;font:900 22px Inter}.pt p{margin:4px 0 10px;color:var(--mu);font-size:13px}
+.rw{display:flex;gap:6px;flex-wrap:wrap}.rw span{font:700 11px Inter;padding:4px 8px;border-radius:8px;background:#ffffff10;border:1px solid #ffffff1c}
+.bt{margin-top:12px;display:flex;gap:8px}.bt button{flex:1;border:0;border-radius:12px;padding:10px;font:800 13px Inter;color:#fff;background:linear-gradient(90deg,var(--c),var(--c2));cursor:pointer}.bt button.gh{flex:none;background:#ffffff12}
+.lock{position:absolute;inset:0;background:#0009;display:grid;place-items:center;font:800 14px Inter;color:#ddd;backdrop-filter:blur(2px)}
+.th{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}@media(max-width:820px){.th{grid-template-columns:1fr}}
+.wk{border-radius:20px;overflow:hidden;position:relative;min-height:300px;padding:20px;background:linear-gradient(160deg,#2a0508,#0b0405 60%);border:1px solid #e0262f66}
+.wk .cl{position:absolute;inset:0;background:radial-gradient(ellipse 120px 50px at 20% 30%,#e0262f55,transparent),radial-gradient(ellipse 160px 60px at 80% 20%,#e0262f44,transparent),radial-gradient(ellipse 140px 50px at 60% 75%,#e0262f33,transparent);animation:dr 12s ease-in-out infinite alternate}
+@keyframes dr{to{transform:translateX(-30px)}}
+.wk>*:not(.cl){position:relative}.wk h3{font:900 28px Inter;margin:6px 0}.wk .kj2{position:absolute;right:16px;top:8px;font:900 90px 'Noto Sans JP';color:#e0262f33}
+.en{display:flex;gap:10px;margin:14px 0}.en div{width:62px;height:62px;border-radius:14px;background:linear-gradient(160deg,#3a0a10,#120406);border:1px solid #e0262f88;display:grid;place-items:center;font:900 20px 'Noto Sans JP';color:#ff8a8a}
+.nx{display:grid;gap:10px}.nx div{border-radius:14px;padding:12px 14px;background:var(--pn);border:1px solid var(--ln);display:flex;justify-content:space-between;align-items:center}.nx b{font:800 15px Inter}.nx small{color:var(--mu)}.nx u{text-decoration:none;font:900 22px 'Noto Sans JP';color:var(--k)}
+.raid{border-radius:24px;padding:22px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 70% 40%,#3b1170,#0b0716 65%);border:1px solid #b56cff66}
+.raid .big{position:absolute;right:-60px;top:-40px;width:360px;height:360px;border-radius:50%;background:conic-gradient(#b56cff,#2b0b55,#7ad7ff,#2b0b55,#b56cff);animation:sp 14s linear infinite;opacity:.55;filter:blur(2px)}
+.raid>*:not(.big){position:relative}.raid h3{font:900 30px Inter;margin:4px 0}
+.hp{height:18px;border-radius:99px;background:#ffffff12;overflow:hidden;margin:14px 0 6px;border:1px solid #ffffff22}.hp i{display:block;height:100%;width:62%;background:linear-gradient(90deg,#ff3b6b,#b56cff)}
+.mb{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:12px}.mb div{background:#0007;border:1px solid #ffffff18;border-radius:12px;padding:8px 10px;font-size:12px}.mb b{display:block;font:800 14px Inter}
+.ml{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}.ml span{font:700 11px Inter;padding:5px 9px;border-radius:99px;border:1px solid #ffffff22;background:#ffffff0c}.ml span.ok{border-color:#4ade80;color:#4ade80}
+.note{margin-top:30px;color:var(--mu);font-size:12px;text-align:center}
+</style></head><body><div class="w">
+<div class="ey">GUILDE · ÉTAPE 3 · MAQUETTE</div>
+<h1>Nouveaux <em>portails</em> de guilde</h1>
+<p class="lead">Trois nouveaux paliers pour les cartes de MUGEN 26, un portail à thème qui change chaque semaine, et un portail « Raid » géant que toute la guilde attaque ensemble.</p>
+
+<h2><b>門</b> Les nouveaux paliers</h2>
+<div class="g3">
+ <div class="pt" style="--c:#ffb347;--c2:#ff5e3a"><div class="ring"></div><div class="core"></div><div class="kj">原</div>
+  <div class="top"><span class="tag">PRIMORDIAL</span><span class="pw">⚔ 200</span></div>
+  <div class="bot"><h3>Portail Primordial</h3><p>Les anciens dieux des origines gardent la porte.</p><div class="rw"><span>🪙 900</span><span>💎 30 éclats</span><span>⛩ 60 XP guilde</span><span>📦 Coffre de guilde</span></div><div class="bt"><button>Entrer · 1/3 aujourd’hui</button><button class="gh">ℹ</button></div></div></div>
+ <div class="pt" style="--c:#7ad7ff;--c2:#b8f3ff"><div class="ring"></div><div class="core"></div><div class="kj">昇</div>
+  <div class="top"><span class="tag">ASCENDANT</span><span class="pw">⚔ 225</span></div>
+  <div class="bot"><h3>Portail Ascendant</h3><p>Une tempête céleste : les gardiens esquivent ta 1re attaque.</p><div class="rw"><span>🪙 1 200</span><span>💎 40 éclats</span><span>⛩ 90 XP guilde</span><span>🎁 Plume céleste</span></div><div class="bt"><button>Entrer · 3/3 aujourd’hui</button><button class="gh">ℹ</button></div></div></div>
+ <div class="pt" style="--c:#ff4fe0;--c2:#7a3cff"><div class="ring"></div><div class="core"></div><div class="kj">絶</div>
+  <div class="top"><span class="tag">ABSOLU</span><span class="pw">⚔ 260</span></div>
+  <div class="bot"><h3>Portail Absolu</h3><p>Le Néant : chaque tour, 5 % de vie effacés pour tout le monde.</p><div class="rw"><span>🪙 1 600</span><span>💎 60 éclats</span><span>⛩ 140 XP guilde</span><span>✦ Fragment Absolu</span></div><div class="bt"><button>Entrer</button><button class="gh">ℹ</button></div></div>
+  <div class="lock">🔒 Guilde niveau 8 requise (actuel : 6)</div></div>
+</div>
+
+<h2><b>週</b> Le portail de la semaine</h2>
+<div class="th">
+ <div class="wk"><div class="cl"></div><div class="kj2">暁</div><div class="ey" style="color:#ff6a6a">CETTE SEMAINE · ENCORE 4 J 06 H</div><h3>Portail de l’Akatsuki</h3><p class="lead">Les membres de l’Aube attaquent la guilde. Règle de la semaine : <b>la pluie d’Amegakure</b> — les attaques Eau font +20 %.</p>
+  <div class="en"><div>零</div><div>朱</div><div>青</div><div>三</div><div>北</div></div>
+  <div class="rw"><span>🎁 Objet exclusif : Manteau de l’Aube (accessoire)</span><span>🪙 ×1,3 cette semaine</span></div><div class="bt"><button style="--c:#e0262f;--c2:#7a0a12">Affronter l’Akatsuki</button></div></div>
+ <div class="nx">
+  <div style="--k:#7ad7ff"><span><b>Hueco Mundo</b><br><small>semaine prochaine · les Espada</small></span><u>虚</u></div>
+  <div style="--k:#ffb347"><span><b>Marineford</b><br><small>dans 2 semaines · la guerre au sommet</small></span><u>海</u></div>
+  <div style="--k:#9be7ff"><span><b>Shibuya</b><br><small>dans 3 semaines · l’incident</small></span><u>渋</u></div>
+  <div style="--k:#ff8a8a"><span><b>Mont Natagumo</b><br><small>dans 4 semaines · la famille de Rui</small></span><u>蜘</u></div>
+ </div>
+</div>
+
+<h2><b>襲</b> Le portail « Raid »</h2>
+<div class="raid"><div class="big"></div><div class="ey">ATTAQUE DE TOUTE LA GUILDE · JUSQU’À DIMANCHE 20 H</div><h3>La Faille du Dragon-Monde</h3><p class="lead">Un portail géant : chaque membre a 3 attaques par jour. Les dégâts de tous s’additionnent. Plus la faille se referme, plus le coffre final est gros.</p>
+ <div class="hp"><i></i></div><small>62 % refermée · 3 720 000 / 6 000 000 dégâts</small>
+ <div class="ml"><span class="ok">25 % · Coffre bronze ✓</span><span class="ok">50 % · Coffre argent ✓</span><span>75 % · Coffre or</span><span>100 % · Coffre du Dragon + titre « Gardiens de la Faille »</span></div>
+ <div class="mb"><div><b>Kenshin</b>1 120 000 dégâts</div><div><b>Mika</b>860 000</div><div><b>Ren</b>740 000</div><div><b>Sora</b>520 000</div><div><b>+ 6 membres</b>480 000</div></div>
+ <div class="bt" style="max-width:420px"><button style="--c:#b56cff;--c2:#ff3b6b">Attaquer la faille · 2/3</button><button class="gh">Classement</button></div></div>
+<div class="note">Maquette — valeurs indicatives, à équilibrer avant la sortie (jeudi 26 novembre).</div>
+</div></body></html>
