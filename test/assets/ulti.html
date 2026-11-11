@@ -787,12 +787,32 @@ const __fold=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCas
 function __applyImg(f,u){if(!u)return;const im=new Image();im.crossOrigin='anonymous';im.referrerPolicy='no-referrer';im.onload=()=>{try{const c=document.createElement('canvas');c.width=512;c.height=768;const g=c.getContext('2d');const s=Math.max(512/im.width,768/im.height);g.drawImage(im,(512-im.width*s)/2,(768-im.height*s)/2,im.width*s,im.height*s);g.getImageData(0,0,1,1);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;f.m.uniforms.map.value=t}catch(e){}};im.src=u}
 {const _r=restyle;restyle=function(f,o){_r.apply(this,arguments);try{const key=__fold(o&&(o.nm||o.n));if(!key)return;const e=Object.entries(window.__IMGS).find(([k])=>{const a=__fold(k);return a==key||a.includes(key)||key.includes(a)||a.split(' ')[0]==key.split(' ')[0]});if(e)__applyImg(f,e[1])}catch(e){}}}
 
+/* SERVEUR TEST : spectacle croissant Mythique < Divin < Monarque < Lame Écarlate < Primordial < Ascendant (Absolu : celles du jeu) */
+RAR.mythique={lab:'Mythique',k:'幻',I:.82,fr:['#ffe0f0','#ff4d9a','#5a0a3a'],dmg:[2400,3200],sky:[[0,'#0a0410'],[.5,'#2a0a2a'],[.75,'#5a1a4a'],[1,'#0a0410']]};
+Object.assign(RAR.divin,{I:1});Object.assign(RAR.monarque,{I:1.1});Object.assign(RAR.ecarlate,{I:1.2});Object.assign(RAR.primordial,{I:1.32});Object.assign(RAR.ascendant,{I:1.45});
+/* les 97 Mythiques : chacun son attaque signature, construite à partir du vrai nom d'attaque du jeu (mots-clés) puis de l'élément */
+const MKW=[[/pourpre|purple|murasaki|genkidama|death ball|boule de mort/i,'ball',{kind:'death',size:2.2},'#a05aff','#ffffff','虚'],[/railgun|tiro finale|eraser cannon|final flash/i,'beam',{w:1.2},'#7ad8ff','#ffffff','砲'],[/muda|ora |ora$|rafale|mille poings/i,'punch',{kind:'smash'},'#ffd36a','#ffffff','連'],[/unlimited blade|mille lames|épées/i,'slash',{n:6,gap:80},'#e8f4ff','#ffd36a','剣'],[/amaterasu|flamme(s)? noire/i,'flames',{},'#1a0a14','#ff3a2a','天'],[/susano/i,'pillar',{w:2.4},'#8a5aff','#e0d0ff','須'],[/raikiri|chidori|kirin|lame de foudre|éclair/i,'lance',{},'#7ad8ff','#ffffff','雷'],
+ [/rasen|spirale|orbe|sphère|boule/i,'ball',{kind:'death',size:1.8},'#6ab8ff','#ffffff','螺'],[/kamehameha|galick|final flash|masenko|canon|rayon|laser|flash|beam|blast|souffle/i,'beam',{w:1},'#ffd36a','#ffffff','波'],
+ [/getsuga|croc|lune|croissant/i,'slash',{n:2,fin:'v',gap:140},'#7ad8ff','#1a0a2a','月'],[/santoryu|asura|trois sabres|tranch|lame|sabre|épée|coupe|entaille|katana|iai/i,'slash',{n:3,gap:110},'#e8f4ff','#7ad8ff','斬'],
+ [/gear|gomu|pistol|poing|smash|coup|frappe|punch|uppercut|rafale|kick|pied/i,'punch',{kind:'smash'},'#ffb46a','#ffffff','拳'],[/hinokami|kagura|feu|flamme|incend|brûl|enfer|hellflame|pyro|soleil/i,'flames',{},'#ff6a2a','#ffd36a','炎'],
+ [/eau|vague|tsunami|marée|aqua|océan/i,'storm',{blades:1},'#4ab8ff','#ffffff','水'],[/vent|tornade|cyclone|tempête|typhon/i,'storm',{blades:1},'#7affc8','#ffffff','風'],[/dragon|serpent/i,'dragon',{breath:1,r:.5},'#ff7a2a','#ffd36a','龍'],
+ [/flèche|arc|tir|balle|bullet|shot/i,'arrow',{},'#ffd36a','#ffffff','矢'],[/séisme|terre|quake|sol|roc|pierre|montagne/i,'quake',{},'#c8a06a','#ffffff','震'],[/domaine|expansion|monde|portail|dimension/i,'portals',{},'#8a5aff','#ffffff','域'],
+ [/fouet|chaîne|ruban|fil|tentacule/i,'whips',{n:5,lashes:2},'#ff4d9a','#ffffff','鞭'],[/bombe|explosion|explos|atomique/i,'bomb',{},'#ff7a2a','#ffffff','爆'],[/glace|gel|givre|froid|neige/i,'lance',{},'#bfe8ff','#ffffff','氷'],
+ [/ombre|ténèbre|noir|néant|mort|démon|maudit/i,'portals',{},'#8a5aff','#1a0a2a','闇'],[/lumière|sacré|divin|ange|étoile|météor/i,'pillar',{w:2},'#ffe28a','#ffffff','光']];
+const MFX={f:['flames',{},'#ff6a2a','#ffd36a','炎'],l:['bolts',{n:9},'#7ad8ff','#ffffff','雷'],b:['beam',{w:1},'#ffd36a','#ffffff','光'],s:['slash',{n:3,gap:110},'#e8f4ff','#7ad8ff','斬'],p:['punch',{kind:'smash'},'#ffb46a','#ffffff','拳'],d:['portals',{},'#8a5aff','#1a0a2a','闇'],w:['storm',{blades:1},'#4ab8ff','#ffffff','水']};
+function mkMyth(m){const t=String(m.sig||'')+' '+String(m.tech||'');let pick=MKW.find(x=>x[0].test(t));let fam,pp,col,col2,k;
+ if(pick){[,fam,pp,col,col2,k]=pick}else{[fam,pp,col,col2,k]=MFX[m.fx]||MFX.b}
+ const h=[...String(m.nm)].reduce((a,c)=>(a*31+c.charCodeAt(0))>>>0,7);pp=Object.assign({},pp);
+ if(fam=='slash')pp.n=(pp.n||3)+(h%3);if(fam=='bolts')pp.n=8+(h%6);if(fam=='ball')pp.size=1.5+(h%5)*.12;if(fam=='whips')pp.n=4+(h%3);if(fam=='beam')pp.w=.9+(h%4)*.1;
+ const steps=[[fam,pp]];if(h%3==0&&fam!=='punch')steps.unshift(['punch',{kind:'smash'}]);
+ return {r:'mythique',nm:m.nm,n:m.sig||'Attaque signature',k,col,col2,steps,dom:null}}
+window.mkMyth=mkMyth;
 /* SERVEUR TEST : ultime jouée à la demande du jeu */
 try{$('tag').style.display='none'}catch(e){}
 const fold=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 function findC(n){const f=fold(n);return CH.find(x=>fold(x.nm)==f)||CH.find(x=>f.startsWith(fold(x.nm))||fold(x.nm).startsWith(f))||null}
 let RUN=0;
-addEventListener('message',async e=>{const m=e.data||{};if(m.t!='ulti')return;const c=findC(m.n);if(!c||RUN){parent.postMessage({t:'ulti-done',ok:0},'*');return}
+addEventListener('message',async e=>{const m=e.data||{};if(m.t!='ulti')return;const c=m.myth?mkMyth(m.myth):findC(m.n);if(!c||RUN){parent.postMessage({t:'ulti-done',ok:0},'*');return}
  RUN=1;c.i=1;c.N=1;window.__IMGS={};if(m.img)window.__IMGS[c.nm]=m.img;if(!window.__BOSS0)window.__BOSS0=Object.assign({},BOSS);Object.assign(BOSS,window.__BOSS0);if(m.foe&&m.foe.nm){Object.assign(BOSS,{nm:m.foe.nm,sb:m.foe.sb,n:m.foe.nm.split(' ')[0].toUpperCase().slice(0,10)});if(m.foe.img)window.__IMGS[m.foe.nm]=m.foe.img}try{await play(c)}catch(x){console.warn(x)}RUN=0;parent.postMessage({t:'ulti-done',ok:1},'*')});
 parent.postMessage({t:'ulti-ready',names:CH.map(x=>x.nm)},'*');
 </script></body></html>

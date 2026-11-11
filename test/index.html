@@ -4879,6 +4879,24 @@ html body .card.r10:not(.awk2) .nm{background:linear-gradient(90deg,#fff,#c0c0ff
 .ab-st .ds-i span{display:block;color:var(--mu);font-size:12.5px}
 .ab-st .ds-i em{display:block;font-size:11.5px;color:#c9c3d8;margin-top:2px}
 .ab-st .ds-th .ab-th0{width:62px;height:62px}
+/* v26.8 · Week-end double XP */
+.dxp-chip{display:inline-flex;align-items:center;gap:4px;margin-top:6px;padding:4px 10px;border-radius:999px;border:1px solid #ffffff44;background:#00000033;color:#fff;font:700 11.5px Inter,sans-serif;cursor:pointer;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dxp-chip.on{background:linear-gradient(90deg,#ffd34a,#ff8a3c);color:#2a1200;border-color:#fff8;box-shadow:0 0 14px #ffd34a88;animation:dxpP 2.4s ease-in-out infinite}
+.dxp-ban{display:flex;align-items:center;gap:14px;width:100%;margin:0 0 14px;padding:12px 16px;text-align:left;color:#fff;cursor:pointer;border-radius:16px;border:1px solid #ffd34a66;background:linear-gradient(110deg,#3a2400,#5a1d00 55%,#2a1040);box-shadow:0 0 24px #ffb43a33;font-family:Inter,sans-serif;box-sizing:border-box}
+.dxp-ban>span{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.dxp-ban em{font-style:normal;font-size:11px;letter-spacing:.12em;font-weight:800;color:#ffd34a}
+.dxp-ban strong{font:900 16px Unbounded,sans-serif;overflow-wrap:anywhere}
+.dxp-ban small{color:#ffe7b8;font-size:12px}
+.dxp-x{flex:none;display:grid;place-items:center;width:54px;height:54px;border-radius:14px;font:900 22px Unbounded,sans-serif;color:#2a1200;background:radial-gradient(circle at 30% 25%,#fff6c8,#ffd34a 45%,#ff8a3c);box-shadow:0 0 18px #ffd34a99,inset 0 -3px 0 #0003;animation:dxpP 2.4s ease-in-out infinite}
+.dxp-x.big{width:84px;height:84px;font-size:32px;border-radius:22px}
+.dxp-m{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;max-width:420px;margin:auto}
+.dxp-m h3{margin:0;font:900 20px Unbounded,sans-serif;overflow-wrap:anywhere}
+.dxp-m p{margin:2px 0;font-size:14px;line-height:1.45}
+.dxp-m small{color:var(--mu)}
+.dxp-st{padding:8px 12px;border-radius:12px;background:#ffd34a14;border:1px solid #ffd34a44}
+@keyframes dxpP{0%,100%{box-shadow:0 0 10px #ffd34a66}50%{box-shadow:0 0 24px #ffd34acc}}
+@media(prefers-reduced-motion:reduce){.dxp-chip.on,.dxp-x{animation:none}}
+@media(max-width:480px){.dxp-ban{gap:10px;padding:10px 12px}.dxp-ban strong{font-size:14px}.dxp-x{width:44px;height:44px;font-size:18px}}
 </style><style>#tstb{position:fixed;left:50%;transform:translateX(-50%);bottom:6px;z-index:2147483000;display:flex;gap:6px;align-items:center;padding:5px 6px 5px 12px;border-radius:999px;background:#120a1ee6;border:1px solid #ffd36a66;box-shadow:0 6px 24px #000a,0 0 18px #ffd36a33;font:800 11px ui-monospace,monospace;color:#ffd36a;letter-spacing:1px;backdrop-filter:blur(8px)}
 #tstb button{font:800 11px Inter,system-ui,sans-serif;padding:6px 11px;border-radius:999px;border:0;background:linear-gradient(90deg,#ffd36a,#ff7a45);color:#2a1100;cursor:pointer}
 #tstp{position:fixed;right:12px;bottom:52px;z-index:2147483001;width:min(330px,calc(100vw - 24px));max-height:70vh;overflow:auto;padding:12px;border-radius:16px;background:#120d1af5;border:1px solid #ffffff22;box-shadow:0 20px 50px #000c;display:none;color:#f3eefc;font:13px Inter,system-ui,sans-serif}
@@ -5190,6 +5208,10 @@ body.nav3-a #tb{flex-wrap:nowrap}
 .n3t.cmp .n3k2{right:auto;left:12px;top:10px}
 .n3c{width:50px}.l-solo .n3c{width:58px}.l-fan .n3c{width:44px}
 @media (max-width:760px){.n3t.cmp{min-height:120px}.n3t.cmp .n3cd{height:74px;width:100%;right:0}.n3t.cmp .n3tx{max-width:100%}.n3c{width:38px}.l-solo .n3c{width:44px}}
+.n3t.sc2{min-height:118px}.n3t.sc2 .n3im{opacity:.95}.n3t.sc2 .n3im::after{background:linear-gradient(180deg,#0000 35%,#07050ce6)}
+.n3t.sc2 .n3k2{font-size:14px;top:7px;right:9px;opacity:.85}
+.n3t.sc2:hover .n3im{transform:scale(1.07)}
+.n3t.sc2 .n3im{background-position:center 42%!important}
 </style><style>/* SERVEUR TEST · accueil v3 */
 #v.h3home .h3hide{display:none!important}
 #v.h3home .hx{border-radius:24px;background:linear-gradient(135deg,#1a1028d9,#0c0914e6)!important;border:1px solid #ffffff1c;box-shadow:0 30px 60px #0008;backdrop-filter:blur(10px)}
@@ -7086,7 +7108,9 @@ qd();
 function showOdds(o,c,p){const d=document.createElement('div');d.className='odds'+(c.na?' aw':'');d.innerHTML=(c.na?'<b>ÉVEIL</b> · ':'')+oddsTxt(c,p);o.append(d)}
 
 /* ===== MISES À JOUR ===== */
-const VER='26.7.6',CHG=[
+const VER='26.8',CHG=[
+ {v:'26.8',d:'11 novembre 2026',t:'Week-end double XP',n:['Un week-end sur deux, du samedi 0 h au dimanche minuit, toute l’XP que tu gagnes est doublée (combats, modes, missions…). Les pièces ne changent pas.','Sur l’accueil, sous ta barre d’XP, une petite pastille te dit quand arrive le prochain week-end double XP. Pendant le week-end, un bandeau doré apparaît sur l’accueil et en haut de Combat, avec le temps restant et l’XP bonus gagnée. Le premier aura lieu ce samedi 14 novembre !'],f:[]},
+ {v:'26.7.7',d:'11 novembre 2026',t:'Correctifs',n:[],f:['« Continuer » après un combat des Portes de l’Origine (et de quelques autres modes) ne fait plus planter le jeu : il ramène au menu Combat.']},
  {v:'26.7.6',d:'11 novembre 2026',t:'Correctifs',n:[],f:['GIF : seules les cartes Absolues (Light, Rimuru, Zeno) gardent leurs nouveaux GIF ; les Divines, Primordiales et Ascendantes retrouvent leurs GIF d’avant.', 'Images : une carte dont l’image ne se charge pas va chercher toute seule sa bonne image (recherche améliorée pour Zeno, Whis, Kenjaku, All For One, Veldora, Isshiki, Kaguya, Hagoromo, Mob, Gyomei, Kanae, Sakonji…).']},
  {v:'26.7.5',d:'11 novembre 2026',t:'Correctifs',n:[],f:['Anti-triche : il n’efface plus jamais un compte tout seul. En cas d’activité inhabituelle, le compte est mis en vérification et la progression est conservée.', 'Anti-triche : deux fausses alertes corrigées (fin de certains combats, et les Éveils des persos du grand roster comptés avant son chargement).']},
  {v:'26.7.4',d:'11 novembre 2026',t:'Correctifs',n:[],f:['Absolus : Light Yagami, Rimuru Tempest et Zeno ont de nouveaux GIF, avec leurs scènes cultes (4 chacun, change avec ↻).', 'GIF des nouvelles raretés : si un GIF ne se charge pas, la carte passe toute seule au suivant.']},
@@ -15186,6 +15210,28 @@ setTimeout(()=>{try{let n=0;const bad=[];const L=D.filter(c=>{try{const u=imgOf0
 {const _f=nwImgFix;nwImgFix=function(){const keep={};try{D.forEach(c=>{if(c.r<8||!S.mim||!S.mim[c.id])return;const ids=nwGifIds(c);if(!ids.length)return;const id=ids[(S.ngi[c.id]||0)%ids.length];if(/^https?:/.test(id))return;const u=`https://media.giphy.com/media/${id}/giphy_s.gif`;if(S.badu&&S.badu[u])keep[c.id]=S.mim[c.id]})}catch(e){}
  const r=_f.apply(this,arguments);try{for(const id in keep)S.mim[id]=keep[id]}catch(e){}return r}}
 
+/* showfix : « Continuer » après certains combats (Portes de l'Origine…) appelait show('<mode>') sur une page qui n'existe pas → plantage. On revient au menu Combat. */
+{const _sw=show;show=function(v){try{return _sw.apply(this,arguments)}catch(e){if(v!=='battle'&&/is not a function|undefined/.test(String(e&&e.message))){try{document.querySelectorAll('.ov').forEach(o=>o.remove())}catch(_){}return _sw.call(this,'battle')}throw e}}}
+
+/* ===== v26.8 · Week-end double XP ===== */
+const DXP0=Date.UTC(2026,10,9);
+function dxpWk(d){d=d||new Date();const u=Date.UTC(d.getFullYear(),d.getMonth(),d.getDate());return Math.floor((u-DXP0)/864e5/7)}
+function dxpOn(d){d=d||new Date();const g=d.getDay();if(g!=6&&g!=0)return false;const w=dxpWk(g==0?new Date(d.getFullYear(),d.getMonth(),d.getDate()-1):d);return ((w%2)+2)%2==0}
+function dxpKey(d){d=d||new Date();return 'w'+dxpWk(d.getDay()==0?new Date(d.getFullYear(),d.getMonth(),d.getDate()-1):d)}
+function dxpNext(){const n=new Date();let d=new Date(n.getFullYear(),n.getMonth(),n.getDate());for(let i=0;i<21;i++){if(d.getDay()==6&&dxpOn(d))return d;d=new Date(d.getFullYear(),d.getMonth(),d.getDate()+1)}return d}
+function dxpEnd(){const n=new Date(),k=n.getDay()==6?2:1;return new Date(n.getFullYear(),n.getMonth(),n.getDate()+k)}
+function dxpS(){const k=dxpKey();if(!S.dxp||typeof S.dxp!='object'||S.dxp.k!=k)S.dxp={k:k,x:0,t:(S.dxp&&S.dxp.t)||0,n:(S.dxp&&S.dxp.n)||0};return S.dxp}
+function dxpLeft(){const ms=Math.max(0,dxpEnd()-new Date()),h=Math.floor(ms/36e5),m=Math.floor(ms%36e5/6e4);return h>=24?Math.floor(h/24)+' j '+(h%24)+' h':h+' h '+String(m).padStart(2,'0')}
+function dxpDate(d){return d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'})}
+{const _g=gx;gx=function(n){try{if(n>0&&dxpOn()){const z=dxpS();z.x=(z.x||0)+n;z.t=(z.t||0)+n;n=n*2}}catch(e){}return _g.call(this,n)}}
+function dxpChip(){try{if(dxpOn())return `<button class="dxp-chip on" type="button" data-oclick="dxpInfo()">✦ XP ×2 ce week-end</button>`;return `<button class="dxp-chip" type="button" data-oclick="dxpInfo()">Prochain XP ×2 : ${dxpNext().toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'})}</button>`}catch(e){return''}}
+function dxpBan(){const z=dxpS();return `<button class="dxp-ban" type="button" data-oclick="dxpInfo()"><b class="dxp-x" aria-hidden="true">×2</b><span><em>WEEK-END DOUBLE XP · 経験</em><strong>Toute l’XP est doublée !</strong><small>Encore ${dxpLeft()} · +${FR(z.x||0)} XP bonus gagnés</small></span></button>`}
+function dxpInfo(){const on=dxpOn(),z=dxpS(),nx=dxpNext();
+ modal(`<div class="dxp-m"><b class="dxp-x big" aria-hidden="true">×2</b><div class="ey y">WEEK-END DOUBLE XP · 経験</div><h3>${on?'C’est le week-end double XP !':'Week-end double XP'}</h3><p>Un week-end sur deux, du <b>samedi 0 h</b> au <b>dimanche minuit</b>, toute l’XP que tu gagnes est <b>doublée</b> : combats, modes, missions, portes… Les pièces, elles, ne changent pas.</p>${on?`<p class="dxp-st">Fin dans <b>${dxpLeft()}</b><br>XP bonus gagnée ce week-end : <b>+${FR(z.x||0)}</b></p>`:`<p class="dxp-st">Prochain week-end double XP :<br><b>${dxpDate(nx)}</b> et le lendemain</p>`}<small>Total d’XP bonus depuis le début : +${FR(z.t||0)} · ${z.n||0} week-end${(z.n||0)>1?'s':''} joué${(z.n||0)>1?'s':''}</small></div>`).classList.add('dxp-ov')}
+function dxpHello(){try{if(!dxpOn())return;const z=dxpS();if(z.s)return;z.s=1;z.n=(z.n||0)+1;save();toast('✦ Week-end double XP ! Toute ton XP est doublée jusqu’à dimanche minuit.')}catch(e){}}
+{const _d=dash;dash=function(){const r=_d.apply(this,arguments);try{const v=$('v'),hx=v&&v.querySelector('.hx');if(hx){const sm=hx.querySelector('.hx-xp');if(sm&&!hx.querySelector('.dxp-chip')){const t=sm.nextElementSibling&&sm.nextElementSibling.tagName=='SMALL'?sm.nextElementSibling:sm;t.insertAdjacentHTML('afterend',dxpChip())}if(dxpOn()&&!v.querySelector('.dxp-ban'))hx.insertAdjacentHTML('afterend',dxpBan())}dxpHello()}catch(e){console.warn(e)}return r}}
+{const _b=battle;battle=function(){const r=_b.apply(this,arguments);try{const v=$('v');if(v&&dxpOn()&&!v.querySelector('.dxp-ban')){const f=v.querySelector('.ftg22b');if(f)f.insertAdjacentHTML('afterend',dxpBan());else v.insertAdjacentHTML('afterbegin',dxpBan())}dxpHello()}catch(e){console.warn(e)}return r}}
+
 appBgSet(view);
 setTimeout(()=>{try{if(S.sv!=SPL.v&&!document.getElementById('bt'))splash()}catch(e){}},1400);
 </script><div id="tstb" title="Serveur test · sauvegarde locale, séparée du vrai jeu">🧪 TEST <button id="tstbt" type="button">Mode test</button></div>
@@ -15327,7 +15373,7 @@ async function OPEN2(p,cards){const ranks=cards.map(c=>c.na?9:c.r==9?5:Math.min(
  const fan=i=>{if(GRID){const r=Math.floor(i/PER),c=i%PER,inRow=Math.min(PER,n-r*PER),sp=CW+6;return{x:(c-(inRow-1)/2)*sp,y:(r-(ROWS-1)/2)*(CW/.6667+10)-10,rz:0,z:0}}const m=(n-1)/2,d=i-m,sp=Math.min(190,W/(n+1.2));return{x:d*sp,y:-30+Math.abs(d)*14,rz:d*5,z:-Math.abs(d)*20}};
  const st=els.map(()=>({x:0,y:40,z:0,rz:0,ry:0,s:.25,o:0}));
  const put=(e,s)=>{e.style.transform=`translate3d(${s.x}px,${s.y}px,${s.z}px) rotateZ(${s.rz}deg) rotateY(${s.ry}deg) scale(${s.s})`;e.style.opacity=s.o;const a=((s.ry%360)+360)%360,fr=a>90&&a<270;e.children[0].style.visibility=fr?'hidden':'visible';e.children[1].style.visibility=fr?'visible':'hidden'};
- els.forEach((e,i)=>put(e,st[i]));
+ els.forEach((e,i)=>{put(e,st[i]);e.style.zIndex=i==bi?60:10+i});
  const fly=els.map((e,i)=>wait(i*.09).then(()=>{const f=fan(i),s=st[i];F.burst(cx,cy-60,20,{a:-1.57,sp:2,v:400,c:bc,s:12,life:.5});return tween(.6,k=>{s.x=f.x*k;s.y=40+(f.y-40)*k-Math.sin(k*Math.PI)*170;s.z=f.z*k;s.rz=f.rz*k+(1-k)*30;s.s=.25+.75*k;s.o=Math.min(1,k*4);put(e,s)},E.o)}));
  await Promise.all(fly);await tween(.35,k=>{pw.style.opacity=1-k;pw.style.transform=`translateY(${k*120}px) scale(${1-k*.3})`});
  // 5. retournement des cartes (sauf la meilleure)
@@ -15335,7 +15381,7 @@ async function OPEN2(p,cards){const ranks=cards.map(c=>c.na?9:c.r==9?5:Math.min(
   await tween(.32,k=>{s.ry=180*k;s.y=fan(i).y-Math.sin(k*Math.PI)*24;s.s=1+Math.sin(k*Math.PI)*.08;put(e,s)},E.io);
   F.flare(ex,ey,col,c.r>=3?260:170,.4);F.burst(ex,ey,c.r>=3?70:30,{c:col,c2:'#ffffff',v:260,s:12,life:.6,g:200});if(c.r>=3)F.ring(ex,ey,col,170,.5);await wait(.18)}
  // 6. la meilleure : plan rapproché
- const s=st[bi],e=els[bi];await tween(.5,k=>{els.forEach((x,j)=>{if(j!=bi){x.children[0].style.filter=x.children[1].style.filter=`brightness(${1-k*.6})`;const q=st[j];q.y=fan(j).y+k*60;q.s=1-k*.15;put(x,q)}});s.x=fan(bi).x*(1-k);s.y=fan(bi).y*(1-k)-k*10;s.z=k*260;s.rz=fan(bi).rz*(1-k);put(e,s)},E.io);
+ const s=st[bi],e=els[bi];await tween(.5,k=>{els.forEach((x,j)=>{if(j!=bi){x.children[0].style.filter=x.children[1].style.filter=`brightness(${1-k*.6})`;const q=st[j];q.y=fan(j).y+k*60;q.s=1-k*.15;put(x,q)}});s.x=fan(bi).x*(1-k);s.y=fan(bi).y*(1-k)-k*10;s.z=k*260;s.rz=fan(bi).rz*(1-k);if(GRID)s.s=1+(Math.min(1.9,CW0/CW)-1)*k;put(e,s)},E.io);
  const ry=best>=3?F.rays(cx,cy-10,bc,900,2.2+best*.3):null;const tz=.7+Math.max(0,best-2)*.35;
  if(best==4)F.spr(DRAW.prism,cx,cy-10,1100,1100,tz+2.4,(m,k)=>{m.rotation.z=-T*.5;m.material.opacity=Math.min(1,k*4)*(k>.8?(1-k)/.2:1)*.55;m.scale.setScalar(900+k*300)});
  if(best==8){const dk=document.createElement('div');dk.style.cssText='position:absolute;inset:0;background:#000;opacity:0;pointer-events:none';o.querySelector('canvas').before(dk);tween(.6,k=>dk.style.opacity=k*.92).then(()=>wait(tz+1.8)).then(()=>tween(1,k=>dk.style.opacity=.92*(1-k)));
@@ -15478,7 +15524,10 @@ function compose(key,cfg){const [sc,names,lay]=cfg;let inner='';
  else if(lay=='mystery')inner=`<span class="n3cd l-solo"><span class="n3q">?</span></span>`;
  else{const cs=names.map(pick).filter(Boolean);inner=`<span class="n3cd l-${lay}">${cs.map((c,i)=>`<span class="n3c" style="--i:${i};--n:${cs.length}">${card(c)}</span>`).join('')}${lay=='podium'?'<i class="n3cr">♛</i>':''}${lay=='price'?'<i class="n3pr">250 ◎</i>':''}</span>`}
  return `<span class="n3im n3cmp" style="background-image:url(${scn(sc)})">${inner}<i class="n3gl"></i></span>`}
-const tile=(it,c)=>{const cfg=!it[4]&&CMP[it[0].replace(/2$/,'')];return `<button class="n3t${cfg?' cmp':''}" data-k="${it[0]}" style="--nc:${c}">${cfg?compose(it[0],cfg):`<span class="n3im" style="background-image:url(${art(it)})"></span>`}<span class="n3tx"><b>${it[1]}</b><small>${it[2]}</small></span><i class="n3k2">${it[3]}</i></button>`};
+/* tuiles sans arène : scènes anime peintes (assets/menu2), sans cartes par-dessus */
+const SC2=k=>{k=k.replace(/2$/,'');if(k=='dojo')return 'dojo';return k};
+const art2=it=>it[4]?AR(it[4]):`assets/menu2/${SC2(it[0])}.webp`;
+const tile=(it,c)=>{const cfg=false;return `<button class="n3t sc2" data-k="${it[0]}" style="--nc:${c}"><span class="n3im" style="background-image:url(${art2(it)})"></span><span class="n3tx"><b>${it[1]}</b><small>${it[2]}</small></span><i class="n3k2">${it[3]}</i></button>`};
 const act=k=>{for(const g of CAT)for(const it of g[3])if(it[0]==k)return it[5]};
 function bind(root){root.querySelectorAll('[data-k]').forEach(b=>b.onclick=e=>{e.stopPropagation();closeAll();const f=act(b.dataset.k);f&&f()})}
 function closeAll(){document.querySelectorAll('#n3mega,#n3wheel,#n3map').forEach(e=>e.remove());document.querySelectorAll('#n3tabs button').forEach(b=>b.classList.remove('op'))}
@@ -15839,11 +15888,11 @@ const has=n=>{if(!NAMES)return false;const f=fold(n);return NAMES.some(x=>{const
 addEventListener('message',e=>{const m=e.data||{};if(!IF||e.source!=IF.contentWindow)return;if(m.t=='ulti-ready'){RD=1}if(m.t=='ulti-done'&&WAIT){const w=WAIT;WAIT=null;w()}});
 function mount(){if(IF&&document.body.contains(IF))return;IF=document.createElement('iframe');IF.id='u3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;IF.src='assets/ulti.html';document.body.append(IF)}
 function hide(){if(IF)IF.classList.remove('on');const s=document.getElementById('u3sk');if(s)s.remove()}
-async function play(n,img,foe){if(!has(n))return 0;mount();if(!(await ready()))return 0;try{window.A3post&&A3post({t:'pause',v:1})}catch(e){}IF.classList.add('on');const sk=document.createElement('button');sk.id='u3sk';sk.type='button';sk.textContent='Passer ›';document.body.append(sk);
- await new Promise(r=>{WAIT=r;sk.onclick=()=>{WAIT=null;r()};setTimeout(()=>{if(WAIT===r){WAIT=null;r()}},14000);IF.contentWindow.postMessage({t:'ulti',n,img,foe},'*')});hide();try{window.A3post&&A3post({t:'pause',v:0})}catch(e){}setTimeout(()=>{if(IF&&!IF.classList.contains('on')){IF.remove();IF=null;RD=0}},400);return 1}
+async function play(n,img,foe,myth){if(!myth&&!has(n))return 0;mount();if(!(await ready()))return 0;try{window.A3post&&A3post({t:'pause',v:1})}catch(e){}IF.classList.add('on');const sk=document.createElement('button');sk.id='u3sk';sk.type='button';sk.textContent='Passer ›';document.body.append(sk);
+ await new Promise(r=>{WAIT=r;sk.onclick=()=>{WAIT=null;r()};setTimeout(()=>{if(WAIT===r){WAIT=null;r()}},14000);IF.contentWindow.postMessage({t:'ulti',n,img,foe,myth},'*')});hide();try{window.A3post&&A3post({t:'pause',v:0})}catch(e){}setTimeout(()=>{if(IF&&!IF.classList.contains('on')){IF.remove();IF=null;RD=0}},400);return 1}
 const _f=fight;fight=function(){const r=_f.apply(this,arguments);try{if(typeof B!='undefined'&&B)B.u3={};0}catch(e){}return r};
 for(const fn of ['cut','ultFx','monFx'])try{const o=eval(fn);if(typeof o=='function')eval(fn+'=function(){if(window.__U3SKIP)return Promise.resolve();return o.apply(this,arguments)}')}catch(e){}
-const _a=act;act=async function(a,d,mi,ia,id,sd){let played=0;try{const c=a&&a.c;if(c&&(c.r>=5||c.na)&&(mi==4||mi==5||(mi==2&&!(B.u3||{})[c.id]))&&!document.hidden&&has(c.n)){B.u3=B.u3||{};B.u3[c.id]=1;const dc=d&&d.c;let foe=null;try{if(dc)foe={nm:dc.n,img:imgOf(dc),sb:(dc.s||'Adversaire')}}catch(e){}played=await play(c.n,(()=>{try{return imgOf(c)}catch(e){return ''}})(),foe)}}catch(e){console.warn(e);hide()}if(!played)return _a.apply(this,arguments);if(typeof B=='undefined'||!B||!document.getElementById('bt'))return;window.__U3SKIP=1;try{return await _a.apply(this,arguments)}finally{window.__U3SKIP=0}};
+const _a=act;act=async function(a,d,mi,ia,id,sd){let played=0;try{const c=a&&a.c;const myth=c&&c.r==4&&!c.na;if(c&&(c.r>=4||c.na)&&(mi==4||mi==5||(mi==2&&!(B.u3||{})[c.id]))&&!document.hidden&&(myth||has(c.n))){B.u3=B.u3||{};B.u3[c.id]=1;const dc=d&&d.c;let foe=null;try{if(dc)foe={nm:dc.n,img:imgOf(dc),sb:(dc.s||'Adversaire')}}catch(e){}played=await play(c.n,(()=>{try{return imgOf(c)}catch(e){return ''}})(),foe,myth?{nm:c.n,sig:c.sig,tech:c.t,fx:c.fx,s:c.s}:null)}}catch(e){console.warn(e);hide()}if(!played)return _a.apply(this,arguments);if(typeof B=='undefined'||!B||!document.getElementById('bt'))return;window.__U3SKIP=1;try{return await _a.apply(this,arguments)}finally{window.__U3SKIP=0}};
 const _q=quitB;quitB=function(){hide();return _q.apply(this,arguments)};
 })();
 </script><script>/* SERVEUR TEST · catégorie Expéditions refaite en entier : Portes de l'Origine, Jugement des Absolus, Ascension, Pourfendeurs,
