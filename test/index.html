@@ -6004,6 +6004,73 @@ img[src=""]{visibility:hidden}
 /* corr1 · iPhone : plus de zoom quand on tape vite deux fois (attaques en combat) */
 html,body,button,a,[data-oclick],#bt,#bt *{touch-action:manipulation}
 
+/* tuto · tutoriel animé au premier lancement */
+#tu1{position:fixed;inset:0;z-index:2147482500;background:radial-gradient(ellipse at 50% 35%,#1d0b22 0%,#0a0610 60%,#040208 100%);color:#fff;font-family:Inter,system-ui,sans-serif;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+#tu1 .tu-bars{position:absolute;left:14px;right:14px;top:max(14px,env(safe-area-inset-top));display:flex;gap:5px;z-index:5}
+#tu1 .tu-bars i{flex:1;height:3px;border-radius:3px;background:#ffffff26;overflow:hidden}
+#tu1 .tu-bars i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#ffd36a,#ff3d6e)}
+#tu1 .tu-bars i.done b{width:100%}
+#tu1 .tu-bars i.on b{animation:tuBar var(--d,6s) linear forwards}
+@keyframes tuBar{to{width:100%}}
+#tu1 .tu-skip{position:absolute;right:14px;top:calc(max(14px,env(safe-area-inset-top)) + 14px);z-index:6;padding:8px 16px;border-radius:99px;border:1px solid #ffffff30;background:#0008;color:#fff;font:700 14px Inter,sans-serif;cursor:pointer}
+#tu1 .tu-sc{position:absolute;inset:0;display:grid;grid-template-rows:1fr auto;padding:70px 22px calc(34px + env(safe-area-inset-bottom));opacity:0;transform:translateY(14px);transition:opacity .45s,transform .45s;pointer-events:none}
+#tu1 .tu-sc.on{opacity:1;transform:none}
+#tu1 .tu-st{position:relative;display:grid;place-items:center;min-height:0}
+#tu1 .tu-tx{text-align:center;max-width:520px;margin:0 auto}
+#tu1 .tu-tx small{display:block;font:800 11px ui-monospace,monospace;letter-spacing:.32em;color:#ff8a9a;margin-bottom:8px}
+#tu1 .tu-tx h2{font:900 28px/1.12 Inter,sans-serif;margin:0 0 10px}
+#tu1 .tu-tx h2 em{font-style:normal;background:linear-gradient(90deg,#ffd36a,#ff3d6e);-webkit-background-clip:text;background-clip:text;color:transparent}
+#tu1 .tu-tx p{margin:0;color:#cfc8dc;font-size:15.5px;line-height:1.5}
+#tu1 .tu-nav{display:flex;justify-content:center;gap:10px;margin-top:18px;pointer-events:auto}
+#tu1 .tu-nav button{padding:12px 22px;border-radius:14px;border:0;font:800 15px Inter,sans-serif;cursor:pointer}
+#tu1 .tu-nav .go{background:linear-gradient(135deg,#ff7a45,#ff3d6e);color:#fff;box-shadow:0 10px 30px #ff3d6e55}
+#tu1 .tu-nav .bk{background:#ffffff14;color:#fff}
+/* décors animés */
+#tu1 .tu-logo{width:130px;height:130px;border-radius:36px;display:grid;place-items:center;background:linear-gradient(150deg,#ff4d4d,#b3123a);font:900 72px 'Noto Serif JP',serif;box-shadow:0 30px 90px #ff2a4a66;animation:tuPop .9s cubic-bezier(.2,1.4,.4,1) both,tuFloat 3s 1s ease-in-out infinite}
+@keyframes tuPop{from{transform:scale(.3) rotate(-20deg);opacity:0}}
+@keyframes tuFloat{50%{transform:translateY(-10px)}}
+#tu1 .tu-ring{position:absolute;width:260px;height:260px;border-radius:50%;border:2px solid #ffd36a44;animation:tuRing 2.4s ease-out infinite}
+#tu1 .tu-ring.b{animation-delay:1.2s}
+@keyframes tuRing{from{transform:scale(.5);opacity:1}to{transform:scale(1.5);opacity:0}}
+#tu1 .tu-pack{width:150px;height:210px;border-radius:16px;background:linear-gradient(160deg,#ffd36a,#c8871a 60%,#7a4a00);box-shadow:0 20px 60px #ffb00066,inset 0 0 0 3px #fff6;display:grid;place-items:center;font:900 54px 'Noto Serif JP',serif;color:#3a2200;animation:tuShake .5s 1s 3,tuGone .4s 2.6s forwards}
+@keyframes tuShake{25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}
+@keyframes tuGone{to{transform:scale(1.4);opacity:0}}
+#tu1 .tu-fan{position:absolute;display:flex;gap:8px}
+#tu1 .tu-fan .card{width:92px!important;font-size:8px;opacity:0;animation:tuDeal .6s cubic-bezier(.2,1.3,.4,1) forwards}
+@keyframes tuDeal{from{transform:translateY(60px) scale(.6) rotate(var(--r,0deg));opacity:0}to{transform:translateY(0) rotate(var(--r,0deg));opacity:1}}
+#tu1 .tu-rar{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;max-width:330px;margin-top:6px}
+#tu1 .tu-rar span{padding:5px 9px;border-radius:99px;font:800 11px Inter,sans-serif;background:#ffffff10;border:1px solid var(--c);color:var(--c);opacity:0;animation:tuIn .35s forwards}
+@keyframes tuIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#tu1 .tu-team{display:flex;gap:10px;align-items:flex-end}
+#tu1 .tu-team .card{width:96px!important;opacity:0;animation:tuIn .5s forwards}
+#tu1 .tu-team .card:nth-child(2){width:112px!important}
+#tu1 .tu-vs{position:relative;width:min(340px,90vw);height:240px}
+#tu1 .tu-vs .card{position:absolute;top:30px;width:110px!important}
+#tu1 .tu-vs .l{left:0;animation:tuL 1.6s ease-in-out infinite}
+#tu1 .tu-vs .r{right:0;animation:tuR 1.6s ease-in-out infinite}
+@keyframes tuL{0%,100%{transform:translateX(0) rotate(-4deg)}45%{transform:translateX(70px) rotate(6deg)}}
+@keyframes tuR{0%,100%{transform:translateX(0) rotate(4deg)}55%{transform:translateX(-70px) rotate(-6deg)}}
+#tu1 .tu-vs b{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:900 italic 54px Inter,sans-serif;color:#ffd36a;text-shadow:0 0 30px #ff3d6e;animation:tuBoom 1.6s infinite}
+@keyframes tuBoom{0%,40%{transform:translate(-50%,-50%) scale(.8)}50%{transform:translate(-50%,-50%) scale(1.3)}60%,100%{transform:translate(-50%,-50%) scale(1)}}
+#tu1 .tu-hp{position:absolute;left:0;right:0;bottom:0;display:flex;gap:16px}
+#tu1 .tu-hp i{flex:1;height:10px;border-radius:6px;background:#ffffff18;overflow:hidden}
+#tu1 .tu-hp i b{display:block;height:100%;background:linear-gradient(90deg,#2ee67a,#b7f34a);animation:tuHp 3.2s ease-in-out infinite}
+#tu1 .tu-hp i:last-child b{animation-delay:.8s}
+@keyframes tuHp{0%{width:100%}100%{width:35%}}
+#tu1 .tu-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:min(360px,92vw)}
+#tu1 .tu-grid div{padding:14px 6px;border-radius:16px;background:#ffffff0d;border:1px solid #ffffff1a;text-align:center;opacity:0;animation:tuIn .4s forwards}
+#tu1 .tu-grid div i{display:block;font:900 26px 'Noto Serif JP',serif;font-style:normal;color:var(--c,#ffd36a);margin-bottom:4px}
+#tu1 .tu-grid div b{font:800 12px Inter,sans-serif}
+#tu1 .tu-xp{width:min(320px,86vw);margin-top:18px}
+#tu1 .tu-xp i{display:block;height:12px;border-radius:7px;background:#ffffff14;overflow:hidden}
+#tu1 .tu-xp i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#ffd36a,#ff7a45);animation:tuXp 2.4s .4s ease-out forwards}
+@keyframes tuXp{to{width:92%}}
+#tu1 .tu-xp span{display:flex;justify-content:space-between;font:700 12px ui-monospace,monospace;color:#cfc8dc;margin-top:6px}
+#tu1 .tu-walk{font-size:64px;animation:tuWalk 3s ease-in-out infinite alternate}
+@keyframes tuWalk{from{transform:translateX(-90px)}to{transform:translateX(90px)}}
+@media (max-height:640px){#tu1 .tu-tx h2{font-size:23px}#tu1 .tu-tx p{font-size:14px}#tu1 .tu-sc{padding-top:58px}}
+#tu1 .tu-vs .st3,#tu1 .tu-vs .cs{display:none}
+
 #lg96{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:20px;background:radial-gradient(ellipse at 50% 30%,#2a0d1a 0%,#0b0610 55%,#05030a 100%);transition:opacity .35s}
 #lg96.out{opacity:0;pointer-events:none}
 #lg96 .lg96-c{width:min(420px,100%);text-align:center;color:#fff;font-family:Inter,system-ui,sans-serif}
@@ -7316,8 +7383,8 @@ qd();
 function showOdds(o,c,p){const d=document.createElement('div');d.className='odds'+(c.na?' aw':'');d.innerHTML=(c.na?'<b>ÉVEIL</b> · ':'')+oddsTxt(c,p);o.append(d)}
 
 /* ===== MISES À JOUR ===== */
-const VER='26.9.2',CHG=[
-{v:'26.9.2',big:1,d:'12 novembre 2026',t:'Nouveau départ',n:['MUGEN repart de zéro pour tout le monde, avec un tout nouveau design.','Connecte-toi avec Google : ta progression est gardée sur ton compte et te suit sur tous tes appareils.','Combats en 3D, une attaque ultime pour chaque carte à partir de Mythique, attaques duo en 3D, nouvelle ouverture de boosters, objets en 3D et nouveaux sons.','Guildes : blason, rangs, cadeaux, records, nouveaux portails et la Faille du Dragon-Monde.'],f:[]}
+const VER='26.9.4',CHG=[
+{v:'26.9.4',big:1,d:'12 novembre 2026',t:'Nouveau départ',n:['MUGEN repart de zéro pour tout le monde, avec un tout nouveau design.','Connecte-toi avec Google : ta progression est gardée sur ton compte et te suit sur tous tes appareils.','Combats en 3D, une attaque ultime pour chaque carte à partir de Mythique, attaques duo en 3D, nouvelle ouverture de boosters, objets en 3D et nouveaux sons.','Guildes : blason, rangs, cadeaux, records, nouveaux portails et la Faille du Dragon-Monde.'],f:[]}
 ];
 function maj(){S.mv=VER;save();badges();
  $('v').innerHTML=`<div class="ey">JOURNAL · 更新</div><h1 class="dt">Mises à jour</h1><p class="lead">Toutes les nouveautés et corrections du jeu, de la plus récente à la plus ancienne.</p><button class="btn gh" style="margin-bottom:18px" data-oclick="splash()">Revoir l’écran de nouveautés</button><div class="chl">${CHG.map((c,i)=>`<section class="pn cv"><div class="cvh"><b class="cvn">v${c.v}</b>${i==0?'<em>Nouveau</em>':''}<span>${c.d}</span></div><h3>${c.t}</h3><h4>Nouveautés</h4><ul>${c.n.map(x=>`<li>${x}</li>`).join('')}</ul>${(c.f||[]).length?`<h4 class="fx">Corrections</h4><ul class="fxl">${(c.f||[]).map(x=>`<li>${x}</li>`).join('')}</ul>`:''}</section>`).join('')}</div>`}
@@ -8461,7 +8528,7 @@ function mpOff(){const er=NET.mode=='erreur';return `<div class="mp20-off ${er?'
 
 /* --- CLASSEMENTS --- */
 const LB={tower:['tw','La Tour','étage','塔','#ffb43a'],ranked:['rp','Classé','points','位','#ff4d2e'],surv:['sv','Survie','vagues','生','#3dd9c4']};let LBK='tower';
-function ladderView(k){if(k)LBK=k;const L=LB[LBK];$('v').innerHTML=mpHead('順位','Les','classements','Les meilleurs joueurs de MUGEN. Monte le plus haut dans la Tour, gagne des points en Classé et survis au plus de vagues en Survie.')+`<div class="mp20-lt">${Object.entries(LB).map(([key,x])=>`<button class="${key==LBK?'on':''}" style="--lc:${x[4]}" data-oclick="ladderView('${key}')"><u>${x[3]}</u><b>${x[1]}</b><small>${key=='tower'?'Étage le plus haut':key=='ranked'?'Points de rang':'Vagues sans mourir'}</small></button>`).join('')}</div><div id="mp20-lb" class="mp20-lb" style="--lc:${L[4]}"><p class="mp20-em">Chargement…</p></div>`;lbLoad()}
+function ladderView(k){if(k)LBK=k;const L=LB[LBK];$('v').innerHTML=mpHead('順位','Les','classements','Les meilleurs joueurs de MUGEN. Monte le plus haut dans la Tour, gagne des points en Classé, survis au plus de vagues en Survie, et grimpe en niveau, en victoires et en collection.')+`<div class="mp20-lt">${Object.entries(LB).map(([key,x])=>`<button class="${key==LBK?'on':''}" style="--lc:${x[4]}" data-oclick="ladderView('${key}')"><u>${x[3]}</u><b>${x[1]}</b><small>${key=='tower'?'Étage le plus haut':key=='ranked'?'Points de rang':'Vagues sans mourir'}</small></button>`).join('')}</div><div id="mp20-lb" class="mp20-lb" style="--lc:${L[4]}"><p class="mp20-em">Chargement…</p></div>`;lbLoad()}
 function myVal(f){return f=='tw'?Math.min(TMAX,S.tw||0):f=='rp'?(S.rp||0):(S.svb||0)}
 async function lbLoad(){const L=LB[LBK],f=L[0],box=$('mp20-lb');if(!box)return;let rows=[],mine=null,online=netOk();
  if(online){try{await netSync(1);rows=(await NET.db.q('players',{o:[f,'desc'],l:50})).map(p=>({uid:p.id,n:p.name,av:p.av,v:+p[f]||0,l:p.lvl,me:p.id==NET.uid}));const c=await NET.db.count('players',{w:[[f,'>',myVal(f)]]});if(c!=null)mine=c+1}catch(e){online=false;NET.err=String(e.message||e)}}
@@ -9664,7 +9731,7 @@ Object.assign(MGL,{'Shanks':['6pPSY3eSjnVsakrMGa','seufRFcaQQ0S2YAuqi','bg3OoLi8
  'Dio Brando':['PNACSA6MyiSA8WNNlA','7QEgOzBmJNTlpL67ge','hjQn6QgMFkz9BnXgkz','YGe55j5cdGCTBER3g5','cmoxc3ZujZQCag09na'],
  'Meliodas':['UnixKjtcp8NYA','qcOxCNCKfHN1C','LGssS6k81brbO','o1wHsjrMy4pTa','Oqw2AVBJbTlU4']});
 if(S.mgiv!=3){S.mgi={};S.mgiv=3}
-monGifUL=function(c){const m=monOf(c);if(!m)return[];const L=monGL(m),k=(S.mgi[m.id]||0)%Math.max(1,L.length);return L.slice(k).concat(L.slice(0,k)).flatMap(id=>{try{return GIFU(id)}catch(e){return[GPH(id)]}})};
+monGifUL=function(c){const m=monOf(c);if(!m)return[];const L=monGL(m),k=(S.mgi[m.id]||0)%Math.max(1,L.length);return L.slice(k).concat(L.slice(0,k)).flatMap(id=>{try{return /^https?:/.test(id)?[id]:GIFU(id)}catch(e){return[GPH(id)]}})};
 MOF.forEach(m=>{if(m.cid){const L=monGifUL(M[m.cid]);if(L.length)S.gif[m.cid]=L[0]}});
 
 /* v21.6 : nouveaux GIF pour Freezer, Makima, Barbe Blanche et Muzan */
@@ -9849,7 +9916,7 @@ const LXG={'Tanjiro Kamado':['e7rivhaQoYxIoPEuLf','DonWvrvLZ1oxXPVQzx','J6JazAkC
  'Sanemi Shinazugawa':['bclOazmTLtIhFszZtU','JwrxFR72PFvNwmrmRP','xppoLNEkby6zwlnkF4','69wWvo0d96zIkI1zMa'],'Muichirou Tokitou':['cVJFyuaX5sTJ7UWxAr','nKRXlgrdpOljzcrvpx','0qVkEbOWZHtiDq3Yhx','j9iW352vcPflPwX07p'],
  'Mitsuri Kanroji':['lMSyPYNE1ZesdqwHtG','tUYcVoyPkykMQPDH6d','pWFuNj80VJo364YFXI','XhDwjM6RjfV5QwPOJi'],'Yoriichi Tsugikuni':['VvSNpQJnNjGtv05Qd6','CRCjZt5Enj7WLscDPq','59IjtCaRAcQiaj19mU','FsSQu33WG6gwqGXatq','b97GybomSRCnR699sF']};
 S.lgi=S.lgi||{};
-function lxGifUL(c){if(!c||c.r!=7)return[];const L=LXG[c.n]||[],k=(S.lgi[c.id]||0)%Math.max(1,L.length);return L.slice(k).concat(L.slice(0,k)).flatMap(id=>{try{return GIFU(id)}catch(e){return[GPH(id)]}})}
+function lxGifUL(c){if(!c||c.r!=7)return[];const L=LXG[c.n]||[],k=(S.lgi[c.id]||0)%Math.max(1,L.length);return L.slice(k).concat(L.slice(0,k)).flatMap(id=>{try{return /^https?:/.test(id)?[id]:GIFU(id)}catch(e){return[GPH(id)]}})}
 const gifListOf=c=>c&&c.r==6?monGifUL(c):c&&c.r==7?lxGifUL(c):[];
 monGifLoad=function(cd){if(!cd||cd.dataset.gl)return;const a=cd.querySelector('.art'),c=a&&M[a.dataset.i];if(!c||(c.r!=6&&c.r!=7))return;cd.dataset.gl=1;const L=gifListOf(c);if(!L.length)return;
  const g=new Image();g.className='mo-gif';g.alt='';g.referrerPolicy='no-referrer';a.append(g);gifTry(g,L,()=>{cd.classList.add('gok');S.gif[c.id]=g.src})};
@@ -15424,7 +15491,55 @@ function g9FlH(g){const f=g9FlGet(g),tot=g9FlTot(g),pc=g9FlPc(g),u=gMe(),my=f.m[
 {const un=()=>{try{const a=ac();if(a&&a.state!='running')a.resume().catch(()=>{});if(a&&!a.__u1){a.__u1=1;const b=a.createBuffer(1,1,22050),s=a.createBufferSource();s.buffer=b;s.connect(a.destination);s.start(0)}}catch(e){}};
  ['pointerdown','touchend','click','keydown'].forEach(ev=>document.addEventListener(ev,un,{capture:true,passive:true}))}
 
-/* connexion · v26.9.2 : compte Google obligatoire pour jouer en ligne.
+/* gifds · nouveaux GIF des Pourfendeurs (Lame Écarlate), choisis sur Tenor : des attaques de chaque perso (demande du propriétaire, 12/11/2026) */
+Object.assign(LXG,{
+'Tanjiro Kamado':['https://media1.tenor.com/m/7uUaj_UDNI8AAAAd/hinokami-kagura-tanjiro.gif','https://media1.tenor.com/m/AyXg6S20Wz4AAAAd/hinokami-kagura-tanjiro-kamado.gif','https://media1.tenor.com/m/TRm63XlnnwQAAAAd/hinokami-kagura-dance-of-the-fire-god.gif','https://media1.tenor.com/m/EpoTVT50ReEAAAAd/tanjiro-swordsmith-village.gif','https://media1.tenor.com/m/t7Pufg0LYGUAAAAd/tanjiro-fighting.gif'],
+'Nezuko Kamado':['https://media1.tenor.com/m/HGK6yf0rO-EAAAAd/nezuko-nezuko-chan.gif','https://media1.tenor.com/m/syL62uUkzwMAAAAd/nezuko-nezuko-kamado.gif','https://media1.tenor.com/m/AGPvkYzfv8IAAAAd/demon-slayer-kimetsu-no-yaiba.gif','https://media1.tenor.com/m/M_ZpOBUI2b8AAAAd/nezuko-nezuko-kill.gif'],
+'Zenitsu Agatsuma':['https://media1.tenor.com/m/sf4WVD4zaeYAAAAd/thunderclap-and-flash-zenitsu.gif','https://media1.tenor.com/m/aBCQpmytOMQAAAAd/zenitsu-demon-slayer.gif','https://media1.tenor.com/m/oNHMR_JarkcAAAAd/zenitsu-demon-slayer.gif','https://media1.tenor.com/m/ppgTeGRuRL8AAAAd/demon-slayer-zenitsu-agatsuma.gif'],
+'Inosuke Hashibira':['https://media1.tenor.com/m/oZJKwoqvkAwAAAAd/inosuke-beast-breathing.gif','https://media1.tenor.com/m/7OFX0NsxdSAAAAAd/inosuke-inosuke-hashibira.gif','https://media1.tenor.com/m/Uf67vs00lZgAAAAd/inosuke-demon-slayer.gif','https://media1.tenor.com/m/mTV5xk-DJ1YAAAAd/demon-slayer-kimetsu-no-yaiba.gif'],
+'Kyojuro Rengoku':['https://media1.tenor.com/m/ybEi5E8f8QEAAAAC/ninth-form-rengoku.gif','https://media1.tenor.com/m/al3Zg0_-QWoAAAAd/rengoku-flame-breathing-demon-slayer.gif','https://media1.tenor.com/m/X9CgykkuV7QAAAAd/flame-breathing-kyojuro-rengoku.gif','https://media1.tenor.com/m/6KhwKy119KIAAAAd/rengoku-kyojurou.gif'],
+'Giyu Tomioka':['https://media1.tenor.com/m/ZlR6KNKECgoAAAAd/giyu-tomioka-anime.gif','https://media1.tenor.com/m/rgkma5dDJhgAAAAd/giyu-tomioka-giyu.gif','https://media1.tenor.com/m/eMJGLfexH9EAAAAd/water-breathing-giyu-tomioka.gif','https://media1.tenor.com/m/7xwe0-odNmIAAAAd/tomioka-giyuu.gif'],
+'Shinobu Kocho':['https://media1.tenor.com/m/vzpGSgUH6KAAAAAd/shinobu-kocho-insect-breathing.gif','https://media1.tenor.com/m/gHAlRMOXVAoAAAAd/shinobu-kocho-insect-breathing.gif','https://media1.tenor.com/m/0MuhvPjaJ_wAAAAd/insect-breathing-bee-dance.gif','https://media1.tenor.com/m/BmFeOF-mXEsAAAAd/shinobu-kocho-butterfly-dance.gif'],
+'Gyomei Himejima':['https://media1.tenor.com/m/j_l4aikTyzgAAAAd/stone-breathing-gyomei-himejima.gif','https://media1.tenor.com/m/XiYJt8icLrIAAAAd/himejima-gyomei-stone-breathing.gif','https://media1.tenor.com/m/lCj_rChH8YMAAAAd/gyomei-demon-slayer.gif','https://media1.tenor.com/m/S-2dVxthRHoAAAAd/gyomei-stone-skin.gif'],
+'Sanemi Shinazugawa':['https://media1.tenor.com/m/E254vDyTodcAAAAd/sanemi-wind-breathing.gif','https://media1.tenor.com/m/IQLAxDaGd98AAAAd/wind-breathing-rising-dust-storm.gif','https://media1.tenor.com/m/P0TkkgxyTm8AAAAd/sanemi-wind-breathing.gif','https://media1.tenor.com/m/wuIHjYf2VEUAAAAd/sanemi-wind-breathing.gif'],
+'Muichirou Tokitou':['https://media1.tenor.com/m/_b0YB5iUN0UAAAAd/muichiro-tokito-mist-breathing.gif','https://media1.tenor.com/m/ge70gI56visAAAAd/muichiro-tokito-muichiro.gif','https://media1.tenor.com/m/tv3Wf1wXVMUAAAAd/muichiro-muichiro-tokito.gif','https://media1.tenor.com/m/gs_0AORGyAAAAAAd/demon-slayer-season-3-episode-3-muichiro-tokito.gif'],
+'Mitsuri Kanroji':['https://media1.tenor.com/m/4YDqLYBJv7AAAAAd/mitsuri-kanroji-love-breathing.gif','https://media1.tenor.com/m/ewZ1bdmRM-kAAAAd/love-breathing-mitsuri-demon-slayer.gif','https://media1.tenor.com/m/xqjJoAdNPDoAAAAd/mitsuri-kanroji-demon-slayer.gif','https://media1.tenor.com/m/x5gyYczVe98AAAAd/love-breathing-kanroji-mitsuri.gif'],
+'Yoriichi Tsugikuni':['https://media1.tenor.com/m/AoOS6Dsc1JoAAAAd/yoriichi-sun-breathing.gif','https://media1.tenor.com/m/zyYFxiTxR2MAAAAd/yoriichi-tsugikuni-vs.gif','https://media1.tenor.com/m/QWo6qj2a5KMAAAAd/yoriichi-demon-slayer.gif','https://media1.tenor.com/m/oNcVHR0qIIAAAAAd/yoriichi-demon-slayer-yoriichi.gif']});
+
+/* classements · plus de classements en ligne : Niveau, Victoires, Collection (en plus de Classé, Tour, Survie) */
+Object.assign(LB,{lvl:['lvl','Niveau','niveau','級','#a07cff'],wins:['w','Victoires','victoires','勝','#2ee67a'],coll:['cards','Collection','cartes','集','#ffd36a']});
+{const _mv=myVal;myVal=function(f){try{if(f=='lvl')return lvI().l;if(f=='w')return S.w||0;if(f=='cards')return Object.keys(S.inv||{}).length}catch(e){}return _mv.apply(this,arguments)}}
+
+/* tuto · tutoriel animé (comme une petite vidéo) au premier lancement, avec « Passer ». Revoir : Guide du jeu → « Revoir le tutoriel ». */
+function tu1Cards(f,n){try{return D.filter(f).sort(()=>Math.random()-.5).slice(0,n)}catch(e){return []}}
+function tu1C(c,cls,st){try{const h=card(c);return `<div class="${cls||''}" style="${st||''}">${h}</div>`}catch(e){return ''}}
+const TU1=[
+ {d:6,st:()=>`<div class="tu-ring"></div><div class="tu-ring b"></div><div class="tu-logo">夢</div>`,k:'BIENVENUE · ようこそ',h:'Bienvenue dans <em>MUGEN</em>',p:'Collectionne plus de 7 000 personnages d’anime, forme ton équipe et affronte le monde entier. Voici le jeu en une minute.'},
+ {d:7,st:()=>{const L=tu1Cards(c=>c.r<=3,3);return `<div class="tu-pack">金</div><div class="tu-fan">${L.map((c,i)=>`<div style="animation-delay:${2.7+i*.25}s;--r:${(i-1)*8}deg;display:contents">${card(c).replace('class="card','style="animation-delay:'+(2.7+i*.25)+'s;--r:'+((i-1)*8)+'deg" class="card')}</div>`).join('')}</div>`},k:'BOOSTERS · パック',h:'Ouvre des <em>boosters</em>',p:'Chaque booster donne des cartes. Tu as 10 boosters gratuits pour commencer, puis un pack offert chaque jour dans le Marché.'},
+ {d:7,st:()=>{const R=[['Commune','#9aa3b5'],['Rare','#4fa3ff'],['Épique','#b46bff'],['Légendaire','#ffb43a'],['Mythique','#ff4d6e'],['Divin','#ffe27a'],['Monarque','#c08bff'],['Lame Écarlate','#ff3b3b'],['Primordial','#3dd9c4'],['Ascendant','#7cf0ff'],['Absolu','#ffffff']];return `<div style="display:grid;place-items:center;gap:6px"><div style="font:900 64px 'Noto Serif JP',serif;color:#ffd36a;animation:tuPop .8s both">稀</div><div class="tu-rar">${R.map((r,i)=>`<span style="--c:${r[1]};animation-delay:${.3+i*.22}s">${r[0]}</span>`).join('')}</div></div>`},k:'RARETÉS · 稀少',h:'Plus c’est rare, plus c’est <em>fort</em>',p:'Onze raretés, de Commune à Absolu. Dès Mythique, chaque carte a sa propre attaque ultime. Les doublons montent les étoiles de tes cartes.'},
+ {d:6.5,st:()=>{const L=tu1Cards(c=>c.r>=2&&c.r<=4,3);return `<div class="tu-team">${L.map((c,i)=>card(c).replace('class="card','style="animation-delay:'+(.3+i*.35)+'s" class="card')).join('')}</div>`},k:'ÉQUIPE · 隊',h:'Forme ton <em>équipe de 3</em>',p:'Dans Combat → Mon équipe, choisis tes 3 meilleurs persos. Les types et les synergies entre personnages d’un même anime donnent des bonus.'},
+ {d:7.5,st:()=>{const A=tu1Cards(c=>c.r>=3&&c.r<=5,2);return `<div class="tu-vs">${A[0]?card(A[0]).replace('class="card','class="card l'):''}${A[1]?card(A[1]).replace('class="card','class="card r'):''}<b>VS</b><div class="tu-hp"><i><b></b></i><i><b></b></i></div></div>`},k:'COMBAT · 戦',h:'Combats dans des <em>arènes 3D</em>',p:'Choisis une attaque à chaque tour, remplis ta jauge et lance ton ultime. Pas le temps ? Le bouton AUTO joue pour toi. Gagne pour monter de niveau.'},
+ {d:7,st:()=>`<div class="tu-grid">${[['任','Missions','#ffd36a'],['旅','Expéditions','#3dd9c4'],['塔','La Tour','#ffb43a'],['位','Classé','#ff4d2e'],['祭','Événements','#ff7a45'],['器','Arsenal','#a07cff']].map((x,i)=>`<div style="--c:${x[2]};animation-delay:${.25+i*.2}s"><i>${x[0]}</i><b>${x[1]}</b></div>`).join('')}</div>`,k:'PROGRESSION · 進',h:'Plein de façons de <em>progresser</em>',p:'Missions du jour, Expéditions dans les mondes des animes, la Tour, le Classé, les événements du week-end, et l’Arsenal pour équiper reliques et accessoires.'},
+ {d:6.5,st:()=>`<div style="display:grid;place-items:center"><div class="tu-walk">⚔️</div><div class="tu-grid" style="margin-top:14px">${[['団','Guildes','#ff3d6e'],['市','Hôtel des ventes','#ffd36a'],['友','Amis','#4fa3ff']].map((x,i)=>`<div style="--c:${x[2]};animation-delay:${.3+i*.25}s"><i>${x[0]}</i><b>${x[1]}</b></div>`).join('')}</div></div>`,k:'EN LIGNE · 網',h:'Joue avec les <em>autres</em>',p:'Rejoins une guilde pour les portails et les raids, vends et achète des cartes à l’Hôtel des ventes, ajoute des amis et grimpe dans les classements.'},
+ {d:0,st:()=>`<div style="display:grid;place-items:center"><div class="tu-logo" style="width:110px;height:110px;font-size:60px">夢</div><div class="tu-xp"><i><b></b></i><span><em>Niveau 1</em><em>C’est parti !</em></span></div></div>`,k:'À TOI · 始',h:'À toi de <em>jouer</em> !',p:'Commence par ouvrir tes boosters gratuits sur l’accueil. Tu retrouves toutes les règles dans le Guide du jeu.',end:1}];
+function tu1Open(force){try{if(!force&&S.tu1)return;if(document.getElementById('tu1'))return;
+ const o=document.createElement('div');o.id='tu1';o.innerHTML=`<div class="tu-bars">${TU1.map(s=>`<i style="--d:${s.d||6}s"><b></b></i>`).join('')}</div><button class="tu-skip">Passer ›</button>`;document.body.append(o);
+ let i=-1,tm=0;const done=()=>{try{S.tu1=1;save()}catch(e){}clearTimeout(tm);o.style.transition='opacity .35s';o.style.opacity=0;setTimeout(()=>o.remove(),380);try{if(typeof show=='function'&&force!=='keep')show('home')}catch(e){}};
+ const go=n=>{if(n>=TU1.length)return done();if(n<0)n=0;i=n;clearTimeout(tm);o.querySelectorAll('.tu-sc').forEach(x=>{x.classList.remove('on');setTimeout(()=>x.remove(),460)});
+  const s=TU1[i],sc=document.createElement('div');sc.className='tu-sc';sc.innerHTML=`<div class="tu-st">${s.st()}</div><div class="tu-tx"><small>${s.k}</small><h2>${s.h}</h2><p>${s.p}</p><div class="tu-nav">${i>0?'<button class="bk">‹ Retour</button>':''}<button class="go">${s.end?'Jouer':'Suivant ›'}</button></div></div>`;o.append(sc);requestAnimationFrame(()=>requestAnimationFrame(()=>sc.classList.add('on')));
+  o.querySelectorAll('.tu-bars i').forEach((b,k)=>{b.className=k<i?'done':k==i?'on':''});
+  sc.querySelector('.go').onclick=e=>{e.stopPropagation();go(i+1)};const bk=sc.querySelector('.bk');if(bk)bk.onclick=e=>{e.stopPropagation();go(i-1)};
+  try{if(window.SND)SND('transition')}catch(e){}
+  if(s.d)tm=setTimeout(()=>go(i+1),s.d*1000)};
+ o.querySelector('.tu-skip').onclick=e=>{e.stopPropagation();done()};
+ o.addEventListener('click',e=>{if(e.target.closest('button'))return;const x=e.clientX/innerWidth;go(x<.3?i-1:i+1)});
+ go(0)}catch(e){console.warn('tuto',e)}}
+/* premier lancement : après l'écran de connexion et le message « Nouveau départ » */
+setTimeout(function tu1Wait(){try{if(S.tu1)return;if(document.getElementById('lg96')||document.querySelector('.ov')||document.getElementById('bt')){setTimeout(tu1Wait,1500);return}tu1Open()}catch(e){}},2500);
+/* Guide du jeu : « Revoir le tutoriel » */
+{const _s1=show;show=function(v){const r=_s1.apply(this,arguments);try{if(v=='guide'){const h=document.querySelector('#v h1,#v .mp-h,#v h2');if(h&&!document.getElementById('tu1b')){h.insertAdjacentHTML('afterend','<button id="tu1b" class="btn" data-oclick="tu1Open(\'keep\')" style="margin:10px 0">▶ Revoir le tutoriel</button>')}}}catch(e){}return r}}
+
+/* connexion · v26.9.4 : compte Google obligatoire pour jouer en ligne.
    Les joueurs actuels (compte anonyme) relient leur compte à Google : même identifiant, progression gardée. */
 const LG96={g:'<svg viewBox="0 0 48 48" width="22" height="22" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>'};
 function lg96Html(msg){return `<div class="lg96-c"><div class="lg96-k">夢</div><div class="ey">MUGEN · 無限</div><h1>Connecte-toi pour jouer</h1><p>Ton compte garde ta progression et te suit sur tous tes appareils : téléphone, ordinateur, tablette.</p><button class="lg96-b" data-lg96>${LG96.g}<span>Continuer avec Google</span></button><div class="lg96-m">${msg||''}</div><small>En te connectant, tu acceptes les <a data-oclick="pd95&&pd95('regles')">Règles</a> et la <a data-oclick="pd95&&pd95('conf')">Confidentialité</a>. MUGEN ne publie rien sur ton compte et ne voit pas ton mot de passe.</small></div>`}
@@ -15452,11 +15567,11 @@ function lg96Out(){try{if(!confirm('Se déconnecter de ton compte Google ? Ta pr
 /* pied de page : « Se déconnecter » quand on est connecté avec Google */
 {const _p96=pd95Add;pd95Add=function(){const r=_p96.apply(this,arguments);try{const n=document.querySelector('#v>.pd95 .pd95n');const u=typeof firebase!='undefined'&&firebase.auth&&firebase.apps.length&&firebase.auth().currentUser;if(n&&u&&!u.isAnonymous&&!n.querySelector('[data-lg96o]'))n.insertAdjacentHTML('beforeend','<button data-lg96o data-oclick="lg96Out()">Se déconnecter</button>')}catch(e){}return r}}
 
-/* nouveau départ · v26.9.2 : tout le monde repart de zéro avec la connexion Google (demandé par le propriétaire le 12/11/2026).
+/* nouveau départ · v26.9.4 : tout le monde repart de zéro avec la connexion Google (demandé par le propriétaire le 12/11/2026).
    Une copie de la partie d'avant est gardée sur l'appareil (localStorage « animecards_av_depart »). Les bannis restent bannis. Pseudo, guilde et avatar sont effacés aussi (demande du propriétaire). */
-const DEP_V='26.9.2';
+const DEP_V='26.9.4';
 /* guildes, ventes HDV, offres, demandes et messages d'avant le nouveau départ : masqués (le propriétaire peut aussi les supprimer dans Firestore) */
-const DEP_T=1794476146398,DEP_C=['guilds','market','offers','wants','inbox'];
+const DEP_T=1794478573537,DEP_C=['guilds','market','offers','wants','inbox'];
 const depT=x=>+((x&&(x.t!=null?x.t:(x.data&&x.data.t)))||0);
 const depN=v=>String(v||'0').split('.').slice(0,4).reduce((a,x,i)=>a+(parseInt(x,10)||0)*Math.pow(1000,3-i),0);
 (function(){try{const k='mugenDepart1';if(localStorage.getItem(k))return;
@@ -15470,7 +15585,7 @@ const depN=v=>String(v||'0').split('.').slice(0,4).reduce((a,x,i)=>a+(parseInt(x
 {const _ni=netInit;netInit=async function(){const r=await _ni.apply(this,arguments);try{if(NET.db&&!NET.db.__dep){const q0=NET.db.q.bind(NET.db);NET.db.q=async function(c,o){const L=await q0(c,o);try{if(Array.isArray(L)){if(c=='players')return L.filter(x=>!x||depN((x.data&&x.data.v)||x.v)>=depN(DEP_V));if(DEP_C.includes(c))return L.filter(x=>depT(x)>=DEP_T)}}catch(e){}return L};
  const g0=NET.db.get.bind(NET.db);NET.db.get=async function(c,id){const d=await g0(c,id);try{if(d&&DEP_C.includes(c)&&depT(d)<DEP_T)return null}catch(e){}return d};NET.db.__dep=1}}catch(e){}return r}}
 
-/* equil2 · v26.9.2 : derniers réglages de l'audit d'équilibrage (avant le nouveau départ) */
+/* equil2 · v26.9.4 : derniers réglages de l'audit d'équilibrage (avant le nouveau départ) */
 /* Booster Mythique : plus de Divins (environ 3 % par carte au lieu de 1 %, soit environ 100 000 pièces par Divin au lieu de 288 000) */
 {const _pb2=pkBal;pkBal=function(p){const r=_pb2.apply(this,arguments);try{if(p&&p.n=='Booster Mythique'&&!p.mys&&p.w&&p.w[5]<6)p.w[5]=6}catch(e){}return r}}
 /* Raid hebdo : les PV du boss suivent la force de base de ton équipe (45 % à 100 % de 15 000 PV), pour qu'un joueur moyen puisse l'abattre */
@@ -16644,7 +16759,7 @@ packs(){S.fb=Math.max(S.fb||0,10);try{asS().pk=(asS().pk||0)+5}catch(e){}},
 camp(){S.cp=Math.max(S.cp||0,250)},
 async guild(){try{if(!GLD||!GLD.id)await gJoin('bot3')}catch(e){}try{GLD.lvl=10}catch(e){}},
 a3(){const off=!window.__A3OFF;window.__A3OFF=off;try{localStorage.setItem('a3off',off?'1':'0')}catch(e){}toast(off?'3D des combats coupée':'3D des combats activée');return 'x'},
-pportails(){try{V3OPEN('assets-3c66cdc747/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
+pportails(){try{V3OPEN('assets-a7433853fb/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
 navA(){V3NAV.set('a');return 'x'},navB(){V3NAV.set('b');return 'x'},navC(){V3NAV.set('c');return 'x'},
 lvl(){S.xp=Math.max(S.xp||0,400000)},
 reset(){if(!confirm('Effacer la sauvegarde TEST ?'))return 'x';localStorage.removeItem('animecards');location.reload();return 'x'}};
