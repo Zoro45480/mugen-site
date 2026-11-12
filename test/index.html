@@ -6127,6 +6127,61 @@ html,body,button,a,[data-oclick],#bt,#bt *{touch-action:manipulation}
 [data-oclick].tl-i:has(>.mm3bg){position:relative;overflow:hidden;background:#140a20!important}
 [data-oclick].tl-i:has(>.mm3bg)>*:not(.tl-art){position:relative;z-index:1}
 
+/* v26.11 · Duel 1 contre 1 */
+.du1-nf{margin:2px 0 0;padding:8px 12px;border-radius:12px;background:rgba(125,255,176,.08);border:1px solid rgba(125,255,176,.3);color:#bff5d4;font-size:13px;line-height:1.35}
+.du1{width:100%;max-width:520px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.du1-vs{display:flex;align-items:center;justify-content:center;gap:10px;width:100%}
+.du1-s{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 4px;border-radius:16px;background:rgba(255,122,69,.08);border:1px solid rgba(255,122,69,.3)}
+.du1-r{background:rgba(79,163,255,.08);border-color:rgba(79,163,255,.32)}
+.du1-s em{font-style:normal;font-size:10px;letter-spacing:.16em;font-weight:900;color:#ffb08a}.du1-r em{color:#9fd0ff}
+.du1-s small{font-size:12px;color:#e6e1f0;text-align:center}
+.du1-c{display:flex;justify-content:center;max-width:100%}.du1-c .card{zoom:.66;pointer-events:none}
+.du1-x{flex:0 0 auto}.du1-x i{font-style:normal;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;font:900 16px Unbounded,Inter,sans-serif;color:#fff;background:linear-gradient(135deg,#ff7a45,#4fa3ff);box-shadow:0 0 20px rgba(255,122,69,.55);animation:du1p 2.2s ease-in-out infinite}
+@keyframes du1p{50%{transform:scale(1.1);box-shadow:0 0 30px rgba(79,163,255,.75)}}
+.du1-ctl{display:flex;justify-content:center;margin-top:-4px}
+.du1-lv{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.du1-lv button{appearance:none;cursor:pointer;padding:8px 4px;border-radius:12px;border:1px solid color-mix(in srgb,var(--dl) 40%,transparent);background:rgba(255,255,255,.04);color:#e6e1f0;display:flex;flex-direction:column;gap:2px;align-items:center;min-width:0;font:inherit}
+.du1-lv button b{font-size:14px;color:var(--dl)}.du1-lv button small{font-size:10.5px;opacity:.8;line-height:1.2}
+.du1-lv button.on{background:color-mix(in srgb,var(--dl) 18%,transparent);border-color:var(--dl);box-shadow:0 0 14px color-mix(in srgb,var(--dl) 35%,transparent)}
+.du1-pk h4,.du1-hi h4{margin:0 0 6px;font-size:14px;text-align:left;display:flex;align-items:baseline;gap:6px}
+.du1-pk h4 i,.du1-hi h4 i{font-style:normal;color:#ff7a45}.du1-pk h4 small{margin-left:auto;font-weight:400;font-size:11px;opacity:.7}
+.du1-q{width:100%;box-sizing:border-box;padding:9px 12px;border-radius:10px;border:1px solid #ffffff22;background:#0b0912;color:#fff;font:inherit;font-size:14px;margin-bottom:8px}
+.du1-st{display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;padding:4px 2px 10px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;max-width:100%}
+.du1-p{appearance:none;flex:0 0 auto;padding:3px;border-radius:12px;border:2px solid transparent;background:none;cursor:pointer;scroll-snap-align:start}
+.du1-p .card{zoom:.46;pointer-events:none}.du1-p.on{border-color:#ffd36a;box-shadow:0 0 14px rgba(255,211,106,.5)}
+.du1-no{margin:8px auto;opacity:.7;font-size:13px}
+.du1-hi{display:flex;flex-direction:column;gap:4px}
+.du1-hr{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;padding:6px 10px;border-radius:10px;background:rgba(255,255,255,.04);font-size:12px}
+.du1-hr b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700}.du1-hr b:last-child{text-align:right}
+.du1-hr span{font-weight:900;padding:2px 8px;border-radius:8px;background:rgba(255,93,93,.18);color:#ff8a8a}.du1-hr.w span{background:rgba(125,255,176,.16);color:#7dffb0}
+.du1-dots{display:flex;gap:8px;justify-content:center;margin:10px 0 4px}
+.du1-dots i{font-style:normal;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:14px;background:#ffffff0d;border:1px solid #ffffff22;color:#aaa}
+.du1-dots i.w{background:linear-gradient(135deg,#7dffb0,#2ecc71);color:#06240f;border-color:#7dffb0}.du1-dots i.l{background:linear-gradient(135deg,#ff7a7a,#c0392b);color:#2a0606;border-color:#ff7a7a}
+.du1-sc{font-size:44px!important;margin:4px 0!important}.du1-sc small{opacity:.5}
+.du1-bl{margin:0 auto 14px;max-width:420px;font-size:14px;color:#e6e1f0;line-height:1.45}
+.du1-hud{color:#ffd36a}
+@media (prefers-reduced-motion:reduce){.du1-x i{animation:none}}
+@media (max-width:420px){.du1-vs{gap:5px}.du1-c .card{zoom:.56}.du1-x i{width:34px;height:34px;font-size:13px}.du1-dots i{width:30px;height:30px}}
+/* v10 · pseudo obligatoire */
+.nm9.nm9-must{z-index:2147483000}
+.nm9.nm9-must .nm9-b{justify-content:center}
+.nm9.nm9-must .nm9-ok{min-width:60%}
+/* v10 · tutoriel : images des cartes toujours visibles, icônes des menus */
+#tu1 .card .art img{opacity:1!important;visibility:visible!important}
+#tu1 .card,#tu1 .card *{transform-style:flat!important}
+#tu1 .tu-pk2{background:radial-gradient(circle at 50% 40%,#fff3 0,#0000 60%),linear-gradient(160deg,#ffd36a,#c8871a 60%,#7a4a00)}
+#tu1 .tu-pk2 svg{filter:drop-shadow(0 6px 10px #0006)}
+#tu1 .tu-grid div svg{display:block;margin:0 auto 4px;filter:drop-shadow(0 4px 8px #0008)}
+/* v10 · vignettes des parcours (Pourfendeurs, Ascension, Absolu…) : la photo, le portrait et le kanji se superposaient en bandes (barre noire au milieu) */
+.xp4-path .ds-th{display:grid!important;grid-template:1fr/1fr!important;place-items:stretch!important}
+.xp4-path .ds-th>*{grid-area:1/1!important;width:100%!important;height:100%!important;min-height:0!important;margin:0!important;border-radius:inherit!important}
+.xp4-path .ds-th>.ds-ph,.xp4-path .ds-th>.xth{display:block!important;overflow:hidden}
+.xp4-path .ds-th img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:50% 20%}
+.xp4-path .ds-th>u{display:grid!important;place-items:center}
+.xp4-path .ds-th:has(>.xth)>u,.xp4-path .ds-th:has(>.ds-ph)>u,.xp4-path .ds-th:has(>.ab-th0)>u{display:none!important}
+.xp4-path .ds-th:has(>.xth img)>.ds-ph{display:none!important}
+.xp4-path .ds-th>.or-th0,.xp4-path .ds-th>i{display:grid!important;place-items:center}
+
 /* ===== MUGEN 27 · L'AUBE · partie A : rareté AUBE 暁 (cartes Akatsuki, cinématiques, Pack Aube 3D) ===== */
 :root{--ak-tm:linear-gradient(135deg,#140003,#ff4a55 15%,#4a0006 30%,#ffc2c6 46%,#7a000c 60%,#e0262f 78%,#ffd6d9 88%,#140003);
  --ak-cl:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Cg fill='%23fff'%3E%3Ccircle cx='24' cy='36' r='15'/%3E%3Ccircle cx='42' cy='24' r='17'/%3E%3Ccircle cx='64' cy='20' r='18'/%3E%3Ccircle cx='86' cy='28' r='15'/%3E%3Ccircle cx='100' cy='38' r='11'/%3E%3Crect x='10' y='34' width='98' height='17' rx='8'/%3E%3C/g%3E%3Cg fill='%23c8102e'%3E%3Ccircle cx='24' cy='36' r='12'/%3E%3Ccircle cx='42' cy='24' r='14'/%3E%3Ccircle cx='64' cy='20' r='15'/%3E%3Ccircle cx='86' cy='28' r='12'/%3E%3Ccircle cx='100' cy='38' r='8'/%3E%3Crect x='13' y='37' width='92' height='11' rx='5'/%3E%3C/g%3E%3C/svg%3E");
@@ -8029,8 +8084,7 @@ function showOdds(o,c,p){const d=document.createElement('div');d.className='odds
 /* ===== MISES À JOUR ===== */
 const VER='27.0',CHG=[
  {v:'27.0',big:1,d:'novembre 2026',t:'MUGEN 27 · L’Aube',n:['Nouvelle rareté AUBE 暁, entre Lame Écarlate et Ascendant : les 11 membres de l’Akatsuki — Pain, Konan, Itachi, Kisame, Deidara, Sasori, Hidan, Kakuzu, Zetsu, Tobi et Orochimaru (puissance 170 à 180). Chaque carte a la vraie image du perso, un GIF qui se joue au survol et en combat (↻ pour en changer), et un design rien qu’à elle : manteau noir, nuages rouges qui dérivent et le kanji de l’anneau du membre.','Toutes les attaques de l’Akatsuki sont en 3D. Les 3 techniques de chaque membre se jouent en un éclair par-dessus l’arène (Bansho Ten’in, Ange de papier, Requin de 1000, Prison d’eau, C2 Dragon, Sable de fer, Faux triple, Fils de la Terre, Clones blancs, Kamui, Izanagi, Kusanagi, Serpents…), et chaque ultime a sa cinématique, comme les cartes rares : Shinra Tensei puis Chibaku Tensei (Pain), la mer de papier et les 600 milliards de parchemins explosifs (Konan), Tsukuyomi, Amaterasu et Susano’o avec l’épée de Totsuka (Itachi), les requins et le Grand Requin (Kisame), les oiseaux d’argile et C4 Karura (Deidara), le sable de fer du Troisième Kazekage et les cent marionnettes (Sasori), le rituel de Jashin (Hidan), les quatre masques du Jiongu (Kakuzu), les clones de spores (Zetsu), les dragons de bois, Kamui et Rinne Tensei (Tobi), les huit serpents et Kusanagi (Orochimaru).','Jutsu de l’Aube (6◆) : avec 3 membres de l’Akatsuki dans ton équipe, un nouveau bouton apparaît en combat. Une scène 3D où chaque membre fait sa part, puis l’attaque combinée. 5 versions : Itachi + Kisame, Deidara + Sasori, Hidan + Kakuzu, Pain + Konan, ou trois membres au choix.','Nouveau mode « La Traque des Bijū » (menu Aventure et Combat) : choisis ta cible sur la carte des 5 villages, surveille l’Alerte, affronte les 9 Bijū puis scelle-les. La Lecture du Sharingan t’aide à prévoir leurs coups. Récompenses : anneaux, yeux, coffres, sacs… et une petite chance d’obtenir le Pack Aube.','Pack Aube (1 carte Aube garantie) : il ne se vend pas en boutique, il se gagne dans La Traque des Bijū. Il s’ouvre comme les autres boosters, en 3D, aux couleurs de l’Akatsuki.','Nouvelles missions et quêtes autour de l’Akatsuki. L’onglet Aube du wiki montre tous les membres avec leur GIF, et le filtre Aube de la collection compte tes anneaux.'],f:[]},
-{v:'26.9.5',d:'12 novembre 2026',t:'Nouvelles images des menus',n:['Toutes les cases des menus ont une nouvelle image en style cartoon : combats, expéditions, événements, guilde, marché, cartes, progrès…','Plus de vieille fenêtre de mise à jour au démarrage : seules les vraies nouveautés s’affichent.'],f:[]},
-{v:'26.9.4',big:1,d:'12 novembre 2026',t:'Nouveau départ',n:['MUGEN repart de zéro pour tout le monde, avec un tout nouveau design.','Connecte-toi avec Google : ta progression est gardée sur ton compte et te suit sur tous tes appareils.','Combats en 3D, une attaque ultime pour chaque carte à partir de Mythique, attaques duo en 3D, nouvelle ouverture de boosters, objets en 3D et nouveaux sons.','Guildes : blason, rangs, cadeaux, records, nouveaux portails et la Faille du Dragon-Monde.','Nouveaux GIF des Pourfendeurs, 3 nouveaux classements en ligne (Niveau, Victoires, Collection) et un tutoriel animé au premier lancement.','Bannière des nouveautés : à chaque mise à jour, ses nouveautés s’affichent quand tu ouvres le jeu.'],f:[]}
+{v:'26.9.6',big:1,d:'12 novembre 2026',t:'MUGEN 1.0',n:['MUGEN repart de zéro pour tout le monde : nouveau design, et la numérotation des versions recommence à 1.0.','Connecte-toi avec Google puis choisis ton pseudo : ta progression est gardée sur ton compte et te suit sur tous tes appareils.','Combats en 3D, une attaque ultime pour chaque carte à partir de Mythique, attaques duo en 3D, nouvelle ouverture de boosters, objets en 3D et nouveaux sons.','Nouvelles images pour toutes les cases des menus, et un tutoriel animé au premier lancement.','Guildes : blason, rangs, cadeaux, records, nouveaux portails et la Faille du Dragon-Monde. 3 nouveaux classements en ligne : Niveau, Victoires, Collection.','Pièces : les combats répétés rapportent au plus 2 500 pièces par jour, et le mini-jeu « Plus fort ? » au plus 300. Les victoires de progression rapportent toujours leurs pièces.'],f:['Les images d’une trentaine de persos s’affichent de nouveau (Pourfendeurs, Primordiaux, Ascendants…).','Les vignettes des parcours d’expédition n’ont plus de barre noire.','Le tutoriel montre bien les images des cartes.']}
 ];
 function maj(){S.mv=VER;save();badges();
  $('v').innerHTML=`<div class="ey">JOURNAL · 更新</div><h1 class="dt">Mises à jour</h1><p class="lead">Toutes les nouveautés et corrections du jeu, de la plus récente à la plus ancienne.</p><button class="btn gh" style="margin-bottom:18px" data-oclick="splash()">Revoir l’écran de nouveautés</button><div class="chl">${CHG.map((c,i)=>`<section class="pn cv"><div class="cvh"><b class="cvn">v${c.v}</b>${i==0?'<em>Nouveau</em>':''}<span>${c.d}</span></div><h3>${c.t}</h3><h4>Nouveautés</h4><ul>${c.n.map(x=>`<li>${x}</li>`).join('')}</ul>${(c.f||[]).length?`<h4 class="fx">Corrections</h4><ul class="fxl">${(c.f||[]).map(x=>`<li>${x}</li>`).join('')}</ul>`:''}</section>`).join('')}</div>`}
@@ -16368,6 +16422,139 @@ function tlPaint(){try{
 {let q=0;new MutationObserver(()=>{if(q)return;q=1;requestAnimationFrame(()=>{q=0;tlPaint()})}).observe(document.body,{childList:true,subtree:true})}
 setTimeout(tlPaint,500);
 
+/* ---------- v26.11 : Duel 1 contre 1 — une seule carte, au meilleur des 5 rounds, pour tester une carte ----------
+   Mode d'entraînement : aucune récompense (ni pièces, ni XP, ni missions, ni fatigue), essais illimités.
+   Sauvegarde : S.du1 {n duels, w gagnés, rw/rl rounds, c dernière carte, lv difficulté, sd adversaire, h 5 derniers} */
+const DU1L=[['Égal',1,'#7dffb0'],['Fort',1.15,'#ffd34d'],['Redoutable',1.3,'#ff5d5d']];
+const DU1K=['壱','弐','参','肆','伍'];
+let DU1=null,DU1P=null;
+function du1S(){let d=S.du1;if(!d||typeof d!='object')d=S.du1={};['n','w','rw','rl','lv','sd'].forEach(k=>{if(typeof d[k]!='number'||!isFinite(d[k]))d[k]=0});if(d.lv<0||d.lv>2)d.lv=0;if(!Array.isArray(d.h))d.h=[];return d}
+const du1Mine=()=>D.filter(c=>S.inv[c.id]&&M[c.id]&&typeof c.p=='number').sort((a,b)=>pw(b)-pw(a));
+function du1Me(){const d=du1S(),L=du1Mine();if(!L.length)return null;return(d.c&&M[d.c]&&S.inv[d.c])?M[d.c]:L[0]}
+function du1Op(me){const d=du1S(),ok=c=>c&&c.id!=me.id&&typeof c.p=='number'&&!c.ds&&c.lx==null&&!c.mo;let L=D.filter(c=>ok(c)&&Math.abs(c.r-me.r)<=1);if(!L.length)L=D.filter(ok);if(!L.length)return D[0];return L[hs(me.id+'#du1#'+d.sd)%L.length]}
+const du1Tg=me=>Math.max(10,Math.round(pw(me)*DU1L[du1S().lv][1]));
+const du1Dots=(sc,log)=>`<div class="du1-dots">${DU1K.map((k,i)=>{const r=log&&log[i];return `<i class="${r?(r.w?'w':'l'):''}">${r?(r.w?'✓':'✗'):k}</i>`}).join('')}</div>`;
+const du1Tag=()=>{const d=du1S();return d.n?`${d.n} duel${d.n>1?'s':''} · ${d.w} gagné${d.w>1?'s':''}`:'Entraînement · sans récompense'};
+function du1Open(){const L=du1Mine();if(!L.length)return toast('Il te faut des cartes !');const d=du1S();
+ try{if(window.LB3&&!window.LB3.duel1)window.LB3.duel1={k:'対',c:'#ff7a45',a:'dojo',e:'Une carte · 5 rounds',s:DU1K.map((k,i)=>[k,'Round '+(i+1)])}}catch(e){}
+ const hi=d.h.length?`<div class="du1-hi"><h4><i>記</i>Tes derniers duels</h4>${d.h.map(x=>{const a=M[x.c],b=M[x.o];return a&&b?`<div class="du1-hr ${x.w?'w':'l'}"><b>${nE(a.n)}</b><span>${x.s}</span><b>${nE(b.n)}</b></div>`:''}).join('')}</div>`:'';
+ const o=modal(`<div class="xm13" style="--qa:#ff7a45;--qb:#ffd36a"><div class="xm13-e">${memb('duel1','#ff7a45','#ffd36a')}</div><h2>Duel 1 contre 1</h2>
+ <p>Choisis <b>une seule carte</b> et affronte un adversaire au meilleur des <b>5 rounds</b> : le premier à 3 victoires gagne. Chaque round repart à pleine vie.</p>
+ <div class="du1-nf">Mode d’entraînement : pas de récompense, pas de fatigue, essais illimités. Parfait pour tester une carte.</div>
+ <div class="du1"><div class="du1-vs"><div class="du1-s"><em>TOI</em><div class="du1-c" data-me></div><small data-mp></small></div><div class="du1-x"><i>VS</i></div><div class="du1-s du1-r"><em>ADVERSAIRE</em><div class="du1-c" data-op></div><small data-opp></small></div></div>
+ <div class="du1-ctl"><button class="btn gh sm du1-ro" data-ro>🎲 Autre adversaire</button></div>
+ <div class="du1-lv">${DU1L.map((l,i)=>`<button type="button" data-lv="${i}" style="--dl:${l[2]}"><b>${l[0]}</b><small>${i?'+'+Math.round((l[1]-1)*100)+' % de puissance':'même puissance'}</small></button>`).join('')}</div>
+ <div class="du1-pk"><h4><i>選</i>Choisis ta carte <small>${L.length} carte${L.length>1?'s':''}</small></h4><input type="search" class="du1-q" placeholder="Chercher un perso ou un anime…" autocomplete="off"><div class="du1-st" data-st></div></div>
+ <small class="mono">${du1Tag()}</small>${hi}</div>
+ <button class="btn" data-go>Lancer le duel</button></div>`);
+ o.classList.add('fd-ov');o.dataset.fdk='duel1';
+ const q=s=>o.querySelector(s);let me=du1Me();
+ const vs=()=>{const op=du1Op(me),tg=du1Tg(me);q('[data-me]').innerHTML=card(me);q('[data-op]').innerHTML=card(op);q('[data-mp]').textContent='Puissance '+pw(me);q('[data-opp]').textContent='En duel : '+tg+' · '+DU1L[du1S().lv][0];
+  o.querySelectorAll('[data-lv]').forEach(b=>b.classList.toggle('on',+b.dataset.lv==du1S().lv))};
+ const strip=()=>{const t=(q('.du1-q').value||'').trim().toLowerCase();const F=du1Mine().filter(c=>!t||String(c.n).toLowerCase().includes(t)||String(c.s).toLowerCase().includes(t)).slice(0,60);
+  q('[data-st]').innerHTML=F.length?F.map(c=>`<button type="button" class="du1-p${c.id==me.id?' on':''}" data-id="${nE(c.id)}">${card(c)}</button>`).join(''):'<p class="du1-no">Aucune carte trouvée</p>';
+  o.querySelectorAll('.du1-p').forEach(b=>b.onclick=()=>{const c=M[b.dataset.id];if(!c)return;me=c;du1S().c=c.id;save();o.querySelectorAll('.du1-p').forEach(x=>x.classList.toggle('on',x===b));vs()})};
+ q('.du1-q').oninput=strip;
+ q('[data-ro]').onclick=()=>{du1S().sd++;save();vs()};
+ o.querySelectorAll('[data-lv]').forEach(b=>b.onclick=()=>{du1S().lv=+b.dataset.lv;save();vs()});
+ q('[data-go]').onclick=()=>{o.remove();du1Start(me)};
+ vs();strip()}
+function du1Start(me){if(!me||!S.inv[me.id])return toast('Choisis une carte');const d=du1S();d.c=me.id;save();const op=du1Op(me);
+ DU1P=me.id;DU1={me:me.id,op:op.id,lv:d.lv,tg:du1Tg(me),sc:[0,0],log:[]};du1Round()}
+function du1Again(){const c=DU1P&&M[DU1P];if(c&&S.inv[c.id])du1Start(c);else du1Open()}
+function du1Round(){const R=DU1;if(!R||!M[R.me]||!M[R.op])return;const i=R.log.length,c=DU1L[R.lv][2];
+ const me=[mkF(M[R.me])],en=[eF(M[R.op],R.tg,1)];
+ xFight(me,en,'duel1','Duel · Round '+(i+1),[c,'#0e0716'],DU1K[i]||'対',i==4);B.du1=1;
+ try{const hv=document.querySelector('#bt .hv small');if(hv)hv.innerHTML='DUEL 1 CONTRE 1<br><span class="du1-hud">Round '+(i+1)+' / 5 · '+R.sc[0]+' – '+R.sc[1]+'</span>'}catch(e){}
+ setTimeout(()=>{try{if(B&&B.md=='duel1')hkBanner(DU1K[i]||'対','Round '+(i+1)+' / 5 — '+(i==4?'round décisif !':'score '+R.sc[0]+' – '+R.sc[1]),c)}catch(e){}},400)}
+function du1Fin(w,quit){const R=DU1;if(!R)return;const a=M[R.me],b=M[R.op];
+ const btn=(t,f,g)=>`<button class="btn${g?' gh':''}" data-oclick="xClose(${f})">${t}</button>`;
+ if(quit){DU1=null;xRes(`<div class="ey">DUEL ABANDONNÉ</div><h1 class="dt" style="font-size:30px">${R.sc[0]} – ${R.sc[1]}</h1><p class="lead" style="margin:0 auto 14px">Pas de souci : ce n’est qu’un entraînement, rien n’est perdu.</p><div class="row">${btn('Nouveau duel','du1Open')}${btn('Retour',"()=>show('battle')",1)}</div>`);return}
+ let hp=0;try{const f=B.me[0];hp=Math.max(0,Math.round(f.hp/f.max*100))}catch(e){}
+ R.sc[w?0:1]++;R.log.push({w:w?1:0,hp});try{snd27Stg(w?'victory':'defeat',{gap:0,rev:.35})}catch(e){}
+ const fin=R.sc[0]>=3||R.sc[1]>=3,i=R.log.length;
+ if(!fin){if(w)try{boom(2,'#ffd36a',false,'ROUND '+i+' !')}catch(e){}
+  xRes(`<div class="ey${w?' y':''}">ROUND ${i} ${w?'GAGNÉ':'PERDU'}</div>${du1Dots(R.sc,R.log)}<h1 class="dt du1-sc">${R.sc[0]} <small>–</small> ${R.sc[1]}</h1><p class="lead" style="margin:0 auto 14px">${w?nE(a.n)+' gagne le round avec '+hp+' % de vie.':nE(b.n)+' remporte ce round.'}${R.sc[0]==2&&R.sc[1]==2?'<br><b>Round décisif !</b>':''}</p><div class="row">${btn('Round suivant','du1Round')}</div>`);return}
+ const won=R.sc[0]>=3,d=du1S(),s=R.sc[0]+' – '+R.sc[1];d.n++;if(won)d.w++;d.rw+=R.sc[0];d.rl+=R.sc[1];d.h.unshift({c:R.me,o:R.op,s,w:won?1:0});d.h=d.h.slice(0,5);save();DU1=null;
+ if(won)try{boom(3,'#ffd36a',true,'DUEL GAGNÉ !')}catch(e){}
+ const wr=R.log.filter(x=>x.w),avg=wr.length?Math.round(wr.reduce((t,x)=>t+x.hp,0)/wr.length):0;
+ xRes(`<div class="ey${won?' y':''}">${won?'DUEL GAGNÉ':'DUEL PERDU'}</div>${du1Dots(R.sc,R.log)}<h1 class="dt du1-sc">${R.sc[0]} <small>–</small> ${R.sc[1]}</h1><p class="lead" style="margin:0 auto 6px"><b>${nE(a.n)}</b> contre <b>${nE(b.n)}</b> (${DU1L[R.lv][0]})</p><p class="du1-bl">${won?(avg>=60?(R.lv<2?'Ta carte écrase ce niveau : essaie « '+DU1L[R.lv+1][0]+' ».':'Ta carte écrase même le niveau Redoutable !'):'Belle victoire, ta carte tient la route.'):'Cet adversaire est trop fort pour elle : améliore-la ou baisse la difficulté.'}${wr.length?'<br>Vie restante moyenne quand tu gagnes : '+avg+' %':''}<br><small>Entraînement : pas de récompense</small></p><div class="row">${btn('Revanche','du1Again')}${btn('Changer de carte','du1Open',1)}${btn('Retour',"()=>show('battle')",1)}</div>`)}
+XMD.duel1='DUEL 1 CONTRE 1';try{MK3.duel1='対'}catch(e){}
+Object.assign(MEMB,{duel1:'<rect x="6" y="14" width="22" height="34" rx="4" stroke-width="4" transform="rotate(-10 17 31)"/><rect x="36" y="14" width="22" height="34" rx="4" stroke-width="4" transform="rotate(10 47 31)"/><path d="M28 54l8-8M36 54l-8-8" stroke-width="4"/><circle cx="32" cy="10" r="4" class="f"/>'});
+try{TL9O.duel1=`<g ${TOS}><g transform="rotate(-14 54 88)"><rect x="18" y="34" width="70" height="104" rx="12" fill="#ff7a45"/><rect x="28" y="44" width="50" height="62" rx="6" fill="#ffd9b8" stroke-width="3"/></g><g transform="rotate(14 118 88)"><rect x="84" y="34" width="70" height="104" rx="12" fill="#4fa3ff"/><rect x="94" y="44" width="50" height="62" rx="6" fill="#cfeaff" stroke-width="3"/></g></g><text x="86" y="150" text-anchor="middle" font-size="40" font-weight="900" fill="#ffcc3a" stroke="${TO}" stroke-width="6" paint-order="stroke" font-family="Arial Black,Inter">1v1</text>`;TL9C.duel1='Zoro Roronoa'}catch(e){}
+{const _x=xEnd;xEnd=function(w,quit){if(!B||B.md!='duel1')return _x.apply(this,arguments);if(B.over&&!quit)return;B.over=1;du1Fin(w,quit)}}
+{const _e=end;end=function(w){if(B&&B.md=='duel1'){if(B.over)return;return xEnd(w)}return _e.apply(this,arguments)}}
+{const _m=mode;mode=function(m){if(m=='duel1')return du1Open();return _m.apply(this,arguments)}}
+MODES.push(['duel1','Duel 1 contre 1','Une seule carte, 5 rounds · pour tester une carte','#ff7a45','#ffd36a',du1Tag,1]);
+
+/* v10 · MUGEN 1.0 (demandes du propriétaire, 12/11 au soir) :
+   numéro de version affiché remis à zéro, pseudo obligatoire à l'arrivée, images du tuto,
+   images de persos réparées, vignettes des parcours, anti-farm des pièces */
+
+/* --- 1. numéro de version affiché : la numérotation repart de 1.0 (le numéro interne ne change pas : il sert aux sauvegardes) --- */
+const DVER={'26.9.6':'1.0'};
+const dvRe=new RegExp('(^|[^0-9.])('+Object.keys(DVER).map(k=>k.replace(/\./g,'\\.')).join('|')+')(?![0-9])','g');
+function dvFix(root){try{const w=document.createTreeWalker(root||document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){const t=n.nodeValue;if(t&&t.length<400&&/\d\.\d/.test(t)){dvRe.lastIndex=0;const u=t.replace(dvRe,(m,a,v)=>a+DVER[v]);if(u!==t)n.nodeValue=u}}}catch(e){}}
+{let dvT=0;try{new MutationObserver(()=>{if(dvT)return;dvT=setTimeout(()=>{dvT=0;dvFix()},120)}).observe(document.body,{childList:true,subtree:true,characterData:true})}catch(e){}setTimeout(dvFix,500)}
+
+/* --- 2. pseudo obligatoire : après la connexion et le message « Nouveau départ », avant le tutoriel --- */
+function nmMust(){try{if(document.querySelector('.nm9'))return;const pre=S.name&&S.name!='Joueur'?S.name:'';
+ nameUI(()=>{S.nm1=1;save();try{netSync(1)}catch(e){}});
+ const o=document.querySelector('.nm9');if(!o)return;o.classList.add('nm9-must');o.querySelectorAll('.nm9-x,.nm9-cn').forEach(b=>b.remove());
+ const h=o.querySelector('h2');if(h)h.textContent='Choisis ton pseudo pour jouer';
+ const p=o.querySelector('.nm9-s');if(p)p.textContent='Bienvenue ! Avant de commencer, choisis le nom que les autres joueurs verront (classements, combats, guilde, amis). Tu pourras le changer plus tard dans les Réglages.';
+ const inp=o.querySelector('input');if(inp&&!pre){inp.value='';inp.dispatchEvent(new Event('input'))}}catch(e){console.warn('pseudo',e)}}
+setTimeout(function nmW(){try{if(S.nm1)return;if(!document.getElementById('lg96')&&!document.querySelector('.ov')&&!document.getElementById('bt')&&!document.getElementById('tu1')&&!document.querySelector('.nm9'))nmMust()}catch(e){}setTimeout(nmW,1200)},2000);
+/* le tutoriel attend que le pseudo soit choisi */
+{const _t=tu1Open;tu1Open=function(f){if(!f&&!S.nm1)return;return _t.apply(this,arguments)}}
+setTimeout(function tu2W(){try{if(S.tu1)return;if(S.nm1&&!document.getElementById('tu1')&&!document.querySelector('.nm9')&&!document.getElementById('lg96')&&!document.querySelector('.ov')&&!document.getElementById('bt')){tu1Open();return}}catch(e){}setTimeout(tu2W,1500)},3000);
+
+/* --- 3. tutoriel : seulement des cartes dont l'image a bien chargé, et les vraies images des menus --- */
+const TU1OK=new Set();
+(function(){try{D.filter(c=>c.r<=5&&imgOf(c)&&!/giphy|anisearch/.test(imgOf(c))).sort(()=>Math.random()-.5).slice(0,60).forEach(c=>{const im=new Image();im.referrerPolicy='no-referrer';im.onload=()=>{if(im.naturalWidth>40)TU1OK.add(c.id)};im.src=imgOf(c)})}catch(e){}})();
+tu1Cards=function(f,n){try{const A=D.filter(f).sort(()=>Math.random()-.5),ok=A.filter(c=>TU1OK.has(c.id));return (ok.length>=n?ok:ok.concat(A.filter(c=>!TU1OK.has(c.id)&&imgOf(c)))).slice(0,n)}catch(e){return []}};
+const tu2Ic=(k,s)=>{try{return typeof TL9O!='undefined'&&TL9O[k]?`<svg viewBox="0 0 175 178" width="${s}" height="${s}" aria-hidden="true">${TL9O[k]}</svg>`:''}catch(e){return ''}};
+const tu2Grid=L=>`<div class="tu-grid">${L.map((x,i)=>`<div style="--c:${x[2]};animation-delay:${.25+i*.2}s">${tu2Ic(x[0],54)||`<i>${x[3]}</i>`}<b>${x[1]}</b></div>`).join('')}</div>`;
+try{
+ const st1=TU1[1].st;TU1[1].st=()=>{const h=st1(),ic=tu2Ic('shop',110);return ic?h.replace('<div class="tu-pack">金</div>','<div class="tu-pack tu-pk2">'+ic+'</div>'):h};
+ TU1[5].st=()=>tu2Grid([['miss','Missions','#ffd36a','任'],['exp','Expéditions','#3dd9c4','旅'],['tower','La Tour','#ffb43a','塔'],['ranked','Classé','#ff4d2e','位'],['evhub','Événements','#ff7a45','祭'],['gear','Arsenal','#a07cff','器']]);
+ TU1[6].st=()=>`<div style="display:grid;place-items:center">${tu2Grid([['guild','Guildes','#ff3d6e','団'],['hdv','Hôtel des ventes','#ffd36a','市'],['friends','Amis','#4fa3ff','友']])}</div>`;
+}catch(e){}
+
+/* --- 4. images de persos qui ne s'affichaient pas (anciens GIF Giphy, images anisearch ou aucune image) → portraits MyAnimeList --- */
+const FIXI={'Muzan Kibutsuji':'https://cdn.myanimelist.net/images/characters/4/384669.jpg','Gyomei Himejima':'https://cdn.myanimelist.net/images/characters/10/550017.jpg',
+'Sanemi Shinazugawa':'https://cdn.myanimelist.net/images/characters/11/556642.jpg','Obanai Iguro':'https://cdn.myanimelist.net/images/characters/15/466014.jpg',
+'Genya Shinazugawa':'https://cdn.myanimelist.net/images/characters/5/390152.jpg','Kanao Tsuyuri':'https://cdn.myanimelist.net/images/characters/2/384712.jpg',
+'Sakonji Urokodaki':'https://cdn.myanimelist.net/images/characters/11/382214.jpg','Kanae Kocho':'https://cdn.myanimelist.net/images/characters/16/389355.jpg',
+'Tamayo':'https://cdn.myanimelist.net/images/characters/14/384692.jpg','Kagaya Ubuyashiki':'https://cdn.myanimelist.net/images/characters/2/387497.jpg',
+'Kaguya Ōtsutsuki':'https://cdn.myanimelist.net/images/characters/5/292976.jpg','Hagoromo Ōtsutsuki':'https://cdn.myanimelist.net/images/characters/15/254419.jpg',
+'Whis':'https://cdn.myanimelist.net/images/characters/13/496535.jpg','Yhwach':'https://cdn.myanimelist.net/images/characters/8/396645.jpg',
+'Kenjaku':'https://cdn.myanimelist.net/images/characters/12/619337.jpg','Meruem':'https://cdn.myanimelist.net/images/characters/6/243861.jpg',
+'Veldora Tempest':'https://cdn.myanimelist.net/images/characters/2/381124.jpg','All For One':'https://cdn.myanimelist.net/images/characters/4/370136.jpg',
+'Pochita':'https://cdn.myanimelist.net/images/characters/7/391655.jpg','Antares':'https://cdn.myanimelist.net/images/characters/4/456873.jpg',
+'Ryuk':'https://cdn.myanimelist.net/images/characters/10/59125.jpg','Giorno Giovanna':'https://cdn.myanimelist.net/images/characters/16/571466.jpg',
+'Asta':'https://cdn.myanimelist.net/images/characters/8/312836.jpg','Frieren':'https://cdn.myanimelist.net/images/characters/7/525105.jpg',
+'Jiren':'https://cdn.myanimelist.net/images/characters/4/465444.jpg','Isshiki Ōtsutsuki':'https://cdn.myanimelist.net/images/characters/9/442613.jpg',
+'Kars':'https://cdn.myanimelist.net/images/characters/12/615607.jpg','Hashirama Senju':'https://cdn.myanimelist.net/images/characters/10/34809.jpg',
+'Shigeo Kageyama':'https://cdn.myanimelist.net/images/characters/6/343344.jpg','Tatsumaki':'https://cdn.myanimelist.net/images/characters/3/543830.jpg',
+'Yuno':'https://cdn.myanimelist.net/images/characters/6/318765.jpg','Shinra Kusakabe':'https://cdn.myanimelist.net/images/characters/9/627776.jpg',
+'Zeno':'https://cdn.myanimelist.net/images/characters/8/307928.jpg'};
+function fixImgs(){try{const all=typeof M!='undefined'?Object.values(M):D;let n=0;all.forEach(c=>{const u=FIXI[c&&c.n];if(!u)return;const cur=imgOf(c)||'';if(cur&&cur==u)return;if(cur&&!/giphy|anisearch/.test(cur)&&!(S.badu&&S.badu[cur]))return;S.mim=S.mim||{};S.mim[c.id]=u;if(S.badu&&S.badu[u])delete S.badu[u];n++});return n}catch(e){return 0}}
+fixImgs();setTimeout(fixImgs,4000);setInterval(fixImgs,30000);
+
+/* --- 5. anti-farm des pièces --- */
+/* combats répétés : pièces pleines jusqu'à 30 combats par jour (au lieu de 40), ×0,5 jusqu'à 60, ×0,2 jusqu'à 100, puis ×0,05,
+   et au plus 2 500 pièces par jour avec les combats répétés. Les victoires de progression (nouvelle étape, étage, démon, défi du jour) ne sont jamais réduites. */
+try{FTG.splice(0,FTG.length,[30,1],[60,.5],[100,.2],[1e9,.05])}catch(e){}
+const FCAP=2500;
+{const _e=end;end=function(w){if(!B||B.fc10)return _e.apply(this,arguments);B.fc10=1;const c0=S.coins,cp0=S.cp||0,tw0=S.tw||0,ds0=S.dsm?S.dsm.st:0,dc0=S.dc;
+ const r=_e.apply(this,arguments);try{const prog=(S.cp||0)>cp0||(S.tw||0)>tw0||(S.dsm&&S.dsm.st>ds0)||S.dc!=dc0,got=S.coins-c0;
+  if(!prog&&got>0){const fd=ftDay();fd.c=fd.c||0;const ok=Math.max(0,Math.min(got,FCAP-fd.c));fd.c+=ok;if(ok<got){S.coins-=got-ok;save();try{fs()}catch(e){}
+   const o=[...document.querySelectorAll('.ov.res')].pop()||[...document.querySelectorAll('.ov')].pop(),kp=o&&o.querySelector('.kp');const msg=`<p class="ftg22">🪙 Limite du jour : ${FR(FCAP)} pièces avec les combats répétés. Tu as gardé +${FR(ok)} pièces. L’XP et la progression restent normales, et les combats de progression rapportent toujours leurs pièces.</p>`;if(kp)kp.insertAdjacentHTML('afterend',msg);else if(o)o.querySelector('.rc,.mbox')?.insertAdjacentHTML('beforeend',msg)}}}catch(e){}return r}}
+/* mini-jeu « Plus fort ? » : il n'avait aucune limite (jusqu'à 40 pièces toutes les 1,5 s). Maintenant 300 pièces par jour au plus. */
+const HLCAP=300;
+{const _h=hlA;hlA=function(k){const c0=S.coins;const r=_h.apply(this,arguments);try{const got=S.coins-c0;if(got>0){const d=new Date().toDateString();if(!S.hlc||S.hlc.d!=d)S.hlc={d,c:0};const ok=Math.max(0,Math.min(got,HLCAP-S.hlc.c));S.hlc.c+=ok;if(ok<got){S.coins-=got-ok;save();toast(ok?'Bonne réponse ! +'+ok+' pièces (limite de '+HLCAP+' pièces par jour atteinte)':'Bonne réponse ! Limite de '+HLCAP+' pièces par jour atteinte : la série continue, mais sans pièces jusqu’à demain.')}}}catch(e){}return r}}
+
 /* ================= MUGEN 27 · L'AUBE · partie A : rareté AUBE 暁 (Akatsuki) — 11 cartes, kits, design, GIF, Pack Aube 3D ================= */
 /* ---------- 1. la rareté (entre Lame Écarlate et Ascendant pour le prix) ---------- */
 const AKR=R.length;R.push(['暁','Aube','#e0262f']);PRICE[AKR]=700;try{TCGK[AKR]='暁'}catch(e){}try{CXK[AKR]='暁'}catch(e){}
@@ -16770,7 +16957,7 @@ function akCine(cards){return new Promise(res=>{const o=document.createElement('
 /* ================= MUGEN 27 · L'AUBE · partie A (2) : nouveau design (v26.9) =================
    - le Pack Aube s'ouvre avec la nouvelle ouverture 3D des boosters (celle de tous les packs du jeu), les cartes sont celles du jeu (card) ;
    - les objets de l'Aube (anneaux, yeux, coffres, sacs, spores, Pack Aube) ont leur modèle 3D (vignettes rendues dans media/aube-3f9a2c71/obj/). */
-const AKM='assets-4751271f7a/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
+const AKM='assets-0a370e2f89/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
 const akObjImg=(id,cls='')=>`<img class="ak3o ${cls}" src="${akObj(id)}" alt="" draggable="false" loading="lazy" data-oerror="this.style.visibility='hidden'">`;
 /* anneaux de l'Akatsuki : vignette 3D partout où le jeu dessine l'icône d'un objet */
 {const _gi=gIco;gIco=function(g){try{if(g&&/^akr\d$/.test(g.id))return akObjImg(g.id,'o3i'+(typeof gLv=='function'&&!gLv(g)?' o3lk':''))}catch(e){}return _gi.apply(this,arguments)}}
@@ -17707,7 +17894,7 @@ async g_nuage(X){const Q=await k2Q(X,true),T=Q.T,{ax,ay,tx,ty,ux,uy,mv,rec,shake
    (même moteur que les ultimes des cartes rares, recul de caméra en portrait). Le Jutsu de l'Aube y joue sa scène de groupe :
    chaque membre fait sa part, puis l'attaque combinée. La logique (dégâts, coût, effets) ne change pas : seules les images changent.
    Si le moteur 3D ne répond pas, les anciennes animations restent en secours. */
-const AK3_SRC='assets-4751271f7a/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
+const AK3_SRC='assets-0a370e2f89/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
 const AK3={f:null,rd:0,w:null};
 addEventListener('message',e=>{const m=e.data||{};if(!AK3.f||e.source!==AK3.f.contentWindow)return;if(m.t=='aube-ready')AK3.rd=1;if(m.t=='aube-done'&&AK3.w){const w=AK3.w;AK3.w=null;w(m.ok?1:0)}});
 function ak3Mount(){if(AK3.f&&document.body.contains(AK3.f))return;const f=document.createElement('iframe');f.id='ak3f';f.setAttribute('aria-hidden','true');f.tabIndex=-1;f.src=AK3_SRC;AK3.rd=0;AK3.f=f;document.body.append(f)}
@@ -18052,7 +18239,7 @@ try{[['akw','Sceller {n} Bijū (La Traque des Bijū)',1,'暁',null,5]].forEach(x
 /* ================= MUGEN 27 · L'AUBE · partie B (3) : « La Traque des Bijū » dans le nouveau design (v26.9) =================
    Même contenu et même déroulé que les parties B (1) et (2) : seules les pages changent.
    Le Repaire (page du mode) → la fiche de la cible (Alerte, renforts, contrat de Kakuzu) → le lobby (.lb3) → le combat dans l'arène 3D
-   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-4751271f7a/aube-3f9a2c71/obj/). */
+   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-0a370e2f89/aube-3f9a2c71/obj/). */
 const AKX_BG=id=>AKM+'bg/'+id+'.jpg';
 const akxE=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const akxJ=H=>(H.jid&&M[H.jid]&&imgOf(M[H.jid]))||AKT_IMG+H.ji,akxB=H=>AKT_IMG+H.bi;
@@ -19335,7 +19522,7 @@ packs(){S.fb=Math.max(S.fb||0,10);try{asS().pk=(asS().pk||0)+5}catch(e){}},
 camp(){S.cp=Math.max(S.cp||0,250)},
 async guild(){try{if(!GLD||!GLD.id)await gJoin('bot3')}catch(e){}try{GLD.lvl=10}catch(e){}},
 a3(){const off=!window.__A3OFF;window.__A3OFF=off;try{localStorage.setItem('a3off',off?'1':'0')}catch(e){}toast(off?'3D des combats coupée':'3D des combats activée');return 'x'},
-pportails(){try{V3OPEN('assets-4751271f7a/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
+pportails(){try{V3OPEN('assets-0a370e2f89/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
 navA(){V3NAV.set('a');return 'x'},navB(){V3NAV.set('b');return 'x'},navC(){V3NAV.set('c');return 'x'},
 lvl(){S.xp=Math.max(S.xp||0,400000)},
 reset(){if(!confirm('Effacer la sauvegarde TEST ?'))return 'x';localStorage.removeItem('animecards');location.reload();return 'x'}};
