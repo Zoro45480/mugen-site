@@ -8084,7 +8084,7 @@ function showOdds(o,c,p){const d=document.createElement('div');d.className='odds
 /* ===== MISES À JOUR ===== */
 const VER='27.0',CHG=[
  {v:'27.0',big:1,d:'novembre 2026',t:'MUGEN 27 · L’Aube',n:['Nouvelle rareté AUBE 暁, entre Lame Écarlate et Ascendant : les 11 membres de l’Akatsuki — Pain, Konan, Itachi, Kisame, Deidara, Sasori, Hidan, Kakuzu, Zetsu, Tobi et Orochimaru (puissance 170 à 180). Chaque carte a la vraie image du perso, un GIF qui se joue au survol et en combat (↻ pour en changer), et un design rien qu’à elle : manteau noir, nuages rouges qui dérivent et le kanji de l’anneau du membre.','Toutes les attaques de l’Akatsuki sont en 3D. Les 3 techniques de chaque membre se jouent en un éclair par-dessus l’arène (Bansho Ten’in, Ange de papier, Requin de 1000, Prison d’eau, C2 Dragon, Sable de fer, Faux triple, Fils de la Terre, Clones blancs, Kamui, Izanagi, Kusanagi, Serpents…), et chaque ultime a sa cinématique, comme les cartes rares : Shinra Tensei puis Chibaku Tensei (Pain), la mer de papier et les 600 milliards de parchemins explosifs (Konan), Tsukuyomi, Amaterasu et Susano’o avec l’épée de Totsuka (Itachi), les requins et le Grand Requin (Kisame), les oiseaux d’argile et C4 Karura (Deidara), le sable de fer du Troisième Kazekage et les cent marionnettes (Sasori), le rituel de Jashin (Hidan), les quatre masques du Jiongu (Kakuzu), les clones de spores (Zetsu), les dragons de bois, Kamui et Rinne Tensei (Tobi), les huit serpents et Kusanagi (Orochimaru).','Jutsu de l’Aube (6◆) : avec 3 membres de l’Akatsuki dans ton équipe, un nouveau bouton apparaît en combat. Une scène 3D où chaque membre fait sa part, puis l’attaque combinée. 5 versions : Itachi + Kisame, Deidara + Sasori, Hidan + Kakuzu, Pain + Konan, ou trois membres au choix.','Nouveau mode « La Traque des Bijū » (menu Aventure et Combat) : choisis ta cible sur la carte des 5 villages, surveille l’Alerte, affronte les 9 Bijū puis scelle-les. La Lecture du Sharingan t’aide à prévoir leurs coups. Récompenses : anneaux, yeux, coffres, sacs… et une petite chance d’obtenir le Pack Aube.','Pack Aube (1 carte Aube garantie) : il ne se vend pas en boutique, il se gagne dans La Traque des Bijū. Il s’ouvre comme les autres boosters, en 3D, aux couleurs de l’Akatsuki.','Nouvelles missions et quêtes autour de l’Akatsuki. L’onglet Aube du wiki montre tous les membres avec leur GIF, et le filtre Aube de la collection compte tes anneaux.'],f:[]},
-{v:'26.9.6',big:1,d:'12 novembre 2026',t:'MUGEN 1.0',n:['MUGEN repart de zéro pour tout le monde : nouveau design, et la numérotation des versions recommence à 1.0.','Connecte-toi avec Google puis choisis ton pseudo : ta progression est gardée sur ton compte et te suit sur tous tes appareils.','Combats en 3D, une attaque ultime pour chaque carte à partir de Mythique, attaques duo en 3D, nouvelle ouverture de boosters, objets en 3D et nouveaux sons.','Nouvelles images pour toutes les cases des menus, et un tutoriel animé au premier lancement.','Guildes : blason, rangs, cadeaux, records, nouveaux portails et la Faille du Dragon-Monde. 3 nouveaux classements en ligne : Niveau, Victoires, Collection.','Pièces : les combats répétés rapportent au plus 2 500 pièces par jour, et le mini-jeu « Plus fort ? » au plus 300. Les victoires de progression rapportent toujours leurs pièces.'],f:['Les images d’une trentaine de persos s’affichent de nouveau (Pourfendeurs, Primordiaux, Ascendants…).','Les vignettes des parcours d’expédition n’ont plus de barre noire.','Le tutoriel montre bien les images des cartes.']}
+{v:'26.12',big:1,d:'12 novembre 2026',t:'MUGEN 1.0',n:['MUGEN repart de zéro pour tout le monde : nouveau design, et la numérotation des versions recommence à 1.0.','Connecte-toi avec Google puis choisis ton pseudo : ta progression est gardée sur ton compte et te suit sur tous tes appareils.','Combats en 3D, une attaque ultime pour chaque carte à partir de Mythique, attaques duo en 3D, nouvelle ouverture de boosters, objets en 3D et nouveaux sons.','Nouvelles images pour toutes les cases des menus, et un tutoriel animé au premier lancement.','Guildes : blason, rangs, cadeaux, records, nouveaux portails et la Faille du Dragon-Monde. 3 nouveaux classements en ligne : Niveau, Victoires, Collection.','Pièces : les combats répétés rapportent au plus 2 500 pièces par jour, et le mini-jeu « Plus fort ? » au plus 300. Les victoires de progression rapportent toujours leurs pièces.'],f:['Les images d’une trentaine de persos s’affichent de nouveau (Pourfendeurs, Primordiaux, Ascendants…).','Les vignettes des parcours d’expédition n’ont plus de barre noire.','Le tutoriel montre bien les images des cartes.']}
 ];
 function maj(){S.mv=VER;save();badges();
  $('v').innerHTML=`<div class="ey">JOURNAL · 更新</div><h1 class="dt">Mises à jour</h1><p class="lead">Toutes les nouveautés et corrections du jeu, de la plus récente à la plus ancienne.</p><button class="btn gh" style="margin-bottom:18px" data-oclick="splash()">Revoir l’écran de nouveautés</button><div class="chl">${CHG.map((c,i)=>`<section class="pn cv"><div class="cvh"><b class="cvn">v${c.v}</b>${i==0?'<em>Nouveau</em>':''}<span>${c.d}</span></div><h3>${c.t}</h3><h4>Nouveautés</h4><ul>${c.n.map(x=>`<li>${x}</li>`).join('')}</ul>${(c.f||[]).length?`<h4 class="fx">Corrections</h4><ul class="fxl">${(c.f||[]).map(x=>`<li>${x}</li>`).join('')}</ul>`:''}</section>`).join('')}</div>`}
@@ -16492,8 +16492,8 @@ MODES.push(['duel1','Duel 1 contre 1','Une seule carte, 5 rounds · pour tester 
    images de persos réparées, vignettes des parcours, anti-farm des pièces */
 
 /* --- 1. numéro de version affiché : la numérotation repart de 1.0 (le numéro interne ne change pas : il sert aux sauvegardes) --- */
-const DVER={'26.9.6':'1.0'};
-const dvRe=new RegExp('(^|[^0-9.])('+Object.keys(DVER).map(k=>k.replace(/\./g,'\\.')).join('|')+')(?![0-9])','g');
+const DVER={'26.12':'1.0'};
+const dvRe=new RegExp('(^|[^0-9.])('+Object.keys(DVER).map(k=>k.replace(/\./g,'\\.')).join('|')+')(?![0-9]|\\.[0-9])','g');
 function dvFix(root){try{const w=document.createTreeWalker(root||document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){const t=n.nodeValue;if(t&&t.length<400&&/\d\.\d/.test(t)){dvRe.lastIndex=0;const u=t.replace(dvRe,(m,a,v)=>a+DVER[v]);if(u!==t)n.nodeValue=u}}}catch(e){}}
 {let dvT=0;try{new MutationObserver(()=>{if(dvT)return;dvT=setTimeout(()=>{dvT=0;dvFix()},120)}).observe(document.body,{childList:true,subtree:true,characterData:true})}catch(e){}setTimeout(dvFix,500)}
 
@@ -16957,7 +16957,7 @@ function akCine(cards){return new Promise(res=>{const o=document.createElement('
 /* ================= MUGEN 27 · L'AUBE · partie A (2) : nouveau design (v26.9) =================
    - le Pack Aube s'ouvre avec la nouvelle ouverture 3D des boosters (celle de tous les packs du jeu), les cartes sont celles du jeu (card) ;
    - les objets de l'Aube (anneaux, yeux, coffres, sacs, spores, Pack Aube) ont leur modèle 3D (vignettes rendues dans media/aube-3f9a2c71/obj/). */
-const AKM='assets-0a370e2f89/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
+const AKM='assets-2f7955367c/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
 const akObjImg=(id,cls='')=>`<img class="ak3o ${cls}" src="${akObj(id)}" alt="" draggable="false" loading="lazy" data-oerror="this.style.visibility='hidden'">`;
 /* anneaux de l'Akatsuki : vignette 3D partout où le jeu dessine l'icône d'un objet */
 {const _gi=gIco;gIco=function(g){try{if(g&&/^akr\d$/.test(g.id))return akObjImg(g.id,'o3i'+(typeof gLv=='function'&&!gLv(g)?' o3lk':''))}catch(e){}return _gi.apply(this,arguments)}}
@@ -17894,7 +17894,7 @@ async g_nuage(X){const Q=await k2Q(X,true),T=Q.T,{ax,ay,tx,ty,ux,uy,mv,rec,shake
    (même moteur que les ultimes des cartes rares, recul de caméra en portrait). Le Jutsu de l'Aube y joue sa scène de groupe :
    chaque membre fait sa part, puis l'attaque combinée. La logique (dégâts, coût, effets) ne change pas : seules les images changent.
    Si le moteur 3D ne répond pas, les anciennes animations restent en secours. */
-const AK3_SRC='assets-0a370e2f89/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
+const AK3_SRC='assets-2f7955367c/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
 const AK3={f:null,rd:0,w:null};
 addEventListener('message',e=>{const m=e.data||{};if(!AK3.f||e.source!==AK3.f.contentWindow)return;if(m.t=='aube-ready')AK3.rd=1;if(m.t=='aube-done'&&AK3.w){const w=AK3.w;AK3.w=null;w(m.ok?1:0)}});
 function ak3Mount(){if(AK3.f&&document.body.contains(AK3.f))return;const f=document.createElement('iframe');f.id='ak3f';f.setAttribute('aria-hidden','true');f.tabIndex=-1;f.src=AK3_SRC;AK3.rd=0;AK3.f=f;document.body.append(f)}
@@ -18239,7 +18239,7 @@ try{[['akw','Sceller {n} Bijū (La Traque des Bijū)',1,'暁',null,5]].forEach(x
 /* ================= MUGEN 27 · L'AUBE · partie B (3) : « La Traque des Bijū » dans le nouveau design (v26.9) =================
    Même contenu et même déroulé que les parties B (1) et (2) : seules les pages changent.
    Le Repaire (page du mode) → la fiche de la cible (Alerte, renforts, contrat de Kakuzu) → le lobby (.lb3) → le combat dans l'arène 3D
-   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-0a370e2f89/aube-3f9a2c71/obj/). */
+   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-2f7955367c/aube-3f9a2c71/obj/). */
 const AKX_BG=id=>AKM+'bg/'+id+'.jpg';
 const akxE=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const akxJ=H=>(H.jid&&M[H.jid]&&imgOf(M[H.jid]))||AKT_IMG+H.ji,akxB=H=>AKT_IMG+H.bi;
@@ -19522,7 +19522,7 @@ packs(){S.fb=Math.max(S.fb||0,10);try{asS().pk=(asS().pk||0)+5}catch(e){}},
 camp(){S.cp=Math.max(S.cp||0,250)},
 async guild(){try{if(!GLD||!GLD.id)await gJoin('bot3')}catch(e){}try{GLD.lvl=10}catch(e){}},
 a3(){const off=!window.__A3OFF;window.__A3OFF=off;try{localStorage.setItem('a3off',off?'1':'0')}catch(e){}toast(off?'3D des combats coupée':'3D des combats activée');return 'x'},
-pportails(){try{V3OPEN('assets-0a370e2f89/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
+pportails(){try{V3OPEN('assets-2f7955367c/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
 navA(){V3NAV.set('a');return 'x'},navB(){V3NAV.set('b');return 'x'},navC(){V3NAV.set('c');return 'x'},
 lvl(){S.xp=Math.max(S.xp||0,400000)},
 reset(){if(!confirm('Effacer la sauvegarde TEST ?'))return 'x';localStorage.removeItem('animecards');location.reload();return 'x'}};
