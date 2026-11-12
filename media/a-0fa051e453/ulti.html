@@ -48,7 +48,7 @@ html,body{height:100%;background:var(--bg);color:var(--tx);font-family:Inter,sys
 #c{transform-origin:50% 50%}
 @media (max-width:640px){.ttl b{font-size:26px}.ttl i{font-size:80px}}
 .moves{display:none!important}.tag{bottom:22px}.cut .t small{display:block;margin-bottom:4px}.ttl small{font-size:13px}
-</style><style>#hudw,.moves,.tag{display:none!important}</style></head><body>
+html,body,canvas{touch-action:manipulation}</style><style>#hudw,.moves,.tag{display:none!important}</style></head><body>
 <canvas id="c"></canvas><div class="vig"></div>
 <div class="bars-cine t"></div><div class="bars-cine b"></div>
 <div id="hudw"><div class="hud">
@@ -76,7 +76,8 @@ const sc=new THREE.Scene();sc.fog=new THREE.FogExp2(0x12081c,.045);
 const cam=new THREE.PerspectiveCamera(42,1,.1,200);
 const CAM0={p:new THREE.Vector3(0,3.1,10.5),l:new THREE.Vector3(0,1.55,0)};
 cam.position.copy(CAM0.p);const look=CAM0.l.clone();
-function rs(){const w=innerWidth,h=innerHeight;R.setSize(w,h,false);cam.aspect=w/h;cam.fov=w<h?62:42;cam.updateProjectionMatrix()}addEventListener('resize',rs);rs();
+/* téléphone en portrait : la caméra recule pour garder toute l'attaque à l'écran */
+let PK3=1;function rs(){const w=innerWidth,h=innerHeight;R.setSize(w,h,false);cam.aspect=w/h;cam.fov=w<h?62:42;PK3=w<h?Math.min(2.4,Math.tan(27.5*Math.PI/180)/(Math.tan(31*Math.PI/180)*w/h)):1;cam.updateProjectionMatrix()}addEventListener('resize',rs);rs();
 
 /* ---------- textures procédurales ---------- */
 const tex=(w,h,f)=>{const c=document.createElement('canvas');c.width=w;c.height=h;f(c.getContext('2d'),w,h);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;return t};
@@ -778,7 +779,7 @@ function frameDt(dt){
  ARU.forEach(f=>f(T));if(AMB&&P.length<PMAX-400)AMB();FXL.intensity*=Math.pow(.02,dt);
  if(!document.body.classList.contains('cine')){const sx=Math.sin(T*.25)*.35;cam.position.x+=(CAM0.p.x+sx-cam.position.x)*Math.min(1,dt*.8)}
  const s=shakeA;shakeA*=Math.pow(.004,dt);const o=new THREE.Vector3((Math.random()-.5)*s,(Math.random()-.5)*s,0);
- cam.position.add(o);cam.lookAt(look);R.render(sc,cam);cam.position.sub(o)}
+ const sv3=cam.position.clone();if(PK3!==1)cam.position.sub(look).multiplyScalar(PK3).add(look);cam.position.add(o);cam.lookAt(look);R.render(sc,cam);cam.position.copy(sv3)}
 window.REC=location.search.includes('rec');
 if(REC){const px=new Uint8Array(4);window.STEP=(dt)=>{last=0;frameDt(dt);const gl=R.getContext();gl.readPixels(0,0,1,1,gl.RGBA,gl.UNSIGNED_BYTE,px)}}else requestAnimationFrame(frame);
 /* SERVEUR TEST : vraie image de la carte du jeu sur la carte 3D (si le serveur d'images l'autorise, sinon silhouette) */
