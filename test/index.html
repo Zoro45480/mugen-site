@@ -6263,6 +6263,176 @@ html body .card.r11:not(.awk2) .st3{background:#1a0306cc;box-shadow:inset 0 0 0 
 #ak3f.on{opacity:1}
 #ak3sk{position:fixed;right:16px;bottom:70px;z-index:2147481001;padding:9px 16px;border-radius:999px;border:1px solid #ffffff33;background:#0009;color:#fff;font:700 13px Inter,system-ui,sans-serif;cursor:pointer}
 
+/* MUGEN 27 · La Traque des Bijū dans le nouveau design (préfixe akx-, variables --ak-) */
+.akx{--ak-r:#e0262f;--ak-rl:#ff5a5a;--ak-pn:linear-gradient(180deg,#1a0f16e6,#0c070ce6);--ak-bd:#ffffff17;display:flex;flex-direction:column;gap:16px;max-width:1220px;margin:0 auto;padding:8px 0 40px}
+.akx-ey{font:700 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:3px;text-transform:uppercase;color:var(--ak-rl)}
+.akx-hero{position:relative;overflow:hidden;border-radius:22px;border:1px solid #ff3b3b44;min-height:300px;display:grid;grid-template-columns:1fr 300px;gap:24px;padding:30px 30px 26px;background:#0a0508}
+.akx-hbg{position:absolute;inset:0;background:var(--ak-bg) center/cover;opacity:.75}
+.akx-hbg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#0a0508f2 0%,#0a0508c0 45%,#0a050840 100%),linear-gradient(0deg,#0a0508 0%,transparent 40%)}
+.akx-rain{position:absolute;inset:-40px 0 0;background:repeating-linear-gradient(105deg,transparent 0 22px,#c8d4ff10 22px 23px);animation:akxr .7s linear infinite;pointer-events:none}
+@keyframes akxr{to{transform:translate(-12px,40px)}}
+.akx-ht{position:relative;z-index:1;display:flex;flex-direction:column;gap:12px;justify-content:flex-end}
+.akx-ht h1{margin:0;font:900 clamp(38px,6vw,66px)/1 Inter,system-ui,sans-serif;letter-spacing:-1.5px;color:#fff}
+.akx-ht h1 em,.akx-sb h2 em,.akx-rwh h2 em{font-style:normal;color:var(--ak-rl);text-shadow:0 0 30px #ff2a2a88}
+.akx-ht p{margin:0;max-width:620px;color:#e4d6dc;font:500 15.5px/1.55 Inter,sans-serif}
+.akx-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.akx-chips span{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:#0c060ad0;border:1px solid var(--ak-bd);color:#b9a8b2;font:600 12px Inter,sans-serif;backdrop-filter:blur(6px)}
+.akx-chips b{color:#fff;font:900 18px Inter,sans-serif}.akx-chips b small{font-size:12px;color:#b9a8b2}
+.akx-chips .al.l1 b{color:#ffb43a}.akx-chips .al.l2 b{color:#ff3b3b}
+.akx-chips .pk img{width:30px;height:30px;margin:-6px -2px -6px -6px}.akx-chips .pk{border-color:#d4a64066}
+.akx-st{position:relative;z-index:1;align-self:end;border-radius:18px;overflow:hidden;border:1px solid #b48aff55;background:#0a0610;box-shadow:0 20px 50px #000a,0 0 40px #8a50ff33}
+.akx-st img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.akx-st div{padding:12px 14px;display:flex;flex-direction:column;gap:4px}.akx-st small{font:700 10px ui-monospace,monospace;letter-spacing:2px;color:#c8a0ff}.akx-st b{color:#fff;font:800 15px Inter,sans-serif}
+.akx-eyes{display:flex;gap:5px;margin-top:4px}.akx-eyes i{width:18px;height:9px;border-radius:50%;background:#2a2030;border:1px solid #4a3a5a}
+.akx-eyes i.on{background:radial-gradient(circle,#2a1a44 0 25%,#c8a0ff 30% 60%,#8a50ff 70%);border-color:#d8c0ff;box-shadow:0 0 10px #a070ff}
+.akx-steps{display:flex;align-items:center;gap:8px;padding:12px 16px;border-radius:18px;background:var(--ak-pn);border:1px solid var(--ak-bd);overflow-x:auto;scrollbar-width:none}
+.akx-steps>div{display:grid;grid-template-columns:auto 1fr;column-gap:10px;align-items:center;flex:none}
+.akx-steps i{grid-row:span 2;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:900 14px Inter;font-style:normal;color:#fff;border:2px solid #ff3b3b66;background:#1a0a10}
+.akx-steps .on i{background:linear-gradient(135deg,#ff5a5a,#a8101c);border-color:#ff8a8a;box-shadow:0 0 18px #ff3b3b88}
+.akx-steps b{color:#fff;font:800 13.5px Inter}.akx-steps small{color:#a5949e;font:500 11.5px Inter}
+.akx-steps em{flex:1 1 20px;min-width:16px;height:2px;background:linear-gradient(90deg,#ff3b3b66,#ff3b3b11)}
+.akx-mapw{display:grid;grid-template-columns:1fr 320px;gap:16px}
+.akx-map{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--ak-bd);aspect-ratio:1000/620;background:#07030a;box-shadow:inset 0 0 80px #000}
+.akx-map .akt-map-s{position:absolute;inset:0;width:100%;height:100%;filter:saturate(1.15) brightness(1.1)}
+.akx-route{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.akx-route path{fill:none;stroke:#ff3b3b;stroke-width:4;stroke-dasharray:10 12;stroke-linecap:round;filter:drop-shadow(0 0 6px #ff2a2a);animation:akxd 1.2s linear infinite}
+@keyframes akxd{to{stroke-dashoffset:-44}}
+.akx-ame,.akx-vl,.akx-mk{position:absolute;transform:translate(-50%,-50%)}
+.akx-ame{display:flex;flex-direction:column;align-items:center;gap:2px}.akx-ame i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:900 20px serif;font-style:normal;color:#fff;background:radial-gradient(circle,#5a2a7a,#1a0a24);border:2px solid #c8a0ff;box-shadow:0 0 20px #8a50ff}.akx-ame small{font:800 10px Inter;color:#d8c0ff;text-shadow:0 1px 3px #000}
+.akx-vl{display:flex;flex-direction:column;align-items:center;gap:3px;pointer-events:none}
+.akx-vl u{text-decoration:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:900 19px serif;color:#fff;background:conic-gradient(var(--ak-vc) calc(var(--ak-a)*1%),#ffffff18 0);box-shadow:0 0 0 3px #0a0508,0 4px 12px #000}
+.akx-vl u{position:relative}.akx-vl u::before{content:'';position:absolute;inset:4px;border-radius:50%;background:#140a10;z-index:-0}
+.akx-vl u{isolation:isolate}.akx-vl u::before{z-index:-1}
+.akx-vl b{font:800 10.5px Inter;color:#fff;text-shadow:0 1px 4px #000}
+.akx-vl.l1 u{box-shadow:0 0 0 3px #0a0508,0 0 18px #ffb43a}.akx-vl.l2 u{box-shadow:0 0 0 3px #0a0508,0 0 22px #ff3b3b;animation:akxp 1.2s ease-in-out infinite}
+@keyframes akxp{50%{transform:scale(1.08)}}
+.akx-mk{width:50px;height:50px;border-radius:50%;padding:0;border:2px solid var(--ak-hc);background:#000;overflow:visible;cursor:pointer}
+.akx-mk img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.akx-mk span{position:absolute;right:-6px;bottom:-4px;min-width:20px;height:20px;border-radius:10px;background:var(--ak-hc);color:#000;font:900 11px Inter;display:grid;place-items:center}
+.akx-mk em{position:absolute;inset:0;border-radius:50%;display:grid;place-items:center;background:#0a0408b8;color:#ff5a5a;font:900 22px serif;font-style:normal}
+.akx-mk.lk{filter:grayscale(1) brightness(.55);border-color:#666}
+.akx-mk.cur{width:64px;height:64px;box-shadow:0 0 0 4px #ff3b3b55,0 0 30px var(--ak-hc);animation:akxp 1.6s ease-in-out infinite}
+.akx-tgt{display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:20px;background:radial-gradient(120% 80% at 50% 0%,color-mix(in srgb,var(--ak-hc) 22%,transparent),transparent 60%),var(--ak-pn);border:1px solid color-mix(in srgb,var(--ak-hc) 50%,transparent)}
+.akx-tgi{position:relative;height:170px}.akx-tgi .b{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:14px}
+.akx-tgi .j{position:absolute;left:10px;bottom:-14px;width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid var(--ak-hc);box-shadow:0 6px 18px #000}
+.akx-tgi u{position:absolute;right:10px;top:8px;text-decoration:none;font:900 34px serif;color:#fff;text-shadow:0 0 18px var(--ak-hc),0 2px 4px #000}
+.akx-tgt h3{margin:10px 0 0;color:#fff;font:900 24px Inter}.akx-tgt h3 small{font:600 14px Inter;color:#b9a8b2}
+.akx-tgt p{margin:0;color:#cdbcc6;font:italic 500 13px/1.45 Inter}
+.akx-tl{display:flex;gap:4px}.akx-tl i{width:14px;height:5px;border-radius:3px;background:#ffffff1c}.akx-tl i.on{background:var(--ak-hc);box-shadow:0 0 8px var(--ak-hc)}
+.akx-g{display:flex;flex-direction:column;gap:6px}.akx-g small{color:#b9a8b2;font:500 12px Inter}.akx-g small b{color:#fff}
+.akx-gb{position:relative;height:10px;border-radius:6px;background:#ffffff12;margin-top:16px}
+.akx-gb i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:linear-gradient(90deg,#3dbb6a,#ffb43a 60%,#ff3b3b)}
+.akx-gb u{position:absolute;top:-4px;bottom:-4px;width:2px;background:#fff8}.akx-gb u em{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);white-space:nowrap;font:700 9.5px ui-monospace,monospace;font-style:normal;color:#e4d6dc}
+.akx-go{position:relative;overflow:hidden;margin-top:auto;padding:15px 20px;border:0;border-radius:14px;cursor:pointer;color:#fff;font:900 16px Inter;letter-spacing:.3px;background:linear-gradient(135deg,#ff5a4a,#c0121f 55%,#6a0610);box-shadow:0 10px 30px #e0262f55,inset 0 1px 0 #ffffff40}
+.akx-go::after{content:'';position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,#ffffff66,transparent);animation:akxs 3s ease-in-out infinite}
+@keyframes akxs{60%,100%{left:120%}}
+.akx-h2{display:flex;align-items:baseline;gap:10px;margin:6px 0 0;color:#fff;font:900 20px Inter}.akx-h2 i{font-style:normal;font-family:serif;color:var(--ak-rl)}.akx-h2 small{color:#a5949e;font:600 12.5px Inter}
+.akx-row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,1fr);gap:12px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.akx-bj{position:relative;aspect-ratio:3/4.3;border-radius:16px;overflow:hidden;border:1px solid color-mix(in srgb,var(--ak-hc) 45%,transparent);background:#0a0508}
+.akx-bj img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.akx-bjv{position:absolute;inset:0;background:linear-gradient(0deg,#0a0508 8%,#0a050880 45%,transparent 70%)}
+.akx-bj u{position:absolute;top:8px;left:10px;text-decoration:none;font:900 22px serif;color:#fff;text-shadow:0 0 12px var(--ak-hc)}
+.akx-bj>div{position:absolute;left:10px;right:10px;bottom:34px;display:flex;flex-direction:column;gap:2px}
+.akx-bj small{font:700 9.5px ui-monospace,monospace;letter-spacing:1px;color:var(--ak-hc);text-transform:uppercase}.akx-bj b{color:#fff;font:900 16px Inter}.akx-bj span{color:#b9a8b2;font:600 11.5px Inter}
+.akx-bj em{position:absolute;left:10px;bottom:10px;padding:3px 9px;border-radius:999px;font:800 10.5px Inter;font-style:normal;background:#3dbb6a30;color:#7dffa8;border:1px solid #3dbb6a66}
+.akx-bj em.c{background:#ff3b3b30;color:#ff8a8a;border-color:#ff3b3b88}.akx-bj em.l{background:#ffffff10;color:#9a8a94;border-color:#ffffff22}
+.akx-bj.lk img{filter:grayscale(1) brightness(.4)}.akx-bj.cur{box-shadow:0 0 0 2px var(--ak-hc),0 0 30px color-mix(in srgb,var(--ak-hc) 50%,transparent)}
+.akx-bj.ok img{filter:sepia(.4) brightness(.6)}
+.akx-2{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}
+.akx-pn{padding:16px 18px 18px;border-radius:20px;background:var(--ak-pn);border:1px solid var(--ak-bd);display:flex;flex-direction:column;gap:12px}
+.akx-its{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:10px}
+.akx-it{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 6px 10px;border-radius:14px;border:1px solid var(--ak-bd);background:radial-gradient(circle at 50% 35%,#ffffff10,transparent 60%),#0c070b;cursor:pointer;color:#fff;transition:transform .15s,border-color .2s}
+.akx-it:hover{transform:translateY(-3px);border-color:#ff5a5a66}.akx-it[disabled]{opacity:.45;cursor:default}
+.akx-it img{width:78px;height:78px;object-fit:contain;filter:drop-shadow(0 8px 10px #000a)}.akx-it b{font:800 11.5px/1.2 Inter;text-align:center}.akx-it small{color:#a5949e;font:700 11px ui-monospace,monospace}
+.akx-it.akx-gold{border-color:#d4a64077;background:radial-gradient(circle at 50% 35%,#d4a64030,transparent 65%),#0c070b}
+.akx-rgs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.akx-rg{display:flex;flex-direction:column;align-items:center;text-align:center;padding:6px 2px 8px;border-radius:12px;background:#0c070b;border:1px solid var(--ak-bd)}
+.akx-rg img{width:60px;height:60px;filter:grayscale(1) brightness(.45)}.akx-rg.on img{filter:drop-shadow(0 6px 10px #000)}
+.akx-rg b{color:#fff;font:800 11px Inter}.akx-rg small{color:#a5949e;font:600 10px Inter}.akx-rg:not(.on) b{color:#8a7a84}
+.akx-cards{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}.akx-cards .card{width:150px}
+/* fiche de cible */
+.akx-ov{display:flex;align-items:center;justify-content:center;padding:16px;background:#05020590;backdrop-filter:blur(8px)}
+.akx-sheet{display:grid;grid-template-columns:minmax(260px,380px) 1fr;width:min(980px,100%);max-height:calc(100vh - 32px);overflow:auto;border-radius:24px;border:1px solid color-mix(in srgb,var(--ak-hc) 50%,transparent);background:#0c070b;box-shadow:0 30px 80px #000c,0 0 60px color-mix(in srgb,var(--ak-hc) 25%,transparent)}
+.akx-art{position:relative;min-height:420px}.akx-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.akx-art>i{position:absolute;inset:0;background:linear-gradient(0deg,#0c070b,transparent 55%),linear-gradient(90deg,transparent 70%,#0c070b)}
+.akx-art u{position:absolute;top:14px;left:18px;text-decoration:none;font:900 54px serif;color:#fff;text-shadow:0 0 30px var(--ak-hc),0 2px 8px #000}
+.akx-art div{position:absolute;left:18px;right:18px;bottom:18px;display:flex;flex-direction:column;gap:6px}.akx-art small{font:700 10.5px ui-monospace,monospace;letter-spacing:2px;color:var(--ak-hc)}.akx-art b{color:#fff;font:900 34px Inter}
+.akx-sb{padding:24px 26px;display:flex;flex-direction:column;gap:12px}.akx-sb h2{margin:0;color:#fff;font:900 30px Inter}.akx-q{margin:0;color:#cdbcc6;font:italic 500 14px Inter}
+.akx-int{display:flex;flex-direction:column;gap:10px}.akx-int h4{display:flex;align-items:center;gap:8px;margin:6px 0 0;color:#fff;font:800 14px Inter}.akx-int h4 i{font-style:normal;font-family:serif;color:var(--ak-rl)}.akx-int h4 b{margin-left:auto;font:900 18px Inter}.akx-int h4 b.l1{color:#ffb43a}.akx-int h4 b.l2{color:#ff3b3b}
+.akx-vs{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center}.akx-vs>div{display:flex;align-items:center;gap:10px;padding:8px;border-radius:14px;background:#ffffff08;border:1px solid var(--ak-bd)}
+.akx-vs img{width:52px;height:52px;border-radius:12px;object-fit:cover;flex:none}.akx-vs b{display:block;color:#fff;font:800 13.5px Inter}.akx-vs small{color:#a5949e;font:500 11px Inter}.akx-vs>i{color:var(--ak-hc);font:900 20px Inter;font-style:normal}
+.akx-vs>div>b,.akx-vs>div>small{grid-column:2}.akx-vs>div{display:grid;grid-template-columns:auto 1fr;column-gap:10px}.akx-vs img{grid-row:span 2}
+.akx-rf{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.akx-rf span{display:grid;grid-template-columns:auto 1fr;column-gap:8px;padding:9px 10px;border-radius:12px;background:#ffffff08;border:1px solid var(--ak-bd);opacity:.6}
+.akx-rf span.on,.akx-rf span.bon{opacity:1}.akx-rf span.on{border-color:#ff3b3b88;background:#ff3b3b14}
+.akx-rf i{grid-row:span 2;font:900 20px serif;font-style:normal;color:var(--ak-rl);align-self:center}.akx-rf b{color:#fff;font:800 12.5px Inter}.akx-rf small{color:#a5949e;font:500 10.5px Inter}
+.akx-seg{display:flex;gap:6px;padding:4px;border-radius:14px;background:#ffffff08;border:1px solid var(--ak-bd)}.akx-seg button{flex:1;padding:9px 6px;border:0;border-radius:10px;background:none;color:#cdbcc6;font:800 12.5px Inter;cursor:pointer}
+.akx-seg button.on{background:linear-gradient(135deg,#d9b25a,#8a6a20);color:#1a1006}.akx-n{color:#a5949e;font:500 11.5px Inter}
+.akx-act{display:flex;gap:10px;align-items:center;margin-top:6px}.akx-act .akx-go{flex:1;margin:0}
+/* lobby */
+.akx-lbt{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:6px 0 10px}.akx-lbt .card{width:104px}
+/* scellement */
+#bt.akx-sealing>.akx-sv{position:absolute;inset:0;background:center/cover;opacity:.18;z-index:1;pointer-events:none}
+#bt.akx-sealing::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,#5a20a066 100%);z-index:1}
+.akx-seal{position:absolute;left:50%;top:104px;transform:translateX(-50%);z-index:30;display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 22px 14px;border-radius:20px;background:#0c0612ee;border:1px solid #b48aff66;box-shadow:0 10px 40px #000a,0 0 40px #8a50ff44;width:min(420px,calc(100% - 24px))}
+.akx-sk{text-align:center}.akx-sk small{display:block;font:700 10px ui-monospace,monospace;letter-spacing:2.5px;color:#c8a0ff}.akx-sk b{color:#fff;font:900 17px Inter}
+.akx-sp{display:flex;align-items:center;gap:6px}.akx-sp em{width:30px;height:2px;background:#b48aff55}
+.akx-sp i{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:2px solid #b48aff55;background:#140a1e}.akx-sp u{text-decoration:none;font:900 18px serif;color:#5a4a6a}
+.akx-sp i.on{background:radial-gradient(circle,#c8a0ff,#6a30c0);border-color:#e0d0ff;box-shadow:0 0 18px #a070ff}.akx-sp i.on u{color:#fff}
+.akx-shp{width:100%;display:grid;grid-template-columns:auto 1fr;column-gap:10px;align-items:center}.akx-shp span{color:#fff;font:800 12px Inter}
+.akx-shp>div{position:relative;height:10px;border-radius:6px;background:#ffffff14}.akx-shp>div i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:linear-gradient(90deg,#ff3b3b,#ff8a3a)}.akx-shp>div u{position:absolute;top:-4px;bottom:-4px;width:2px;background:#fff}
+.akx-shp small{grid-column:1/-1;text-align:center;color:#c8b8d8;font:500 11px Inter;margin-top:4px}.akx-shp small b{color:#fff}
+.akx-sh{display:flex;align-items:center;gap:10px;padding:8px 12px;margin-bottom:8px;border-radius:16px;background:#14060ae0;border:1px solid #ff3b3b55;flex-wrap:wrap}
+.akx-sheye{width:36px;height:36px;flex:none;animation:akxspin 6s linear infinite}.akx-sheye svg{width:100%;height:100%}@keyframes akxspin{to{transform:rotate(360deg)}}
+.akx-sh>div:nth-child(2) b{display:block;color:#fff;font:800 13px Inter}.akx-sh>div:nth-child(2) small{color:#b9a8b2;font:500 11px Inter}
+.akx-sho{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}.akx-sho button{display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;border:1px solid #ffffff22;background:#ffffff0a;color:#e4d6dc;font:800 12px Inter;cursor:pointer}
+.akx-sho button u{text-decoration:none;font-family:serif;color:var(--ak-rl)}.akx-sho button.on{background:linear-gradient(135deg,#ff3b3b,#8a0a14);border-color:#ff8a8a;color:#fff;box-shadow:0 0 16px #ff3b3b66}.akx-sho button.on u{color:#fff}
+/* récompenses */
+.akx-rwb{position:relative;overflow:hidden;width:min(900px,100%);max-height:calc(100vh - 32px);overflow-y:auto;border-radius:24px;border:1px solid #b48aff55;background:#0a0610;padding:26px;display:flex;flex-direction:column;gap:18px;box-shadow:0 30px 80px #000c,0 0 60px #8a50ff33}
+.akx-rwb>.akx-hbg{opacity:.5}.akx-rwb>*:not(.akx-hbg){position:relative}
+.akx-rwh{display:flex;gap:20px;align-items:center}.akx-rwi{position:relative;width:120px;height:120px;flex:none;border-radius:50%;overflow:hidden;border:3px solid #c8a0ff;box-shadow:0 0 40px #8a50ff}
+.akx-rwi img{width:100%;height:100%;object-fit:cover;filter:grayscale(.6) brightness(.6)}.akx-rwi em{position:absolute;inset:0;display:grid;place-items:center;font:900 60px serif;font-style:normal;color:#fff;text-shadow:0 0 24px #a070ff;animation:akxst .9s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes akxst{from{transform:scale(2.4);opacity:0}}
+.akx-rwh h2{margin:4px 0 6px;color:#fff;font:900 34px Inter}.akx-rwh p{margin:8px 0 0;color:#cdbcc6;font:500 13.5px Inter}.akx-rwh p b{color:#fff}
+.akx-rwg{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px}
+.akx-rwc{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;padding:10px 8px 12px;border-radius:16px;background:radial-gradient(circle at 50% 35%,#ffffff12,transparent 60%),#0e0912e6;border:1px solid var(--ak-bd);animation:akxin .55s cubic-bezier(.2,1.4,.4,1) var(--ak-d) both}
+@keyframes akxin{from{opacity:0;transform:translateY(24px) scale(.8)}}
+.akx-rwc img{width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 10px 12px #000b);animation:akxfl 3s ease-in-out infinite}@keyframes akxfl{50%{transform:translateY(-5px) rotate(-2deg)}}
+.akx-rwc b{color:#fff;font:900 13.5px Inter}.akx-rwc small{color:#a5949e;font:600 11px Inter}
+.akx-rwc.akx-new{border-color:#ff5a5a88;box-shadow:0 0 24px #ff3b3b33}.akx-rwc.akx-new small{color:#ff8a8a}
+.akx-rwc.akx-gold{border-color:#d4a640aa;box-shadow:0 0 30px #d4a64055;background:radial-gradient(circle at 50% 35%,#d4a64040,transparent 65%),#120c08e6}.akx-rwc.akx-gold b{color:#ffd36a}
+.akx-rwf{display:flex;flex-wrap:wrap;gap:8px}.akx-rwf span{padding:8px 12px;border-radius:12px;background:#ffffff0a;border:1px solid var(--ak-bd);color:#b9a8b2;font:600 12px Inter}.akx-rwf b{color:#fff}
+@media (max-width:860px){.akx-hero{grid-template-columns:1fr;padding:22px 18px}.akx-st{display:grid;grid-template-columns:110px 1fr}.akx-st img{height:100%;aspect-ratio:auto}
+ .akx-mapw,.akx-2{grid-template-columns:1fr}.akx-sheet{grid-template-columns:1fr}.akx-art{min-height:240px}.akx-art>i{background:linear-gradient(0deg,#0c070b,transparent 60%)}
+ .akx-rgs{grid-template-columns:repeat(5,1fr)}.akx-rg img{width:46px;height:46px}.akx-rf{grid-template-columns:1fr 1fr}.akx-row{grid-auto-columns:138px}
+ .akx-mk{width:36px;height:36px}.akx-mk.cur{width:46px;height:46px}.akx-vl u{width:30px;height:30px;font-size:14px}.akx-vl b{font-size:9px}.akx-ame i{width:32px;height:32px;font-size:15px}
+ .akx-cards .card{width:112px}.akx-lbt .card{width:96px}.akx-rwh{flex-direction:column;text-align:center}.akx-rwh .akx-eyes{justify-content:center}.akx-rwh h2{font-size:27px}.akx-sb{padding:18px}.akx-sb h2{font-size:24px}
+ .akx-seal{top:132px;padding:6px 12px 8px;gap:4px;width:min(300px,calc(100% - 24px))}.akx-sk b{font-size:13px}.akx-sk small{font-size:8.5px}.akx-sp i{width:26px;height:26px}.akx-sp u{font-size:13px}.akx-sp em{width:18px}.akx-shp span{font-size:10.5px}.akx-shp small{font-size:10px;margin-top:2px}.akx-sh{padding:6px 8px;gap:6px}.akx-sheye{width:26px;height:26px}.akx-sh>div:nth-child(2) small{display:none}.akx-sho button{padding:6px 9px;font-size:11px}}
+
+.akx-chips button.pk{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:#0c060ad0;border:1px solid #d4a64066;color:#b9a8b2;font:600 12px Inter,sans-serif;cursor:pointer}
+.akx-chips button.pk[disabled]{opacity:.6;cursor:default}.akx-chips button.pk:not([disabled]):hover{border-color:#ffd36a}
+.akx-mrain{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(105deg,transparent 0 26px,#c8d4ff0c 26px 27px);animation:akxr .8s linear infinite}
+.akx-al .akx-alh{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start}.akx-al .akx-h2 b{font:900 22px Inter;color:#3dbb6a}.akx-al .akx-h2 b.l1{color:#ffb43a}.akx-al .akx-h2 b.l2{color:#ff3b3b}
+.akx-al .akx-alh>div>small{color:#b9a8b2;font:500 12.5px Inter}.akx-alb{display:flex;gap:8px;flex-wrap:wrap}.akx-alb .btn{display:inline-flex;align-items:center;gap:6px}.akx-bi{width:24px;height:24px;object-fit:contain;margin:-6px 0}
+.akx-bj{padding:0;cursor:pointer;text-align:left;color:inherit;font:inherit}.akx-bj>div span{display:block}
+.akx-team{align-items:center}.akx-team>.btn{align-self:center}
+.akx-ru{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.akx-ru span{display:grid;grid-template-columns:auto 1fr;column-gap:10px;padding:12px;border-radius:14px;background:#ffffff08;border:1px solid var(--ak-bd);color:#b9a8b2;font:500 12px/1.45 Inter}
+.akx-ru u{grid-row:span 2;text-decoration:none;font:900 24px serif;color:var(--ak-rl)}.akx-ru b{color:#fff;font:800 13.5px Inter}
+.akx-n{color:#a5949e;font:500 11.5px/1.45 Inter}.akx-n b{color:#fff}
+.akx-pp{display:flex;align-items:center;gap:6px}.akx-pp em{width:22px;height:2px;background:#ffffff30}.akx-pp span{display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:#ffffff0a;border:1px solid #ffffff1c;color:#a5949e;font:800 11.5px Inter}
+.akx-pp span u{text-decoration:none;font:900 14px serif}.akx-pp span.on{background:color-mix(in srgb,var(--ak-hc) 28%,transparent);border-color:var(--ak-hc);color:#fff;box-shadow:0 0 14px color-mix(in srgb,var(--ak-hc) 45%,transparent)}.akx-pp span.ok{color:#7dffa8;border-color:#3dbb6a66}
+.akx-ph{color:#c8b8c4;font:500 11px Inter;text-align:center}
+.akx-seal.pu{animation:akxpu .9s ease}@keyframes akxpu{30%{transform:translateX(-50%) scale(1.06);box-shadow:0 0 60px #a070ff}}
+.akx-lbj{margin:4px 0 0;text-align:center;color:#ff8a8a;font:800 13px Inter}
+.ov.akx-end .mbox{overflow-y:auto}.ov.akx-end .akx-rwb{width:auto;max-height:none;margin:-4px -4px 14px;padding:18px;box-shadow:none}
+.akx-rwc.akx-lost{border-color:#ff3b3b66;opacity:.8}.akx-rwc.akx-lost b{color:#ff8a8a}
+.akx-lb2{align-items:center;text-align:center;width:min(720px,100%)}.akx-lb2 h2{margin:0;color:#fff;font:900 28px Inter}
+.akx-chest{position:relative;width:170px;height:170px;animation:akxch 1s cubic-bezier(.3,1.6,.5,1) both}.akx-chest img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 16px 20px #000c);animation:akxsh .5s ease-in-out .55s 2}
+.akx-chest i{position:absolute;inset:10% 20% 40%;border-radius:50%;background:radial-gradient(circle,var(--ak-hc),transparent 70%);opacity:0;animation:akxgl 1.2s ease .9s forwards;mix-blend-mode:screen}
+@keyframes akxch{from{transform:scale(.3) translateY(60px);opacity:0}}@keyframes akxsh{25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}@keyframes akxgl{40%{opacity:1}to{opacity:.35}}
+.akx-lb2 .akx-rwg{width:100%}
+@media (prefers-reduced-motion:reduce){.akx-rain,.akx-mrain,.akx-route path,.akx-mk.cur,.akx-vl.l2 u,.akx-rwc img,.akx-sheye{animation:none!important}}
+.akx-lb .lb3-go{position:relative!important;bottom:auto!important}
+.ov.akx-end .akx-rwb{width:auto;margin:0 0 14px}.ov.akx-end .akx-rwg{grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}.ov.akx-end .akx-rwc img{width:74px;height:74px}
+
 /* ===== MUGEN 27 · L'Aube · partie B : La Traque des Bijū ===== */
 .akt-page{--ak-r:#e0262f;--ak-r2:#ff5a5a;--ak-k:#0b0204;position:relative}
 .akt-page .pn{background:linear-gradient(180deg,#1a0609e6,#0c0306f0);border:1px solid #ff3b3b26}
@@ -16470,7 +16640,7 @@ function akCine(cards){return new Promise(res=>{const o=document.createElement('
 /* ================= MUGEN 27 · L'AUBE · partie A (2) : nouveau design (v26.9) =================
    - le Pack Aube s'ouvre avec la nouvelle ouverture 3D des boosters (celle de tous les packs du jeu), les cartes sont celles du jeu (card) ;
    - les objets de l'Aube (anneaux, yeux, coffres, sacs, spores, Pack Aube) ont leur modèle 3D (vignettes rendues dans media/aube-3f9a2c71/obj/). */
-const AKM='assets-fda0e1ed30/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
+const AKM='assets-b4d3bf2bb1/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
 const akObjImg=(id,cls='')=>`<img class="ak3o ${cls}" src="${akObj(id)}" alt="" draggable="false" loading="lazy" data-oerror="this.style.visibility='hidden'">`;
 /* anneaux de l'Akatsuki : vignette 3D partout où le jeu dessine l'icône d'un objet */
 {const _gi=gIco;gIco=function(g){try{if(g&&/^akr\d$/.test(g.id))return akObjImg(g.id,'o3i'+(typeof gLv=='function'&&!gLv(g)?' o3lk':''))}catch(e){}return _gi.apply(this,arguments)}}
@@ -17407,7 +17577,7 @@ async g_nuage(X){const Q=await k2Q(X,true),T=Q.T,{ax,ay,tx,ty,ux,uy,mv,rec,shake
    (même moteur que les ultimes des cartes rares, recul de caméra en portrait). Le Jutsu de l'Aube y joue sa scène de groupe :
    chaque membre fait sa part, puis l'attaque combinée. La logique (dégâts, coût, effets) ne change pas : seules les images changent.
    Si le moteur 3D ne répond pas, les anciennes animations restent en secours. */
-const AK3_SRC='assets-fda0e1ed30/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
+const AK3_SRC='assets-b4d3bf2bb1/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
 const AK3={f:null,rd:0,w:null};
 addEventListener('message',e=>{const m=e.data||{};if(!AK3.f||e.source!==AK3.f.contentWindow)return;if(m.t=='aube-ready')AK3.rd=1;if(m.t=='aube-done'&&AK3.w){const w=AK3.w;AK3.w=null;w(1)}});
 function ak3Mount(){if(AK3.f&&document.body.contains(AK3.f))return;const f=document.createElement('iframe');f.id='ak3f';f.setAttribute('aria-hidden','true');f.tabIndex=-1;f.src=AK3_SRC;AK3.rd=0;AK3.f=f;document.body.append(f)}
@@ -17736,6 +17906,108 @@ try{[{id:'akq',n:'Chasseur de Bijū',k:'暁',col:'#e0262f',v:()=>S.akt?S.akt.st|
  {id:'akq2',n:'Œil du Sharingan',k:'写',col:'#ff3b3b',v:()=>S.akt?S.akt.rd||0:0,u:'lectures réussies',st:[5,20,50,100,200]},
  {id:'akq3',n:'Les Dix Anneaux',k:'輪',col:'#ffd36a',v:()=>aktRingPool().filter(g=>gLv(g)).length,u:'anneaux de l’Aube',st:[1,3,6,10]}].forEach(q=>{if(QU.some(x=>x.id==q.id))return;q.rw=q.st.map((_,i)=>qr(i,q.st.length));QU.push(q)})}catch(e){}
 try{[['akw','Sceller {n} Bijū (La Traque des Bijū)',1,'暁',null,5]].forEach(x=>{if(!CT.some(t=>t[0]==x[0]))CT.push(x)})}catch(e){}
+/* ================= MUGEN 27 · L'AUBE · partie B (3) : « La Traque des Bijū » dans le nouveau design (v26.9) =================
+   Même contenu et même déroulé que les parties B (1) et (2) : seules les pages changent.
+   Le Repaire (page du mode) → la fiche de la cible (Alerte, renforts, contrat de Kakuzu) → le lobby (.lb3) → le combat dans l'arène 3D
+   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-b4d3bf2bb1/aube-3f9a2c71/obj/). */
+const AKX_BG=id=>AKM+'bg/'+id+'.jpg';
+const akxE=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const akxJ=H=>(H.jid&&M[H.jid]&&imgOf(M[H.jid]))||AKT_IMG+H.ji,akxB=H=>AKT_IMG+H.bi;
+const akxImg=(u,cls='')=>`<img class="${cls}" src="${u}" alt="" referrerpolicy="no-referrer" draggable="false" data-oerror="this.style.visibility='hidden'">`;
+const akxTails=n=>`<span class="akx-tl">${Array.from({length:9},(_,i)=>`<i class="${i<n?'on':''}"></i>`).join('')}</span>`;
+const akxEyes=n=>`<span class="akx-eyes">${Array.from({length:9},(_,i)=>`<i class="${i<n?'on':''}"></i>`).join('')}</span>`;
+const akxGauge=(v,lab)=>`<div class="akx-g"><div class="akx-gb"><i style="width:${Math.max(0,Math.min(100,v))}%"></i><u style="left:50%"><em>暗 ANBU</em></u><u style="left:80%"><em>影 Kage</em></u></div>${lab?`<small>${lab}</small>`:''}</div>`;
+const akxTeam=()=>(sel.filter(id=>S.inv[id]&&M[id]).length>=3?sel:myTeam().map(c=>c.id)).slice(0,3).map(id=>M[id]).filter(Boolean);
+const akxOn=(root,sel_,fn)=>root.querySelectorAll(sel_).forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();fn(b,e)}));
+/* ---------- 1. le Repaire : la page du mode ---------- */
+function aktHub(){const d=aktS(),v=$('v');if(!v)return;try{pageBg('#e0262f','#120204',null)}catch(e){}
+ const cur=AKTH[Math.min(d.st,AKTH.length-1)],done=d.st>=AKTH.length,V=AKTV[cur.v],team=akxTeam(),nAk=typeof AKR!='undefined'?D.filter(c=>c.r===AKR&&S.inv[c.id]).length:0,akT=team.filter(c=>c.r===AKR).length;
+ const pc=(x,y)=>`left:${(x/10).toFixed(1)}%;top:${(y/6.2).toFixed(1)}%`,rp=aktRingPool(),hid=d.hide==AKT_DAY();
+ const it=(k,id,n,q,cls='')=>`<button type="button" class="akx-it ${cls}" data-it="${k}" ${q>0?'':'disabled'}>${akxImg(akObj(id))}<b>${akxE(n)}</b><small>×${q||0}</small></button>`;
+ v.innerHTML=`<div class="akx">
+ <section class="akx-hero" style="--ak-bg:url(${AKX_BG('ame')})"><i class="akx-hbg"></i><i class="akx-rain"></i>
+  <div class="akx-ht"><div class="akx-ey">MODE · 尾獣狩り · LA TRAQUE DES BIJŪ</div><h1>La Traque <em>des Bijū</em></h1>
+   <p>Depuis Amegakure, l’Aube chasse les neuf Jinchūriki. Bats l’hôte, affronte sa forme Bijū, puis scelle-le dans la Statue Démoniaque. Mais chaque traque réveille les villages…</p>
+   <div class="akx-chips"><span><b>${d.st}<small>/9</small></b>Bijū scellés</span><span><b>${akxE(aktRank())}</b>Ton rang</span><span class="al l${aktLvl(d.g)}"><b>${d.g}</b>Alerte globale</span><button type="button" class="pk" data-it="pk" ${d.pk>0?'':'disabled'}>${akxImg(akObj('pack'))}<b>${d.pk}</b>Pack Aube</button></div></div>
+  <div class="akx-st">${akxImg(AKX_BG('seal'))}<div><small>外道魔像 · STATUE DÉMONIAQUE</small><b>${d.st} / 9 yeux ouverts</b>${akxEyes(d.st)}</div></div></section>
+ <div class="akx-steps">${[['1','Choisis ta cible','Sur la carte des villages'],['2','Surveille l’Alerte','ANBU à 50 · Kage à 80'],['3','Bats le Jinchūriki','Puis sa forme Bijū'],['4','Scelle-le','3 tours sous 30 %'],['5','Le butin','Anneaux, yeux, coffres']].map((s,i)=>`<div class="${i==0?'on':''}"><i>${s[0]}</i><b>${s[1]}</b><small>${s[2]}</small></div>`).join('<em></em>')}</div>
+ <section class="akx-mapw"><div class="akx-map">${aktMapSvg()}
+   ${done?'':`<svg class="akx-route" viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M${AKT_AME.x} ${AKT_AME.y}Q${(AKT_AME.x+cur.x)/2} ${Math.min(AKT_AME.y,cur.y)-120} ${cur.x} ${cur.y}"/></svg>`}
+   <div class="akx-ame" style="${pc(AKT_AME.x,AKT_AME.y)}"><i>雨</i><small>Repaire</small></div>
+   ${Object.keys(AKTV).map(k=>{const X=AKTV[k],a=d.al[k]||0,l=aktLvl(a);return `<div class="akx-vl l${l}" style="${pc(X.x,X.y)};--ak-vc:${X.c};--ak-a:${a}" title="Alerte ${a}"><u>${X.k}</u><b>${akxE(X.n)}</b></div>`}).join('')}
+   ${AKTH.map((H,i)=>`<button type="button" class="akx-mk ${i<d.st?'ok':''} ${i==d.st?'cur':''} ${i>d.st?'lk':''}" data-h="${i}" style="${pc(H.x,H.y)};--ak-hc:${H.col}" aria-label="${akxE(H.j)} · ${akxE(H.b)}">${akxImg(akxB(H))}<span>${H.tl}</span>${i<d.st?'<em>封</em>':''}</button>`).join('')}
+   <i class="akx-mrain"></i></div>
+  <aside class="akx-tgt" style="--ak-hc:${cur.col}"><div class="akx-ey">${done?'LES NEUF SONT SCELLÉS':'CIBLE ACTUELLE · TRAQUE '+(d.st+1)+'/9'}</div><div class="akx-tgi">${akxImg(akxB(cur),'b')}${akxImg(akxJ(cur),'j')}<u>${cur.bk}</u></div>
+   <h3>${akxE(cur.b)} <small>· ${akxE(cur.j)}</small></h3>${akxTails(cur.tl)}<p>« ${akxE(cur.q)} »</p>
+   ${akxGauge(d.al[cur.v]||0,`Alerte de ${akxE(V.n)} : <b>${d.al[cur.v]||0}</b>`)}
+   <button type="button" class="akx-go" data-h="${Math.min(d.st,AKTH.length-1)}">${done?'Rejouer Kurama':'Préparer la traque'}</button></aside></section>
+ <section class="akx-pn akx-al"><div class="akx-alh"><div><h2 class="akx-h2"><i>警</i>Alerte globale <b class="l${aktLvl(d.g)}">${d.g}</b></h2><small>${d.g>=85?'Les 5 Kage sont sur les dents : ennemis +15 % et ils commencent avec 2◆':d.g>=60?'Les villages se méfient : ennemis +8 %':'Les villages ne se doutent de rien'}</small></div>
+  <div class="akx-alb"><button type="button" class="btn gh" data-act="hide" ${hid?'disabled':''}>雨 Se terrer à Amegakure${hid?' (demain)':''}</button><button type="button" class="btn gh" data-act="spore" ${d.sp>0?'':'disabled'}>${akxImg(akObj('spore'),'akx-bi')} Spore de Zetsu ×${d.sp}</button></div></div>
+  ${akxGauge(d.g,`Chaque traque : +${AKT_UP} pour son village, +${AKT_GUP} global. ≥ 50 : un ANBU rejoint le combat · ≥ 80 : le Kage aussi (butin +20 % par renfort). L’Alerte baisse de 10 par jour.`)}</section>
+ <h2 class="akx-h2"><i>尾</i>Les neuf Bijū <small>${d.st}/9 scellés</small></h2>
+ <div class="akx-row">${AKTH.map((H,i)=>{const cl=i<d.st,cu=i==d.st,a=d.al[H.v]||0;return `<button type="button" class="akx-bj ${cl?'ok':''} ${cu?'cur':''} ${i>d.st?'lk':''}" data-h="${i}" style="--ak-hc:${H.col}">${akxImg(akxB(H))}<i class="akx-bjv"></i><u>${H.bk}</u><div><small>${H.tl} queue${H.tl>1?'s':''} · ${akxE(AKTV[H.v].n)}</small><b>${akxE(H.b)}</b><span>${akxE(H.j)} · puissance ${H.P}</span><span>Alerte ${a}${d.win[i]?' · '+d.win[i]+' victoire'+(d.win[i]>1?'s':''):''}${d.best&&d.best[i]?' · record '+d.best[i]+' tours':''}</span></div>${cl?'<em>封 Scellé</em>':cu?'<em class="c">Cible</em>':'<em class="l">Verrouillé</em>'}</button>`}).join('')}</div>
+ <div class="akx-2">
+  <section class="akx-pn"><h2 class="akx-h2"><i>宝</i>Le Repaire <small>coffres, sacs et yeux</small></h2>
+   <div class="akx-its">${it('pk','pack','Pack Aube',d.pk,'akx-gold')}${AKT_CH.map((T,i)=>it('ch'+i,'ch'+i,T[0],d.ch[i]||0)).join('')}${it('bag','bag','Sac de Kakuzu',d.bag)}${it('sh','eye-sh','Sharingan',d.eye.sh)}${it('mg','eye-mg','Mangekyō',d.eye.mg)}${it('ri','eye-ri','Rinnegan',d.eye.ri)}${it('spore','spore','Spore de Zetsu',d.sp)}</div>
+   <small class="akx-n">Pack Aube : 1 carte Aube garantie · 1 % la 1re fois, 0,2 % en rejouant, 10 % contre Kurama la 1re fois, garanti après 350 victoires comptées${d.np?` (<b>${d.np}</b> / 350)`:''}. ${nAk?`Tu as ${nAk} carte${nAk>1?'s':''} Aube.`:''} Les yeux donnent un bonus permanent à une carte Aube (max +${AKT_EYEMAX} %).</small></section>
+  <section class="akx-pn"><h2 class="akx-h2"><i>輪</i>Les dix anneaux <small>${rp.filter(g=>gLv(g)).length}/10</small></h2>
+   <div class="akx-rgs">${AKT_RINGS.map((r,i)=>`<div class="akx-rg ${rp[i]&&gLv(rp[i])?'on':''}">${akxImg(akObj('akr'+i))}<b>${r[0]} ${akxE(r[1])}</b><small>${akxE(r[2])}</small></div>`).join('')}</div>
+   <small class="akx-n">Accessoires de rareté Aube (+${GP[AKT_GR]} %, ×1,4 sur les persos de Naruto). +3 % par autre anneau porté dans l’équipe (max +6 %), +4 % si un membre porte son propre anneau. Dans les coffres du Repaire.</small><button type="button" class="btn gh" data-act="gear">Ouvrir l’Arsenal</button></section></div>
+ <section class="akx-pn akx-team"><h2 class="akx-h2"><i>隊</i>Ton équipe <small>${akT>=3?'Jutsu de l’Aube prêt (6◆)':'3 membres de l’Akatsuki = Jutsu de l’Aube (6◆)'}</small></h2><div class="akx-cards">${team.map(c=>card(c)).join('')}</div><button type="button" class="btn gh" data-act="team">Changer d’équipe</button></section>
+ <section class="akx-pn akx-rules"><h2 class="akx-h2"><i>則</i>Règles de la traque</h2><div class="akx-ru"><span><u>人</u><b>Jinchūriki</b>Sous 30 % de vie, il libère son Bijū : nouvelle barre de vie, plus fort, ultime à 5◆.</span><span><u>封</u><b>Scellement</b>Sous 30 %, le Bijū ne tombe pas : garde-le sous 30 % pendant 3 de tes tours. S’il remonte, le sceau se brise.</span><span><u>写</u><b>Sharingan</b>Devine son action avant ton coup. Juste : son attaque se retourne contre lui. Faux : −1◆. L’œil se repose 2 tours.</span><span><u>警</u><b>Alerte</b>Monte à chaque traque, même abandonnée. ANBU à 50, Kage à 80 : plus dur, mais butin +20 % par renfort.</span></div></section>
+ </div>`;
+ akxOn(v,'[data-h]',b=>{const h=+b.dataset.h;if(h>d.st)return toast('Scelle d’abord '+(AKTH[d.st]?AKTH[d.st].b:'')+' !');aktGo(h)});
+ akxOn(v,'[data-it]',b=>{const k=b.dataset.it;if(k=='pk')aktOpenPack();else if(/^ch\d$/.test(k))aktOpenChest(+k.slice(2));else if(k=='bag')aktOpenBag();else if(k=='spore')aktSporeModal();else aktEyeModal(k)});
+ akxOn(v,'[data-act]',b=>{const k=b.dataset.act;if(k=='hide')aktHide();else if(k=='spore')aktSporeModal();else if(k=='gear')show('gear');else if(k=='team')show('battle')})}
+aktView=function(){return aktHub()};XV.akt=()=>aktHub();
+/* ---------- 2. la fiche de la cible : Alerte, renforts, contrat de Kakuzu ---------- */
+let AKX_STK=0;
+aktPreModal=function(h){document.querySelectorAll('.akx-ov').forEach(x=>x.remove());const d=aktS(),H=AKTH[h];if(!H)return;const V=AKTV[H.v],a=d.al[H.v]||0,l=aktLvl(a),K=AKTK[H.v],gk=d.g>=85?15:d.g>=60?8:0,can=h>=d.st-1;if(!can||AKX_STK>S.coins)AKX_STK=0;
+ const o=document.createElement('div');o.className='ov akx-ov';o.style.setProperty('--ak-hc',H.col);
+ o.innerHTML=`<div class="akx-sheet"><div class="akx-art">${akxImg(akxB(H))}<i></i><u>${H.bk}</u><div><small>${H.tl} QUEUE${H.tl>1?'S':''} · ${akxE(H.lo.toUpperCase())}</small><b>${akxE(H.b)}</b>${akxTails(H.tl)}</div></div>
+  <div class="akx-sb"><div class="akx-ey">TRAQUE ${h+1}/9 · RENSEIGNEMENTS DE ZETSU</div><h2>${akxE(H.j)} <em>→ ${akxE(H.b)}</em></h2><p class="akx-q">« ${akxE(H.q)} »</p>
+   <div class="akx-int"><div class="akx-vs"><div>${akxImg(akxJ(H))}<b>${akxE(H.j)}</b><small>Jinchūriki · puissance ${Math.round(H.P*(1+gk/100))}</small></div><i>→</i><div>${akxImg(akxB(H))}<b>${akxE(H.b)}</b><small>Forme Bijū · ${akxE(H.k.d)}</small></div></div>
+   <h4><i>警</i>Alerte de ${akxE(V.n)} <b class="l${l}">${a}</b></h4>${akxGauge(a,'Ce combat la fera monter de <b>+'+AKT_UP+'</b> · elle baisse de 10 par jour'+(gk?` · Alerte globale ${d.g} : ennemis <b>+${gk} %</b>`:''))}
+   <div class="akx-rf"><span class="${l>=1?'on':''}"><i>暗</i><b>ANBU</b><small>${l>=1?'en renfort':'à partir de 50'}</small></span><span class="${l>=2?'on':''}"><i>影</i><b>${akxE(K?K.n:'Kage')}</b><small>${l>=2?'en renfort':'à partir de 80'}</small></span><span class="bon"><i>宝</i><b>Butin +${l*20} %</b><small>avec les renforts</small></span></div>
+   <h4><i>北</i>Contrat de Kakuzu</h4><div class="akx-seg">${AKT_STK.map(s=>`<button type="button" class="${AKX_STK==s?'on':''}" data-s="${s}" ${(!can&&s)||s>S.coins?'disabled':''}>${s?'Miser '+s:'Sans contrat'}</button>`).join('')}</div><small class="akx-n">${can?'Scelle le Bijū : Kakuzu te rend ta mise +50 %. Perds ou abandonne : elle est perdue.':'Contrat possible seulement sur ta traque la plus haute ou la précédente.'}</small></div>
+   <div class="akx-act"><button type="button" class="akx-go" data-go>Continuer</button><button type="button" class="btn gh" data-x>Annuler</button></div></div></div>`;
+ document.body.append(o);o.addEventListener('click',e=>{if(e.target===o)o.remove()});
+ akxOn(o,'[data-s]',b=>{AKX_STK=+b.dataset.s;o.querySelectorAll('[data-s]').forEach(x=>x.classList.toggle('on',x===b))});
+ akxOn(o,'[data-x]',()=>o.remove());akxOn(o,'[data-go]',()=>{o.remove();aktLobby(h,AKX_STK)})};
+/* ---------- 3. le lobby (même lobby que les autres modes : .lb3) ---------- */
+function aktLobby(h,stake){const H=AKTH[h],d=aktS(),team=akxTeam(),nA=team.filter(c=>c.r===AKR).length;
+ try{window.LB3=window.LB3||{};LB3.akt={k:'尾',c:H.col,a:'raid',e:'Traque '+(h+1)+'/9 · '+H.b,t:'La Traque des Bijū',s:[['人','Jinchūriki'],['尾','Forme Bijū'],['封','Scellement'],['宝','Butin']]}}catch(e){}
+ const o=document.createElement('div');o.className='ov fd-ov akx-lb';o.dataset.fdk='akt';
+ o.innerHTML=`<div class="mbox fd-mb"><div class="xm13"><h2>Traque · ${akxE(H.b)}</h2><p>Bats <b>${akxE(H.j)}</b>. Sous 30 % de vie, il libère <b>${akxE(H.b)}</b> : une nouvelle barre de vie. Garde ensuite le Bijū sous 30 % pendant 3 de tes tours pour le sceller. Lis ses intentions avec le Sharingan.</p>
+  <ul><li>${h==d.st?'Première fois : pièces, éclats, un coffre du Repaire et un sac de Kakuzu':'Pièces et éclats (réduits en rejouant), parfois un sac ou un coffre'}</li><li>${h==AKTH.length-1&&h==d.st?'10 %':h==d.st?'1 %':'0,2 %'} de chance d’un Pack Aube · garanti après 350 victoires comptées</li><li>L’Alerte de ${akxE(AKTV[H.v].n)} monte de ${AKT_UP}${stake?` · contrat de Kakuzu : mise ${stake}`:''}</li></ul>
+  ${nA>=3?'<p class="akx-lbj">暁 Jutsu de l’Aube prêt : 3 membres de l’Akatsuki dans ton équipe.</p>':''}<div class="akx-lbt">${team.map(c=>card(c)).join('')}</div><button type="button" class="btn lb3-go" data-go>Lancer la traque</button></div></div><button type="button" class="btn gh" data-x>Fermer</button>`;
+ document.body.append(o);akxOn(o,'[data-x]',()=>o.remove());akxOn(o,'[data-go]',()=>{o.remove();aktLaunch(h,stake);AKX_STK=0});
+ const bg=()=>{const i=o.querySelector('.lb3-img');if(i){i.style.backgroundImage=`url(${AKX_BG('seal')})`;return 1}};if(!bg()){let n=0;const t=setInterval(()=>{if(bg()||++n>20)clearInterval(t)},120)}}
+/* ---------- 4. en combat : HUD du Scellement ---------- */
+aktSealUi=function(pulse){try{const bt=document.getElementById('bt');if(!bt||!B||!B.akt)return;const A=B.akt,H=AKTH[A.h],f=A.boss;let el=document.getElementById('aktSeal');
+ if(!el){el=document.createElement('div');el.id='aktSeal';bt.append(el)}const ph=A.ph,seal=A.seal,pct=f&&f.max?Math.max(0,Math.min(100,f.hp/f.max*100)):100;
+ el.className='akx-seal ph'+ph+(pulse?' pu':'');el.style.setProperty('--ak-hc',H.col);bt.classList.toggle('akx-sealing',ph==3);
+ let sv=bt.querySelector('.akx-sv');if(ph==3&&!sv){sv=document.createElement('i');sv.className='akx-sv';sv.style.backgroundImage=`url(${AKX_BG('seal')})`;bt.prepend(sv)}if(ph!=3&&sv)sv.remove();
+ el.innerHTML=ph==3?`<div class="akx-sk"><small>封印術 · 幻龍九封尽</small><b>Scellement de ${akxE(H.b)}</b></div><div class="akx-sp">${[0,1,2].map(i=>`<i class="${i<seal?'on':''}"><u>封</u></i>`).join('<em></em>')}</div>
+  <div class="akx-shp"><span>${akxE(H.b)}</span><div><i style="width:${pct}%"></i><u style="left:30%"></u></div><small>${pct<=30?`Sous 30 % · encore <b>${3-seal} tour${3-seal>1?'s':''}</b>`:'<b>Au-dessus de 30 %</b> : fais-le retomber'}${A.brk?' · sceau brisé '+A.brk+'×':''}</small></div>`
+  :`<div class="akx-pp"><span class="${ph==1?'on':'ok'}"><u>人</u>${akxE(H.j)}</span><em></em><span class="${ph==2?'on':''}"><u>尾</u>${akxE(H.b)}</span><em></em><span><u>封</u>Sceau</span></div><small class="akx-ph">${ph==1?'Fais tomber '+akxE(H.j)+' sous 30 % : le Bijū se libère':'Fais tomber '+akxE(H.b)+' sous 30 % pour lancer le Scellement'}</small>`;
+ if(pulse)setTimeout(()=>el&&el.classList.remove('pu'),900)}catch(e){console.warn(e)}};
+/* ---------- 5. l'écran de fin : butin en 3D ---------- */
+const akxIt=(id,n,s,cls='')=>`<div class="akx-rwc ${cls}">${akxImg(akObj(id))}<b>${akxE(n)}</b><small>${akxE(s||'')}</small></div>`;
+{const _e=end;end=function(w){const A=typeof B!='undefined'&&B&&B.md=='akt'&&B.akt,st0=A?aktS().st:0;const r=_e.apply(this,arguments);
+ try{if(A&&!A.akx){A.akx=1;const o=[...document.querySelectorAll('.ov')].pop(),kp0=o&&o.querySelector('.kp'),box=o&&(o.querySelector('.mbox')||(kp0&&kp0.parentElement)||o),H=AKTH[A.h],d=aktS(),I=A.info||{};if(box){o.classList.add('akx-end');o.style.setProperty('--ak-hc',H.col);
+  const L=[];if(w){L.push(akxIt('coins','+'+(I.c||0)+' pièces','Butin'),akxIt('shard','+'+(I.e||0)+' éclats','Arsenal'));if(I.ch!=null)L.push(akxIt('ch'+I.ch,AKT_CH[I.ch][0],'Le Repaire'));if(I.bag)L.push(akxIt('bag','Sac de primes','Kakuzu'));if(I.eye)L.push(akxIt('eye-sh','Sharingan','Œil · +1 %'));if(I.pk)L.push(akxIt('pack','PACK AUBE !','1 carte Aube','akx-gold'));
+   if(A.stake)L.push(akxIt('coins','+'+Math.round(A.stake*1.5)+' pièces','Contrat de Kakuzu','akx-new'))}else if(A.stake)L.push(akxIt('coins','−'+A.stake+' pièces','Contrat perdu','akx-lost'));
+  const first=w&&d.st>st0;box.insertAdjacentHTML('afterbegin',`<div class="akx-rwb" style="--ak-bg:url(${AKX_BG(w?'seal':'ame')})"><i class="akx-hbg"></i><div class="akx-rwh"><div class="akx-rwi">${akxImg(akxB(H))}<em>${w?'封':'破'}</em></div><div><div class="akx-ey">TRAQUE ${A.h+1}/9 · ${w?'SCELLEMENT RÉUSSI':'LA TRAQUE A ÉCHOUÉ'}</div><h2>${akxE(H.b)} <em>${w?'est scellé':A.ph==3?'s’est libéré':'t’échappe'}</em></h2>${akxEyes(d.st)}
+   <p>${d.st}/9 yeux de la Statue Démoniaque sont ouverts · Rang : <b>${akxE(aktRank())}</b>${first?' · nouveau rang !':''}${A.turns?' · '+A.turns+' tours':''}${A.sr||A.sw?` · Sharingan ${A.sr}/${A.sr+A.sw}`:''}</p></div></div>${L.length?`<div class="akx-rwg">${L.map((h,i)=>h.replace('class="akx-rwc','style="--ak-d:'+(.25+i*.14)+'s" class="akx-rwc')).join('')}</div>`:''}</div>`);
+  box.querySelectorAll('.kp>div').forEach(x=>{if(/BUTIN|ÉCLATS|COFFRE|SAC DE PRIMES|SHARINGAN|PACK AUBE|CONTRAT/.test(x.textContent))x.remove()})}}}catch(x){console.warn(x)}return r}}
+/* ---------- 6. coffres et sacs du Repaire : ouverture avec les objets 3D ---------- */
+const akxGot=g=>{const t=g[1]||'';if(/pièces/.test(t))return 'coins';if(/éclats/.test(t))return 'shard';if(/Anneau|anneau/.test(t)){const m=t.match(/Anneau [^ ]+ (.)/);const i=m?AKT_RINGS.findIndex(r=>r[0]==m[1]):-1;return 'akr'+(i<0?0:i)}
+ if(/Mangek/.test(t))return 'eye-mg';if(/Rinnegan/.test(t))return 'eye-ri';if(/Sharingan/.test(t))return 'eye-sh';if(/Spore/.test(t))return 'spore';if(/PACK/.test(t))return 'pack';return 'coins'};
+aktLootShow=function(T,got,kind){try{sfx(140,.4,'triangle',.15);nse(.4,400,2000,.2,'bandpass');sfx(660,.5,'sine',.08,.55);sfx(990,.6,'sine',.06,.7)}catch(e){}
+ const id=kind=='bag'?'bag':'ch'+Math.max(0,AKT_CH.indexOf(T)),o=document.createElement('div');o.className='ov akx-ov akx-loot';o.style.setProperty('--ak-hc',T[1]);
+ o.innerHTML=`<div class="akx-rwb akx-lb2"><div class="akx-chest">${akxImg(akObj(id))}<i></i></div><div class="akx-ey">LE REPAIRE · ${kind=='bag'?'SAC DE PRIMES':'COFFRE'}</div><h2>${akxE(T[0])}</h2><div class="akx-rwg">${got.map((g,i)=>`<div class="akx-rwc ${/PACK/.test(g[1])?'akx-gold':/!/.test(g[1])?'akx-new':''}" style="--ak-d:${.9+i*.14}s">${akxImg(akObj(akxGot(g)))}<b>${akxE(g[1])}</b></div>`).join('')}</div><div class="akx-act"><button type="button" class="akx-go" data-x>Continuer</button></div></div>`;
+ document.body.append(o);akxOn(o,'[data-x]',()=>{o.remove();if(view=='akt')aktHub()});o.addEventListener('click',e=>{if(e.target===o){o.remove();if(view=='akt')aktHub()}})};
 /* ================= MUGEN 27 · L'AUBE · finitions : Pack Aube en 3D dans la Traque + attaques combinées bien visibles ================= */
 /* 1. le Pack Aube de la Traque devient le coffret 3D Akatsuki (même mécanisme que les packs des modes MUGEN 26) */
 try{MDVIEW.akt='ak'}catch(e){}
@@ -18920,7 +19192,7 @@ packs(){S.fb=Math.max(S.fb||0,10);try{asS().pk=(asS().pk||0)+5}catch(e){}},
 camp(){S.cp=Math.max(S.cp||0,250)},
 async guild(){try{if(!GLD||!GLD.id)await gJoin('bot3')}catch(e){}try{GLD.lvl=10}catch(e){}},
 a3(){const off=!window.__A3OFF;window.__A3OFF=off;try{localStorage.setItem('a3off',off?'1':'0')}catch(e){}toast(off?'3D des combats coupée':'3D des combats activée');return 'x'},
-pportails(){try{V3OPEN('assets-fda0e1ed30/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
+pportails(){try{V3OPEN('assets-b4d3bf2bb1/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
 navA(){V3NAV.set('a');return 'x'},navB(){V3NAV.set('b');return 'x'},navC(){V3NAV.set('c');return 'x'},
 lvl(){S.xp=Math.max(S.xp||0,400000)},
 reset(){if(!confirm('Effacer la sauvegarde TEST ?'))return 'x';localStorage.removeItem('animecards');location.reload();return 'x'}};
