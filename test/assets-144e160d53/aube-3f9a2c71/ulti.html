@@ -767,7 +767,7 @@ restyle(A,{hp:9000,weapon:W1,nm:'MUGEN',sb:'Ultimes des cartes rares',n:'MUGEN',
 
 /* ---------- boucle ---------- */
 let last=performance.now(),T=0;
-function frame(now){requestAnimationFrame(frame);const d=Math.min(.05,(now-last)/1000);last=now;frameDt(d)}
+function frame(now){requestAnimationFrame(frame);if(window.__AKIDLE){last=now;return}const d=Math.min(.05,(now-last)/1000);last=now;frameDt(d)}
 function frameDt(dt){
  if(hitstop>0){hitstop-=dt;dt=0}dt*=timeScale*(window.__AKSPD||1);T+=dt;
  for(let i=FX.length-1;i>=0;i--){const f=FX[i];f.t+=dt;const k=Math.min(1,f.t/f.dur);f.f&&f.f(k);if(k>=1){FX.splice(i,1);f.done&&f.done()}}
@@ -1134,7 +1134,7 @@ addEventListener('message',async e=>{const m=e.data||{};if(m.t!='aube'&&m.t!='au
  try{cleanup();domainOut()}catch(x){}AKRUN=0;parent.postMessage({t:'aube-done',ok:1},'*')});
 parent.postMessage({t:'aube-ready',ids:AKID},'*');
 /* aperçu direct : ulti.html?aube=pain  ou  ?aubeg=itaki&mem=itachi,kisame,pain */
-{const q=new URLSearchParams(location.search);if(q.get('aube'))setTimeout(()=>akPlay(q.get('aube')),400);if(q.get('aubeg'))setTimeout(()=>akGroup({v:q.get('aubeg'),mem:(q.get('mem')||'').split(',')}),400)}
+{const q=new URLSearchParams(location.search);if(q.get('aubeq'))setTimeout(async()=>{for(const k of [0,1,2]){await akQuick({id:q.get('aubeq'),k,show:1});await sleep(300)}},400);if(q.get('aube'))setTimeout(()=>akPlay(q.get('aube')),400);if(q.get('aubeg'))setTimeout(()=>akGroup({v:q.get('aubeg'),mem:(q.get('mem')||'').split(',')}),400)}
 /* ======================= ATTAQUES RAPIDES (techniques 1 et 2, et la signature en version courte) =======================
    Jouées PAR-DESSUS l'arène du jeu : fond transparent, pas de cartes 3D ni de bandeau, caméra fixe ; les cartes 3D (invisibles)
    sont placées exactement sous les vraies cartes du jeu (positions envoyées par le jeu), donc chaque effet part de l'attaquant
@@ -1206,9 +1206,9 @@ AKQ.orochimaru=[async(a,d)=>{/* Kusanagi : la lame jaillit de la bouche et s'all
   await tween(.6,t=>ws.forEach(q=>{q.tb.grow(t);const p=q.tb.head(t);q.hd.position.copy(p);q.hd.lookAt(p.clone().add(q.tb.tan(t)))}));qHit(d,'#e8e0ff',14);await sleep(400)}];
 /* mode « par-dessus le jeu » : fond transparent, arène et cartes 3D masquées, caméra fixe */
 let AKQON=0;
-{const _h=hurt;hurt=function(f){if(AKQON){f.m.uniforms.hit.value=1;return}return _h.apply(this,arguments)}}
+{const _h=hurt;hurt=function(f){if(AKQON){tween(.4,t=>f.m.uniforms.hit.value=1-t);return}return _h.apply(this,arguments)}}
 {const _d=dmgS;dmgS=function(){if(AKQON)return;return _d.apply(this,arguments)}}
-function akQuickOn(m){AKQON=1;document.documentElement.style.background=document.body.style.background='transparent';document.body.classList.add('cine','akq');BASE.visible=false;DOM.clear();sc.background=null;sc.fog.density=0;R.setClearColor(0x000000,0);
+function akQuickOn(m){AKQON=1;if(m.show){document.body.classList.add('cine');cam.position.copy(CAM0.p);look.copy(CAM0.l);return}document.documentElement.style.background=document.body.style.background='transparent';document.body.classList.add('cine','akq');BASE.visible=false;DOM.clear();sc.background=null;sc.fog.density=0;R.setClearColor(0x000000,0);
  A.G.visible=B.G.visible=false;cam.position.copy(CAM0.p);look.copy(CAM0.l);cam.lookAt(look);AMB=null;
  /* place les cartes 3D (invisibles) sous les vraies cartes du jeu */
  const ef=cam.clone();ef.position.copy(CAM0.p).sub(CAM0.l).multiplyScalar(PK3).add(CAM0.l);ef.lookAt(CAM0.l);ef.updateMatrixWorld();ef.updateProjectionMatrix();
@@ -1218,9 +1218,40 @@ function akQuickOn(m){AKQON=1;document.documentElement.style.background=document
 function akQuickOff(){AKQON=0;try{cleanup()}catch(e){}PF.inv=0;PF.hue=0;PF.ab=0;document.body.classList.remove('cine','akq');document.documentElement.style.background=document.body.style.background='';domainOut();
  A.G.visible=B.G.visible=true;A.G.position.set(-3.2,0,0);B.G.position.set(3.2,0,0);A.G.userData.base=-3.2;B.G.userData.base=3.2;A.m.uniforms.hit.value=B.m.uniforms.hit.value=0;sc.fog.density=fog0.d}
 async function akQuick(m){const L=AKQ[m.id],U=AKU[m.id];if(!U)return;akQuickOn(m);
- try{if(m.k==2){const r=await U.run(A,B,U,{short:1,quick:1});if(r&&r.after)await r.after()}else if(L&&L[m.k])await L[m.k](A,B);await sleep(120)}finally{akQuickOff()}}
+ try{if(L&&L[m.k])await L[m.k](A,B);else if(m.k==2){const r=await U.run(A,B,U,{short:1,quick:1});if(r&&r.after)await r.after()}await sleep(120)}finally{akQuickOff()}}
 addEventListener('message',async e=>{const m=e.data||{};if(m.t!='aubeq')return;if(AKRUN){parent.postMessage({t:'aube-done',ok:0},'*');return}AKRUN=1;window.__AKSPD=Math.max(1,Math.min(3,m.spd||1));
  try{await akQuick(m)}catch(x){console.warn(x)}window.__AKSPD=1;AKRUN=0;parent.postMessage({t:'aube-done',ok:1},'*')});
-window.akQuick=akQuick;
+window.akQuick=akQuick;window.akQuick3=async id=>{restyle(A,{hp:9000,weapon:W1,nm:AKU[id].nm,sb:'Aube',n:AKU[id].nm.split(' ')[0].toUpperCase(),k:AKU[id].k,c1:darken(AKU[id].col,.55),c2:'#05030a',c3:AKU[id].col,fr:RAR.aube.fr});restyle(B,Object.assign({hp:30000},BOSS));for(const k of [0,1,2]){await akQuick({id,k,show:1});await sleep(250)}};
+/* en attente pendant le combat : plus aucun rendu (le jeu garde le moteur chargé pour que chaque attaque parte tout de suite) */
+addEventListener('message',e=>{const m=e.data||{};if(m.t=='aube-idle')window.__AKIDLE=!!m.v;if(m.t=='aube'||m.t=='aubeg'||m.t=='aubeq')window.__AKIDLE=false});
+/* signatures (technique 3) en version rapide, quand le nom diffère de la version courte de l'ultime */
+AKQ.pain[2]=async(a,d)=>{/* Chibaku Tensei : un noyau noir au-dessus de la cible attire roches et poussière */const E=EP(d),top=E.clone().add(V(0,1.6,0)),core=new THREE.Mesh(new THREE.SphereGeometry(.3,24,16),new THREE.MeshBasicMaterial({color:'#000'}));core.add(glowS('#a080ff',1.4,.8));core.position.copy(top);keep(core);
+ const R=[...Array(22)].map(()=>{const s=stone('#6a5a4a',rnd(.12,.32));s.position.copy(E).add(V(rnd(-2.5,2.5),rnd(-2,-1.4),rnd(-1.2,1)));keep(s);return s}),R0=R.map(r=>r.position.clone()),SL=R.map(()=>V(rnd(-1,1),rnd(-1,1),rnd(-1,1)).normalize());
+ await tween(1.3,t=>{R.forEach((r,i)=>{const k=Math.min(1,Math.max(0,t*1.5-i/R.length*.5));r.position.lerpVectors(R0[i],top.clone().addScaledVector(SL[i],.38+.3*t),k*k);r.rotation.x+=.06});shake(.08+t*.12);burst(E.clone().add(V(rnd(-2,2),-1.5,0)),2,{v:1.5,up:2,g:3,c:'#8a7a66',s:.25,life:.6,swirl:top})},x=>x);qHit(d,'#c8b8ff',24)};
+AKQ.itachi[2]=async(a,d)=>{/* Susano'o : la cage thoracique de chakra se dresse, l'épée tranche */const E=EP(d),ap=EP(a),sm=akSpec('#ff4a2a','#ffd0a0'),G=new THREE.Group();keep(G);G.position.copy(ap).add(V(-.4,-2.6,-1.2));
+ for(let i=0;i<5;i++){const r=new THREE.Mesh(new THREE.TorusGeometry(.9-i*.06,.05,6,24,Math.PI*1.4),sm);r.position.set(0,2.6-i*.3,0);r.rotation.set(Math.PI/2,0,Math.PI*.8);G.add(r)}const hd=new THREE.Mesh(new THREE.SphereGeometry(.55,16,12),sm);hd.position.y=3.3;G.add(hd);
+ const arm=new THREE.Mesh(new THREE.CapsuleGeometry(.18,1.4,4,8),sm);arm.position.set(1,2.5,.2);arm.rotation.z=-.9;G.add(arm);G.scale.setScalar(.01);
+ await tween(.45,t=>{G.scale.setScalar(.01+ease.b(t)*1.5);burst(ap.clone().add(V(rnd(-1,1),rnd(0,2),-.8)),3,{v:1,up:3,g:3,c:'#ff7a3a',c2:'#ff2a10',s:.25,life:.5})});
+ const bl=new THREE.Mesh(new THREE.ConeGeometry(.08,1,10,1,true),addMat('#fff4d0',.95));keep(bl);const src=ap.clone().add(V(1.3,1.2,.3));
+ await tween(.25,t=>{orient(bl,src,E);const L=src.distanceTo(E)*t;bl.scale.set(1,Math.max(.01,L),1);bl.position.copy(src).addScaledVector(E.clone().sub(src).normalize(),L/2)},ease.o);slash(E,'#ff7a3a',-.6,2.6);qHit(d,'#fff0c8',24);await tween(.3,t=>G.scale.setScalar(1.5*(1-t)))};
+AKQ.kisame[2]=async(a,d)=>{/* Samehada : l'épée d'écailles s'abat et dévore le chakra */const E=EP(d),ap=EP(a),sw=new THREE.Mesh(new THREE.CylinderGeometry(.14,.28,2.2,10),AKG3('#3a5a8a',{map:akScaleT('#3a5a8a','#a8c8f0'),roughness:.4}));keep(sw);
+ const piv=new THREE.Group();keep(piv);piv.position.copy(E).add(V(-.9,1.2,.4));sw.position.set(0,1.1,0);piv.add(sw);piv.rotation.z=1.2;await tween(.3,t=>piv.rotation.z=1.2-t*2.2,ease.o);slash(E,'#9ad8ff',.8,2.4);qHit(d,'#3a8aff',16);
+ await tween(.6,t=>burst(E,5,{v:1.5,g:0,c:'#5ab8ff',c2:'#ffffff',s:.18,life:.6,swirl:ap}))};
+AKQ.deidara[2]=async(a,d)=>{/* C0 : Deidara devient la bombe — une sphère blanche qui avale tout */const E=EP(d),ap=EP(a);popText('KATSU !','#ffffff',ap.clone().add(V(0,1.8,.5)),3,.6);
+ const sp=mkM(new THREE.SphereGeometry(1,40,28),'#ffffff',.9);sp.position.copy(ap);keep(sp);await tween(.25,t=>{sp.scale.setScalar(.2+t*.6);burst(ap,6,{v:2,g:0,c:'#fff4d0',s:.15,life:.4})});
+ akLight('#fff4d0',90,ap);await tween(.55,t=>{sp.scale.setScalar(.8+ease.o(t)*E.distanceTo(ap)*1.15);sp.material.opacity=.9*(1-t*.7);shake(.5)});sc.remove(sp);explode(E,'#fff4d0',2.6,200);qHit(d,'#ffd36a',10)};
+AKQ.sasori[2]=async(a,d)=>{/* Hiruko : la queue articulée de la marionnette fouette et transperce */const E=EP(d),ap=EP(a),wood=AKG3('#5a4a3a',{roughness:.5,flatShading:true});
+ const pts=[ap.clone().add(V(-.3,-1,-.2)),ap.clone().add(V(-.6,1.6,-.4)),ap.clone().lerp(E,.5).add(V(0,2.2,0)),E.clone().add(V(0,.2,.2))];const tb=akTube(pts,.12,wood,60,6);const tip=new THREE.Mesh(new THREE.ConeGeometry(.12,.6,6),AKG3('#c8d0d8',{metalness:1,roughness:.2}));keep(tip);
+ await tween(.45,t=>{tb.grow(t);const p=tb.head(t);tip.position.copy(p);orient(tip,p,p.clone().add(tb.tan(t)))},ease.o);burst(E,30,{v:5,g:-6,c:'#9aff7a',c2:'#2a5a1a',s:.18,life:.6});qHit(d,'#d8b060',12);await sleep(300)};
+AKQ.kakuzu[2]=async(a,d)=>{/* Pression du vent (Atsugai) : le masque du vent souffle une rafale compressée */const E=EP(d),ap=EP(a),src=ap.clone().add(V(-.2,1.4,-.4));const bl=new THREE.Mesh(new THREE.IcosahedronGeometry(.42,1),AKG3('#2a2026',{emissive:'#3a0a14',emissiveIntensity:.5}));bl.position.copy(src);keep(bl);
+ const cn=mkM(new THREE.ConeGeometry(1,1,24,1,true),'#e8fff4',.35);keep(cn);await tween(.4,t=>{orient(cn,E,src);cn.scale.set(.4+t*.8,Math.max(.01,src.distanceTo(E)*t),.4+t*.8);cn.position.copy(src).lerp(E,t/2);burst(src.clone().lerp(E,t),5,{v:5,g:0,c:'#e8fff4',s:.22,life:.35})});
+ sc.remove(cn);ring(E.clone(),'#e8fff4',3,.45,.1,false);akDust(E,40,'#d8d0c0',7);qHit(d,'#e8fff4',14)};
+AKQ.tobi[2]=async(a,d)=>{/* Statue démoniaque : les mains géantes du Gedō Mazō surgissent et écrasent */const E=EP(d),pt=TX.palm('#6a5a72');await akEye('ri',EP(a).add(V(0,.5,.6)),1.6,.35);
+ const H2=[-1,1].map(s=>{const p=sprite(pt,3.2,{normal:true});p.position.copy(E).add(V(s*1.5,-3,-.3));keep(p);return p});
+ await tween(.5,t=>H2.forEach((p,i)=>{p.position.y=E.y-3+ease.o(t)*3.2;p.material.rotation=(i?-1:1)*.3}));await tween(.2,t=>H2.forEach((p,i)=>{p.position.x=E.x+(i?1:-1)*1.5*(1-t*.7)}));shake(.7);flashScr(.3);qHit(d,'#b48aff',22);await sleep(250)};
+AKQ.orochimaru[2]=async(a,d)=>{/* Résurrection (Edo Tensei) : des cercueils surgissent du sol autour de la cible */const E=EP(d),cm=AKG3('#4a3a2a',{roughness:.7}),CF=[-1.3,0,1.3].map(x=>{const g=new THREE.Mesh(new THREE.BoxGeometry(.6,1.8,.35),cm);g.position.copy(E).add(V(x,-3,-.6));keep(g);return g});
+ const kj=tex(128,256,(g,w,h)=>{g.fillStyle='#d8c8a8';g.fillRect(0,0,w,h);g.fillStyle='#3a1a0a';g.font='900 64px serif';g.textAlign='center';g.fillText('穢',w/2,90);g.fillText('土',w/2,180)});CF.forEach(c=>{const p=new THREE.Mesh(new THREE.PlaneGeometry(.4,.8),new THREE.MeshStandardMaterial({map:kj}));p.position.z=.18;c.add(p)});
+ akDust(E.clone().add(V(0,-1.5,0)),50,'#6a5a4a',5);await tween(.5,t=>CF.forEach((c,i)=>c.position.y=E.y-3+ease.o(Math.min(1,t*1.2-i*.1))*3));await sleep(200);
+ CF.forEach(c=>{burst(c.position,30,{v:4,g:-6,c:'#c8b8a0',c2:'#4a3a2a',s:.25,life:.6});sc.remove(c)});for(let i=0;i<4;i++)after(i*.06,()=>slash(E.clone().add(V(rnd(-.5,.5),rnd(-.5,.5),.3)),'#b48aff',rnd(-1,1),1.6));qHit(d,'#b48aff',16);await sleep(300)};
 
 </script></body></html>

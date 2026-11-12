@@ -6105,6 +6105,21 @@ html,body,button,a,[data-oclick],#bt,#bt *{touch-action:manipulation}
 #nw26 .nw-o{margin-top:12px;font-size:12.5px;color:#9a93ad}
 #nw26 .nw-go{display:block;width:100%;margin-top:16px;padding:14px;border:0;border-radius:14px;background:linear-gradient(135deg,#ff7a45,#ff3d6e);color:#fff;font:800 16px Inter,sans-serif;cursor:pointer;box-shadow:0 12px 30px #ff3d6e44}
 
+/* tuiles · cases « simple et propre » (icône) et cases de combat (vrai perso d'anime) */
+.n3t.tl-i .n3im,.evh3-t.tl-i .evh3-im{display:none!important}
+.n3t.tl-i,.evh3-t.tl-i{background:linear-gradient(135deg,color-mix(in srgb,var(--nc,#ff4d2e) 28%,#12151d),#10131a 72%)!important;border-color:color-mix(in srgb,var(--nc,#ff4d2e) 42%,#ffffff10)!important}
+.n3t.tl-i .n3k2{display:none}
+.tl-ic{position:absolute;right:12px;top:50%;transform:translateY(-50%);height:64%;max-height:96px;aspect-ratio:1;border-radius:22%;display:grid;place-items:center;background:color-mix(in srgb,var(--nc,#ff4d2e) 18%,#0000);color:var(--nc,#ff7a45);pointer-events:none;z-index:1}
+.tl-ic svg{width:56%;height:56%}
+.n3t.tl-i{align-items:center!important}.n3t.tl-i .n3tx{top:auto!important;bottom:auto!important;left:auto!important;right:auto!important;transform:none!important;max-width:58%;text-shadow:none;text-align:left}
+.n3t.tl-i .n3tx small{color:color-mix(in srgb,var(--nc,#ff7a45) 72%,#fff)}
+.evh3-t.tl-i .tl-ic{height:56px;top:14px;transform:none}
+.tl-a .n3im,.tl-a .mm3bg,.tl-a .evh3-im{background-size:cover!important;background-position:50% 18%!important}
+.tl-a.tl-ok .n3im,.tl-a.tl-ok .mm3bg,.tl-a.tl-ok .evh3-im{filter:saturate(1.08) contrast(1.03)}
+.n3t.tl-a.tl-ok .n3im:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#000b 0%,#0005 50%,#0000 80%),linear-gradient(0deg,#000a,#0000 60%)}
+/* l’ancienne fenêtre « mise à jour » (up20p) est remplacée par l’écran des nouveautés */
+#up20p{display:none!important}
+
 /* ===== MUGEN 27 · L'AUBE · partie A : rareté AUBE 暁 (cartes Akatsuki, cinématiques, Pack Aube 3D) ===== */
 :root{--ak-tm:linear-gradient(135deg,#140003,#ff4a55 15%,#4a0006 30%,#ffc2c6 46%,#7a000c 60%,#e0262f 78%,#ffd6d9 88%,#140003);
  --ak-cl:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Cg fill='%23fff'%3E%3Ccircle cx='24' cy='36' r='15'/%3E%3Ccircle cx='42' cy='24' r='17'/%3E%3Ccircle cx='64' cy='20' r='18'/%3E%3Ccircle cx='86' cy='28' r='15'/%3E%3Ccircle cx='100' cy='38' r='11'/%3E%3Crect x='10' y='34' width='98' height='17' rx='8'/%3E%3C/g%3E%3Cg fill='%23c8102e'%3E%3Ccircle cx='24' cy='36' r='12'/%3E%3Ccircle cx='42' cy='24' r='14'/%3E%3Ccircle cx='64' cy='20' r='15'/%3E%3Ccircle cx='86' cy='28' r='12'/%3E%3Ccircle cx='100' cy='38' r='8'/%3E%3Crect x='13' y='37' width='92' height='11' rx='5'/%3E%3C/g%3E%3C/svg%3E");
@@ -6262,6 +6277,7 @@ html body .card.r11:not(.awk2) .st3{background:#1a0306cc;box-shadow:inset 0 0 0 
 #ak3f{position:fixed;inset:0;width:100%;height:100%;border:0;z-index:2147481000;opacity:0;pointer-events:none;transition:opacity .25s;background:#000}
 #ak3f.on{opacity:1}
 #ak3sk{position:fixed;right:16px;bottom:70px;z-index:2147481001;padding:9px 16px;border-radius:999px;border:1px solid #ffffff33;background:#0009;color:#fff;font:700 13px Inter,system-ui,sans-serif;cursor:pointer}
+#ak3f.q{background:transparent}
 
 /* MUGEN 27 · La Traque des Bijū dans le nouveau design (préfixe akx-, variables --ak-) */
 .akx{--ak-r:#e0262f;--ak-rl:#ff5a5a;--ak-pn:linear-gradient(180deg,#1a0f16e6,#0c070ce6);--ak-bd:#ffffff17;display:flex;flex-direction:column;gap:16px;max-width:1220px;margin:0 auto;padding:8px 0 40px}
@@ -16238,6 +16254,41 @@ try{S.sv=SPL.v}catch(e){}
 setTimeout(function nw26Wait(){try{if(!S.tu1){S.nwv=VER;return}if((S.nwv||'')==VER)return;
  if(document.getElementById('lg96')||document.getElementById('tu1')||document.querySelector('.ov')||document.getElementById('bt')){setTimeout(nw26Wait,1500);return}nw26Open()}catch(e){}},1800);
 
+/* tuiles · images des cases (demande du propriétaire, 12/11) :
+   - cases de COMBAT : un vrai perso d'anime en grand, lié au mode (image AniList, gardée en mémoire) ;
+   - les autres cases : style « simple et propre » (grande icône de couleur sur dégradé, sans dessin). */
+const TL9C={battle:'Monkey D. Luffy',quick:'Naruto Uzumaki',camp:'Asta',tower:'Satoru Gojou',ranked:'Son Goku',daily:'Tanjirou Kamado',hcp:'Saitama',surv:'Eren Yeager',raid:'Ichigo Kurosaki',draft:'Light Yagami',bounty:'Spike Spiegel',rush:'All Might',alch:'Edward Elric',wboss:'Madara Uchiha',trn:'Gon Freecss',ori:'Ryoumen Sukuna',dsm:'Kyoujurou Rengoku',asc:'Jinwoo Sung',abs:'Rimuru Tempest',hev:'Killua Zoldyck',event:'Roronoa Zoro',camp13:'Jinwoo Sung'};
+const TL9I={
+ album:'<rect x="3" y="4" width="8" height="12" rx="1.5"/><rect x="9" y="7" width="8" height="12" rx="1.5"/><rect x="15" y="5" width="6" height="10" rx="1.5"/>',
+ bm:'<path d="M12 3a9 9 0 109 9 7 7 0 01-9-9z"/>',board:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+ cfg:'<circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>',
+ exp:'<path d="M3 20l6-10 4 6 3-4 5 8z"/><circle cx="17" cy="6" r="2.2"/>',feed:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
+ friends:'<circle cx="9" cy="8" r="3.4"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><circle cx="17" cy="9" r="2.6"/><path d="M15.5 14.2c3 .2 5.5 2.4 5.5 5.8"/>',
+ gear:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',guide:'<path d="M4 4h6a2 2 0 012 2v14a2 2 0 00-2-2H4zM20 4h-6a2 2 0 00-2 2v14a2 2 0 012-2h6z"/>',
+ guild:'<path d="M5 21V4M5 4h12l-2 4 2 4H5"/>',hal:'<rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1 0 1.5 2 1 6 1 4 0 6 .5 6-1 0-3-4-3-6 1"/>',
+ hdv:'<path d="M14 4l6 6-3 3-6-6zM11 7l-7 7 3 3 7-7M4 21h10"/>',home:'<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>',
+ lab:'<path d="M4 14h12l3-3H7zM9 14v4h4v-4M6 21h10M15 3l5 5-2 2-5-5z"/>',ladder:'<path d="M7 4h10v4a5 5 0 01-10 0zM12 13v4M8 21h8M7 6H4a3 3 0 003 4M17 6h3a3 3 0 01-3 4"/>',
+ lot:'<path d="M3 7h18v3a2 2 0 000 4v3H3v-3a2 2 0 000-4z"/><path d="M14 7v10" stroke-dasharray="2 2"/>',maj:'<path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2zM19 15l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/>',
+ mem:'<rect x="3" y="5" width="8" height="12" rx="2"/><rect x="13" y="7" width="8" height="12" rx="2"/><path d="M7 10v2M17 12v2"/>',mer:'<path d="M5 8h14l-1 13H6zM9 8V6a3 3 0 016 0v2"/>',
+ miss:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 9l2 2 4-4M8 16h8"/>',mkt:'<path d="M3 9l2-5h14l2 5M4 9v11h16V9M3 9h18M9 20v-6h6v6"/>',
+ pass:'<path d="M12 2l3 6 6 1-4.5 4 1 6.5L12 16l-5.5 3.5 1-6.5L3 9l6-1z"/>',quiz:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 .5c0 1.8-2.5 2-2.5 4M12 17v.5"/>',
+ rank:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',shop:'<path d="M12 2l9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/>',
+ wiki:'<path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2zM4 21a2 2 0 012-2h13"/><path d="M9 7h6M9 11h6"/>',wkx:'<path d="M4 6l6 12M10 6l-6 12M14 18h6l-6-8a3 3 0 115.5-2"/>',
+ cdj:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M12 7l1.5 3 3 .5-2.2 2 .6 3-2.9-1.5L9.1 15.5l.6-3-2.2-2 3-.5z"/>',dojo:'<path d="M3 9l9-5 9 5M5 9v11h14V9M9 20v-6h6v6M3 20h18"/>',gateA:'<path d="M5 21V9a7 7 0 0114 0v12M9 21v-8h6v8"/>',_:'<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/>'};
+let TL9M={};try{TL9M=JSON.parse(localStorage.getItem('mugenTl1')||'{}')}catch(e){}
+const TL9Q=[],TL9W={};let TL9B=0;
+function tlFetch(n){if(TL9M[n]||TL9W[n])return;TL9W[n]=1;TL9Q.push(n);if(!TL9B)tlPump()}
+async function tlPump(){TL9B=1;while(TL9Q.length){const n=TL9Q.shift();try{const r=await fetch('https://graphql.anilist.co',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({query:'query($s:String){Character(search:$s){image{large}}}',variables:{s:n}})});const j=await r.json();const u=j&&j.data&&j.data.Character&&j.data.Character.image&&j.data.Character.image.large;if(u&&/^https:\/\//.test(u)){TL9M[n]=u;try{localStorage.setItem('mugenTl1',JSON.stringify(TL9M))}catch(e){}tlPaint()}}catch(e){}await new Promise(r=>setTimeout(r,300))}TL9B=0}
+const tlIcon=k=>`<span class="tl-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${TL9I[k]||TL9I._}</svg></span>`;
+function tlSet(el,imEl,k,anime){if(anime){const n=TL9C[k];el.classList.add('tl-a');el.classList.remove('tl-i');if(TL9M[n]){imEl.style.backgroundImage=`url("${TL9M[n]}")`;el.classList.add('tl-ok')}else tlFetch(n)}else{el.classList.add('tl-i');if(!el.querySelector(':scope>.tl-ic'))el.insertAdjacentHTML('beforeend',tlIcon(k))}}
+function tlPaint(){try{
+ document.querySelectorAll('.n3t[data-k]').forEach(t=>{const k=t.dataset.k.replace(/2$/,''),im=t.querySelector('.n3im');if(!im)return;tlSet(t,im,k,!!TL9C[k])});
+ document.querySelectorAll('.mm3bg').forEach(b=>{const t=b.closest('[data-oclick]');const m=t&&/mode\('([a-z0-9]+)'\)/.exec(t.getAttribute('data-oclick'));if(!m||!TL9C[m[1]])return;tlSet(t,b,m[1],1)});
+ document.querySelectorAll('.evh3-im').forEach(b=>{const t=b.closest('.evh3-t');if(!t)return;const f=(/\/([a-zA-Z0-9_]+)\.(jpg|webp)/.exec(b.style.backgroundImage)||[])[1]||'';const k={bossmonde:'wboss',eventh:'hev',v_shibuya:'event',tournoi:'trn',raid:'raid',defi:'daily'}[f]||f;tlSet(t,b,k,!!TL9C[k])});
+}catch(e){}}
+{let q=0;new MutationObserver(()=>{if(q)return;q=1;requestAnimationFrame(()=>{q=0;tlPaint()})}).observe(document.body,{childList:true,subtree:true})}
+setTimeout(tlPaint,500);
+
 /* ================= MUGEN 27 · L'AUBE · partie A : rareté AUBE 暁 (Akatsuki) — 11 cartes, kits, design, GIF, Pack Aube 3D ================= */
 /* ---------- 1. la rareté (entre Lame Écarlate et Ascendant pour le prix) ---------- */
 const AKR=R.length;R.push(['暁','Aube','#e0262f']);PRICE[AKR]=700;try{TCGK[AKR]='暁'}catch(e){}try{CXK[AKR]='暁'}catch(e){}
@@ -16640,7 +16691,7 @@ function akCine(cards){return new Promise(res=>{const o=document.createElement('
 /* ================= MUGEN 27 · L'AUBE · partie A (2) : nouveau design (v26.9) =================
    - le Pack Aube s'ouvre avec la nouvelle ouverture 3D des boosters (celle de tous les packs du jeu), les cartes sont celles du jeu (card) ;
    - les objets de l'Aube (anneaux, yeux, coffres, sacs, spores, Pack Aube) ont leur modèle 3D (vignettes rendues dans media/aube-3f9a2c71/obj/). */
-const AKM='assets-b4d3bf2bb1/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
+const AKM='assets-144e160d53/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
 const akObjImg=(id,cls='')=>`<img class="ak3o ${cls}" src="${akObj(id)}" alt="" draggable="false" loading="lazy" data-oerror="this.style.visibility='hidden'">`;
 /* anneaux de l'Akatsuki : vignette 3D partout où le jeu dessine l'icône d'un objet */
 {const _gi=gIco;gIco=function(g){try{if(g&&/^akr\d$/.test(g.id))return akObjImg(g.id,'o3i'+(typeof gLv=='function'&&!gLv(g)?' o3lk':''))}catch(e){}return _gi.apply(this,arguments)}}
@@ -17577,26 +17628,39 @@ async g_nuage(X){const Q=await k2Q(X,true),T=Q.T,{ax,ay,tx,ty,ux,uy,mv,rec,shake
    (même moteur que les ultimes des cartes rares, recul de caméra en portrait). Le Jutsu de l'Aube y joue sa scène de groupe :
    chaque membre fait sa part, puis l'attaque combinée. La logique (dégâts, coût, effets) ne change pas : seules les images changent.
    Si le moteur 3D ne répond pas, les anciennes animations restent en secours. */
-const AK3_SRC='assets-b4d3bf2bb1/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
+const AK3_SRC='assets-144e160d53/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
 const AK3={f:null,rd:0,w:null};
-addEventListener('message',e=>{const m=e.data||{};if(!AK3.f||e.source!==AK3.f.contentWindow)return;if(m.t=='aube-ready')AK3.rd=1;if(m.t=='aube-done'&&AK3.w){const w=AK3.w;AK3.w=null;w(1)}});
+addEventListener('message',e=>{const m=e.data||{};if(!AK3.f||e.source!==AK3.f.contentWindow)return;if(m.t=='aube-ready')AK3.rd=1;if(m.t=='aube-done'&&AK3.w){const w=AK3.w;AK3.w=null;w(m.ok?1:0)}});
 function ak3Mount(){if(AK3.f&&document.body.contains(AK3.f))return;const f=document.createElement('iframe');f.id='ak3f';f.setAttribute('aria-hidden','true');f.tabIndex=-1;f.src=AK3_SRC;AK3.rd=0;AK3.f=f;document.body.append(f)}
 const ak3Ready=()=>new Promise(r=>{let n=0;const t=setInterval(()=>{if(AK3.rd||++n>150){clearInterval(t);r(AK3.rd)}},100)});
-function ak3Hide(now){if(AK3.f)AK3.f.classList.remove('on');const s=document.getElementById('ak3sk');if(s)s.remove();const f=AK3.f;if(f)setTimeout(()=>{if(f===AK3.f&&!f.classList.contains('on')){f.remove();AK3.f=null;AK3.rd=0}},now?0:400)}
+/* pendant un combat, le moteur reste chargé (caché, sans rendu) : les attaques rapides partent tout de suite */
+const ak3InFight=()=>{try{return typeof B!='undefined'&&B&&!B.over&&!!document.getElementById('bt')}catch(e){return false}};
+function ak3Drop(){const f=AK3.f;if(f){f.remove();AK3.f=null;AK3.rd=0}}
+function ak3Hide(now){if(AK3.f)AK3.f.classList.remove('on','q');const s=document.getElementById('ak3sk');if(s)s.remove();const f=AK3.f;if(!f)return;
+ if(ak3InFight()&&!now){try{f.contentWindow.postMessage({t:'aube-idle',v:1},'*')}catch(e){}return}setTimeout(()=>{if(f===AK3.f&&!f.classList.contains('on'))ak3Drop()},now?0:400)}
 const ak3Foe=d=>{try{const c=d&&d.c;return c?{nm:c.n,img:imgOf(c),sb:c.s||'Adversaire'}:null}catch(e){return null}};
-async function ak3Play(msg,max){if(document.hidden||window.__A3OFF)return 0;ak3Mount();if(!(await ak3Ready())){ak3Hide(1);return 0}
- try{window.A3post&&A3post({t:'pause',v:1})}catch(e){}AK3.f.classList.add('on');try{sfx(70,.8,'sawtooth',.05);nse(.6,300,2400,.12,'bandpass')}catch(e){}
+const ak3Rect=el=>{try{const r=el&&(el.querySelector('.card,.fgt')||el).getBoundingClientRect();return r&&r.width?{x:r.left,y:r.top,w:r.width,h:r.height}:null}catch(e){return null}};
+async function ak3Play(msg,max,quick){if(document.hidden||window.__A3OFF)return 0;ak3Mount();if(!(await ak3Ready())){ak3Hide(1);return 0}
+ if(!quick)try{window.A3post&&A3post({t:'pause',v:1})}catch(e){}AK3.f.classList.toggle('q',!!quick);AK3.f.classList.add('on');if(!quick)try{sfx(70,.8,'sawtooth',.05);nse(.6,300,2400,.12,'bandpass')}catch(e){}
  const sk=document.createElement('button');sk.id='ak3sk';sk.type='button';sk.textContent='Passer ›';document.body.append(sk);
- await new Promise(r=>{AK3.w=r;sk.onclick=()=>{AK3.w=null;r()};setTimeout(()=>{if(AK3.w===r){AK3.w=null;r()}},window.__AK3MAX||max||16000);AK3.f.contentWindow.postMessage(msg,'*')});
- ak3Hide();try{window.A3post&&A3post({t:'pause',v:0})}catch(e){}return 1}
-/* ultime (5◆) à chaque fois, technique signature la 1re fois du combat */
-{const _a=act;act=async function(a,d,mi,ia,id,sd){let pl=0;try{const c=a&&a.c;if(c&&typeof AKR!='undefined'&&c.r===AKR&&c.ak!=null&&AK3_ID[c.ak]&&B&&!B.akgGo&&(mi==4||(mi==2&&!(B.ak3||{})[c.id]))){
-  B.ak3=B.ak3||{};B.ak3[c.id]=1;pl=await ak3Play({t:'aube',id:AK3_ID[c.ak],img:imgOf(c),foe:ak3Foe(d)})}}catch(e){console.warn(e);ak3Hide(1)}
+ /* fin normale : le moteur répond ; « Passer » ou trop long : on retire le moteur (il est rechargé à la prochaine attaque) */
+ const ok=await new Promise(r=>{AK3.w=r;sk.onclick=()=>{AK3.w=null;r(2)};setTimeout(()=>{if(AK3.w===r){AK3.w=null;r(2)}},window.__AK3MAX||max||16000);AK3.f.contentWindow.postMessage(msg,'*')});
+ if(ok==2){const s2=document.getElementById('ak3sk');if(s2)s2.remove();ak3Drop()}else ak3Hide();if(!quick)try{window.A3post&&A3post({t:'pause',v:0})}catch(e){}return ok?1:0}
+/* ultime (5◆) : la cinématique ; signature la 1re fois du combat : la cinématique, ensuite sa version courte ;
+   techniques 1 et 2 : attaques rapides en 3D par-dessus l'arène (1,5 à 3 s, accélérées par la vitesse du combat) */
+{const _a=act;act=async function(a,d,mi,ia,id,sd){let pl=0;try{const c=a&&a.c;if(c&&typeof AKR!='undefined'&&c.r===AKR&&c.ak!=null&&AK3_ID[c.ak]&&B&&!B.akgGo&&mi!=3){
+  const key=AK3_ID[c.ak];if(mi==4||(mi==2&&!(B.ak3||{})[c.id])){B.ak3=B.ak3||{};B.ak3[c.id]=1;pl=await ak3Play({t:'aube',id:key,img:imgOf(c),foe:ak3Foe(d)})}
+  else if(mi==0||mi==1||mi==2){const sp=Math.max(1,Math.min(3,(typeof S!='undefined'&&S.spd)||1));pl=await ak3Play({t:'aubeq',id:key,k:mi,spd:sp,ar:ak3Rect($(ia)),dr:ak3Rect($(id))},Math.round(7000/sp),1)}}}catch(e){console.warn(e);ak3Hide(1)}
  if(!pl)return _a.apply(this,arguments);if(typeof B=='undefined'||!B||!document.getElementById('bt'))return;window.__U3SKIP=1;window.__AKU3=1;try{return await _a.apply(this,arguments)}finally{window.__U3SKIP=0;window.__AKU3=0}}}
+/* le moteur se prépare dès le début d'un combat avec une carte Aube, et part à la fin */
+/* l'arène 3D ne joue pas sa propre attaque générique quand une carte Aube attaque : c'est la scène 3D de l'Aube qui la remplace */
+function ak3ArenaFilter(){try{const o=window.A3post;if(typeof o!='function'||o.__ak)return;const w=function(m){try{if(m&&m.t=='atk'&&m.c&&m.mi!==3&&!document.hidden&&!window.__A3OFF){const c=typeof M!='undefined'&&M[m.c.id];if(c&&typeof AKR!='undefined'&&c.r===AKR)return}}catch(e){}return o.apply(this,arguments)};w.__ak=1;window.A3post=w}catch(e){}}
+{const _f=fight;fight=function(){ak3Drop();const r=_f.apply(this,arguments);try{ak3ArenaFilter();setTimeout(ak3ArenaFilter,100)}catch(e){}try{setTimeout(()=>{try{if(ak3InFight()&&(B.me||[]).some(f=>f&&f.c&&f.c.r===AKR)){ak3Mount();ak3Ready().then(ok=>{if(ok&&AK3.f&&!AK3.f.classList.contains('on'))AK3.f.contentWindow.postMessage({t:'aube-idle',v:1},'*')})}}catch(e){}},1200)}catch(e){}return r}}
+{const _e=end;end=function(){const r=_e.apply(this,arguments);try{if(AK3.f&&!AK3.f.classList.contains('on'))ak3Drop()}catch(e){}return r}}
 /* Jutsu de l'Aube : appelé par akgAct (partie C5) — renvoie 1 si la scène 3D a été jouée */
 async function ak3Group(P,d){const mem=P.mem.map(f=>AK3_ID[f.c.ak]).filter(Boolean),imgs={};P.mem.forEach(f=>{try{imgs[AK3_ID[f.c.ak]]=imgOf(f.c)}catch(e){}});
  return ak3Play({t:'aubeg',v:P.v,mem,imgs,foe:ak3Foe(d)},24000)}
-{const _q=quitB;quitB=function(){ak3Hide(1);return _q.apply(this,arguments)}}
+{const _q=quitB;quitB=function(){ak3Hide(1);ak3Drop();return _q.apply(this,arguments)}}
 /* ================= MUGEN 27 · L'AUBE · partie B : « La Traque des Bijū » =================
    Mode original : carte des villages cachés, Alerte (renforts ANBU / Kage), 9 traques (Jinchūriki → forme Bijū),
    le Scellement (tenir 3 tours sous 30 % pendant que le Bijū se déchaîne) et la Lecture du Sharingan
@@ -17909,7 +17973,7 @@ try{[['akw','Sceller {n} Bijū (La Traque des Bijū)',1,'暁',null,5]].forEach(x
 /* ================= MUGEN 27 · L'AUBE · partie B (3) : « La Traque des Bijū » dans le nouveau design (v26.9) =================
    Même contenu et même déroulé que les parties B (1) et (2) : seules les pages changent.
    Le Repaire (page du mode) → la fiche de la cible (Alerte, renforts, contrat de Kakuzu) → le lobby (.lb3) → le combat dans l'arène 3D
-   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-b4d3bf2bb1/aube-3f9a2c71/obj/). */
+   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-144e160d53/aube-3f9a2c71/obj/). */
 const AKX_BG=id=>AKM+'bg/'+id+'.jpg';
 const akxE=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const akxJ=H=>(H.jid&&M[H.jid]&&imgOf(M[H.jid]))||AKT_IMG+H.ji,akxB=H=>AKT_IMG+H.bi;
@@ -19192,7 +19256,7 @@ packs(){S.fb=Math.max(S.fb||0,10);try{asS().pk=(asS().pk||0)+5}catch(e){}},
 camp(){S.cp=Math.max(S.cp||0,250)},
 async guild(){try{if(!GLD||!GLD.id)await gJoin('bot3')}catch(e){}try{GLD.lvl=10}catch(e){}},
 a3(){const off=!window.__A3OFF;window.__A3OFF=off;try{localStorage.setItem('a3off',off?'1':'0')}catch(e){}toast(off?'3D des combats coupée':'3D des combats activée');return 'x'},
-pportails(){try{V3OPEN('assets-b4d3bf2bb1/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
+pportails(){try{V3OPEN('assets-144e160d53/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
 navA(){V3NAV.set('a');return 'x'},navB(){V3NAV.set('b');return 'x'},navC(){V3NAV.set('c');return 'x'},
 lvl(){S.xp=Math.max(S.xp||0,400000)},
 reset(){if(!confirm('Effacer la sauvegarde TEST ?'))return 'x';localStorage.removeItem('animecards');location.reload();return 'x'}};
