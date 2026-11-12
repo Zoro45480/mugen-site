@@ -16247,7 +16247,7 @@ function lg96Show(onGo,msg){let o=document.getElementById('lg96');if(!o){o=docum
 const lg96Close=()=>{const o=document.getElementById('lg96');if(o){o.classList.add('out');setTimeout(()=>o.remove(),350)}};
 async function mgLogin(){const A=firebase.auth();
  await new Promise(r=>{const un=A.onAuthStateChanged(()=>{un();r()})});
- try{const rr=await A.getRedirectResult();if(rr&&rr.user&&!rr.user.isAnonymous)return rr}catch(e){if(e&&e.code=='auth/credential-already-in-use'&&e.credential){try{return await A.signInWithCredential(e.credential)}catch(_){}}}
+ try{const rr=await A.getRedirectResult();if(rr&&rr.user&&!rr.user.isAnonymous){try{await rr.user.getIdToken(true)}catch(_){}return rr}}catch(e){if(e&&e.code=='auth/credential-already-in-use'&&e.credential){try{return await A.signInWithCredential(e.credential)}catch(_){}}}
  const u0=A.currentUser;if(u0&&!u0.isAnonymous)return {user:u0};
  return await new Promise(res=>{
   const P=new firebase.auth.GoogleAuthProvider();P.setCustomParameters({prompt:'select_account'});
@@ -16258,9 +16258,9 @@ async function mgLogin(){const A=firebase.auth();
     if(/popup-closed-by-user|cancelled-popup-request/.test(c))throw {msg:'Connexion annulée. Appuie sur le bouton pour réessayer.'};
     if(/network-request-failed/.test(c))throw {msg:'Pas de connexion internet. Vérifie ton réseau et réessaie.'};
     /* Google pas encore activé dans Firebase (réglage du propriétaire) : on ne bloque personne, on garde l'ancien compte anonyme */
-    if(/operation-not-allowed|unauthorized-domain|admin-restricted|invalid-api-key|configuration-not-found/.test(c)){try{erSend&&erSend('cloud','connexion Google indisponible : '+c)}catch(_){}lg96Close();res(u?{user:u}:await A.signInAnonymously());return}
+    if(/operation-not-allowed|unauthorized-domain|admin-restricted|invalid-api-key|configuration-not-found/.test(c)){try{erSend&&erSend('cloud','connexion Google indisponible : '+c)}catch(_){}throw {msg:'La connexion Google est momentanément indisponible. Réessaie dans quelques minutes.'}}
     throw {msg:'La connexion n’a pas marché ('+(c.replace('auth/','')||'erreur')+'). Réessaie.'}}
-   lg96Close();res(cr)})})}
+   try{await A.currentUser.getIdToken(true)}catch(_){}lg96Close();res(cr)})})}
 /* aperçu sur le serveur test (pas de Firebase) : l'écran s'affiche, le bouton connecte un faux compte */
 setTimeout(()=>{try{if((window.MUGEN_TEST||localStorage.getItem('mugenMock')=='1')&&!S.lg96m)lg96Show(async()=>{await new Promise(r=>setTimeout(r,700));S.lg96m=1;save();lg96Close();toast('Connecté (aperçu du serveur test)')})}catch(e){}},900);
 function lg96Out(){try{if(!confirm('Se déconnecter de ton compte Google ? Ta progression reste sur ton compte.'))return;firebase.auth().signOut().then(()=>location.reload())}catch(e){location.reload()}}
@@ -16957,7 +16957,7 @@ function akCine(cards){return new Promise(res=>{const o=document.createElement('
 /* ================= MUGEN 27 · L'AUBE · partie A (2) : nouveau design (v26.9) =================
    - le Pack Aube s'ouvre avec la nouvelle ouverture 3D des boosters (celle de tous les packs du jeu), les cartes sont celles du jeu (card) ;
    - les objets de l'Aube (anneaux, yeux, coffres, sacs, spores, Pack Aube) ont leur modèle 3D (vignettes rendues dans media/aube-3f9a2c71/obj/). */
-const AKM='assets-2f7955367c/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
+const AKM='assets-5c7cf977c0/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
 const akObjImg=(id,cls='')=>`<img class="ak3o ${cls}" src="${akObj(id)}" alt="" draggable="false" loading="lazy" data-oerror="this.style.visibility='hidden'">`;
 /* anneaux de l'Akatsuki : vignette 3D partout où le jeu dessine l'icône d'un objet */
 {const _gi=gIco;gIco=function(g){try{if(g&&/^akr\d$/.test(g.id))return akObjImg(g.id,'o3i'+(typeof gLv=='function'&&!gLv(g)?' o3lk':''))}catch(e){}return _gi.apply(this,arguments)}}
@@ -17894,7 +17894,7 @@ async g_nuage(X){const Q=await k2Q(X,true),T=Q.T,{ax,ay,tx,ty,ux,uy,mv,rec,shake
    (même moteur que les ultimes des cartes rares, recul de caméra en portrait). Le Jutsu de l'Aube y joue sa scène de groupe :
    chaque membre fait sa part, puis l'attaque combinée. La logique (dégâts, coût, effets) ne change pas : seules les images changent.
    Si le moteur 3D ne répond pas, les anciennes animations restent en secours. */
-const AK3_SRC='assets-2f7955367c/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
+const AK3_SRC='assets-5c7cf977c0/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
 const AK3={f:null,rd:0,w:null};
 addEventListener('message',e=>{const m=e.data||{};if(!AK3.f||e.source!==AK3.f.contentWindow)return;if(m.t=='aube-ready')AK3.rd=1;if(m.t=='aube-done'&&AK3.w){const w=AK3.w;AK3.w=null;w(m.ok?1:0)}});
 function ak3Mount(){if(AK3.f&&document.body.contains(AK3.f))return;const f=document.createElement('iframe');f.id='ak3f';f.setAttribute('aria-hidden','true');f.tabIndex=-1;f.src=AK3_SRC;AK3.rd=0;AK3.f=f;document.body.append(f)}
@@ -18239,7 +18239,7 @@ try{[['akw','Sceller {n} Bijū (La Traque des Bijū)',1,'暁',null,5]].forEach(x
 /* ================= MUGEN 27 · L'AUBE · partie B (3) : « La Traque des Bijū » dans le nouveau design (v26.9) =================
    Même contenu et même déroulé que les parties B (1) et (2) : seules les pages changent.
    Le Repaire (page du mode) → la fiche de la cible (Alerte, renforts, contrat de Kakuzu) → le lobby (.lb3) → le combat dans l'arène 3D
-   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-2f7955367c/aube-3f9a2c71/obj/). */
+   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-5c7cf977c0/aube-3f9a2c71/obj/). */
 const AKX_BG=id=>AKM+'bg/'+id+'.jpg';
 const akxE=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const akxJ=H=>(H.jid&&M[H.jid]&&imgOf(M[H.jid]))||AKT_IMG+H.ji,akxB=H=>AKT_IMG+H.bi;
@@ -19522,7 +19522,7 @@ packs(){S.fb=Math.max(S.fb||0,10);try{asS().pk=(asS().pk||0)+5}catch(e){}},
 camp(){S.cp=Math.max(S.cp||0,250)},
 async guild(){try{if(!GLD||!GLD.id)await gJoin('bot3')}catch(e){}try{GLD.lvl=10}catch(e){}},
 a3(){const off=!window.__A3OFF;window.__A3OFF=off;try{localStorage.setItem('a3off',off?'1':'0')}catch(e){}toast(off?'3D des combats coupée':'3D des combats activée');return 'x'},
-pportails(){try{V3OPEN('assets-2f7955367c/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
+pportails(){try{V3OPEN('assets-5c7cf977c0/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
 navA(){V3NAV.set('a');return 'x'},navB(){V3NAV.set('b');return 'x'},navC(){V3NAV.set('c');return 'x'},
 lvl(){S.xp=Math.max(S.xp||0,400000)},
 reset(){if(!confirm('Effacer la sauvegarde TEST ?'))return 'x';localStorage.removeItem('animecards');location.reload();return 'x'}};
