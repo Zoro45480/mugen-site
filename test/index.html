@@ -11442,7 +11442,7 @@ try{new MutationObserver(ms=>{if(mnEl(ms)&&document.querySelector('.t3w:not([dat
 
 /* ================= v25.9.4 · débannissement avec remise à zéro (UHAFY5, APQMEB) ================= */
 const RSTC=['UHAFY5','APQMEB','4RSX8D'],RSTEND=Date.parse('2026-11-30T00:00:00+01:00');
-{const w=S.chw;if(w=='rst'&&localStorage.getItem('mugenDepartP')){localStorage.removeItem('mugenDepartP');delete S.chw;try{delete S.gid}catch(e){}save();setTimeout(()=>{try{modal(`<div class="xm13" style="--qa:#ffd36a;--qb:#ff3d6e"><h2>Nouveau départ</h2><p>MUGEN repart de zéro pour tout le monde : nouveau design, combats en 3D, guildes… et une nouvelle partie pour chacun. Tu gardes ton pseudo.</p><p>Connecte-toi avec Google pour que ta nouvelle progression te suive sur tous tes appareils.</p></div>`)}catch(e){}},1200)}else if(w=='rst'){delete S.chw;save();setTimeout(()=>{try{modal(`<div class="xm13" style="--qa:#4dc3ff;--qb:#7a2bff"><h2>Compte débanni</h2><p>Ton compte n’est plus banni : tu peux de nouveau jouer en ligne. En échange, ta partie repart de zéro. Tu gardes ton pseudo.</p><p>L’anti-triche est actif : toute nouvelle triche sera détectée et le compte sera banni définitivement.</p></div>`)}catch(e){}},1200)}}
+{const w=S.chw;if(w=='rst'&&localStorage.getItem('mugenDepartP')){localStorage.removeItem('mugenDepartP');delete S.chw;if(!S.gif)S.gif={};['gid','name','av'].forEach(k=>{try{delete S[k]}catch(e){}});save();setTimeout(()=>{try{modal(`<div class="xm13" style="--qa:#ffd36a;--qb:#ff3d6e"><h2>Nouveau départ</h2><p>MUGEN repart de zéro pour tout le monde : nouveau design, combats en 3D, guildes… et une nouvelle partie pour chacun. Choisis un nouveau pseudo pour ta nouvelle partie.</p><p>Connecte-toi avec Google pour que ta nouvelle progression te suive sur tous tes appareils.</p></div>`)}catch(e){}},1200)}else if(w=='rst'){delete S.chw;save();setTimeout(()=>{try{modal(`<div class="xm13" style="--qa:#4dc3ff;--qb:#7a2bff"><h2>Compte débanni</h2><p>Ton compte n’est plus banni : tu peux de nouveau jouer en ligne. En échange, ta partie repart de zéro. Tu gardes ton pseudo.</p><p>L’anti-triche est actif : toute nouvelle triche sera détectée et le compte sera banni définitivement.</p></div>`)}catch(e){}},1200)}}
 (function rstChk(){try{if(Date.now()>RSTEND)return;if(typeof NET=='undefined'||!NET.uid)return setTimeout(rstChk,1500);const c=codeOf(NET.uid);if(!RSTC.includes(c))return;const k='mugenRst_'+c;if(localStorage.getItem(k))return;localStorage.setItem(k,String(Date.now()));localStorage.removeItem('mugenBan');__G.fire('rst')}catch(e){}})();
 
 /* ================= v25.10 · Loto hebdo =================
@@ -13738,7 +13738,7 @@ S.ngi=S.ngi||{};
 /* image de la carte = image fixe du GIF choisi (toujours le bon perso) */
 function nwImgFix(){try{D.forEach(c=>{if(c.r<8)return;const ids=nwGifIds(c);if(!ids.length)return;const id=ids[(S.ngi[c.id]||0)%ids.length];if(/^https?:/.test(id))return;const u=`https://media.giphy.com/media/${id}/giphy_s.gif`;if(c.img!=u){c.img=u;c.base=undefined;if(S.mim)delete S.mim[c.id];if(S.img&&S.img[c.id]&&!String(S.img[c.id]).startsWith('data:'))delete S.img[c.id]}})}catch(e){}}
 nwImgFix();
-function nwGifIds(c){const L=((c&&NWG[c.n])||[]).slice();if(c&&S.gif[c.id]&&!L.includes(S.gif[c.id]))L.push(S.gif[c.id]);return L}
+function nwGifIds(c){const L=((c&&NWG[c.n])||[]).slice();if(c&&S.gif&&S.gif[c.id]&&!L.includes(S.gif[c.id]))L.push(S.gif[c.id]);return L}
 function nwGifUL(c){const ids=nwGifIds(c);if(ids.length){const i=(S.ngi[c.id]||0)%ids.length,id=ids[i];return /^https?:/.test(id)?[id]:GIFU(id)}return []}
 /* recherche automatique (si pas de GIF choisi) : on cherche le perso en train de se battre */
 {const _f=findGif;findGif=async function(c){if(c&&c.r>=8&&!S.gif[c.id]&&!(S.gbad[c.id]&&Date.now()-S.gbad[c.id]<864e5)){S.gbad[c.id]=Date.now();const q=encodeURIComponent(c.n+' '+c.s+' fight');try{const r=await fetch('https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&limit=8&rating=g&lang=fr&q='+q);const j=await r.json();const g=(j.data||[]).map(x=>x.images&&(x.images.fixed_height||x.images.original)).find(x=>x&&x.url);if(g){S.gif[c.id]=g.url;delete S.gbad[c.id];save();return true}}catch(e){}try{const r=await fetch('https://g.tenor.com/v1/search?key=LIVDSRZULELA&limit=8&contentfilter=high&media_filter=minimal&q='+q);const j=await r.json();const g=(j.results||[]).map(x=>x.media&&x.media[0]&&(x.media[0].gif||x.media[0].tinygif)).find(x=>x&&x.url);if(g){S.gif[c.id]=g.url;delete S.gbad[c.id];save();return true}}catch(e){}return false}return _f.apply(this,arguments)}}
@@ -15441,8 +15441,11 @@ function lg96Out(){try{if(!confirm('Se déconnecter de ton compte Google ? Ta pr
 {const _p96=pd95Add;pd95Add=function(){const r=_p96.apply(this,arguments);try{const n=document.querySelector('#v>.pd95 .pd95n');const u=typeof firebase!='undefined'&&firebase.auth&&firebase.apps.length&&firebase.auth().currentUser;if(n&&u&&!u.isAnonymous&&!n.querySelector('[data-lg96o]'))n.insertAdjacentHTML('beforeend','<button data-lg96o data-oclick="lg96Out()">Se déconnecter</button>')}catch(e){}return r}}
 
 /* nouveau départ · v26.9.2 : tout le monde repart de zéro avec la connexion Google (demandé par le propriétaire le 12/11/2026).
-   Une copie de la partie d'avant est gardée sur l'appareil (localStorage « animecards_av_depart »). Les bannis restent bannis. */
+   Une copie de la partie d'avant est gardée sur l'appareil (localStorage « animecards_av_depart »). Les bannis restent bannis. Pseudo, guilde et avatar sont effacés aussi (demande du propriétaire). */
 const DEP_V='26.9.2';
+/* guildes, ventes HDV, offres, demandes et messages d'avant le nouveau départ : masqués (le propriétaire peut aussi les supprimer dans Firestore) */
+const DEP_T=1794474295732,DEP_C=['guilds','market','offers','wants','inbox'];
+const depT=x=>+((x&&(x.t!=null?x.t:(x.data&&x.data.t)))||0);
 const depN=v=>String(v||'0').split('.').slice(0,4).reduce((a,x,i)=>a+(parseInt(x,10)||0)*Math.pow(1000,3-i),0);
 (function(){try{const k='mugenDepart1';if(localStorage.getItem(k))return;
  const prog=(S.xp||0)>0||Object.keys(S.inv||{}).length>0||(S.w||0)>0||(S.pk||0)>0;
@@ -15452,7 +15455,8 @@ const depN=v=>String(v||'0').split('.').slice(0,4).reduce((a,x,i)=>a+(parseInt(x
 /* sauvegarde en ligne d'avant le nouveau départ : ignorée (la nouvelle partie la remplace) */
 {const _cp=csPull;csPull=async function(){try{if(csOn()){const d=await firebase.firestore().collection('saves').doc(NET.uid).get({source:'server'});const r=d.exists?d.data():null;if(r&&r.j&&depN(r.v)<depN(DEP_V)){CS.last=0;await csPush(1);return}}}catch(e){console.warn('départ cloud',e)}return _cp.apply(this,arguments)}}
 /* classements / profils publics : seulement les joueurs du nouveau départ */
-{const _ni=netInit;netInit=async function(){const r=await _ni.apply(this,arguments);try{if(NET.db&&!NET.db.__dep){const q0=NET.db.q.bind(NET.db);NET.db.q=async function(c,o){const L=await q0(c,o);try{if(c=='players'&&Array.isArray(L))return L.filter(x=>!x||depN((x.data&&x.data.v)||x.v)>=depN(DEP_V))}catch(e){}return L};NET.db.__dep=1}}catch(e){}return r}}
+{const _ni=netInit;netInit=async function(){const r=await _ni.apply(this,arguments);try{if(NET.db&&!NET.db.__dep){const q0=NET.db.q.bind(NET.db);NET.db.q=async function(c,o){const L=await q0(c,o);try{if(Array.isArray(L)){if(c=='players')return L.filter(x=>!x||depN((x.data&&x.data.v)||x.v)>=depN(DEP_V));if(DEP_C.includes(c))return L.filter(x=>depT(x)>=DEP_T)}}catch(e){}return L};
+ const g0=NET.db.get.bind(NET.db);NET.db.get=async function(c,id){const d=await g0(c,id);try{if(d&&DEP_C.includes(c)&&depT(d)<DEP_T)return null}catch(e){}return d};NET.db.__dep=1}}catch(e){}return r}}
 
 /* equil2 · v26.9.2 : derniers réglages de l'audit d'équilibrage (avant le nouveau départ) */
 /* Booster Mythique : plus de Divins (environ 3 % par carte au lieu de 1 %, soit environ 100 000 pièces par Divin au lieu de 288 000) */
@@ -16628,7 +16632,7 @@ packs(){S.fb=Math.max(S.fb||0,10);try{asS().pk=(asS().pk||0)+5}catch(e){}},
 camp(){S.cp=Math.max(S.cp||0,250)},
 async guild(){try{if(!GLD||!GLD.id)await gJoin('bot3')}catch(e){}try{GLD.lvl=10}catch(e){}},
 a3(){const off=!window.__A3OFF;window.__A3OFF=off;try{localStorage.setItem('a3off',off?'1':'0')}catch(e){}toast(off?'3D des combats coupée':'3D des combats activée');return 'x'},
-pportails(){try{V3OPEN('assets-560e6d185f/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
+pportails(){try{V3OPEN('assets-aee33027c6/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
 navA(){V3NAV.set('a');return 'x'},navB(){V3NAV.set('b');return 'x'},navC(){V3NAV.set('c');return 'x'},
 lvl(){S.xp=Math.max(S.xp||0,400000)},
 reset(){if(!confirm('Effacer la sauvegarde TEST ?'))return 'x';localStorage.removeItem('animecards');location.reload();return 'x'}};
