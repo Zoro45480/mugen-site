@@ -4,7 +4,7 @@
 SP.getItem=function(k){return g.call(this,P+k)};SP.setItem=function(k,v){return st.call(this,P+k,v)};SP.removeItem=function(k){return rm.call(this,P+k)};
 SP.clear=function(){const L=[];for(let i=0;i<this.length;i++){const k=ky.call(this,i);if(k&&k.startsWith(P))L.push(k)}L.forEach(k=>rm.call(this,k))};
 try{const o=indexedDB.open.bind(indexedDB);indexedDB.open=function(n,v){return v===undefined?o(P+n):o(P+n,v)};const d=indexedDB.deleteDatabase.bind(indexedDB);indexedDB.deleteDatabase=n=>d(P+n)}catch(e){}
-window.MUGEN_TEST=1})();</script><script>window.O3IDS=["al0", "al1", "al2", "ax1", "ax2", "ax3", "ax4", "ax5", "ax6", "bh0", "bh1", "bh2", "d0", "d1", "db1", "db2", "db3", "db4", "db5", "dg1", "dg2", "dg3", "dg4", "dx1", "dx2", "dx3", "dx4", "dx5", "dx6", "ev0", "ev1", "ev2", "ev3", "ev4", "ev5", "gd1", "gd10", "gd11", "gd12", "gd13", "gd14", "gd15", "gd16", "gd17", "gd18", "gd19", "gd2", "gd20", "gd3", "gd4", "gd5", "gd6", "gd7", "gd8", "gd9", "px1", "px2", "px3", "px4", "px5", "px6", "q0", "q1", "q2", "q3", "q4", "q5", "r0", "r1", "r2", "r3", "r4", "r5", "rd0", "rd1", "rd2", "res-0", "res-1", "res-10", "res-11", "res-2", "res-3", "res-4", "res-5", "res-6", "res-7", "res-8", "res-9", "rs0", "rs1", "rs2", "t10", "t100", "t15", "t20", "t25", "t30", "t35", "t40", "t45", "t5", "t50", "t55", "t60", "t65", "t70", "t75", "t80", "t85", "t90", "t95", "wa0", "wa1", "wa10", "wa11", "wa12", "wa13", "wa14", "wa15", "wa16", "wa17", "wa18", "wa19", "wa2", "wa20", "wa21", "wa22", "wa23", "wa24", "wa25", "wa26", "wa27", "wa28", "wa29", "wa3", "wa30", "wa31", "wa32", "wa33", "wa34", "wa35", "wa36", "wa37", "wa38", "wa39", "wa4", "wa40", "wa41", "wa42", "wa43", "wa44", "wa45", "wa46", "wa47", "wa48", "wa49", "wa5", "wa50", "wa6", "wa7", "wa8", "wa9", "wc0", "wc1", "wc10", "wc11", "wc12", "wc13", "wc14", "wc15", "wc16", "wc17", "wc18", "wc19", "wc2", "wc20", "wc21", "wc22", "wc23", "wc24", "wc25", "wc26", "wc27", "wc28", "wc29", "wc3", "wc30", "wc31", "wc32", "wc33", "wc34", "wc35", "wc36", "wc37", "wc38", "wc39", "wc4", "wc40", "wc41", "wc42", "wc43", "wc44", "wc45", "wc46", "wc47", "wc48", "wc49", "wc5", "wc50", "wc6", "wc7", "wc8", "wc9", "x1", "x10", "x11", "x12", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9"]</script><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com/firebasejs/ https://www.gstatic.com/recaptcha/ https://www.google.com/recaptcha/ https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data: blob:; media-src 'self' https: data: blob:; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com https://*.firebaseapp.com https://www.google.com https://www.gstatic.com https://api.jikan.moe https://graphql.anilist.co https://kitsu.io https://api.giphy.com https://g.tenor.com data: blob:; frame-src 'self' https://www.google.com https://recaptcha.google.com https://*.firebaseapp.com; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+window.MUGEN_TEST=1})();</script><script>window.O3IDS=["al0", "al1", "al2", "ax1", "ax2", "ax3", "ax4", "ax5", "ax6", "bh0", "bh1", "bh2", "d0", "d1", "db1", "db2", "db3", "db4", "db5", "dg1", "dg2", "dg3", "dg4", "dx1", "dx2", "dx3", "dx4", "dx5", "dx6", "ev0", "ev1", "ev2", "ev3", "ev4", "ev5", "gd1", "gd10", "gd11", "gd12", "gd13", "gd14", "gd15", "gd16", "gd17", "gd18", "gd19", "gd2", "gd20", "gd3", "gd4", "gd5", "gd6", "gd7", "gd8", "gd9", "px1", "px2", "px3", "px4", "px5", "px6", "q0", "q1", "q2", "q3", "q4", "q5", "r0", "r1", "r2", "r3", "r4", "r5", "rd0", "rd1", "rd2", "res-0", "res-1", "res-10", "res-11", "res-2", "res-3", "res-4", "res-5", "res-6", "res-7", "res-8", "res-9", "rs0", "rs1", "rs2", "t10", "t100", "t15", "t20", "t25", "t30", "t35", "t40", "t45", "t5", "t50", "t55", "t60", "t65", "t70", "t75", "t80", "t85", "t90", "t95", "wa0", "wa1", "wa10", "wa11", "wa12", "wa13", "wa14", "wa15", "wa16", "wa17", "wa18", "wa19", "wa2", "wa20", "wa21", "wa22", "wa23", "wa24", "wa25", "wa26", "wa27", "wa28", "wa29", "wa3", "wa30", "wa31", "wa32", "wa33", "wa34", "wa35", "wa36", "wa37", "wa38", "wa39", "wa4", "wa40", "wa41", "wa42", "wa43", "wa44", "wa45", "wa46", "wa47", "wa48", "wa49", "wa5", "wa50", "wa6", "wa7", "wa8", "wa9", "wc0", "wc1", "wc10", "wc11", "wc12", "wc13", "wc14", "wc15", "wc16", "wc17", "wc18", "wc19", "wc2", "wc20", "wc21", "wc22", "wc23", "wc24", "wc25", "wc26", "wc27", "wc28", "wc29", "wc3", "wc30", "wc31", "wc32", "wc33", "wc34", "wc35", "wc36", "wc37", "wc38", "wc39", "wc4", "wc40", "wc41", "wc42", "wc43", "wc44", "wc45", "wc46", "wc47", "wc48", "wc49", "wc5", "wc50", "wc6", "wc7", "wc8", "wc9", "x1", "x10", "x11", "x12", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9"]</script><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com/firebasejs/ https://www.gstatic.com/recaptcha/ https://www.google.com/recaptcha/ https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data: blob:; media-src 'self' https: data: blob:; connect-src 'self' https://discord.mugencard.com https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com https://*.firebaseapp.com https://www.google.com https://www.gstatic.com https://api.jikan.moe https://graphql.anilist.co https://kitsu.io https://api.giphy.com https://g.tenor.com data: blob:; frame-src 'self' https://www.google.com https://recaptcha.google.com https://*.firebaseapp.com; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
 <script>window.__mcfgErr="";addEventListener("error",function(e){if(!window.__mcfgDone&&e&&e.message)window.__mcfgErr=e.message+(e.lineno?" (ligne "+e.lineno+")":"")});</script>
 <script>
 /* =====================================================================
@@ -6182,18 +6182,18 @@ html,body,button,a,[data-oclick],#bt,#bt *{touch-action:manipulation}
 .xp4-path .ds-th:has(>.xth img)>.ds-ph{display:none!important}
 .xp4-path .ds-th>.or-th0,.xp4-path .ds-th>i{display:grid!important;place-items:center}
 
+/* corr3 · tutoriel sur ordinateur : les cartes et les images étaient minuscules au milieu de l'écran */
+@media (min-width:900px) and (min-height:680px){#tu1 .tu-st>*{zoom:1.75}
+#tu1 .tu-tx{zoom:1.3}}
+@media (min-width:1500px) and (min-height:900px){#tu1 .tu-st>*{zoom:2.1}
+#tu1 .tu-tx{zoom:1.45}}
+
 /* discord-lien */
 .pd95 .pd95d{display:flex;flex-direction:column;align-items:center;gap:4px;width:max-content;max-width:100%;margin:0 auto 22px;padding:14px 26px;border-radius:16px;background:linear-gradient(135deg,#5865f2,#7983f5);color:#fff;text-decoration:none;box-shadow:0 10px 30px #5865f255;transition:transform .15s}
 .pd95 .pd95d:hover{transform:translateY(-2px)}
 .pd95 .pd95d b{font:800 18px Inter,sans-serif}
 .pd95 .pd95d small{font:500 13px Inter,sans-serif!important;color:#ffffffd9!important;text-align:center}
 .pd95 .pd95d b{color:#fff!important}
-
-/* corr3 · tutoriel sur ordinateur : les cartes et les images étaient minuscules au milieu de l'écran */
-@media (min-width:900px) and (min-height:680px){#tu1 .tu-st>*{zoom:1.75}
-#tu1 .tu-tx{zoom:1.3}}
-@media (min-width:1500px) and (min-height:900px){#tu1 .tu-st>*{zoom:2.1}
-#tu1 .tu-tx{zoom:1.45}}
 
 /* ===== MUGEN 27 · L'AUBE · partie A : rareté AUBE 暁 (cartes Akatsuki, cinématiques, Pack Aube 3D) ===== */
 :root{--ak-tm:linear-gradient(135deg,#140003,#ff4a55 15%,#4a0006 30%,#ffc2c6 46%,#7a000c 60%,#e0262f 78%,#ffd6d9 88%,#140003);
@@ -11140,9 +11140,11 @@ const CSRESET=[];const CS={last:0,busy:0,hold:0,SKIP:['img','imgs','cov','erq','
 function csBody(){const o={};for(const k in S){if(CS.SKIP.includes(k))continue;o[k]=S[k]}return JSON.stringify(o)}
 function csStats(){const I=v=>Math.max(0,Math.round(+v||0));return{n:Object.keys(S.inv||{}).length,c:I(S.coins),e:I(S.ec),f:I(S.mf),x:I(S.xp),w:I(S.w),rp:I(S.rp),tw:Math.min(TMAX,I(S.tw)),sv:I(S.svb)}}
 const csOn=()=>!!NET.uid&&(NET.on?NET.mode=='firebase':!!CS.boot)&&typeof firebase!='undefined'&&!!firebase.firestore&&!!firebase.apps.length&&!(typeof isBanU=='function'&&isBanU(NET.uid));
-async function csPush(force){if(!csOn()||__DT.open||CS.hold)return;const now=Date.now();if(now-CS.last<(force?9000:20000))return;if(CS.busy)return;CS.busy=1;
- try{const j=csBody();if(j.length>940000)throw new Error('trop gros');const st=csStats();S.cst=now;if(S.chx)S.chp=S.chx;const ref=firebase.firestore().collection('saves').doc(NET.uid);
-  await ref.set({j,...st,t:firebase.firestore.FieldValue.serverTimestamp(),lt:now,v:VER},{merge:false});CS.last=now;CS.err='';CS.lst=st}
+/* la partie sans ses compteurs techniques (horloges, compteurs de sauvegarde) : sert à voir si quelque chose a vraiment changé */
+function csCle(j){try{const o=JSON.parse(j);['cst','fbt','csn','csw','clk'].forEach(k=>delete o[k]);return JSON.stringify(o)}catch(e){return j}}
+async function csPush(force){if(!csOn()||__DT.open||CS.hold)return;const now=Date.now();if(now-CS.last<(force?9000:60000))return;if(CS.busy)return;CS.busy=1;
+ try{const j=csBody();if(j.length>940000)throw new Error('trop gros');const ck=csCle(j);if(ck===CS.lk&&now-CS.last<600000){CS.busy=0;return}const st=csStats();S.cst=now;if(S.chx)S.chp=S.chx;const ref=firebase.firestore().collection('saves').doc(NET.uid);
+  await ref.set({j,...st,t:firebase.firestore.FieldValue.serverTimestamp(),lt:now,v:VER},{merge:false});CS.last=now;CS.err='';CS.lst=st;CS.lk=ck}
  catch(e){CS.err=String(e&&(e.code||e.message)||e);CS.last=Date.now()-8000;console.warn('cloud',e);if(/permission/i.test(CS.err)){CS.busy=0;setTimeout(()=>csPull(),400);return}}CS.busy=0}
 function csApply(j){try{const o=JSON.parse(j);CS.SKIP.forEach(k=>{if(S[k]!=null)o[k]=S[k]});Object.keys(S).forEach(k=>{if(!(k in o))delete S[k]});Object.assign(S,o);save();return true}catch(e){return false}}
 async function csPull(){if(!csOn())return;try{const ref=firebase.firestore().collection('saves').doc(NET.uid);const d=await ref.get({source:'server'});const r=d.exists?d.data():null;
@@ -16568,15 +16570,30 @@ const FCAP=2500;
 const HLCAP=300;
 {const _h=hlA;hlA=function(k){const c0=S.coins;const r=_h.apply(this,arguments);try{const got=S.coins-c0;if(got>0){const d=new Date().toDateString();if(!S.hlc||S.hlc.d!=d)S.hlc={d,c:0};const ok=Math.max(0,Math.min(got,HLCAP-S.hlc.c));S.hlc.c+=ok;if(ok<got){S.coins-=got-ok;save();toast(ok?'Bonne réponse ! +'+ok+' pièces (limite de '+HLCAP+' pièces par jour atteinte)':'Bonne réponse ! Limite de '+HLCAP+' pièces par jour atteinte : la série continue, mais sans pièces jusqu’à demain.')}}}catch(e){}return r}}
 
-/* discord-lien · bouton « Rejoins le Discord » en bas de chaque page (demande du propriétaire, 12/11) */
-const DISCORD_URL='https://discord.gg/4yme5EVr2m';
-{const _pdd=pd95Add;pd95Add=function(){const r=_pdd.apply(this,arguments);try{const f=document.querySelector('#v>.pd95');if(f&&!f.querySelector('.pd95d'))f.insertAdjacentHTML('afterbegin',`<a class="pd95d" href="${DISCORD_URL}" target="_blank" rel="noopener noreferrer"><b>💬 Rejoins le Discord MUGEN</b><small>Annonces, mises à jour, guildes, échanges et entraide</small></a>`)}catch(e){}return r}}
-
 /* corr3 · pseudo unique : on refuse un pseudo déjà pris par un autre joueur (demande du propriétaire, 13/11) */
 // shortcut: on compare le pseudo tel quel + ses variantes de majuscules dans les profils en ligne ; deux joueurs qui valident le même pseudo à la même seconde peuvent passer. Passer à une collection « names » réservée par les règles Firestore si ça arrive.
 async function nameFree(t){try{if(!NET.on||!NET.db||!NET.uid)return true;const vs=[...new Set([t,t.toLowerCase(),t.toUpperCase(),t[0].toUpperCase()+t.slice(1).toLowerCase()])];
  const r=await Promise.race([Promise.all(vs.map(v=>NET.db.collection('players').where('name','==',v).limit(3).get())),new Promise(z=>setTimeout(()=>z(null),4000))]);
  return !r||!r.some(q=>q.docs.some(d=>d.id!=NET.uid))}catch(x){return true}}
+
+/* discord-lien · bouton « Rejoins le Discord » en bas de chaque page (demande du propriétaire, 12/11) */
+const DISCORD_URL='https://discord.gg/4yme5EVr2m';
+{const _pdd=pd95Add;pd95Add=function(){const r=_pdd.apply(this,arguments);try{const f=document.querySelector('#v>.pd95');if(f&&!f.querySelector('.pd95d'))f.insertAdjacentHTML('afterbegin',`<a class="pd95d" href="${DISCORD_URL}" target="_blank" rel="noopener noreferrer"><b>💬 Rejoins le Discord MUGEN</b><small>Annonces, mises à jour, guildes, échanges et entraide</small></a>`)}catch(e){}return r}}
+
+/* discord-compte · relier son compte Discord au jeu (Réglages) — le lien est vérifié et gardé par le petit serveur discord.mugencard.com */
+const DCW='https://discord.mugencard.com';
+const dcTxt=s=>String(s||'').replace(/[<>&"'`]/g,'').slice(0,40);
+async function dcApi(p){const u=typeof firebase!='undefined'&&firebase.apps.length&&firebase.auth().currentUser;if(!u||u.isAnonymous)throw new Error('connexion');
+ const r=await fetch(DCW+p,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jeton:await u.getIdToken()})});return r.json()}
+async function dcLier(){try{toast('Ouverture de Discord…');const j=await dcApi('/lier');if(j&&/^https:\/\/discord\.com\//.test(j.url||''))location.href=j.url;else toast('Discord : impossible pour le moment. Réessaie plus tard.')}catch(e){toast(e.message=='connexion'?'Connecte-toi d’abord avec Google.':'Discord : impossible pour le moment. Réessaie plus tard.')}}
+async function dcDelier(){try{await dcApi('/delier');S.dc=null;save();toast('Discord délié.');if(view=='cfg')cfg()}catch(e){toast('Discord : impossible pour le moment. Réessaie plus tard.')}}
+/* retour de Discord : mugencard.com/?discord=ok&nom=… */
+(function(){try{const q=new URLSearchParams(location.search),d=q.get('discord');if(!d)return;history.replaceState(null,'',location.pathname);
+ if(d=='ok'){S.dc={n:dcTxt(q.get('nom'))||'Discord'};save()}
+ setTimeout(()=>{try{toast(d=='ok'?'Discord relié : '+S.dc.n+' ✔ Tape /profil sur le serveur !':d=='annule'?'Liaison Discord annulée.':'Discord : la liaison a échoué. Réessaie.')}catch(e){}},2500)}catch(e){}})();
+/* au lancement : l'état réel vient du serveur (autre appareil, lien supprimé…) */
+setTimeout(async()=>{try{const j=await dcApi('/statut');if(j&&'lie' in j){const n=j.lie?dcTxt(j.nom):'';if(n!=((S.dc&&S.dc.n)||'')){S.dc=n?{n}:null;save()}}}catch(e){}},9000);
+{const _cd=cfg;cfg=function(){_cd.apply(this,arguments);try{$('v').insertAdjacentHTML('beforeend',`<div class="pn" style="margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><b>Discord</b><br><small style="color:var(--mu)">${S.dc?'Relié à <b>'+dcTxt(S.dc.n)+'</b>. Sur le serveur MUGEN, tape /profil pour montrer tes stats.':'Relie ton compte Discord pour recevoir le rôle ⚔️ Joueur et montrer tes stats avec /profil sur le serveur MUGEN.'}</small></div><button class="btn ${S.dc?'gh':''}" data-oclick="${S.dc?'dcDelier()':'dcLier()'}">${S.dc?'Délier':'Relier mon Discord'}</button></div>`)}catch(e){}}}
 
 /* ================= MUGEN 27 · L'AUBE · partie A : rareté AUBE 暁 (Akatsuki) — 11 cartes, kits, design, GIF, Pack Aube 3D ================= */
 /* ---------- 1. la rareté (entre Lame Écarlate et Ascendant pour le prix) ---------- */
@@ -16980,7 +16997,7 @@ function akCine(cards){return new Promise(res=>{const o=document.createElement('
 /* ================= MUGEN 27 · L'AUBE · partie A (2) : nouveau design (v26.9) =================
    - le Pack Aube s'ouvre avec la nouvelle ouverture 3D des boosters (celle de tous les packs du jeu), les cartes sont celles du jeu (card) ;
    - les objets de l'Aube (anneaux, yeux, coffres, sacs, spores, Pack Aube) ont leur modèle 3D (vignettes rendues dans media/aube-3f9a2c71/obj/). */
-const AKM='assets-7a27178bca/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
+const AKM='assets-32d146b1a2/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
 const akObjImg=(id,cls='')=>`<img class="ak3o ${cls}" src="${akObj(id)}" alt="" draggable="false" loading="lazy" data-oerror="this.style.visibility='hidden'">`;
 /* anneaux de l'Akatsuki : vignette 3D partout où le jeu dessine l'icône d'un objet */
 {const _gi=gIco;gIco=function(g){try{if(g&&/^akr\d$/.test(g.id))return akObjImg(g.id,'o3i'+(typeof gLv=='function'&&!gLv(g)?' o3lk':''))}catch(e){}return _gi.apply(this,arguments)}}
@@ -17917,7 +17934,7 @@ async g_nuage(X){const Q=await k2Q(X,true),T=Q.T,{ax,ay,tx,ty,ux,uy,mv,rec,shake
    (même moteur que les ultimes des cartes rares, recul de caméra en portrait). Le Jutsu de l'Aube y joue sa scène de groupe :
    chaque membre fait sa part, puis l'attaque combinée. La logique (dégâts, coût, effets) ne change pas : seules les images changent.
    Si le moteur 3D ne répond pas, les anciennes animations restent en secours. */
-const AK3_SRC='assets-7a27178bca/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
+const AK3_SRC='assets-32d146b1a2/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
 const AK3={f:null,rd:0,w:null};
 addEventListener('message',e=>{const m=e.data||{};if(!AK3.f||e.source!==AK3.f.contentWindow)return;if(m.t=='aube-ready')AK3.rd=1;if(m.t=='aube-done'&&AK3.w){const w=AK3.w;AK3.w=null;w(m.ok?1:0)}});
 function ak3Mount(){if(AK3.f&&document.body.contains(AK3.f))return;const f=document.createElement('iframe');f.id='ak3f';f.setAttribute('aria-hidden','true');f.tabIndex=-1;f.src=AK3_SRC;AK3.rd=0;AK3.f=f;document.body.append(f)}
@@ -18262,7 +18279,7 @@ try{[['akw','Sceller {n} Bijū (La Traque des Bijū)',1,'暁',null,5]].forEach(x
 /* ================= MUGEN 27 · L'AUBE · partie B (3) : « La Traque des Bijū » dans le nouveau design (v26.9) =================
    Même contenu et même déroulé que les parties B (1) et (2) : seules les pages changent.
    Le Repaire (page du mode) → la fiche de la cible (Alerte, renforts, contrat de Kakuzu) → le lobby (.lb3) → le combat dans l'arène 3D
-   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-7a27178bca/aube-3f9a2c71/obj/). */
+   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-32d146b1a2/aube-3f9a2c71/obj/). */
 const AKX_BG=id=>AKM+'bg/'+id+'.jpg';
 const akxE=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const akxJ=H=>(H.jid&&M[H.jid]&&imgOf(M[H.jid]))||AKT_IMG+H.ji,akxB=H=>AKT_IMG+H.bi;
@@ -19545,7 +19562,7 @@ packs(){S.fb=Math.max(S.fb||0,10);try{asS().pk=(asS().pk||0)+5}catch(e){}},
 camp(){S.cp=Math.max(S.cp||0,250)},
 async guild(){try{if(!GLD||!GLD.id)await gJoin('bot3')}catch(e){}try{GLD.lvl=10}catch(e){}},
 a3(){const off=!window.__A3OFF;window.__A3OFF=off;try{localStorage.setItem('a3off',off?'1':'0')}catch(e){}toast(off?'3D des combats coupée':'3D des combats activée');return 'x'},
-pportails(){try{V3OPEN('assets-7a27178bca/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
+pportails(){try{V3OPEN('assets-32d146b1a2/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
 navA(){V3NAV.set('a');return 'x'},navB(){V3NAV.set('b');return 'x'},navC(){V3NAV.set('c');return 'x'},
 lvl(){S.xp=Math.max(S.xp||0,400000)},
 reset(){if(!confirm('Effacer la sauvegarde TEST ?'))return 'x';localStorage.removeItem('animecards');location.reload();return 'x'}};
