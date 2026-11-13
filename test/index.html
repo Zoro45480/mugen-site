@@ -6189,6 +6189,12 @@ html,body,button,a,[data-oclick],#bt,#bt *{touch-action:manipulation}
 .pd95 .pd95d small{font:500 13px Inter,sans-serif!important;color:#ffffffd9!important;text-align:center}
 .pd95 .pd95d b{color:#fff!important}
 
+/* corr3 · tutoriel sur ordinateur : les cartes et les images étaient minuscules au milieu de l'écran */
+@media (min-width:900px) and (min-height:680px){#tu1 .tu-st>*{zoom:1.75}
+#tu1 .tu-tx{zoom:1.3}}
+@media (min-width:1500px) and (min-height:900px){#tu1 .tu-st>*{zoom:2.1}
+#tu1 .tu-tx{zoom:1.45}}
+
 /* ===== MUGEN 27 · L'AUBE · partie A : rareté AUBE 暁 (cartes Akatsuki, cinématiques, Pack Aube 3D) ===== */
 :root{--ak-tm:linear-gradient(135deg,#140003,#ff4a55 15%,#4a0006 30%,#ffc2c6 46%,#7a000c 60%,#e0262f 78%,#ffd6d9 88%,#140003);
  --ak-cl:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Cg fill='%23fff'%3E%3Ccircle cx='24' cy='36' r='15'/%3E%3Ccircle cx='42' cy='24' r='17'/%3E%3Ccircle cx='64' cy='20' r='18'/%3E%3Ccircle cx='86' cy='28' r='15'/%3E%3Ccircle cx='100' cy='38' r='11'/%3E%3Crect x='10' y='34' width='98' height='17' rx='8'/%3E%3C/g%3E%3Cg fill='%23c8102e'%3E%3Ccircle cx='24' cy='36' r='12'/%3E%3Ccircle cx='42' cy='24' r='14'/%3E%3Ccircle cx='64' cy='20' r='15'/%3E%3Ccircle cx='86' cy='28' r='12'/%3E%3Ccircle cx='100' cy='38' r='8'/%3E%3Crect x='13' y='37' width='92' height='11' rx='5'/%3E%3C/g%3E%3C/svg%3E");
@@ -12041,7 +12047,7 @@ function nameUI(after){document.querySelector('.nm9')?.remove();const cur=S.name
   let m='';if(t.length<3)m='3 caractères minimum';else if(!/[A-Za-zÀ-ÿ0-9]/.test(t))m='Mets au moins une lettre ou un chiffre';ok.disabled=!!m;e.textContent=m;o.classList.toggle('bad',!!m&&t.length>0);return !m};
  const sg=()=>{o.querySelector('.nm9-ch').innerHTML=nameSug().map(x=>`<button type="button">${nE(x)}</button>`).join('');o.querySelectorAll('.nm9-ch button').forEach(b=>b.onclick=()=>{inp.value=b.textContent;chk();inp.focus()})};sg();
  const close=()=>{o.classList.add('out');setTimeout(()=>o.remove(),200)};
- const save1=()=>{if(!chk())return;const t=clean(inp.value).trim();S.name=t;save();try{netSync(1)}catch(x){}try{prof()}catch(x){}try{toast('Pseudo changé : '+t)}catch(x){}try{sfx(880,.12,'triangle',.08)}catch(x){}close();try{if(view=='cfg')cfg();if(view=='friends')friendsView()}catch(x){}try{after&&after()}catch(x){}};
+ const save1=async()=>{if(!chk()||ok.disabled)return;const t=clean(inp.value).trim();ok.disabled=true;const libre=await nameFree(t);ok.disabled=false;if(!libre){e.textContent='Ce pseudo est déjà pris, choisis-en un autre';o.classList.add('bad');return}S.name=t;save();try{netSync(1)}catch(x){}try{prof()}catch(x){}try{toast('Pseudo changé : '+t)}catch(x){}try{sfx(880,.12,'triangle',.08)}catch(x){}close();try{if(view=='cfg')cfg();if(view=='friends')friendsView()}catch(x){}try{after&&after()}catch(x){}};
  inp.addEventListener('input',chk);inp.addEventListener('keydown',ev=>{if(ev.key=='Enter')save1();if(ev.key=='Escape')close()});
  ok.onclick=save1;o.querySelector('.nm9-cn').onclick=close;o.querySelector('.nm9-x').onclick=close;o.querySelector('.nm9-rf').onclick=sg;o.addEventListener('pointerdown',ev=>{if(ev.target===o)close()});
  chk();setTimeout(()=>{inp.focus();inp.select()},80)}
@@ -16566,6 +16572,12 @@ const HLCAP=300;
 const DISCORD_URL='https://discord.gg/4yme5EVr2m';
 {const _pdd=pd95Add;pd95Add=function(){const r=_pdd.apply(this,arguments);try{const f=document.querySelector('#v>.pd95');if(f&&!f.querySelector('.pd95d'))f.insertAdjacentHTML('afterbegin',`<a class="pd95d" href="${DISCORD_URL}" target="_blank" rel="noopener noreferrer"><b>💬 Rejoins le Discord MUGEN</b><small>Annonces, mises à jour, guildes, échanges et entraide</small></a>`)}catch(e){}return r}}
 
+/* corr3 · pseudo unique : on refuse un pseudo déjà pris par un autre joueur (demande du propriétaire, 13/11) */
+// shortcut: on compare le pseudo tel quel + ses variantes de majuscules dans les profils en ligne ; deux joueurs qui valident le même pseudo à la même seconde peuvent passer. Passer à une collection « names » réservée par les règles Firestore si ça arrive.
+async function nameFree(t){try{if(!NET.on||!NET.db||!NET.uid)return true;const vs=[...new Set([t,t.toLowerCase(),t.toUpperCase(),t[0].toUpperCase()+t.slice(1).toLowerCase()])];
+ const r=await Promise.race([Promise.all(vs.map(v=>NET.db.collection('players').where('name','==',v).limit(3).get())),new Promise(z=>setTimeout(()=>z(null),4000))]);
+ return !r||!r.some(q=>q.docs.some(d=>d.id!=NET.uid))}catch(x){return true}}
+
 /* ================= MUGEN 27 · L'AUBE · partie A : rareté AUBE 暁 (Akatsuki) — 11 cartes, kits, design, GIF, Pack Aube 3D ================= */
 /* ---------- 1. la rareté (entre Lame Écarlate et Ascendant pour le prix) ---------- */
 const AKR=R.length;R.push(['暁','Aube','#e0262f']);PRICE[AKR]=700;try{TCGK[AKR]='暁'}catch(e){}try{CXK[AKR]='暁'}catch(e){}
@@ -16968,7 +16980,7 @@ function akCine(cards){return new Promise(res=>{const o=document.createElement('
 /* ================= MUGEN 27 · L'AUBE · partie A (2) : nouveau design (v26.9) =================
    - le Pack Aube s'ouvre avec la nouvelle ouverture 3D des boosters (celle de tous les packs du jeu), les cartes sont celles du jeu (card) ;
    - les objets de l'Aube (anneaux, yeux, coffres, sacs, spores, Pack Aube) ont leur modèle 3D (vignettes rendues dans media/aube-3f9a2c71/obj/). */
-const AKM='assets-284d393371/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
+const AKM='assets-7a27178bca/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
 const akObjImg=(id,cls='')=>`<img class="ak3o ${cls}" src="${akObj(id)}" alt="" draggable="false" loading="lazy" data-oerror="this.style.visibility='hidden'">`;
 /* anneaux de l'Akatsuki : vignette 3D partout où le jeu dessine l'icône d'un objet */
 {const _gi=gIco;gIco=function(g){try{if(g&&/^akr\d$/.test(g.id))return akObjImg(g.id,'o3i'+(typeof gLv=='function'&&!gLv(g)?' o3lk':''))}catch(e){}return _gi.apply(this,arguments)}}
@@ -17905,7 +17917,7 @@ async g_nuage(X){const Q=await k2Q(X,true),T=Q.T,{ax,ay,tx,ty,ux,uy,mv,rec,shake
    (même moteur que les ultimes des cartes rares, recul de caméra en portrait). Le Jutsu de l'Aube y joue sa scène de groupe :
    chaque membre fait sa part, puis l'attaque combinée. La logique (dégâts, coût, effets) ne change pas : seules les images changent.
    Si le moteur 3D ne répond pas, les anciennes animations restent en secours. */
-const AK3_SRC='assets-284d393371/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
+const AK3_SRC='assets-7a27178bca/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
 const AK3={f:null,rd:0,w:null};
 addEventListener('message',e=>{const m=e.data||{};if(!AK3.f||e.source!==AK3.f.contentWindow)return;if(m.t=='aube-ready')AK3.rd=1;if(m.t=='aube-done'&&AK3.w){const w=AK3.w;AK3.w=null;w(m.ok?1:0)}});
 function ak3Mount(){if(AK3.f&&document.body.contains(AK3.f))return;const f=document.createElement('iframe');f.id='ak3f';f.setAttribute('aria-hidden','true');f.tabIndex=-1;f.src=AK3_SRC;AK3.rd=0;AK3.f=f;document.body.append(f)}
@@ -18250,7 +18262,7 @@ try{[['akw','Sceller {n} Bijū (La Traque des Bijū)',1,'暁',null,5]].forEach(x
 /* ================= MUGEN 27 · L'AUBE · partie B (3) : « La Traque des Bijū » dans le nouveau design (v26.9) =================
    Même contenu et même déroulé que les parties B (1) et (2) : seules les pages changent.
    Le Repaire (page du mode) → la fiche de la cible (Alerte, renforts, contrat de Kakuzu) → le lobby (.lb3) → le combat dans l'arène 3D
-   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-284d393371/aube-3f9a2c71/obj/). */
+   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-7a27178bca/aube-3f9a2c71/obj/). */
 const AKX_BG=id=>AKM+'bg/'+id+'.jpg';
 const akxE=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const akxJ=H=>(H.jid&&M[H.jid]&&imgOf(M[H.jid]))||AKT_IMG+H.ji,akxB=H=>AKT_IMG+H.bi;
@@ -19533,7 +19545,7 @@ packs(){S.fb=Math.max(S.fb||0,10);try{asS().pk=(asS().pk||0)+5}catch(e){}},
 camp(){S.cp=Math.max(S.cp||0,250)},
 async guild(){try{if(!GLD||!GLD.id)await gJoin('bot3')}catch(e){}try{GLD.lvl=10}catch(e){}},
 a3(){const off=!window.__A3OFF;window.__A3OFF=off;try{localStorage.setItem('a3off',off?'1':'0')}catch(e){}toast(off?'3D des combats coupée':'3D des combats activée');return 'x'},
-pportails(){try{V3OPEN('assets-284d393371/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
+pportails(){try{V3OPEN('assets-7a27178bca/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
 navA(){V3NAV.set('a');return 'x'},navB(){V3NAV.set('b');return 'x'},navC(){V3NAV.set('c');return 'x'},
 lvl(){S.xp=Math.max(S.xp||0,400000)},
 reset(){if(!confirm('Effacer la sauvegarde TEST ?'))return 'x';localStorage.removeItem('animecards');location.reload();return 'x'}};
