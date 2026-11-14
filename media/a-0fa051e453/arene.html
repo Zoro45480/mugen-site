@@ -68,7 +68,7 @@ import * as THREE from '../../lib/three.module.min.js';
 const $=id=>document.getElementById(id);
 const TM=[];
 const after=(sec,fn)=>TM.push({t:sec,fn});const every=(sec,fn)=>{const o={t:sec,fn,rep:sec};TM.push(o);return o};const stopE=o=>{o.dead=1};
-const cv=$('c'),R=new THREE.WebGLRenderer({canvas:cv,antialias:true,powerPreference:'high-performance'});
+const cv=$('c'),FXO=/[?&]fx=1/.test(location.search),R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:FXO,powerPreference:'high-performance'});
 R.setPixelRatio(Math.min(2,devicePixelRatio));R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.05;R.outputColorSpace=THREE.SRGBColorSpace;
 const sc=new THREE.Scene();sc.fog=new THREE.FogExp2(0x12081c,.045);
 const cam=new THREE.PerspectiveCamera(42,1,.1,200);
@@ -1477,10 +1477,17 @@ try{dmgNum=function(){}}catch(e){}
 try{R.setPixelRatio(Math.min(1.5,devicePixelRatio));rs();const _rr=R.render.bind(R);let lt=performance.now(),avg=16,lvl=0,fc=0;R.render=(a,b)=>{const n=performance.now();avg=avg*.9+Math.min(200,n-lt)*.1;lt=n;if(window.__P)return;if(avg>34&&lvl<2){lvl++;avg=16;R.setPixelRatio(lvl==1?1:.75);rs()}if(lvl==2&&(fc++&1))return;_rr(a,b)}}catch(e){console.warn(e)}
 let ATQ=Promise.resolve();
 window.__A3S={cam,F,THREE,CAM0,look};
+/* ?fx=1 · calque d'effets : la même page, posée PAR-DESSUS les cartes du jeu. Fond transparent, ni décor ni combattants : seuls les effets des attaques sont dessinés.
+   La caméra recopie à chaque image celle de l'arène du dessous, et rien n'est dessiné entre deux attaques (aucun coût hors attaque). */
+if(FXO){try{R.setClearColor(0x000000,0);sc.background=null;sc.fog=null;AR.visible=false;F.forEach(f=>f.G.children.forEach(o=>{o.visible=false}));
+ const st=document.createElement('style');st.textContent='html,body{background:transparent!important}body>*:not(#c){display:none!important}';document.head.append(st);
+ R.setPixelRatio(Math.min(1.25,devicePixelRatio));rs();window.__P=1;R.clear();try{parent.postMessage({t:'fx-ok'},'*')}catch(e){}setTimeout(()=>{if(window.__P)R.clear()},300);
+ const _r=R.render;R.render=(a,b)=>{if(window.__P)return;try{const s=parent.document.querySelector('#bt .a3f').contentWindow.__A3S.cam;b.position.copy(s.position);b.quaternion.copy(s.quaternion);if(b.fov!=s.fov||b.aspect!=s.aspect){b.fov=s.fov;b.aspect=s.aspect;b.updateProjectionMatrix()}b.updateMatrixWorld()}catch(e){}_r(a,b)};
+ window.__fxFin=()=>setTimeout(()=>{if(!window.__A3RUN){window.__P=1;try{R.clear()}catch(e){}}},1400)}catch(e){console.warn(e)}}
 addEventListener('message',e=>{const m=e.data||{};try{
- if(m.t=='arena'){let id=m.id;if(/^camp\d+$/.test(id))campArena(+id.slice(4));else{id=ARENES[id]?id:'dojo';setArena(id)}if(m.intro&&ARENES[id]){title(id).catch(()=>{});setTimeout(()=>{try{$('ttl').style.opacity=0}catch(e){}},4500)}}
- if(m.t=='atk'){if(window.__A3RUN)return;let k=m.k||(m.mi===0?'frappe':m.c?atkFor(m.c):'frappe');if(!(ATK[k]&&ATK[k].run))k='frappe';window.__A3RUN=1;const a=F[m.s?1:0],d=F[m.s?0:1];Promise.race([ATK[k].run(a,d),new Promise(r=>setTimeout(r,5000))]).catch(x=>console.warn(x)).then(()=>{busy=false;window.__A3RUN=0;try{camTo(CAM0.p,CAM0.l,.4)}catch(e){}})}
- if(m.t=='pause'){window.__P=!!m.v}
+ if(m.t=='arena'&&!FXO){let id=m.id;if(/^camp\d+$/.test(id))campArena(+id.slice(4));else{id=ARENES[id]?id:'dojo';setArena(id)}if(m.intro&&ARENES[id]){title(id).catch(()=>{});setTimeout(()=>{try{$('ttl').style.opacity=0}catch(e){}},4500)}}
+ if(m.t=='atk'){if(window.__A3RUN)return;if(FXO)window.__P=0;let k=m.k||(m.mi===0?'frappe':m.c?atkFor(m.c):'frappe');if(!(ATK[k]&&ATK[k].run))k='frappe';window.__A3RUN=1;const a=F[m.s?1:0],d=F[m.s?0:1];Promise.race([ATK[k].run(a,d),new Promise(r=>setTimeout(r,5000))]).catch(x=>console.warn(x)).then(()=>{busy=false;window.__A3RUN=0;try{camTo(CAM0.p,CAM0.l,.4)}catch(e){}if(FXO)window.__fxFin()})}
+ if(m.t=='pause'&&!FXO){window.__P=!!m.v}
  if(m.t=='hit'){shakeA=Math.max(shakeA,m.v||.25)}
 }catch(x){console.warn(x)}});
 try{parent.postMessage({t:'arene-ready'},'*')}catch(e){}
