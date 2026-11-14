@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /test/
+Disallow: /test-guildes/
+Disallow: /maquettes/
+Disallow: /apercu/
+Sitemap: https://mugencard.com/sitemap.xml
