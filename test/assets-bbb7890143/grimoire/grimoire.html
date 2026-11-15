@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MUGEN · Grimoires 3D (maquette)</title>
+<style>
+*{margin:0;box-sizing:border-box}html,body{height:100%;background:#050308;overflow:hidden;font-family:Inter,system-ui,sans-serif;color:#fff}
+#c{position:fixed;inset:0;display:block;width:100%;height:100%}
+#t{display:none;position:fixed;left:0;right:0;bottom:7vh;text-align:center;pointer-events:none}
+#t small{display:block;font:800 13px ui-monospace,monospace;letter-spacing:5px;opacity:.8}
+#t b{display:block;font:900 clamp(26px,4.6vw,54px)/1.1 Unbounded,Inter,sans-serif;margin-top:8px;text-shadow:0 0 30px currentColor}
+#t span{display:block;margin-top:8px;font-size:clamp(13px,1.6vw,19px);color:#d8d4e8}
+</style></head><body><canvas id="c"></canvas><div id="t"><small id="ts"></small><b id="tn"></b><span id="td"></span></div>
+<script type="module">
+/* Maquette : les trois grimoires (3, 4 et 5 feuilles). Tout est calculé à partir du temps : seek(t) donne exactement la même image à chaque fois.
+   Dessins de couverture originaux (cuir, filets, trèfle stylisé) : ce ne sont pas les couvertures de l'anime. */
+import * as THREE from '../../../lib/three.module.min.js';
+const $=id=>document.getElementById(id),PI=Math.PI;
+const R=new THREE.WebGLRenderer({canvas:$('c'),antialias:true,preserveDrawingBuffer:true});R.setPixelRatio(Math.min(2,devicePixelRatio));R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.15;R.outputColorSpace=THREE.SRGBColorSpace;
+const sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(38,1,.1,100);
+function rs(){R.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.fov=innerWidth<innerHeight?56:38;cam.updateProjectionMatrix()}addEventListener('resize',rs);rs();
+const rng=s=>()=>(s=(s*16807)%2147483647)/2147483647;
+const tex=(w,h,f)=>{const c=document.createElement('canvas');c.width=w;c.height=h;f(c.getContext('2d'),w,h);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;return t};
+const glowT=tex(128,128,g=>{const r=g.createRadialGradient(64,64,0,64,64,64);r.addColorStop(0,'#fff');r.addColorStop(.3,'#ffffff99');r.addColorStop(1,'#fff0');g.fillStyle=r;g.fillRect(0,0,128,128)});
+/* les trois niveaux */
+const G=[
+ {n:3,nom:'Grimoire à 3 feuilles',sous:'COURANT · 三つ葉',d:'Foi, espoir, amour. Le grimoire de tout chevalier-mage.',cuir:'#3a2414',cuir2:'#1c1008',or:'#d8b060',em:'#5ae08a',bg:['#020604','#0a2416','#020604']},
+ {n:4,nom:'Grimoire à 4 feuilles',sous:'RARE · 四つ葉',d:'La quatrième feuille porte la chance. Réservé aux élus.',cuir:'#e8e2d0',cuir2:'#a89c7c',or:'#ffd86a',em:'#ffe9a0',bg:['#060502','#2a2210','#060502']},
+ {n:5,nom:'Grimoire à 5 feuilles',sous:'TRÈS RARE · 五つ葉',d:'Dans la cinquième feuille dort un démon.',cuir:'#120c10',cuir2:'#050305',or:'#8a1a22',em:'#ff2a3a',bg:['#060102','#2a060a','#060102']}];
+const W=2.2,H=3,TK=.5;
+/* trèfle stylisé : n feuilles en forme de cœur autour d'un anneau */
+function trefle(g,n,r,col,glow){g.save();g.fillStyle=col;g.strokeStyle=col;if(glow){g.shadowColor=glow;g.shadowBlur=r*.35}
+ for(let i=0;i<n;i++){g.save();g.rotate(i/n*PI*2);g.beginPath();g.moveTo(0,-r*.12);g.bezierCurveTo(-r*.62,-r*.3,-r*.6,-r*1.05,-r*.16,-r*1.02);g.bezierCurveTo(-r*.04,-r*1.01,0,-r*.9,0,-r*.82);g.bezierCurveTo(0,-r*.9,r*.04,-r*1.01,r*.16,-r*1.02);g.bezierCurveTo(r*.6,-r*1.05,r*.62,-r*.3,0,-r*.12);g.fill();g.restore()}
+ g.beginPath();g.arc(0,0,r*.13,0,7);g.fill();g.restore()}
+function cover(o,front,emOnly){return tex(1024,1400,(g,w,h)=>{const rd=rng(o.n*97+ (front?1:5));
+ if(emOnly){g.fillStyle='#000';g.fillRect(0,0,w,h)}else{const l=g.createLinearGradient(0,0,w,h);l.addColorStop(0,o.cuir);l.addColorStop(1,o.cuir2);g.fillStyle=l;g.fillRect(0,0,w,h);
+  for(let i=0;i<5200;i++){g.fillStyle=rd()<.5?'#ffffff0a':'#0000001c';const x=rd()*w,y=rd()*h;g.fillRect(x,y,1+rd()*3,1+rd()*3)}
+  g.strokeStyle='#00000055';for(let i=0;i<26;i++){g.lineWidth=.6+rd()*1.6;g.beginPath();let x=rd()*w,y=rd()*h;g.moveTo(x,y);for(let k=0;k<5;k++){x+=(rd()-.5)*150;y+=(rd()-.5)*150;g.lineTo(x,y)}g.stroke()}
+  const v=g.createRadialGradient(w/2,h/2,h*.25,w/2,h/2,h*.75);v.addColorStop(0,'#0000');v.addColorStop(1,'#000a');g.fillStyle=v;g.fillRect(0,0,w,h)}
+ const or=emOnly?'#000':o.or;g.strokeStyle=or;g.fillStyle=or;g.lineWidth=10;g.strokeRect(46,46,w-92,h-92);g.lineWidth=3;g.strokeRect(74,74,w-148,h-148);
+ for(const [cx,cy,sx,sy] of [[74,74,1,1],[w-74,74,-1,1],[74,h-74,1,-1],[w-74,h-74,-1,-1]]){g.save();g.translate(cx,cy);g.scale(sx,sy);g.lineWidth=5;for(let i=0;i<3;i++){g.beginPath();g.arc(0,0,60+i*34,0,PI/2);g.stroke()}g.beginPath();g.moveTo(0,0);g.lineTo(150,150);g.stroke();g.restore()}
+ if(front){g.save();g.translate(w/2,h*.45);g.lineWidth=7;g.strokeStyle=or;g.beginPath();g.arc(0,0,300,0,7);g.stroke();g.lineWidth=2.5;g.beginPath();g.arc(0,0,268,0,7);g.stroke();
+  for(let i=0;i<36;i++){g.save();g.rotate(i/36*PI*2);g.lineWidth=i%3?2:5;g.beginPath();g.moveTo(0,-268);g.lineTo(0,i%3?-284:-300);g.stroke();g.restore()}
+  trefle(g,o.n,205,emOnly?o.em:or,emOnly?o.em:null);if(!emOnly){trefle(g,o.n,150,o.cuir2,null);trefle(g,o.n,120,o.em,o.em)}else trefle(g,o.n,120,'#fff',o.em);g.restore();
+  g.save();g.translate(w/2,h*.83);g.lineWidth=4;g.strokeStyle=or;g.beginPath();g.moveTo(-230,0);g.lineTo(-40,0);g.moveTo(40,0);g.lineTo(230,0);g.stroke();g.rotate(PI/4);g.fillStyle=emOnly?o.em:or;g.fillRect(-16,-16,32,32);g.restore()}})}
+const pageT=o=>tex(512,700,(g,w,h)=>{const rd=rng(o.n*31+7);g.fillStyle=o.n==5?'#d8cdb8':'#f1e7cf';g.fillRect(0,0,w,h);const v=g.createLinearGradient(0,0,w,0);v.addColorStop(0,'#0003');v.addColorStop(.12,'#0000');v.addColorStop(1,'#0001');g.fillStyle=v;g.fillRect(0,0,w,h);
+ g.strokeStyle='#3a2a1acc';g.lineWidth=2;for(let y=70;y<h*.52;y+=26){g.beginPath();let x=50;g.moveTo(x,y);while(x<w-50){const l=8+rd()*26;g.lineTo(x+l,y+(rd()-.5)*3);x+=l+6+rd()*8;g.moveTo(x,y)}g.stroke()}
+ g.save();g.translate(w/2,h*.74);g.strokeStyle=o.n==5?'#8a1a22':'#2a6a4a';g.lineWidth=3;g.beginPath();g.arc(0,0,105,0,7);g.stroke();g.lineWidth=1.5;g.beginPath();g.arc(0,0,86,0,7);g.stroke();for(const q of [0,PI]){g.beginPath();for(let i=0;i<=3;i++){const a=i/3*PI*2+q-PI/2;g.lineTo(Math.cos(a)*86,Math.sin(a)*86)}g.stroke()}trefle(g,o.n,44,o.n==5?'#8a1a22':'#2a6a4a',null);g.restore()});
+/* un grimoire */
+function book(o){const B=new THREE.Group(),std=(m,em)=>new THREE.MeshStandardMaterial({map:m,roughness:.62,metalness:.25,emissiveMap:em||null,emissive:em?new THREE.Color(o.em):new THREE.Color(0),emissiveIntensity:0});
+ const cF=std(cover(o,1),cover(o,1,1)),cB=std(cover(o,0)),edge=new THREE.MeshStandardMaterial({color:o.cuir2,roughness:.7}),mats=m=>[edge,edge,edge,edge,m,edge];
+ const back=new THREE.Mesh(new THREE.BoxGeometry(W,H,.07),mats(cB));back.position.z=-TK/2;back.rotation.y=PI;B.add(back);
+ const spine=new THREE.Mesh(new THREE.BoxGeometry(.09,H,TK+.07),edge);spine.position.x=-W/2-.02;B.add(spine);
+ const blk=new THREE.Mesh(new THREE.BoxGeometry(W*.94,H*.95,TK*.8),new THREE.MeshStandardMaterial({color:o.n==5?0xb8ad98:0xe8dcc0,roughness:.9}));blk.position.x=-.02;B.add(blk);
+ const hinge=new THREE.Group();hinge.position.set(-W/2,0,TK/2);B.add(hinge);const fg=new THREE.BoxGeometry(W,H,.07);fg.translate(W/2,0,0);const front=new THREE.Mesh(fg,mats(cF));hinge.add(front);
+ const clasp=new THREE.Mesh(new THREE.BoxGeometry(.2,.46,TK+.16),new THREE.MeshStandardMaterial({color:o.or,metalness:.9,roughness:.3,emissive:new THREE.Color(o.em),emissiveIntensity:.2}));clasp.position.set(W/2+.04,0,0);B.add(clasp);
+ const pt=pageT(o),pm=new THREE.MeshStandardMaterial({map:pt,roughness:.9,side:2,emissive:new THREE.Color(o.em),emissiveIntensity:0}),pages=[...Array(14)].map((_,i)=>{const h=new THREE.Group();h.position.set(-W/2+.03,0,TK*.4-i*.004);const g=new THREE.PlaneGeometry(W*.92,H*.93,10,1);g.translate(W*.46,0,0);const m=new THREE.Mesh(g,pm);h.add(m);B.add(h);return {h,m,g,p0:g.attributes.position.array.slice()}});
+ const light=new THREE.PointLight(o.em,0,14,1.5);light.position.set(0,.4,1.4);B.add(light);
+ const cg=new THREE.CylinderGeometry(1.5,.5,9,40,1,true);cg.translate(0,4.5,0);const colM=new THREE.ShaderMaterial({uniforms:{c:{value:new THREE.Color(o.em)},a:{value:0},t:{value:0}},transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,side:2,
+  vertexShader:'varying vec2 vU;void main(){vU=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'uniform vec3 c;uniform float a,t;varying vec2 vU;void main(){float s=.6+.4*sin(vU.x*60.+t*3.+vU.y*8.);float f=pow(1.-vU.y,1.6);gl_FragColor=vec4(c*(.5+s*.7),a*f*(.35+s*.4));}'}),col=new THREE.Mesh(cg,colM);col.rotation.x=PI/2;col.position.z=.2;B.add(col);
+ const sig=new THREE.Sprite(new THREE.SpriteMaterial({map:tex(512,512,g=>{g.translate(256,256);trefle(g,o.n,200,'#ffffff',o.em)}),color:o.em,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));sig.position.set(0,0,2.6);B.add(sig);
+ /* particules : des signes lumineux qui montent des pages */
+ const N=260,pp=new Float32Array(N*3),pgm=new THREE.BufferGeometry();pgm.setAttribute('position',new THREE.BufferAttribute(pp,3));const rd=rng(o.n*13+3),seeds=[...Array(N)].map(()=>[rd(),rd(),rd(),rd()]);
+ const pts=new THREE.Points(pgm,new THREE.PointsMaterial({map:glowT,color:o.em,size:.16,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));B.add(pts);
+ B.visible=false;sc.add(B);return {B,o,hinge,front:cF,clasp,pages,pm,light,col,colM,sig,pts,pp,seeds}}
+const books=G.map(book);
+sc.add(new THREE.HemisphereLight(0xffffff,0x202028,.55));const key=new THREE.DirectionalLight(0xfff0e0,2.2);key.position.set(3,5,6);sc.add(key);const rim=new THREE.DirectionalLight(0x88aaff,1.1);rim.position.set(-5,2,-4);sc.add(rim);
+const bgT=G.map(o=>tex(16,512,(g,w,h)=>{const l=g.createLinearGradient(0,0,0,h);l.addColorStop(0,o.bg[0]);l.addColorStop(.6,o.bg[1]);l.addColorStop(1,o.bg[2]);g.fillStyle=l;g.fillRect(0,0,w,h)}));
+const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:glowT,transparent:true,opacity:.0,blending:THREE.AdditiveBlending,depthWrite:false}));halo.scale.setScalar(13);halo.position.set(0,.3,-3);sc.add(halo);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)),sm=x=>{x=cl(x);return x*x*(3-2*x)},eo=x=>1-Math.pow(1-cl(x),3);
+const SEG=6.2;window.DUR=SEG*3;
+function seek(t){const i=Math.min(2,Math.floor(t/SEG)),u=t-i*SEG,b=books[i],o=b.o;books.forEach((x,k)=>x.B.visible=k==i);sc.background=bgT[i];halo.material.color.set(o.em);
+ const fin=cl((u-.0)/.5)*(1-cl((u-(SEG-.5))/.5));$('t').style.opacity=cl((u-.6)/.6)*(1-cl((u-(SEG-.6))/.5));$('ts').textContent=o.sous;$('ts').style.color=o.em;$('tn').textContent=o.nom;$('tn').style.color=o.em;$('td').textContent=o.d;
+ const open=eo((u-1.5)/1.1),mag=sm((u-2.3)/1.2);
+ /* le livre arrive en tournant, se pose face à nous, puis se couche un peu en s'ouvrant */
+ const B=b.B;B.position.set(open*W*.42,.25+Math.sin(t*1.7)*.08+(1-eo(u/1.1))*-4.5,0);B.rotation.set(-.12-open*.5,(1-eo(u/1.3))*-5.2+Math.sin(t*.8)*.08-.12*(1-open),Math.sin(t*1.1)*.03);B.scale.setScalar(.92*fin+.08);
+ b.hinge.rotation.y=-open*PI*.94;b.front.emissiveIntensity=sm((u-.5)/.9)*1.6*(1-open*.5)+Math.sin(t*5)*.15*sm((u-.5)/.9);b.clasp.position.x=W/2+.04+eo((u-1.3)/.3)*.5;b.clasp.visible=u<1.7;
+ b.pages.forEach((p,k)=>{const q=sm((u-2.1-k*.085)/.5);p.h.rotation.y=-q*PI*.93*(1-k*.004);const a=p.g.attributes.position.array,bend=Math.sin(q*PI)*.5;for(let v=0;v<a.length;v+=3){const x=p.p0[v]/(W*.92);a[v+2]=Math.sin(x*PI)*bend}p.g.attributes.position.needsUpdate=true;p.h.visible=open>.02});
+ b.pm.emissiveIntensity=mag*.35;b.light.intensity=mag*26+sm((u-.5)/.9)*5;b.colM.uniforms.a.value=mag*.9*fin;b.colM.uniforms.t.value=t;b.col.scale.set(.6+mag*.5,.2+mag*.9,.6+mag*.5);
+ b.sig.material.opacity=sm((u-3.3)/.8)*.9*fin;b.sig.scale.setScalar(1.2+sm((u-3.3)/1.4)*1.5);b.sig.position.set(-W*.5,0,2.2+sm((u-3.3)/1.4)*1.4);b.sig.material.rotation=t*.5;
+ b.pts.material.opacity=mag*fin;for(let k=0;k<b.seeds.length;k++){const s=b.seeds[k],life=((t*(.25+s[3]*.35)+s[2])%1);b.pp[k*3]=-W*.5+(s[0]-.5)*W*1.9+Math.sin(life*9+s[1]*6)*.18;b.pp[k*3+1]=(s[1]-.5)*H*.9;b.pp[k*3+2]=.2+life*5.5}b.pts.geometry.attributes.position.needsUpdate=true;
+ halo.material.opacity=(.18+mag*.3)*fin;halo.scale.setScalar(13+mag*5);
+ const an=-.35+sm((u-1.4)/3.6)*.7;cam.position.set(Math.sin(an)*(9.6-mag*1.3),1.5+open*1.4,Math.cos(an)*(9.6-mag*1.3));cam.lookAt(open*.2,.35+open*.25,0);R.render(sc,cam)}
+window.seek=seek;window.pret=1;
+{const gi=Math.max(0,Math.min(2,(+new URLSearchParams(location.search).get('g')||3)-3)),t0=performance.now(),L=SEG-2;(function f(){requestAnimationFrame(f);const t=(performance.now()-t0)/1000,k=t%(2*L);seek(gi*SEG+1+(k<L?k:2*L-k))})()}
+</script></body></html>
