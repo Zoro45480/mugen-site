@@ -656,7 +656,7 @@ const CH=[
 ['monarque','Meliodas','Revenge Counter','反','#1a0a14','#ff3a2a',[['flames',{counter:1}]],'purple'],
 /* ---- LAME ÉCARLATE ---- */
 ['ecarlate','Tanjiro Kamado','Hinokami Kagura · Danse du Dieu du Feu','炎','#ff7a1a','#ffd36a',[['slash',{n:6,el:'fire',fin:'circle'}]]],
-['ecarlate','Nezuko Kamado','Art Démoniaque · Sang Explosif','血','#ff4a8a','#ffb0d0',[['flames',{}]]],
+['ecarlate','Nezuko Kamado','Art Démoniaque · Sang Explosif','血','#ff4a8a','#ffb0d0',[['whips',{kind:'red',n:4,lashes:1}],['flames',{}]]],
 ['ecarlate','Zenitsu Agatsuma','Foudre · 7e forme : Honoikazuchi no Kami','雷','#ffd000','#ffffff',[['slash',{n:2,el:'thunder',fin:'x',gap:60}],['dragon',{r:.45,bolts:1,el:'thunder'}]],'storm'],
 ['ecarlate','Inosuke Hashibira','Souffle de la Bête · Crocs Dévorants','獣','#5a9aff','#c8d8e8',[['slash',{n:8,el:'beast',fin:'x',gap:85}]]],
 ['ecarlate','Kyojuro Rengoku','Flamme · 9e forme : Rengoku','煉','#ff5a1a','#ffd000',[['dragon',{r:.7,el:'fire'}],['slash',{n:2,el:'fire',fin:'v'}]],'sun'],
@@ -673,7 +673,7 @@ const CH=[
 ['divin','Beerus','Hakai','破','#a85aff','#1a0030',[['erase',{kind:'hakai'}]],'purple'],
 ['divin','Alucard','Restriction Niveau Zéro','吸','#ff1030','#2a0006',[['army',{kind:'bats',n:40}]],'red'],
 ['divin','Gilgamesh','Gate of Babylon · Enuma Elish','王','#ffd36a','#ff3a2a',[['portals',{type:'sword',n:22,np:14}],['beam',{w:1.2}]],'gold'],
-['divin','Anos Voldigoad','Venuzdonoa · Épée de la Destruction','魔','#1a0a2a','#ff2a6a',[['slash',{n:3,el:'haki',fin:'v',gap:140}]],'void'],
+['divin','Anos Voldigoad','Venuzdonoa · Épée de la Destruction','魔','#1a0a2a','#ff2a6a',[['slash',{n:3,el:'haki',fin:'v',gap:140}],['erase',{kind:'decay'}]],'void'],
 ['divin','Madoka Kaname','Flèche de l’Espoir','希','#ff8ad0','#ffffff',[['arrow',{wings:1,feathers:1}]],'pink'],
 ['divin','Griffith','Éclipse','蝕','#ff1a2a','#1a0004',[['prop',{kind:'eclipse'}],['whips',{kind:'spike',n:6,lashes:1}]],'red'],
 ['divin','Suguru Getou','Manipulation des Fléaux · Uzumaki','呪','#8a3aff','#1a0a2a',[['ball',{kind:'spiral',size:2.2}]],'purple'],
@@ -692,7 +692,7 @@ const CH=[
 ['divin','Charlotte Katakuri','Mochi · Pilier de Mochi','餅','#f4efe2','#ff8ad0',[['spikes',{kind:'mochi'}]]],
 ['divin','Kurumi Tokisaki','Zafkiel · Les Douze Balles','刻','#ff2a4a','#ffd36a',[['time',{type:'bullet',n:12,clones:5,txt:'ZAFKIEL'}]],'red'],
 ['divin','Albedo','Ginnungagap','淫','#2a0a3a','#a85aff',[['slash',{n:5,el:'haki',fin:'x',gap:110}]],'purple'],
-['divin','Zero Two','Strelizia · Lance Écarlate','鬼','#ff3a6a','#ffd0e0',[['lance',{}]],'pink'],
+['divin','Zero Two','Strelizia · Lance Écarlate','鬼','#ff3a6a','#ffd0e0',[['leap',{}],['lance',{}]],'pink'],
 ['divin','Shinobu Oshino','Kokorowatari','心','#ffd36a','#ff1a3a',[['slash',{n:6,el:'blood',fin:'x',gap:95}]],'red'],
 ['divin','Haruhi Suzumiya','Espace Clos · Avatar Céleste','閉','#4aa8ff','#ffffff',[['prop',{kind:'giant'}]],'grey'],
 ['divin','Homura Akemi','Arrêt du Temps · Arsenal','時','#a85aff','#ffffff',[['time',{type:'missile',n:16,txt:'LE TEMPS REPREND',sc:'#a85aff'}]]],
@@ -731,6 +731,25 @@ const CH=[
 ['ascendant','Tatsumaki','Tornade Psychique','竜','#5aff9a','#ffffff',[['storm',{debris:1,meteor:1}]],'green'],
 ['ascendant','Yuno','Esprit du Vent · Lance Tempête','風','#9affd8','#ffffff',[['storm',{blades:1}],['lance',{}]],'green'],
 ['ascendant','Shinra Kusakabe','Coup de Pied de l’Adolla','炎','#ff9a2a','#ffe14a',[['punch',{kind:'kick'}]],'sun'],
+/* ---- LOT 1 (17 nov. 2026) : chacun sa vraie attaque ---- */
+['mythique','Goku','Genkidama','元','#7ad8ff','#ffffff',[['ball',{kind:'energy',size:3.2,h:7.5}]],'blue'],
+['mythique','Vegeta','Final Flash','閃','#ffe14a','#fff8c0',[['beam',{w:1.7}]]],
+['mythique','Luffy','Gum-Gum Bajrang Gun','神','#f4f0ff','#b388ff',[['bolts',{n:5}],['leap',{}]],'white'],
+['mythique','Satoru Gojo','Vide Pourpre','虚','#a85aff','#ff4d6a',[['ball',{kind:'spiral',size:1.6,h:3.4,orbs:2}],['erase',{kind:'hakai'}]],'void'],
+['mythique','Madara Uchiha','Météorite Tengai Shinsei','隕','#ff7a2a','#5a4a3a',[['ball',{kind:'rock',size:3.2,h:8}],['ball',{kind:'rock',size:2.4,h:8.5}]]],
+['mythique','Sosuke Aizen','Kurohitsugi','棺','#5a3a9a','#b388ff',[['portals',{type:'cube',n:10,np:10,src:'around',pc:'#1a0a2a'}],['bomb',{kind:'death'}]],'void'],
+['mythique','Sung Jinwoo','Monarque des Ombres · Lève-toi','影','#7a5aff','#1a0a3a',[['army',{kind:'soldiers',n:32}],['slash',{n:3,el:'none',fin:'x',gap:70}]],'purple'],
+['mythique','Rimuru Tempest','Dévoreur du Monde','喰','#5ad0ff','#0a2a4a',[['ball',{kind:'truth',size:1.8,h:4}],['erase',{kind:'gravity'}]],'blue'],
+['mythique','Marshall D. Teach','Kurouzu · Séisme','闇','#6a3aaa','#000000',[['erase',{kind:'gravity'}],['quake',{}]],'void'],
+['mythique','Guts','Armure du Berserk','狂','#c01030','#1a0004',[['leap',{swords:1}],['slash',{n:6,el:'beast',fin:'x',gap:65}]],'red'],
+['mythique','Milim Nava','Drago Nova','竜','#ff5ab0','#ffd0f0',[['dragon',{breath:1,bc:'#ff7ad0',r:.55,el:'sun'}]],'pink'],
+['mythique','Simon','Giga Drill Break','螺','#5aff8a','#ff3a3a',[['ball',{kind:'spiral',size:2,h:5}],['lance',{}]],'green'],
+['mythique','Esdeath','Mahapadma','氷','#9fe0ff','#ffffff',[['time',{type:'knife',n:12,txt:'MAHAPADMA',sc:'#7ad8ff'}]],'white'],
+['divin','Mikoto Misaka','Railgun','電','#7ad8ff','#ffe14a',[['bolts',{n:5}],['beam',{w:.8}]]],
+['divin','Kenshin Himura','Amakakeru Ryū no Hirameki','天','#ff5a4a','#ffffff',[['slash',{n:1,el:'light',fin:'v',gap:60}]]],
+['divin','Gin Ichimaru','Kamishini no Yari','槍','#c8d8ff','#7a5aff',[['slash',{n:1,el:'none',fin:'thrust',gap:60}],['erase',{kind:'decay'}]]],
+['divin','Deidara','C0 · L’Art est une Explosion','爆','#ffb03a','#ffffff',[['ball',{kind:'energy',size:1.4,h:4}],['bomb',{kind:'death'}]],'sun'],
+['divin','Archer','Unlimited Blade Works','剣','#ff5a3a','#c8a070',[['portals',{type:'sword',n:24,src:'above',noPortal:1}],['slash',{n:2,el:'none',fin:'x',gap:90}]],'desert'],
 ].map(([r,nm,n,k,col,col2,steps,dom])=>({r,nm,n,k,col,col2,steps,dom}));
 /* ======================= DÉROULÉ ======================= */
 const W1=g=>{g.moveTo(120,-260);g.lineTo(230,-620)},W2=g=>{g.moveTo(-120,-300);g.lineTo(-250,-640)};
@@ -815,7 +834,7 @@ try{$('tag').style.display='none'}catch(e){}
 const fold=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 function findC(n){const f=fold(n);return CH.find(x=>fold(x.nm)==f)||CH.find(x=>f.startsWith(fold(x.nm))||fold(x.nm).startsWith(f))||null}
 let RUN=0;
-addEventListener('message',async e=>{const m=e.data||{};if(m.t!='ulti')return;const c=m.myth?mkMyth(m.myth):findC(m.n);if(!c||RUN){parent.postMessage({t:'ulti-done',ok:0},'*');return}
+addEventListener('message',async e=>{const m=e.data||{};if(m.t!='ulti')return;const c=findC(m.n)||(m.myth?mkMyth(m.myth):null);if(!c||RUN){parent.postMessage({t:'ulti-done',ok:0},'*');return}
  RUN=1;c.i=1;c.N=1;window.__IMGS={};if(m.img)window.__IMGS[c.nm]=m.img;if(!window.__BOSS0)window.__BOSS0=Object.assign({},BOSS);Object.assign(BOSS,window.__BOSS0);if(m.foe&&m.foe.nm){Object.assign(BOSS,{nm:m.foe.nm,sb:m.foe.sb,n:m.foe.nm.split(' ')[0].toUpperCase().slice(0,10)});if(m.foe.img)window.__IMGS[m.foe.nm]=m.foe.img}try{await play(c)}catch(x){console.warn(x)}RUN=0;parent.postMessage({t:'ulti-done',ok:1},'*')});
 parent.postMessage({t:'ulti-ready',names:CH.map(x=>x.nm)},'*');
 </script></body></html>
