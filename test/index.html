@@ -12387,7 +12387,7 @@ function synFlash(){const y=B&&B.syn,bt=$('bt');if(!y||!bt||bt.querySelector('.s
 
 /* ---------- v24.8.3 : annonce de la grosse mise à jour de samedi (vidéo leak + compte à rebours) ---------- */
 /* annonces des prochaines grosses mises à jour : la première pas encore terminée est affichée */
-const ANNL=[{id:'grimoire-12dec',t:Date.UTC(2026,11,12,14,0,0),end:Date.UTC(2026,11,12,22,0,0),vid:'assets-614d4c382a/grimoire/leak-grimoire.mp4',img:'assets-614d4c382a/grimoire/leak-grimoire.jpg',
+const ANNL=[{id:'grimoire-12dec',t:Date.UTC(2026,11,12,14,0,0),end:Date.UTC(2026,11,12,22,0,0),vid:'assets-880f2a2445/grimoire/leak-grimoire.mp4',img:'assets-880f2a2445/grimoire/leak-grimoire.jpg',
  h:'Le <em>Royaume du Trèfle</em> arrive samedi 12',dt:'Samedi 12 décembre · 15 h',hp:'Black Clover <em>samedi 12 décembre</em> à 15 h',fin:'Ce que tu vois dans la vidéo n’est qu’un aperçu. Ouvre ton grimoire le 12 !',
  sp:[['魔','Nouvelle rareté','Grimoire · 8 cartes'],['試','Nouveau mode','L’Examen des Chevaliers-Mages'],['頁','Des pages au hasard','Un grimoire à 3, 4 ou 5 feuilles'],['技','8 ultis en 3D','Elles cassent l’arène'],['包','Pack Grimoire en 3D','Un grimoire scellé'],['悪','Après l’Empereur-Mage','Trois <s>██████</s>'],['他','Et plein d’autres choses…','On ne peut pas tout dire']]},
  {id:'ascendant-8nov',t:Date.UTC(2026,10,8,13,0,0),end:Date.UTC(2026,10,8,21,0,0),vid:'../media/leak-ascendant.mp4',img:'../media/leak-ascendant.jpg',
@@ -18619,11 +18619,11 @@ setInterval(ml42Scan,20000);setTimeout(ml42Scan,2500);
  battle=function(){let on=0;try{on=typeof view!='undefined'&&view=='battle'}catch(e){}if(ins||!on)return _b.apply(this,arguments);const y=window.scrollY;const r=show('battle');const back=()=>{try{window.scrollTo(0,y)}catch(e){}};back();setTimeout(back,60);setTimeout(back,300);return r}}
 
 /* ===== Sons d'ouverture des packs : un son par rareté, de plus en plus fort quand la carte est rare (sons faits avec ElevenLabs) ===== */
-const SP45={b:{},q:0,base:'assets-614d4c382a/sons/'};
+const SP45={b:{},q:0,base:'assets-880f2a2445/sons/'};
 function sp45Load(){if(SP45.ld)return;SP45.ld=1;for(let i=0;i<=10;i++)fetch(SP45.base+'r'+i+'.mp3').then(r=>r.arrayBuffer()).then(b=>new Promise((ok,ko)=>ac().decodeAudioData(b,ok,ko))).then(a=>{SP45.b[i]=a;if(SP45.w===i){SP45.w=null;sp45Play(i)}}).catch(()=>{})}
 /* joue le son de la rareté r (0 Commune … 5 Divin, 6 Monarque, 7 Lame Écarlate, 8 Primordial, 9 Ascendant, 10 Absolu). Rend 1 si le son est parti. */
 function sp45Play(r,att){try{r=Math.max(0,Math.min(10,r|0));sp45Load();if(mu)return 0;const b=SP45.b[r];if(!b){if(att)SP45.w=r;return 0}
- const a=ac();try{a.state=='suspended'&&a.resume()}catch(e){}const s=a.createBufferSource(),g=a.createGain();s.buffer=b;g.gain.value=.95;s.connect(g).connect(MB);s.start();SP45.q=Date.now()+Math.min(2800,b.duration*1000+200);return 1}catch(e){return 0}}
+ const a=ac();try{a.state=='suspended'&&a.resume()}catch(e){}const s=a.createBufferSource(),g=a.createGain();s.buffer=b;let v=.9;try{v=S.vs===undefined?.9:+S.vs}catch(e){}g.gain.value=Math.min(1,v*1.1);s.connect(g).connect(a.destination);s.start(); /* sortie directe : le son ne dépend plus du circuit des sons de combat */SP45.q=Date.now()+Math.min(2800,b.duration*1000+200);return 1}catch(e){return 0}}
 /* pendant que le son de la rareté joue, l'ancienne petite montée de notes se tait */
 {const _u=UI.rise;UI.rise=function(r){if(Date.now()<SP45.q)return;return _u.apply(this,arguments)}}
 {const _r=revealFx;revealFx=function(o,c){try{c&&sp45Play(c.r)}catch(e){}return _r.apply(this,arguments)}}
@@ -18637,7 +18637,7 @@ try{const _b=abCine;abCine=function(c){try{sp45Play(10,1)}catch(e){}return _b.ap
 
 /* SERVEUR TEST : écouter le son de chaque rareté */
 function sp45Test(){const N=['Commune','Rare','Épique','Légendaire','Mythique','Divin','Monarque','Lame Écarlate','Primordial','Ascendant','Absolu'];sp45Load();modal(`<div data-nolg="1" style="text-align:left;width:min(440px,84vw)"><b style="font-size:22px">Sons des raretés</b><p style="opacity:.7;font-size:13px;margin:6px 0 14px">Touche une rareté pour entendre le son joué quand on la tire dans un pack.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${N.map((n,i)=>`<button class="btn" type="button" style="background:linear-gradient(135deg,#ffc64a,#ff8a3d);color:#1a1206;border:0" data-oclick="SP45.q=0;sp45Play(${i},1)">🔊 ${n}</button>`).join('')}</div></div>`)}
-setTimeout(()=>{try{const b=document.createElement('button');b.type='button';b.setAttribute('data-nolg','1');b.setAttribute('data-oclick','sp45Test()');b.textContent='🔊 Sons des packs';b.style.cssText='position:fixed;left:12px;bottom:64px;z-index:9000;padding:9px 14px;border-radius:99px;border:0;font:700 13px Inter,sans-serif;background:linear-gradient(135deg,#ffc64a,#ff8a3d);color:#1a1206;cursor:pointer;box-shadow:0 4px 18px #0008';document.body.append(b)}catch(e){}},2500);
+setTimeout(()=>{try{const b=document.createElement('button');b.type='button';b.setAttribute('data-nolg','1');b.setAttribute('data-oclick','sp45Test()');b.textContent='🔊 Sons des packs · v2';b.style.cssText='position:fixed;left:12px;bottom:64px;z-index:9000;padding:9px 14px;border-radius:99px;border:0;font:700 13px Inter,sans-serif;background:linear-gradient(135deg,#ffc64a,#ff8a3d);color:#1a1206;cursor:pointer;box-shadow:0 4px 18px #0008';document.body.append(b)}catch(e){}},2500);
 /* ================= MUGEN 27 · L'AUBE · partie A : rareté AUBE 暁 (Akatsuki) — 11 cartes, kits, design, GIF, Pack Aube 3D ================= */
 /* ---------- 1. la rareté (entre Lame Écarlate et Ascendant pour le prix) ---------- */
 const AKR=R.length;R.push(['暁','Aube','#e0262f']);PRICE[AKR]=700;try{TCGK[AKR]='暁'}catch(e){}try{CXK[AKR]='暁'}catch(e){}
@@ -19040,7 +19040,7 @@ function akCine(cards){return new Promise(res=>{const o=document.createElement('
 /* ================= MUGEN 27 · L'AUBE · partie A (2) : nouveau design (v26.9) =================
    - le Pack Aube s'ouvre avec la nouvelle ouverture 3D des boosters (celle de tous les packs du jeu), les cartes sont celles du jeu (card) ;
    - les objets de l'Aube (anneaux, yeux, coffres, sacs, spores, Pack Aube) ont leur modèle 3D (vignettes rendues dans media/aube-3f9a2c71/obj/). */
-const AKM='assets-614d4c382a/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
+const AKM='assets-880f2a2445/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
 const akObjImg=(id,cls='')=>`<img class="ak3o ${cls}" src="${akObj(id)}" alt="" draggable="false" loading="lazy" data-oerror="this.style.visibility='hidden'">`;
 /* anneaux de l'Akatsuki : vignette 3D partout où le jeu dessine l'icône d'un objet */
 {const _gi=gIco;gIco=function(g){try{if(g&&/^akr\d$/.test(g.id))return akObjImg(g.id,'o3i'+(typeof gLv=='function'&&!gLv(g)?' o3lk':''))}catch(e){}return _gi.apply(this,arguments)}}
@@ -19977,7 +19977,7 @@ async g_nuage(X){const Q=await k2Q(X,true),T=Q.T,{ax,ay,tx,ty,ux,uy,mv,rec,shake
    (même moteur que les ultimes des cartes rares, recul de caméra en portrait). Le Jutsu de l'Aube y joue sa scène de groupe :
    chaque membre fait sa part, puis l'attaque combinée. La logique (dégâts, coût, effets) ne change pas : seules les images changent.
    Si le moteur 3D ne répond pas, les anciennes animations restent en secours. */
-const AK3_SRC='assets-614d4c382a/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
+const AK3_SRC='assets-880f2a2445/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
 const AK3={f:null,rd:0,w:null};
 addEventListener('message',e=>{const m=e.data||{};if(!AK3.f||e.source!==AK3.f.contentWindow)return;if(m.t=='aube-ready')AK3.rd=1;if(m.t=='aube-done'&&AK3.w){const w=AK3.w;AK3.w=null;w(m.ok?1:0)}});
 function ak3Mount(){if(AK3.f&&document.body.contains(AK3.f))return;const f=document.createElement('iframe');f.id='ak3f';f.setAttribute('aria-hidden','true');f.tabIndex=-1;f.src=AK3_SRC;AK3.rd=0;AK3.f=f;document.body.append(f)}
@@ -20322,7 +20322,7 @@ try{[['akw','Sceller {n} Bijū (La Traque des Bijū)',1,'暁',null,5]].forEach(x
 /* ================= MUGEN 27 · L'AUBE · partie B (3) : « La Traque des Bijū » dans le nouveau design (v26.9) =================
    Même contenu et même déroulé que les parties B (1) et (2) : seules les pages changent.
    Le Repaire (page du mode) → la fiche de la cible (Alerte, renforts, contrat de Kakuzu) → le lobby (.lb3) → le combat dans l'arène 3D
-   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-614d4c382a/aube-3f9a2c71/obj/). */
+   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-880f2a2445/aube-3f9a2c71/obj/). */
 const AKX_BG=id=>AKM+'bg/'+id+'.jpg';
 const akxE=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const akxJ=H=>(H.jid&&M[H.jid]&&imgOf(M[H.jid]))||AKT_IMG+H.ji,akxB=H=>AKT_IMG+H.bi;
@@ -20516,7 +20516,7 @@ const GRX_E=[['Cerf Turquoise','鹿','#4de1d0','Magie d’eau',1,'Rill Boismorti
  ['Démon des Mots','言','#b45cff','Magie des mots',4,'Zagred'],['Démone des Malédictions','呪','#ff3d9a','Magie de malédiction',4.4,'Megicula'],['Roi des Démons','魔','#ff2a2a','Magie de gravité',4.9,'Lucifero']];
 const grxDec=i=>GRX_E[i][6]??i;
 /* images 3D des épreuves (rendues par maquettes/blackclover/tuiles.js) ; à la sortie, apply.py les copie dans media/grimoire/ */
-const GRX_IMG='assets-614d4c382a/grimoire/';
+const GRX_IMG='assets-880f2a2445/grimoire/';
 /* photo du capitaine : la carte du jeu si elle existe, sinon recherche par nom (même service que les images des cartes), gardée en mémoire sur l'appareil */
 const GRX_PH={'Rill Boismortier':'13/351522','Dorothy Unsworth':'9/351519','Kaiser Granvorka':'12/375247','Jack the Ripper':'4/337897','Charlotte Roselei':'7/337340','Fuegoleon Vermillion':'16/337233','Nozel Silva':'14/337231','William Vangeance':'14/338851','Zagred':'2/398999','Megicula':'8/440458','Lucifero':'16/462810'};
 let GRXI=null;
@@ -20705,26 +20705,26 @@ DRAW.moon=g=>{const r=g.createRadialGradient(256,256,60,256,256,256);r.addColorS
 DRAW.slash=g=>{const gr=g.createLinearGradient(0,256,512,256);gr.addColorStop(0,'#ff2d5500');gr.addColorStop(.45,'#ff2d55');gr.addColorStop(.5,'#ffffff');gr.addColorStop(.55,'#ff2d55');gr.addColorStop(1,'#ff2d5500');g.fillStyle=gr;g.beginPath();g.ellipse(256,256,256,9,0,0,7);g.fill()};
 /* ---------- une ouverture ---------- */
 function pickCards(ranks){const used=new Set();return ranks.map(r=>{const rr=r==9?5:r;const L=D.filter(c=>c.r==rr&&!used.has(c.id));const c=L[(L.length*.37)|0]||D[0];used.add(c.id);return c})}
-/* ouverture du pack : un effet différent par rareté (la meilleure carte du pack), de plus en plus spectaculaire */
-function OPENFX(F,best,bc,cx,cy,W,H,flash){const y=cy-60,col=(c,w,d=2.6,dx=0,h=1.1)=>F.column(cx+dx,y,c,w,H*h,d),up=(n,c,c2,v,o)=>F.burst(cx,y,n,Object.assign({a:-1.57,sp:1.5,v,c,c2,s:15,life:1.2,g:420},o||{})),
+/* ouverture du pack : un effet différent par rareté (la meilleure carte du pack), de plus en plus spectaculaire. Aucun rayon vertical (le propriétaire n'en veut plus) : lueurs, anneaux, gerbes, rayons de soleil, images. */
+function OPENFX(F,best,bc,cx,cy,W,H,flash){const y=cy-60,up=(n,c,c2,v,o)=>F.burst(cx,y,n,Object.assign({a:-1.57,sp:1.5,v,c,c2,s:15,life:1.2,g:420},o||{})),
  rings=(n,c,s0=340,ds=140,sy=1)=>{for(let i=0;i<n;i++)wait(i*.1).then(()=>F.ring(cx,y,i%2?'#ffffff':c,s0+i*ds,.9,.05,sy))},
  bolts=(n,cs,t=1.6)=>{for(let i=0;i<n;i++)wait(.1+i*t/n).then(()=>F.spr(DRAW.bolt(cs[i%cs.length]),cx+(Math.random()-.5)*W*.7,H*.4,230,H*.9,.2,(m,k)=>m.material.opacity=1-k))};
- if(best<=0){col('#cfd6e4',80,1.5,0,.6);up(70,'#cfd6e4','#ffffff',420,{s:12,life:.9});return}
- if(best==1){col('#4aa8ff',130,2.1,0,.85);F.ring(cx,y,'#4aa8ff',320,.7,.05);up(150,'#4aa8ff','#ffffff',620,{s:13});return}
- if(best==2){col('#b45cff',150,2.5);col('#7c4dff',70,2.5,-170,.8);col('#7c4dff',70,2.5,170,.8);rings(3,'#b45cff',320,130,.35);F.burst(cx,y,200,{sw:[cx,y-220],v:520,c:'#b45cff',c2:'#ffffff',s:14,life:1.3,g:0,dr:.6});up(120,'#b45cff','#e6ccff',700);return}
- if(best==3){col('#ffb43a',230,2.9);F.rays(cx,y-90,'#ffd36a',950,2.5);rings(4,'#ffb43a',360,150);up(280,'#ffb43a','#fff3c4',820,{s:16,life:1.4});flash(.45,.4);return}
- if(best==4){const C=['#ff3d6e','#ffb43a','#ffe14d','#3dd9c4','#4aa8ff','#7c4dff'];C.forEach((c,i)=>col(c,90,3,(i-2.5)*64));F.spr(DRAW.prism,cx,y-60,900,900,2.7,(m,k)=>{m.rotation.z=T*.8;m.material.opacity=Math.min(1,k*4)*(k>.8?(1-k)/.2:1)*.5});bolts(6,C);rings(5,'#ff3d6e',380,150);up(320,'#ff3d6e','#3dd9c4',900,{sp:2,s:16,life:1.5});flash(.6,.45);return}
- if(best==5){col('#fff6dc',300,3.2);col('#ffe28a',120,3.2,-230,.9);col('#ffe28a',120,3.2,230,.9);F.rays(cx,y-110,'#fff6dc',1100,2.8);rings(5,'#ffe28a',400,170);
+ if(best<=0){F.flare(cx+(0),y-30,'#cfd6e4',476,1.1);up(70,'#cfd6e4','#ffffff',420,{s:12,life:.9});return}
+ if(best==1){F.flare(cx+(0),y-30,'#4aa8ff',586,1.1);F.ring(cx,y,'#4aa8ff',320,.7,.05);up(150,'#4aa8ff','#ffffff',620,{s:13});return}
+ if(best==2){F.flare(cx+(0),y-30,'#b45cff',630,1.1);F.flare(cx+(-170),y-30,'#7c4dff',454,1.1);F.flare(cx+(170),y-30,'#7c4dff',454,1.1);rings(3,'#b45cff',320,130,.35);F.burst(cx,y,200,{sw:[cx,y-220],v:520,c:'#b45cff',c2:'#ffffff',s:14,life:1.3,g:0,dr:.6});up(120,'#b45cff','#e6ccff',700);return}
+ if(best==3){F.flare(cx+(0),y-30,'#ffb43a',806,1.1);F.rays(cx,y-90,'#ffd36a',950,2.5);rings(4,'#ffb43a',360,150);up(280,'#ffb43a','#fff3c4',820,{s:16,life:1.4});flash(.45,.4);return}
+ if(best==4){const C=['#ff3d6e','#ffb43a','#ffe14d','#3dd9c4','#4aa8ff','#7c4dff'];C.forEach((c,i)=>wait(i*.06).then(()=>F.flare(cx+(i-(C.length-1)/2)*90,y-40,c,420,.9)));F.spr(DRAW.prism,cx,y-60,900,900,2.7,(m,k)=>{m.rotation.z=T*.8;m.material.opacity=Math.min(1,k*4)*(k>.8?(1-k)/.2:1)*.5});bolts(6,C);rings(5,'#ff3d6e',380,150);up(320,'#ff3d6e','#3dd9c4',900,{sp:2,s:16,life:1.5});flash(.6,.45);return}
+ if(best==5){F.flare(cx+(0),y-30,'#fff6dc',960,1.1);F.flare(cx+(-230),y-30,'#ffe28a',564,1.1);F.flare(cx+(230),y-30,'#ffe28a',564,1.1);F.rays(cx,y-110,'#fff6dc',1100,2.8);rings(5,'#ffe28a',400,170);
   F.spr(DRAW.wing,cx-170,y-150,460,460,2.6,(m,k)=>{m.scale.x=-(320+Math.min(1,k*2.5)*170);m.material.opacity=Math.min(1,k*3)*.8*(k>.8?(1-k)/.2:1)});F.spr(DRAW.wing,cx+170,y-150,460,460,2.6,(m,k)=>{m.scale.x=320+Math.min(1,k*2.5)*170;m.material.opacity=Math.min(1,k*3)*.8*(k>.8?(1-k)/.2:1)});
   for(let i=0;i<60;i++)wait(i*.03).then(()=>F.burst(Math.random()*W,-10,1,{a:1.57,sp:.6,v:60,g:20,dr:.1,life:4,s:16,c:'#fff6dc',c2:'#ffffff'}));up(360,'#fff6dc','#ffe28a',950,{sp:2.2,s:17,life:1.6});flash(.9,.6);return}
- if(best==6){col('#7a3dff',220,3.2);col('#2a0a5a',420,3.2);bolts(8,['#b07aff','#7a3dff'],2);rings(5,'#a86bff',380,160);F.spr(DRAW.crown,cx,y-330,260,260,2.6,(m,k)=>{const kk=Math.min(1,k*3);m.material.opacity=kk*(k>.8?(1-k)/.2:1);m.position.y=-(y-330)+ (1-kk)*-140});
+ if(best==6){F.flare(cx+(0),y-30,'#7a3dff',784,1.1);F.flare(cx+(0),y-30,'#2a0a5a',1224,1.1);bolts(8,['#b07aff','#7a3dff'],2);rings(5,'#a86bff',380,160);F.spr(DRAW.crown,cx,y-330,260,260,2.6,(m,k)=>{const kk=Math.min(1,k*3);m.material.opacity=kk*(k>.8?(1-k)/.2:1);m.position.y=-(y-330)+ (1-kk)*-140});
   for(let i=0;i<7;i++){const x=W*(.1+i*.133),s0=220+((i*37)%4)*40;F.spr(DRAW.soldier,x,H*1.05,s0,s0,2.8,(m,k)=>{const kk=Math.min(1,k*3);m.position.y=-(H*1.05+s0*.5-kk*s0*.55);m.material.opacity=kk*(k>.8?(1-k)/.2:1)},-3,false)}up(340,'#a86bff','#1a0a3a',900,{sp:2.2,s:16,life:1.6});flash(.7,.5);return}
- if(best==7){col('#ff2d55',170,3);F.spr(DRAW.moon,cx+W*.2,H*.26,640,640,2.8,(m,k)=>{m.material.opacity=Math.min(1,k*3)*(k>.8?(1-k)/.2:1)},-6);
+ if(best==7){F.flare(cx+(0),y-30,'#ff2d55',674,1.1);F.spr(DRAW.moon,cx+W*.2,H*.26,640,640,2.8,(m,k)=>{m.material.opacity=Math.min(1,k*3)*(k>.8?(1-k)/.2:1)},-6);
   for(let i=0;i<6;i++)wait(i*.16).then(()=>{const a=(i%2?.55:-.55)+(Math.random()-.5)*.5;flash(.22,.18);F.spr(DRAW.slash,cx,y-40+(Math.random()-.5)*220,W*1.5,100,.4,(m,k)=>{m.rotation.z=a;m.scale.x=W*1.5*Math.min(1,k*4);m.material.opacity=1-k})});
   rings(4,'#ff2d55',380,160);for(let i=0;i<50;i++)wait(i*.04).then(()=>F.burst(Math.random()*W,-10,1,{a:1.2,sp:.8,v:140,g:40,dr:.2,life:3.5,s:13,c:'#ff2d55',c2:'#ff8aa0'}));up(340,'#ff2d55','#ffd0c0',920,{sp:2.2,s:16,life:1.6});return}
- if(best==9){const C=['#ff8af0','#8af0ff','#fff28a','#ffffff','#b07aff'];C.forEach((c,i)=>col(c,110,3.2,(i-2)*90));F.spr(DRAW.prism,cx,y-60,1100,1100,3,(m,k)=>{m.rotation.z=T*.9;m.material.opacity=Math.min(1,k*4)*(k>.8?(1-k)/.2:1)*.6;m.scale.setScalar(700+k*500)});bolts(10,C,2.2);for(let i=0;i<6;i++)wait(i*.1).then(()=>F.ring(cx,y,C[i%5],420+i*150,1,.05));up(400,'#ff8af0','#8af0ff',1000,{sp:2.4,s:17,life:1.7});flash(1,.6);return}
+ if(best==9){const C=['#ff8af0','#8af0ff','#fff28a','#ffffff','#b07aff'];C.forEach((c,i)=>wait(i*.06).then(()=>F.flare(cx+(i-(C.length-1)/2)*90,y-40,c,420,.9)));F.spr(DRAW.prism,cx,y-60,1100,1100,3,(m,k)=>{m.rotation.z=T*.9;m.material.opacity=Math.min(1,k*4)*(k>.8?(1-k)/.2:1)*.6;m.scale.setScalar(700+k*500)});bolts(10,C,2.2);for(let i=0;i<6;i++)wait(i*.1).then(()=>F.ring(cx,y,C[i%5],420+i*150,1,.05));up(400,'#ff8af0','#8af0ff',1000,{sp:2.4,s:17,life:1.7});flash(1,.6);return}
  /* 8 et plus : Primordial, Absolu */
- col('#ffe28a',320,3.4);col('#fff6dc',130,3.4);F.rays(cx,y-110,'#ffe28a',1200,3);
+ F.flare(cx+(0),y-30,'#ffe28a',1004,1.1);F.flare(cx+(0),y-30,'#fff6dc',586,1.1);F.rays(cx,y-110,'#ffe28a',1200,3);
  F.spr(DRAW.runes,cx,y-40,820,820,3.2,(m,k)=>{m.rotation.z=T*.4;m.material.opacity=Math.min(1,k*3)*(k>.85?(1-k)/.15:1);m.scale.setScalar(420+Math.min(1,k*2)*420)},-1);F.spr(DRAW.runes,cx,y-40,820,820,3.2,(m,k)=>{m.rotation.z=-T*.7;m.material.opacity=Math.min(1,k*3)*(k>.85?(1-k)/.15:1)*.6;m.scale.setScalar(240+Math.min(1,k*2)*220)},-1);
  F.spr(DRAW.crack,cx,cy+130,760,440,3,(m,k)=>{m.material.opacity=Math.min(1,k*4)*(k>.85?(1-k)/.15:1)},-4);bolts(8,['#ffe28a','#ffffff'],2.2);for(let i=0;i<7;i++)wait(i*.1).then(()=>F.ring(cx,y,i%2?'#ffffff':'#ffe28a',420+i*160,1,.05));up(460,'#ffe28a','#ffffff',1050,{sp:2.6,s:18,life:1.8});flash(1,.5);wait(.5).then(()=>flash(.7,.5))}
 
@@ -21281,7 +21281,7 @@ let IF=null,NAMES=/*NAMES*/["Shanks", "Edward Newgate", "Kaido", "Muzan Kibutsuj
 const fold=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const has=n=>{if(!NAMES)return false;const f=fold(n);return NAMES.some(x=>{const g=fold(x);return g==f||f.startsWith(g)||g.startsWith(f)})};
 addEventListener('message',e=>{const m=e.data||{};if(!IF||e.source!=IF.contentWindow)return;if(m.t=='ulti-ready'){RD=1}if(m.t=='ulti-done'&&WAIT){const w=WAIT;WAIT=null;w()}});
-function mount(){if(IF&&document.body.contains(IF))return;IF=document.createElement('iframe');IF.id='u3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;IF.src='assets-614d4c382a/grimoire/ulti.html';document.body.append(IF)}
+function mount(){if(IF&&document.body.contains(IF))return;IF=document.createElement('iframe');IF.id='u3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;IF.src='assets-880f2a2445/grimoire/ulti.html';document.body.append(IF)}
 function hide(){if(IF)IF.classList.remove('on');const s=document.getElementById('u3sk');if(s)s.remove()}
 async function play(n,img,foe,myth){if(!myth&&!has(n)&&n.slice(0,2)!='G:')return 0;mount();if(!(await ready()))return 0;try{window.A3post&&A3post({t:'pause',v:1})}catch(e){}IF.classList.add('on');const sk=document.createElement('button');sk.id='u3sk';sk.type='button';sk.textContent='Passer ›';document.body.append(sk);
  await new Promise(r=>{WAIT=r;sk.onclick=()=>{WAIT=null;r()};setTimeout(()=>{if(WAIT===r){WAIT=null;r()}},14000);IF.contentWindow.postMessage({t:'ulti',n,img,foe,myth},'*')});hide();try{window.A3post&&A3post({t:'pause',v:0})}catch(e){}setTimeout(()=>{if(IF&&!IF.classList.contains('on')){IF.remove();IF=null;RD=0}},400);return 1}
@@ -21810,7 +21810,7 @@ packs(){S.fb=Math.max(S.fb||0,10);try{asS().pk=(asS().pk||0)+5}catch(e){}},
 camp(){S.cp=Math.max(S.cp||0,250)},
 async guild(){try{if(!GLD||!GLD.id)await gJoin('bot3')}catch(e){}try{GLD.lvl=10}catch(e){}},
 a3(){const off=!window.__A3OFF;window.__A3OFF=off;try{localStorage.setItem('a3off',off?'1':'0')}catch(e){}toast(off?'3D des combats coupée':'3D des combats activée');return 'x'},
-pportails(){try{V3OPEN('assets-614d4c382a/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
+pportails(){try{V3OPEN('assets-880f2a2445/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
 navA(){V3NAV.set('a');return 'x'},navB(){V3NAV.set('b');return 'x'},navC(){V3NAV.set('c');return 'x'},
 lvl(){S.xp=Math.max(S.xp||0,400000)},
 reset(){if(!confirm('Effacer la sauvegarde TEST ?'))return 'x';localStorage.removeItem('animecards');location.reload();return 'x'}};
