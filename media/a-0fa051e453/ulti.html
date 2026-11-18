@@ -557,6 +557,49 @@ FAM.prop=async(a,d,c,p)=>{const kind=p.kind,col=c.col,E=EP(d),dp=d.G.position;
   for(let i=0;i<10;i++){const bx=new THREE.Mesh(new THREE.BoxGeometry(rnd(1,2),rnd(3,7),rnd(1,2)),std('#2a3a4a',.05));bx.position.set(rnd(-14,14),0,rnd(-16,-8));keep(bx)}
   await tween(.35,t=>{gi.rotation.z=-t*.5;gi.position.x=dp.x+2.5-t*2;gi.position.y=4.2-t*1.6;shake(.2)},x=>x*x);hitS(d,E,'#6ac8ff',40);dmgS(d,ri(500,800),'#6ac8ff');ring(V(dp.x,.06,dp.z),'#6ac8ff',10,.7,.1);return}
  if(kind==='blacksun'){const s=nsp(TX.sun('#ff3a1a'),9);s.position.set(0,10,-14);keep(s);const ey=nsp(TX.eye,3.2);ey.position.set(0,10,-13.8);keep(ey);await camTo(V(-1,1.2,10),V(0,7,-8),.3,ease.o);await tween(.5,t=>{s.scale.setScalar(4+t*7);ey.scale.set(3.2,3.2*t*.5,1)});await sleep(200);return}
+ if(kind==='coffin'){ /* Kurohitsugi : le cercueil noir se referme sur l'ennemi, puis des croix le transpercent */
+  const g=new THREE.Group();g.position.set(dp.x,0,dp.z);keep(g);const W=3.4,H=6.4,M=()=>new THREE.MeshStandardMaterial({color:'#07030d',roughness:.25,metalness:.6,emissive:C('#3a1a6a'),emissiveIntensity:.3,side:2});
+  const P=[[0,-W/2,0],[0,W/2,0],[-W/2,0,Math.PI/2],[W/2,0,Math.PI/2]].map(([x,z,r])=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(W,H),M());m.position.set(x,-H/2,z);m.rotation.y=r;g.add(m);return m});
+  const top=new THREE.Mesh(new THREE.PlaneGeometry(W,W),M());top.rotation.x=Math.PI/2;top.position.y=H+9;g.add(top);
+  await camTo(V(-1.5,1.6,10),V(dp.x,3,dp.z),.3,ease.o);popText('KUROHITSUGI','#b388ff',V(dp.x-2.5,7.6,2),4.6,1.3);
+  for(let i=0;i<4;i++){tween(.32,t=>{P[i].position.y=-H/2+t*H},ease.o);ring(V(dp.x,.06,dp.z),'#7a3aff',5,.4,.1);shake(.12);await sleep(130)}
+  await sleep(220);await tween(.22,t=>{top.position.y=H+9-t*9},x=>x*x);shake(.5);flashScr(.5);PF.inv=1;
+  await camTo(V(.5,3.4,12),V(dp.x,3.2,dp.z),.25,ease.o);
+  for(let i=0;i<12;i++){const sp=mkM(new THREE.BoxGeometry(.09,5.2,.09),i%2?'#b388ff':'#ffffff',.95);const cr=mkM(new THREE.BoxGeometry(1.1,.09,.09),'#b388ff',.95);cr.position.y=1.5;sp.add(cr);const an=i/12*6.283,q=V(dp.x,rnd(1.2,5.2),dp.z),p0=q.clone().add(V(Math.cos(an)*9,rnd(-1,3),Math.sin(an)*9));
+   shoot(sp,p0,q,.14).then(()=>{flare(q,'#b388ff',1.6,.25);dmgS(d,ri(120,210),'#b388ff');shake(.2);d.m.uniforms.hit.value=1});await sleep(55)}
+  await sleep(320);await tween(.3,t=>{g.scale.set(1-t*.6,1+t*.15,1-t*.6)},x=>x*x);explode(V(dp.x,3,dp.z),'#5a2aaa',5,300);dmgS(d,ri(600,900),'#b388ff');sc.remove(g);await sleep(250);return}
+ if(kind==='gigafist'){ /* Bajrang Gun : un poing géant tombe du ciel */
+  const g=new THREE.Group(),m=std('#f6f2ff',.55),bx=(w,h,z,x,y,zz)=>{const b=new THREE.Mesh(new THREE.BoxGeometry(w,h,z),m);b.position.set(x,y,zz);g.add(b);return b};
+  bx(4.2,3.2,3.4,0,2.2,0);for(let i=0;i<4;i++)bx(.95,2.3,3.5,-1.58+i*1.05,-.3,.1);bx(1.1,2.6,1.2,2.6,.6,1.2);const wr=new THREE.Mesh(new THREE.CylinderGeometry(1.7,1.9,7,20),m);wr.position.y=7;g.add(wr);
+  const au=glowS('#b388ff',16,.5);au.position.y=1;g.add(au);g.position.set(dp.x,34,dp.z);g.scale.setScalar(.25);keep(g);
+  await camTo(V(-2,1.2,12),V(dp.x,12,dp.z),.35,ease.o);popText('BAJRANG GUN','#ffffff',V(dp.x-2,9,2),5,1.2);
+  const el=every(.05,()=>bolt(g.position.clone().add(V(rnd(-4,4),rnd(-2,4),rnd(-2,2))),g.position.clone().add(V(rnd(-7,7),rnd(-8,2),rnd(-3,3))),'#3a1a5a',.15,{r:.05}));
+  await tween(.75,t=>{g.scale.setScalar(.25+t*1.35);g.position.y=34-t*14;g.rotation.y=t*.4;shake(.15)},ease.o);await sleep(160);
+  await camTo(V(0,2.6,15),V(dp.x,3,dp.z),.12,ease.o);await tween(.16,t=>{g.position.y=20-t*15.5},x=>x*x);stopE(el);
+  explode(V(dp.x,1.5,dp.z),'#ffffff',7,420);for(let i=0;i<4;i++)after(i*.07,()=>ring(V(dp.x,.08,dp.z),i%2?'#b388ff':'#ffffff',9+i*5,.8,.09));dmgS(d,ri(900,1300),'#ffffff');shake(1);
+  await sleep(350);await tween(.3,t=>{g.position.y=4.5+t*10;g.scale.setScalar(1.6*(1-t*.9))});sc.remove(g);return}
+ if(kind==='icetime'){ /* Mahapadma : le temps gèle, l'ennemi est pris dans la glace, puis la glace éclate */
+  await camTo(V(-1,2.2,10),V(0,2.4,0),.25,ease.o);popText('MAHAPADMA','#bfefff',V(-2.2,5.6,2),5,1.3);
+  for(let i=0;i<3;i++)after(i*.1,()=>ring(a.G.position.clone().add(V(0,.08,0)),'#9fe0ff',22+i*6,.9,.05));flashScr(.9);await sleep(140);PF.hue=165;PF.sat=-.6;
+  for(let i=0;i<40;i++){const fl=glowS('#dff6ff',rnd(.12,.3),.9);fl.position.set(rnd(-9,9),rnd(.5,8),rnd(-6,3));keep(fl)}
+  const im=new THREE.MeshStandardMaterial({color:'#bfefff',transparent:true,opacity:.6,roughness:.08,metalness:.25,emissive:C('#3aa8ff'),emissiveIntensity:.55,flatShading:true});const ice=new THREE.Group();ice.position.set(dp.x,0,dp.z);keep(ice);
+  for(let i=0;i<7;i++){const c=new THREE.Mesh(new THREE.ConeGeometry(rnd(.7,1.3),rnd(3.5,6.5),5),im);c.position.set(rnd(-1.2,1.2),0,rnd(-.9,.9));c.rotation.set(rnd(-.25,.25),rnd(0,3),rnd(-.25,.25));c.scale.y=.01;ice.add(c);tween(.3,t=>{c.scale.y=t;c.position.y=c.geometry.parameters.height*t/2},ease.o);ring(V(dp.x,.06,dp.z),'#9fe0ff',3+i,.4,.08);shake(.1);await sleep(70)}
+  await camTo(V(1.2,2.2,7.5),E,.3,ease.o);await sleep(450);PF.hue=0;PF.sat=0;flashScr(.8);
+  for(let i=0;i<10;i++){const q=E.clone().add(V(rnd(-1,1),rnd(-1.5,2),rnd(-.4,.4)));hitS(d,q,'#bfefff',10);burst(q,26,{v:9,c:'#dff6ff',c2:'#7ad8ff',s:.3,life:.8});if(i%2==0)dmgS(d,ri(180,300),'#9fe0ff');await sleep(45)}
+  sc.remove(ice);explode(E,'#9fe0ff',4,260);dmgS(d,ri(500,800),'#9fe0ff');await sleep(250);return}
+ if(kind==='keys'){ /* Clés Noires : six lames de l'Église sorties en éventail puis lancées */
+  const A=a.G.position.clone().add(V(0,2.2,.4));await camTo(V(-2.5,2.4,8.5),V(1,2.2,0),.25,ease.o);
+  const mk=()=>{const g=new THREE.Group();const bl=mkM(new THREE.BoxGeometry(.08,2.6,.02),'#e8e0ff',.98);bl.position.y=1.3;const hd=new THREE.Mesh(new THREE.BoxGeometry(.5,.07,.07),std('#1a0a2a',.2));const gr=new THREE.Mesh(new THREE.BoxGeometry(.09,.5,.09),std('#7a1a2a',.4));gr.position.y=-.25;g.add(bl,hd,gr);return g};
+  const KK=[];for(let i=0;i<6;i++){const k=mk(),an=(i-2.5)*.33;k.position.copy(A).add(V(-.3*dirOf(a,d),Math.cos(an)*1.3-.6,Math.sin(an)*1.6));k.rotation.z=-dirOf(a,d)*(1.1+an*.25);keep(k);KK.push(k);flare(k.position,'#c8a0ff',.8,.2);await sleep(60)}
+  await sleep(240);await camWide();
+  for(let i=0;i<6;i++){const k=KK[i],q=E.clone().add(V(rnd(-.5,.5),rnd(-1.2,1.2),rnd(-.2,.3)));shoot(k,k.position.clone(),q,.11).then(()=>{hitS(d,q,'#c8a0ff',8);dmgS(d,ri(140,230),'#c8a0ff')});await sleep(70)}
+  await sleep(260);return}
+ if(kind==='ewings'){ /* Lancelot Albion : ailes d'énergie puis pluie de plumes vertes */
+  const A=a.G.position.clone().add(V(0,2.6,-.3));flashScr(.6);popText('« VIS ! »','#ff2a4a',A.clone().add(V(0,2.8,1)),4,.9);await camTo(V(-3,2,8),A,.25,ease.o);
+  const WW=[];for(const sg of [-1,1])for(let i=0;i<5;i++){const h=3.8-i*.4,f=mkM(new THREE.PlaneGeometry(.6,h),i%2?'#7dffb0':'#3affc8',.85);f.geometry.translate(0,h/2,0);f.position.copy(A);f.rotation.z=sg*(.35+i*.3);f.scale.setScalar(.01);keep(f);WW.push(f);tween(.3,t=>f.scale.setScalar(Math.max(.01,t)),ease.o)}
+  await sleep(380);const y0=a.G.position.y;await tween(.35,t=>{a.G.position.y=y0+t*2.2;WW.forEach(f=>f.position.y=A.y+t*2.2)},ease.o);await camWide();
+  for(let i=0;i<26;i++){const f=mkM(new THREE.PlaneGeometry(.12,1.1),'#7dffb0',.95);const p0=A.clone().add(V(rnd(-2.5,2.5),2.2+rnd(-.5,1.5),rnd(-.5,.5))),q=E.clone().add(V(rnd(-.8,.8),rnd(-1.4,1.4),rnd(-.3,.3)));shoot(f,p0,q,.12).then(()=>{flare(q,'#7dffb0',.9,.15);if(i%3==0)dmgS(d,ri(110,190),'#7dffb0');d.m.uniforms.hit.value=1;sc.remove(f)});await sleep(32)}
+  await sleep(200);await tween(.25,t=>{a.G.position.y=y0+2.2*(1-t);WW.forEach(f=>{f.position.y=A.y+2.2*(1-t);f.material.opacity=.85*(1-t)})});WW.forEach(f=>sc.remove(f));return}
  if(kind==='geass'){const s=plane(TX.sigil('#ff2a4a'),4.5,4.5);s.position.copy(E).add(V(0,.4,1.2));keep(s);s.scale.setScalar(.01);await camTo(V(1,2.4,8.4),E,.2,ease.o);await tween(.35,t=>{s.scale.setScalar(t);s.rotation.z=(1-t)*2});
   for(let i=0;i<5;i++){flashScr(.7);PF.inv=.8;PF.hue=ri(-60,60);await sleep(90);PF.hue=0;d.m.uniforms.hit.value=1;dmgS(d,ri(160,260),'#ff2a4a');await sleep(60)}await tween(.3,t=>s.scale.setScalar(1+t*.6));sc.remove(s);return}
 };
@@ -734,17 +777,17 @@ const CH=[
 /* ---- LOT 1 (17 nov. 2026) : chacun sa vraie attaque ---- */
 ['mythique','Goku','Genkidama','元','#7ad8ff','#ffffff',[['ball',{kind:'energy',size:3.2,h:7.5}]],'blue'],
 ['mythique','Vegeta','Final Flash','閃','#ffe14a','#fff8c0',[['beam',{w:1.7}]]],
-['mythique','Luffy','Gum-Gum Bajrang Gun','神','#f4f0ff','#b388ff',[['bolts',{n:5}],['leap',{}]],'white'],
+['mythique','Luffy','Gum-Gum Bajrang Gun','神','#f4f0ff','#b388ff',[['bolts',{n:5}],['prop',{kind:'gigafist'}]],'white'],
 ['mythique','Satoru Gojo','Vide Pourpre','虚','#a85aff','#ff4d6a',[['ball',{kind:'spiral',size:1.6,h:3.4,orbs:2}],['erase',{kind:'hakai'}]],'void'],
 ['mythique','Madara Uchiha','Météorite Tengai Shinsei','隕','#ff7a2a','#5a4a3a',[['ball',{kind:'rock',size:3.2,h:8}],['ball',{kind:'rock',size:2.4,h:8.5}]]],
-['mythique','Sosuke Aizen','Kurohitsugi','棺','#5a3a9a','#b388ff',[['portals',{type:'cube',n:10,np:10,src:'around',pc:'#1a0a2a'}],['bomb',{kind:'death'}]],'void'],
+['mythique','Sosuke Aizen','Kurohitsugi','棺','#5a3a9a','#b388ff',[['prop',{kind:'coffin'}]],'void'],
 ['mythique','Sung Jinwoo','Monarque des Ombres · Lève-toi','影','#7a5aff','#1a0a3a',[['army',{kind:'soldiers',n:32}],['slash',{n:3,el:'none',fin:'x',gap:70}]],'purple'],
 ['mythique','Rimuru Tempest','Dévoreur du Monde','喰','#5ad0ff','#0a2a4a',[['ball',{kind:'truth',size:1.8,h:4}],['erase',{kind:'gravity'}]],'blue'],
 ['mythique','Marshall D. Teach','Kurouzu · Séisme','闇','#6a3aaa','#000000',[['erase',{kind:'gravity'}],['quake',{}]],'void'],
 ['mythique','Guts','Armure du Berserk','狂','#c01030','#1a0004',[['leap',{swords:1}],['slash',{n:6,el:'beast',fin:'x',gap:65}]],'red'],
 ['mythique','Milim Nava','Drago Nova','竜','#ff5ab0','#ffd0f0',[['dragon',{breath:1,bc:'#ff7ad0',r:.55,el:'sun'}]],'pink'],
 ['mythique','Simon','Giga Drill Break','螺','#5aff8a','#ff3a3a',[['ball',{kind:'spiral',size:2,h:5}],['lance',{}]],'green'],
-['mythique','Esdeath','Mahapadma','氷','#9fe0ff','#ffffff',[['time',{type:'knife',n:12,txt:'MAHAPADMA',sc:'#7ad8ff'}]],'white'],
+['mythique','Esdeath','Mahapadma','氷','#9fe0ff','#ffffff',[['prop',{kind:'icetime'}],['spikes',{kind:'ice'}]],'white'],
 ['divin','Mikoto Misaka','Railgun','電','#7ad8ff','#ffe14a',[['bolts',{n:5}],['beam',{w:.8}]]],
 ['divin','Kenshin Himura','Amakakeru Ryū no Hirameki','天','#ff5a4a','#ffffff',[['slash',{n:1,el:'light',fin:'v',gap:60}]]],
 ['divin','Gin Ichimaru','Kamishini no Yari','槍','#c8d8ff','#7a5aff',[['slash',{n:1,el:'none',fin:'thrust',gap:60}],['erase',{kind:'decay'}]]],
@@ -765,10 +808,10 @@ const CH=[
 ['divin','Himiko Toga','Saignée','刃','#ff5a8a','#ffd0c0',[['whips',{kind:'red',n:2,lashes:4}],['slash',{n:5,el:'blood',fin:'x',gap:70}]],'pink'],
 ['divin','Feitan Portor','Pain Packer · Rising Sun','陽','#ff7a2a','#fff3c4',[['ball',{kind:'sun',size:2.2,h:7}],['flames',{}]],'sun'],
 ['divin','Rin Tohsaka','Joyau de Zelretch','宝','#ff5a5a','#7ad8ff',[['beam',{w:1.3,circles:5}]],'red'],
-['divin','Kirei Kotomine','Clés Noires','鍵','#3a2a5a','#c8a0ff',[['portals',{type:'sword',n:8,src:'around',noPortal:1,dur:.35}],['punch',{kind:'smash'}]],'void'],
+['divin','Kirei Kotomine','Clés Noires','鍵','#3a2a5a','#c8a0ff',[['prop',{kind:'keys'}],['punch',{kind:'smash'}]],'void'],
 ['divin','Illyasviel von Einzbern','Berserker Déchaîné','狂','#c8d0ff','#ff3a3a',[['prop',{kind:'giant'}],['quake',{}]],'white'],
 ['divin','Astolfo','Hippogriffe','翼','#ff9ad0','#ffffff',[['leap',{}],['arrow',{wings:1,feathers:1}]],'pink'],
-['divin','Suzaku Kururugi','Lancelot · « Vis ! »','騎','#ffffff','#ff2a4a',[['prop',{kind:'geass'}],['punch',{kind:'kick'}]],'white'],
+['divin','Suzaku Kururugi','Lancelot · « Vis ! »','騎','#ffffff','#ff2a4a',[['prop',{kind:'ewings'}],['punch',{kind:'kick'}]],'white'],
 ['divin','Kaworu Nagisa','Dernier Ange · A.T. Field','使','#ffb0b0','#ffffff',[['pillar',{w:2.4}],['erase',{kind:'hakai'}]],'red'],
 /* ---- LOT 3 (18 nov. 2026) : les derniers persos de base, chacun sa vraie attaque ---- */
 ['mythique','Greed','Bouclier Ultime','強','#5a5a6a','#ff3a3a',[['punch',{kind:'smash'}],['slash',{n:4,el:'beast',fin:'x',gap:80}]],'grey'],
@@ -815,6 +858,17 @@ const CH=[
 ['mythique','Obanai Iguro','Souffle du Serpent · Serpent Sinueux','蛇','#f4f4f4','#7a5aff',[['slash',{n:6,el:'insect',fin:'v',gap:70}],['whips',{kind:'tail',n:1,lashes:3}]],'white'],
 ['ascendant','Light Yagami','Le Nouveau Monde','神','#ff2a2a','#f4f4f4',[['prop',{kind:'chess'}],['erase',{kind:'deathnote'}]],'red'],
 ['ascendant','Zeno','Effacement Total','全','#b07aff','#7ad8ff',[['prop',{kind:'blacksun'}],['erase',{kind:'hakai'}]],'void'],
+/* ---- LOT 4 (18 nov. 2026) : persos automatiques Mythique, chacun l'attaque de son anime ---- */
+['mythique','Maomao','Test du Poison','毒','#7a3aaa','#5ad8a0',[['prop',{kind:'eyes'}],['time',{type:'knife',n:9,txt:'POISON',sc:'#7a3aaa'}]],'purple'],
+['mythique','Mai Sakurajima','Syndrome de la Puberté','兎','#c89aff','#f4f0ff',[['erase',{kind:'decay'}],['slash',{n:1,el:'mist',fin:'thrust',gap:150}]],'purple'],
+['mythique','Violet Evergarden','Lettre du Cœur','紫','#7a8aff','#ffd36a',[['portals',{type:'card',n:16,src:'around',noPortal:1}],['punch',{kind:'smash'}]],'blue'],
+['mythique','Marin Kitagawa','Cosplay Shizuku-tan','着','#ff9ad0','#1a0a1a',[['whips',{kind:'ribbon',n:8,lashes:2}],['time',{type:'card',n:10,txt:'SHIZUKU-TAN',sc:'#ff9ad0'}]],'pink'],
+['mythique','Chika Fujiwara','Danse de Chika','踊','#ff9ad0','#ffe14a',[['punch',{kind:'rush',txt:'CHIKA CHIKA'}],['bolts',{n:5}]],'pink'],
+['mythique','Itsuki Nakano','Étoile de la Cinquième','五','#ff5a3a','#ffd36a',[['portals',{type:'cube',n:5,np:5,src:'around',pc:'#ff5a3a'}],['punch',{kind:'kick'}]],'red'],
+['mythique','Kiyotaka Ayanokouji','Chef-d’œuvre de la White Room','白','#f4f4f4','#5a5a6a',[['prop',{kind:'chess'}],['punch',{kind:'serious'}]],'white'],
+['mythique','Miko Iino','Comité de Discipline','律','#ffd36a','#ffffff',[['time',{type:'missile',n:1,txt:'INTERDIT !',sc:'#ffd36a'}],['whips',{kind:'chain',n:4,lashes:1,cage:1}]],'gold'],
+['mythique','Jin-U Seong','Lève-toi · Armée des Ombres','影','#3a2a8a','#7ad8ff',[['army',{kind:'soldiers',n:34}],['slash',{n:7,el:'none',fin:'x',gap:55}]],'void'],
+['mythique','Hitagi Senjougahara','Crabe du Poids','蟹','#c89aff','#ffffff',[['time',{type:'bullet',n:20,txt:'AGRAFEUSE',sc:'#c89aff'}],['erase',{kind:'gravity'}]],'purple'],
 ].map(([r,nm,n,k,col,col2,steps,dom])=>({r,nm,n,k,col,col2,steps,dom}));
 /* ======================= DÉROULÉ ======================= */
 const W1=g=>{g.moveTo(120,-260);g.lineTo(230,-620)},W2=g=>{g.moveTo(-120,-300);g.lineTo(-250,-640)};
