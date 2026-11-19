@@ -12652,7 +12652,7 @@ function synFlash(){const y=B&&B.syn,bt=$('bt');if(!y||!bt||bt.querySelector('.s
 
 /* ---------- v24.8.3 : annonce de la grosse mise à jour de samedi (vidéo leak + compte à rebours) ---------- */
 /* annonces des prochaines grosses mises à jour : la première pas encore terminée est affichée */
-const ANNL=[{id:'grimoire-12dec',t:Date.UTC(2026,11,12,14,0,0),end:Date.UTC(2026,11,12,22,0,0),vid:'assets-7ab9b6069d/grimoire/leak-grimoire.mp4',img:'assets-7ab9b6069d/grimoire/leak-grimoire.jpg',
+const ANNL=[{id:'grimoire-12dec',t:Date.UTC(2026,11,12,14,0,0),end:Date.UTC(2026,11,12,22,0,0),vid:'assets-f768f345a7/grimoire/leak-grimoire.mp4',img:'assets-f768f345a7/grimoire/leak-grimoire.jpg',
  h:'Le <em>Royaume du Trèfle</em> arrive samedi 12',dt:'Samedi 12 décembre · 15 h',hp:'Black Clover <em>samedi 12 décembre</em> à 15 h',fin:'Ce que tu vois dans la vidéo n’est qu’un aperçu. Ouvre ton grimoire le 12 !',
  sp:[['魔','Nouvelle rareté','Grimoire · 8 cartes'],['試','Nouveau mode','L’Examen des Chevaliers-Mages'],['頁','Des pages au hasard','Un grimoire à 3, 4 ou 5 feuilles'],['技','8 ultis en 3D','Elles cassent l’arène'],['包','Pack Grimoire en 3D','Un grimoire scellé'],['悪','Après l’Empereur-Mage','Trois <s>██████</s>'],['他','Et plein d’autres choses…','On ne peut pas tout dire']]},
  {id:'ascendant-8nov',t:Date.UTC(2026,10,8,13,0,0),end:Date.UTC(2026,10,8,21,0,0),vid:'../media/leak-ascendant.mp4',img:'../media/leak-ascendant.jpg',
@@ -19354,7 +19354,7 @@ function nlTeam(){let L=[];try{L=sel.map(id=>M[id]).filter(c=>c&&S.inv&&S.inv[c.
 function nlMe(){const me=nlTeam().map(c=>mkF(c));const ss=me.map(f=>f.c.s);if(ss.some((x,i)=>ss.indexOf(x)!=i))me.forEach(f=>f.b=1.1);return me}
 const nlAvg=me=>me.reduce((a,f)=>a+f.p,0)/Math.max(1,me.length);
 /* Tempête de neige : 3 niveaux, le blizzard retire 4 % de vie à chaque tour aux deux combattants (sans jamais achever) */
-const NLT=[['Flocon','Snowflake',.85,1,6,'#bfe9ff'],['Blizzard','Blizzard',1.1,1.2,10,'#7fd4ff'],['Avalanche','Avalanche',1.35,1.45,16,'#4aa8ff']];
+const NLT=[['Flocon','Snowflake',.75,.9,6,'#bfe9ff'],['Blizzard','Blizzard',.9,1,10,'#7fd4ff'],['Avalanche','Avalanche',1.05,1.15,16,'#4aa8ff']];
 function nltGo(lv){lv=Math.max(0,Math.min(2,Math.floor(+lv)));if(!nlDec())return;const me=nlMe();if(!me.length)return toast(nlT('Il te faut des cartes !','You need cards!'));
  const L=NLT[lv],base=nlAvg(me);try{avgP=base}catch(e){}const P=pickE(d=>Math.abs(d.p-base)<=30,3);
  const en=P.map((c,i)=>eF(c,base*L[2]*(i==2?1.1:1),L[3]));
@@ -19373,7 +19373,7 @@ const NLB=[[1,{c:300}],[3,{pk:1}],[6,{c:800,fl:10}],[10,{pk:2}],[15,{lg:1}]];
 function nlbCard(){const P=D.filter(d=>d&&d.r>=4&&d.base==null&&!/^a/.test(String(d.id))).sort((a,b)=>String(a.id)<String(b.id)?-1:1);return P.length?P[nlK()%P.length]:D[0]}
 function nlbGo(){if(!nlDec())return;const s=nlS();if(s.bt>=NL_TRY)return toast(nlT('Plus d’essai aujourd’hui : le Voleur revient demain','No tries left today: the Thief is back tomorrow'));
  const me=nlMe();if(!me.length)return toast(nlT('Il te faut des cartes !','You need cards!'));const base=nlAvg(me);try{avgP=base}catch(e){}
- const c=nlbCard(),f=eF(c,base*1.3,2.6);f.b=1.05;s.bt++;save();
+ const c=nlbCard(),f=eF(c,base*.95,1.8);s.bt++;save();
  xFight(me,[f],'nlb',nlT('Le Voleur de cadeaux · ','The Gift Thief · ')+c.n,['#e8433f','#06140d'],'盗',1);try{trk('nlb')}catch(e){}
  setTimeout(()=>{try{if(B&&B.md=='nlb'&&!B.over)hkBanner('盗',nlT('Reprends les cadeaux au Voleur !','Take the gifts back from the Thief!'),'#e8433f')}catch(e){}},400)}
 function nlbEnd(w,quit){const s=nlS(),left=Math.max(0,NL_TRY-s.bt),btn=(t,f,g)=>`<button class="btn${g?' gh':''}" data-oclick="xClose(${f})">${t}</button>`;
@@ -19866,7 +19866,7 @@ function akCine(cards){return new Promise(res=>{const o=document.createElement('
 /* ================= MUGEN 27 · L'AUBE · partie A (2) : nouveau design (v26.9) =================
    - le Pack Aube s'ouvre avec la nouvelle ouverture 3D des boosters (celle de tous les packs du jeu), les cartes sont celles du jeu (card) ;
    - les objets de l'Aube (anneaux, yeux, coffres, sacs, spores, Pack Aube) ont leur modèle 3D (vignettes rendues dans media/aube-3f9a2c71/obj/). */
-const AKM='assets-7ab9b6069d/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
+const AKM='assets-f768f345a7/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
 const akObjImg=(id,cls='')=>`<img class="ak3o ${cls}" src="${akObj(id)}" alt="" draggable="false" loading="lazy" data-oerror="this.style.visibility='hidden'">`;
 /* anneaux de l'Akatsuki : vignette 3D partout où le jeu dessine l'icône d'un objet */
 {const _gi=gIco;gIco=function(g){try{if(g&&/^akr\d$/.test(g.id))return akObjImg(g.id,'o3i'+(typeof gLv=='function'&&!gLv(g)?' o3lk':''))}catch(e){}return _gi.apply(this,arguments)}}
@@ -20803,7 +20803,7 @@ async g_nuage(X){const Q=await k2Q(X,true),T=Q.T,{ax,ay,tx,ty,ux,uy,mv,rec,shake
    (même moteur que les ultimes des cartes rares, recul de caméra en portrait). Le Jutsu de l'Aube y joue sa scène de groupe :
    chaque membre fait sa part, puis l'attaque combinée. La logique (dégâts, coût, effets) ne change pas : seules les images changent.
    Si le moteur 3D ne répond pas, les anciennes animations restent en secours. */
-const AK3_SRC='assets-7ab9b6069d/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
+const AK3_SRC='assets-f768f345a7/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
 const AK3={f:null,rd:0,w:null};
 addEventListener('message',e=>{const m=e.data||{};if(!AK3.f||e.source!==AK3.f.contentWindow)return;if(m.t=='aube-ready')AK3.rd=1;if(m.t=='aube-done'&&AK3.w){const w=AK3.w;AK3.w=null;w(m.ok?1:0)}});
 function ak3Mount(){if(AK3.f&&document.body.contains(AK3.f))return;const f=document.createElement('iframe');f.id='ak3f';f.setAttribute('aria-hidden','true');f.tabIndex=-1;f.src=AK3_SRC;AK3.rd=0;AK3.f=f;document.body.append(f)}
@@ -21148,7 +21148,7 @@ try{[['akw','Sceller {n} Bijū (La Traque des Bijū)',1,'暁',null,5]].forEach(x
 /* ================= MUGEN 27 · L'AUBE · partie B (3) : « La Traque des Bijū » dans le nouveau design (v26.9) =================
    Même contenu et même déroulé que les parties B (1) et (2) : seules les pages changent.
    Le Repaire (page du mode) → la fiche de la cible (Alerte, renforts, contrat de Kakuzu) → le lobby (.lb3) → le combat dans l'arène 3D
-   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-7ab9b6069d/aube-3f9a2c71/obj/). */
+   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-f768f345a7/aube-3f9a2c71/obj/). */
 const AKX_BG=id=>AKM+'bg/'+id+'.jpg';
 const akxE=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const akxJ=H=>(H.jid&&M[H.jid]&&imgOf(M[H.jid]))||AKT_IMG+H.ji,akxB=H=>AKT_IMG+H.bi;
@@ -21342,7 +21342,7 @@ const GRX_E=[['Cerf Turquoise','鹿','#4de1d0','Magie d’eau',1,'Rill Boismorti
  ['Démon des Mots','言','#b45cff','Magie des mots',4,'Zagred'],['Démone des Malédictions','呪','#ff3d9a','Magie de malédiction',4.4,'Megicula'],['Roi des Démons','魔','#ff2a2a','Magie de gravité',4.9,'Lucifero']];
 const grxDec=i=>GRX_E[i][6]??i;
 /* images 3D des épreuves (rendues par maquettes/blackclover/tuiles.js) ; à la sortie, apply.py les copie dans media/grimoire/ */
-const GRX_IMG='assets-7ab9b6069d/grimoire/';
+const GRX_IMG='assets-f768f345a7/grimoire/';
 /* photo du capitaine : la carte du jeu si elle existe, sinon recherche par nom (même service que les images des cartes), gardée en mémoire sur l'appareil */
 const GRX_PH={'Rill Boismortier':'13/351522','Dorothy Unsworth':'9/351519','Kaiser Granvorka':'12/375247','Jack the Ripper':'4/337897','Charlotte Roselei':'7/337340','Fuegoleon Vermillion':'16/337233','Nozel Silva':'14/337231','William Vangeance':'14/338851','Zagred':'2/398999','Megicula':'8/440458','Lucifero':'16/462810'};
 let GRXI=null;
@@ -22107,7 +22107,7 @@ let IF=null,NAMES=/*NAMES*/["Shanks", "Edward Newgate", "Kaido", "Muzan Kibutsuj
 const fold=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const has=n=>{if(!NAMES)return false;const f=fold(n);return NAMES.some(x=>{const g=fold(x);return g==f||f.startsWith(g)||g.startsWith(f)})};
 addEventListener('message',e=>{const m=e.data||{};if(!IF||e.source!=IF.contentWindow)return;if(m.t=='ulti-ready'){RD=1}if(m.t=='ulti-done'&&WAIT){const w=WAIT;WAIT=null;w()}});
-function mount(){if(IF&&document.body.contains(IF))return;IF=document.createElement('iframe');IF.id='u3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;IF.src='assets-7ab9b6069d/grimoire/ulti.html';document.body.append(IF)}
+function mount(){if(IF&&document.body.contains(IF))return;IF=document.createElement('iframe');IF.id='u3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;IF.src='assets-f768f345a7/grimoire/ulti.html';document.body.append(IF)}
 function hide(){if(IF)IF.classList.remove('on');const s=document.getElementById('u3sk');if(s)s.remove()}
 async function play(n,img,foe,myth){if(!myth&&!has(n)&&n.slice(0,2)!='G:')return 0;mount();if(!(await ready()))return 0;try{window.A3post&&A3post({t:'pause',v:1})}catch(e){}IF.classList.add('on');const sk=document.createElement('button');sk.id='u3sk';sk.type='button';sk.textContent='Passer ›';document.body.append(sk);
  await new Promise(r=>{WAIT=r;sk.onclick=()=>{WAIT=null;r()};setTimeout(()=>{if(WAIT===r){WAIT=null;r()}},14000);IF.contentWindow.postMessage({t:'ulti',n,img,foe,myth},'*')});hide();try{window.A3post&&A3post({t:'pause',v:0})}catch(e){}setTimeout(()=>{if(IF&&!IF.classList.contains('on')){IF.remove();IF=null;RD=0}},400);return 1}
@@ -22636,7 +22636,7 @@ packs(){S.fb=Math.max(S.fb||0,10);try{asS().pk=(asS().pk||0)+5}catch(e){}},
 camp(){S.cp=Math.max(S.cp||0,250)},
 async guild(){try{if(!GLD||!GLD.id)await gJoin('bot3')}catch(e){}try{GLD.lvl=10}catch(e){}},
 a3(){const off=!window.__A3OFF;window.__A3OFF=off;try{localStorage.setItem('a3off',off?'1':'0')}catch(e){}toast(off?'3D des combats coupée':'3D des combats activée');return 'x'},
-pportails(){try{V3OPEN('assets-7ab9b6069d/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
+pportails(){try{V3OPEN('assets-f768f345a7/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
 navA(){V3NAV.set('a');return 'x'},navB(){V3NAV.set('b');return 'x'},navC(){V3NAV.set('c');return 'x'},
 lvl(){S.xp=Math.max(S.xp||0,400000)},
 reset(){if(!confirm('Effacer la sauvegarde TEST ?'))return 'x';localStorage.removeItem('animecards');location.reload();return 'x'}};
