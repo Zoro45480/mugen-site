@@ -7709,11 +7709,11 @@ body.nl61 .btn:not(.gh){box-shadow:inset 0 2px 0 #ffffff55,0 6px 16px #0005}
 @media (max-width:760px){
  #tb{height:auto!important;min-height:0!important;flex-wrap:nowrap!important;padding:8px 12px!important;padding-top:calc(8px + env(safe-area-inset-top,0px))!important;gap:8px!important;align-items:center!important}
  #tb #n3tabs,#tb #rch-b,#tb #lg-b,#v3mob{display:none!important}
- #tb .brand{order:0}#tb .sp{order:1;flex:1!important}#tb #en{order:2}#tb .pill:not(#en):not(.ms):not(#rs){order:3}#tb #ml42b{order:4;position:static!important;margin:0!important}#tb #avb{order:5;position:static!important;margin:0!important}
+ #tb .brand{order:0}#tb .sp{order:1;flex:1!important}#tb #en{order:2}#tb .pill:not(#en):not(.ms):not(#rs){order:3}#tb #ml42b{order:4;position:relative!important;margin:0!important;flex:none!important}#tb #avb{order:5;position:relative!important;margin:0!important;width:38px!important;height:38px!important;flex:none!important;overflow:hidden}
  #tb #en,#tb .pill{padding:6px 10px!important;font-size:12.5px!important}
  main{padding-top:calc(66px + env(safe-area-inset-top,0px))!important;padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))!important}
  #m76b{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:100000;background:#0d0f17f2;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid #ffffff14;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
- #m76b button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0 4px;background:none;border:0;color:#9aa0bb;font:700 11px Inter,sans-serif;position:relative;border-radius:14px;min-height:54px}
+ #m76b button{border:0!important;outline:0!important;box-shadow:none!important;background:none!important;flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0 4px;background:none;border:0;color:#9aa0bb;font:700 11px Inter,sans-serif;position:relative;border-radius:14px;min-height:54px}
  #m76b button i{font:900 20px serif;font-style:normal;width:40px;height:30px;display:grid;place-items:center;border-radius:12px;color:var(--nc);transition:background .2s,transform .2s}
  #m76b button.on{color:#fff}#m76b button.on i{background:color-mix(in srgb,var(--nc) 26%,transparent);transform:translateY(-1px)}
  #m76b button:active i{transform:scale(.9)}
@@ -13342,7 +13342,7 @@ function synFlash(){const y=B&&B.syn,bt=$('bt');if(!y||!bt||bt.querySelector('.s
 
 /* ---------- v24.8.3 : annonce de la grosse mise à jour de samedi (vidéo leak + compte à rebours) ---------- */
 /* annonces des prochaines grosses mises à jour : la première pas encore terminée est affichée */
-const ANNL=[{id:'grimoire-12dec',t:Date.UTC(2026,11,12,14,0,0),end:Date.UTC(2026,11,12,22,0,0),vid:'assets-7db5b2f1aa/grimoire/leak-grimoire.mp4',img:'assets-7db5b2f1aa/grimoire/leak-grimoire.jpg',
+const ANNL=[{id:'grimoire-12dec',t:Date.UTC(2026,11,12,14,0,0),end:Date.UTC(2026,11,12,22,0,0),vid:'assets-032006436a/grimoire/leak-grimoire.mp4',img:'assets-032006436a/grimoire/leak-grimoire.jpg',
  h:'Le <em>Royaume du Trèfle</em> arrive samedi 12',dt:'Samedi 12 décembre · 15 h',hp:'Black Clover <em>samedi 12 décembre</em> à 15 h',fin:'Ce que tu vois dans la vidéo n’est qu’un aperçu. Ouvre ton grimoire le 12 !',
  sp:[['魔','Nouvelle rareté','Grimoire · 8 cartes'],['試','Nouveau mode','L’Examen des Chevaliers-Mages'],['頁','Des pages au hasard','Un grimoire à 3, 4 ou 5 feuilles'],['技','8 ultis en 3D','Elles cassent l’arène'],['包','Pack Grimoire en 3D','Un grimoire scellé'],['悪','Après l’Empereur-Mage','Trois <s>██████</s>'],['他','Et plein d’autres choses…','On ne peut pas tout dire']]},
  {id:'ascendant-8nov',t:Date.UTC(2026,10,8,13,0,0),end:Date.UTC(2026,10,8,21,0,0),vid:'../media/leak-ascendant.mp4',img:'../media/leak-ascendant.jpg',
@@ -21434,6 +21434,14 @@ const M76OK=new Set(['tb','m76b','m76m','n3mega','pop']);
 function m76Cov(){if(!m76Mob())return false;const W=innerWidth,H=innerHeight;for(const e of document.body.children){if(M76OK.has(e.id)||e.tagName=='SCRIPT'||e.tagName=='STYLE')continue;const cs=getComputedStyle(e);if(cs.position!='fixed'||cs.display=='none'||cs.visibility=='hidden'||+cs.opacity<.05)continue;const z=parseInt(cs.zIndex)||0;if(z<60)continue;const b=e.getBoundingClientRect();if(b.width>=W*.7&&b.height>=H*.6&&cs.pointerEvents!='none')return true}return !!document.getElementById('bt')}
 function m76Tick(){try{const h=m76Cov();document.body.classList.toggle('m76hide',h);if(h&&document.getElementById('m76m'))m76Close()}catch(e){}}
 setInterval(m76Tick,350);addEventListener('resize',m76Tick);
+/* pages récentes absentes des menus de catégories : on les y ajoute (sur PC et téléphone) */
+function m76Add(){const C=window.CAT76;if(!C||C.m76)return;C.m76=1;const F=(n)=>C.find(c=>c[0]==n);
+ const add=(cat,it)=>{const c=F(cat);if(c&&!c[3].some(x=>x[0]==it[0]))c[3].push(it)};
+ add('Social',['online','Joueurs en ligne','Qui joue en ce moment','線','amis',()=>show('online')]);
+ add('Plus',['avis','Avis des joueurs','Note le jeu','評','dojo',()=>show('avis')]);
+ add('Guilde',['gtop','Classement des guildes','Récompenses chaque semaine','冠','classe',()=>show('gtop')]);
+ add('Progrès',['ttw','Wiki des titres','Tous les titres et comment les avoir','称','tour',()=>show('ttw')])}
+try{m76Add()}catch(e){}setTimeout(()=>{try{m76Add()}catch(e){}},50);setTimeout(()=>{try{m76Add()}catch(e){}},1500);
 setTimeout(m76Build,300);
 
 /* ================= MUGEN 27 · L'AUBE · partie A : rareté AUBE 暁 (Akatsuki) — 11 cartes, kits, design, GIF, Pack Aube 3D ================= */
@@ -21838,7 +21846,7 @@ function akCine(cards){return new Promise(res=>{const o=document.createElement('
 /* ================= MUGEN 27 · L'AUBE · partie A (2) : nouveau design (v26.9) =================
    - le Pack Aube s'ouvre avec la nouvelle ouverture 3D des boosters (celle de tous les packs du jeu), les cartes sont celles du jeu (card) ;
    - les objets de l'Aube (anneaux, yeux, coffres, sacs, spores, Pack Aube) ont leur modèle 3D (vignettes rendues dans media/aube-3f9a2c71/obj/). */
-const AKM='assets-7db5b2f1aa/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
+const AKM='assets-032006436a/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
 const akObjImg=(id,cls='')=>`<img class="ak3o ${cls}" src="${akObj(id)}" alt="" draggable="false" loading="lazy" data-oerror="this.style.visibility='hidden'">`;
 /* anneaux de l'Akatsuki : vignette 3D partout où le jeu dessine l'icône d'un objet */
 {const _gi=gIco;gIco=function(g){try{if(g&&/^akr\d$/.test(g.id))return akObjImg(g.id,'o3i'+(typeof gLv=='function'&&!gLv(g)?' o3lk':''))}catch(e){}return _gi.apply(this,arguments)}}
@@ -22775,7 +22783,7 @@ async g_nuage(X){const Q=await k2Q(X,true),T=Q.T,{ax,ay,tx,ty,ux,uy,mv,rec,shake
    (même moteur que les ultimes des cartes rares, recul de caméra en portrait). Le Jutsu de l'Aube y joue sa scène de groupe :
    chaque membre fait sa part, puis l'attaque combinée. La logique (dégâts, coût, effets) ne change pas : seules les images changent.
    Si le moteur 3D ne répond pas, les anciennes animations restent en secours. */
-const AK3_SRC='assets-7db5b2f1aa/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
+const AK3_SRC='assets-032006436a/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
 const AK3={f:null,rd:0,w:null};
 addEventListener('message',e=>{const m=e.data||{};if(!AK3.f||e.source!==AK3.f.contentWindow)return;if(m.t=='aube-ready')AK3.rd=1;if(m.t=='aube-done'&&AK3.w){const w=AK3.w;AK3.w=null;w(m.ok?1:0)}});
 function ak3Mount(){if(AK3.f&&document.body.contains(AK3.f))return;const f=document.createElement('iframe');f.id='ak3f';f.setAttribute('aria-hidden','true');f.tabIndex=-1;f.src=AK3_SRC;AK3.rd=0;AK3.f=f;document.body.append(f)}
@@ -23120,7 +23128,7 @@ try{[['akw','Sceller {n} Bijū (La Traque des Bijū)',1,'暁',null,5]].forEach(x
 /* ================= MUGEN 27 · L'AUBE · partie B (3) : « La Traque des Bijū » dans le nouveau design (v26.9) =================
    Même contenu et même déroulé que les parties B (1) et (2) : seules les pages changent.
    Le Repaire (page du mode) → la fiche de la cible (Alerte, renforts, contrat de Kakuzu) → le lobby (.lb3) → le combat dans l'arène 3D
-   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-7db5b2f1aa/aube-3f9a2c71/obj/). */
+   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-032006436a/aube-3f9a2c71/obj/). */
 const AKX_BG=id=>AKM+'bg/'+id+'.jpg';
 const akxE=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const akxJ=H=>(H.jid&&M[H.jid]&&imgOf(M[H.jid]))||AKT_IMG+H.ji,akxB=H=>AKT_IMG+H.bi;
@@ -23318,7 +23326,7 @@ const GRX_E=[['Cerf Turquoise','鹿','#4de1d0','Magie d’eau',1,'Rill Boismorti
  ['Démon des Mots','言','#b45cff','Magie des mots',4,'Zagred'],['Démone des Malédictions','呪','#ff3d9a','Magie de malédiction',4.4,'Megicula'],['Roi des Démons','魔','#ff2a2a','Magie de gravité',4.9,'Lucifero']];
 const grxDec=i=>GRX_E[i][6]??i;
 /* images 3D des épreuves (rendues par maquettes/blackclover/tuiles.js) ; à la sortie, apply.py les copie dans media/grimoire/ */
-const GRX_IMG='assets-7db5b2f1aa/grimoire/';
+const GRX_IMG='assets-032006436a/grimoire/';
 /* photo du capitaine : la carte du jeu si elle existe, sinon recherche par nom (même service que les images des cartes), gardée en mémoire sur l'appareil */
 const GRX_PH={'Rill Boismortier':'13/351522','Dorothy Unsworth':'9/351519','Kaiser Granvorka':'12/375247','Jack the Ripper':'4/337897','Charlotte Roselei':'7/337340','Fuegoleon Vermillion':'16/337233','Nozel Silva':'14/337231','William Vangeance':'14/338851','Zagred':'2/398999','Megicula':'8/440458','Lucifero':'16/462810'};
 let GRXI=null;
@@ -23667,7 +23675,7 @@ const go=v=>()=>show(v);
 const gm=m=>()=>{show('battle');setTimeout(()=>{try{mode(m)}catch(e){}},200)};
 const gg=lbl=>()=>{show('guild');setTimeout(()=>{const b=[...document.querySelectorAll('.gd19-tabs button,.mi13-tabs button')].find(x=>x.textContent.includes(lbl));b&&b.click()},350)};
 const gsec=(v,sel)=>()=>{show(v);setTimeout(()=>{const e=document.querySelector(sel);e&&e.scrollIntoView({behavior:'smooth',block:'start'})},450)};
-const CAT=[
+const CAT=window.CAT76=[
  ['Combat','戦','#ff3d6e',[['battle','Hub de combat','Tous les modes','戦','dojo',go('battle')],['quick','Match rapide','Un duel équilibré','拳','dojo',gm('quick')],['camp','Campagne','51 mondes · 255 étapes','道','feuille',gm('camp')],['tower','La Tour','Étages sans fin','塔','tour',gm('tower')],['ranked','Classé','Points de rang','位','classe',gm('ranked')],['daily','Défi du jour','Une règle par jour','日','defi',gm('daily')],['hcp','Défi handicap','3 règles · gains ×1,5','縛','defi',gm('hcp')],['surv','Survie','Vagues sans fin','生','survie',gm('surv')],['raid','Raid hebdo','Boss géant','討','raid',gm('raid')],['draft','Draft','3 persos au hasard','選','draft',gm('draft')],['bounty','Chasse aux primes','3 cibles par jour','賞','primes',gm('bounty')],['rush','Boss Rush','5 boss d’affilée','連','bossrush',gm('rush')],['alch','Le Chaudron','Potions et élixirs','錬','chaudron',gm('alch')],['wboss','Boss mondial','Tous ensemble','界','bossmonde',gm('wboss')],['trn','Tournoi','8 joueurs, élimination','杯','tournoi',gm('trn')]]],
  ['Expéditions','原','#ffd36a',[['ori','Portes de l’Origine','Sanctuaire · Primordiaux','原','origine',go('ori')],['abs','Jugement des Absolus','Le nouveau défi','絶','gateR',go('abs')],['asc','L’Ascension','Les Épreuves du Ciel','昇','camp13',go('asc')],['dsm','Pourfendeurs','Chasse aux démons','滅','pourf',go('dsm')],['event','Défense des villages','Le week-end','壁','v_shibuya',go('event')],['hev','Événement de l’heure','Toutes les heures','時','eventh',go('hev')]]],
  ['Événements','祭','#ff7a45',[['evhub','Tous les événements','Ce qui se passe en ce moment','祭','eventh',()=>{show('event');setTimeout(()=>{const e=document.querySelector('.evh3');e&&e.scrollIntoView({behavior:'smooth',block:'start'})},450)}],['wboss2','Boss mondial','3 attaques par jour','界','bossmonde',gm('wboss')],['wkx','Week-end double XP','Un week-end sur deux · XP ×2','倍','',go('home')],['hev2','Événement de l’heure','Change toutes les heures','時','eventh',go('hev')],['event2','Défense des villages','Samedi et dimanche','壁','v_shibuya',go('event')],['trn2','Tournoi hebdomadaire','Finale le dimanche','杯','tournoi',gm('trn')],['raid2','Raid de la semaine','Nouveau boss chaque semaine','討','raid',gm('raid')],['daily2','Défi du jour','Une règle par jour','日','defi',gm('daily')],['hcp2','Défi handicap','3 règles · gains ×1,5','縛','defi',gm('hcp')],['lot2','Loto hebdo','Tirage le dimanche','籤','',go('lot')],['cdj','Carte du jour','Chances ×2 sur une carte','今','',()=>{show('shop');setTimeout(()=>{try{cdjOpen()}catch(e){}},400)}],['mer2','Marchand ambulant','Toutes les 10 h','狐','',go('mer')],['bm2','Marché noir','Toutes les 5 h','闇','',go('bm')],['pass2','Passe de saison','100 paliers','季','',go('pass')],['hal','Boosters spéciaux','Halloween, Céleste…','包','',go('shop')],['g-gates2','Portail de groupe','Toutes les 2 h en guilde','門','gateA',gg('Portails')]]],
@@ -24089,7 +24097,7 @@ let IF=null,NAMES=/*NAMES*/["Shanks", "Edward Newgate", "Kaido", "Muzan Kibutsuj
 const fold=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const has=n=>{if(!NAMES)return false;const f=fold(n);return NAMES.some(x=>{const g=fold(x);return g==f||f.startsWith(g)||g.startsWith(f)})};
 addEventListener('message',e=>{const m=e.data||{};if(!IF||e.source!=IF.contentWindow)return;if(m.t=='ulti-ready'){RD=1}if(m.t=='ulti-done'&&WAIT){const w=WAIT;WAIT=null;w()}});
-function mount(){if(IF&&document.body.contains(IF))return;IF=document.createElement('iframe');IF.id='u3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;IF.src='assets-7db5b2f1aa/grimoire/ulti.html';document.body.append(IF)}
+function mount(){if(IF&&document.body.contains(IF))return;IF=document.createElement('iframe');IF.id='u3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;IF.src='assets-032006436a/grimoire/ulti.html';document.body.append(IF)}
 function hide(){if(IF)IF.classList.remove('on');const s=document.getElementById('u3sk');if(s)s.remove()}
 async function play(n,img,foe,myth){if(!myth&&!has(n)&&n.slice(0,2)!='G:')return 0;mount();if(!(await ready()))return 0;try{window.A3post&&A3post({t:'pause',v:1})}catch(e){}IF.classList.add('on');const sk=document.createElement('button');sk.id='u3sk';sk.type='button';sk.textContent='Passer ›';document.body.append(sk);
  await new Promise(r=>{WAIT=r;sk.onclick=()=>{WAIT=null;r()};setTimeout(()=>{if(WAIT===r){WAIT=null;r()}},14000);IF.contentWindow.postMessage({t:'ulti',n,img,foe,myth},'*')});hide();try{window.A3post&&A3post({t:'pause',v:0})}catch(e){}setTimeout(()=>{if(IF&&!IF.classList.contains('on')){IF.remove();IF=null;RD=0}},400);return 1}
@@ -24618,7 +24626,7 @@ packs(){S.fb=Math.max(S.fb||0,10);try{asS().pk=(asS().pk||0)+5}catch(e){}},
 camp(){S.cp=Math.max(S.cp||0,250)},
 async guild(){try{if(!GLD||!GLD.id)await gJoin('bot3')}catch(e){}try{GLD.lvl=10}catch(e){}},
 a3(){const off=!window.__A3OFF;window.__A3OFF=off;try{localStorage.setItem('a3off',off?'1':'0')}catch(e){}toast(off?'3D des combats coupée':'3D des combats activée');return 'x'},
-pportails(){try{V3OPEN('assets-7db5b2f1aa/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
+pportails(){try{V3OPEN('assets-032006436a/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
 navA(){V3NAV.set('a');return 'x'},navB(){V3NAV.set('b');return 'x'},navC(){V3NAV.set('c');return 'x'},
 lvl(){S.xp=Math.max(S.xp||0,400000)},
 reset(){if(!confirm('Effacer la sauvegarde TEST ?'))return 'x';localStorage.removeItem('animecards');location.reload();return 'x'}};
