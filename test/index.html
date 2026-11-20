@@ -12873,7 +12873,7 @@ function synFlash(){const y=B&&B.syn,bt=$('bt');if(!y||!bt||bt.querySelector('.s
 
 /* ---------- v24.8.3 : annonce de la grosse mise à jour de samedi (vidéo leak + compte à rebours) ---------- */
 /* annonces des prochaines grosses mises à jour : la première pas encore terminée est affichée */
-const ANNL=[{id:'grimoire-12dec',t:Date.UTC(2026,11,12,14,0,0),end:Date.UTC(2026,11,12,22,0,0),vid:'assets-b2be2805e1/grimoire/leak-grimoire.mp4',img:'assets-b2be2805e1/grimoire/leak-grimoire.jpg',
+const ANNL=[{id:'grimoire-12dec',t:Date.UTC(2026,11,12,14,0,0),end:Date.UTC(2026,11,12,22,0,0),vid:'assets-797fc1309c/grimoire/leak-grimoire.mp4',img:'assets-797fc1309c/grimoire/leak-grimoire.jpg',
  h:'Le <em>Royaume du Trèfle</em> arrive samedi 12',dt:'Samedi 12 décembre · 15 h',hp:'Black Clover <em>samedi 12 décembre</em> à 15 h',fin:'Ce que tu vois dans la vidéo n’est qu’un aperçu. Ouvre ton grimoire le 12 !',
  sp:[['魔','Nouvelle rareté','Grimoire · 8 cartes'],['試','Nouveau mode','L’Examen des Chevaliers-Mages'],['頁','Des pages au hasard','Un grimoire à 3, 4 ou 5 feuilles'],['技','8 ultis en 3D','Elles cassent l’arène'],['包','Pack Grimoire en 3D','Un grimoire scellé'],['悪','Après l’Empereur-Mage','Trois <s>██████</s>'],['他','Et plein d’autres choses…','On ne peut pas tout dire']]},
  {id:'ascendant-8nov',t:Date.UTC(2026,10,8,13,0,0),end:Date.UTC(2026,10,8,21,0,0),vid:'../media/leak-ascendant.mp4',img:'../media/leak-ascendant.jpg',
@@ -20220,13 +20220,46 @@ function nlView(){const s=nlS(),v=$('v');if(!v)return;if(!nlOn()){v.innerHTML=`<
  const T=[['cal','🎄',nlT('Calendrier','Calendar')],['mod','雪',nlT('Modes','Modes')],['shop','🎁',nlT('Boutique','Shop')],['prog','★',nlT('Programme','Schedule')]];
  const todo=nlDec()&&nlDay()<=25&&!s.d[nlDay()],chest=NLB.some((m,i)=>s.bw>=m[0]&&!s.bc.includes(i));
  v.innerHTML=`<div class="nl"><div class="nl-hero"><div class="nl-tree" aria-hidden="true"><i></i><i></i><i></i><u></u><b>★</b></div><div class="nl-ht"><small class="nl-ey">NOËL MUGEN · 冬祭 · ${nlYear()}</small><h1>${nlT('Le Village de Noël','The Christmas Village')}</h1><p>${nlLeft()}${nlX2()?' · <b>'+nlT('Trêve de Noël : flocons ×2','Christmas Truce: snowflakes ×2')+'</b>':''}</p></div>
- <div class="nl-hf"><b>${s.fl} <i>❄</i></b><small>${nlT('flocons','snowflakes')}</small><button type="button" class="nl-sn" data-oclick="nlSnow()">${s.sn===0?nlT('Neige : non','Snow: off'):nlT('Neige : oui','Snow: on')}</button></div></div>
+ <div class="nl-hf"><b>${s.fl} <i>❄</i></b><small>${nlT('flocons','snowflakes')}</small><button type="button" class="nl-sn" data-oclick="nlSnow()">${s.sn===0?nlT('Neige : non','Snow: off'):nlT('Neige : oui','Snow: on')}</button><button type="button" class="nl-sn" data-oclick="nlMusTog()">${s.mz===0?nlT('Musique de Noël : non','Christmas music: off'):nlT('Musique de Noël : oui','Christmas music: on')}</button></div></div>
  <div class="nl-tabs">${T.map(t=>`<button type="button" class="${NLTAB==t[0]?'on':''}" data-oclick="nlGo('${t[0]}')"><i>${t[1]}</i>${t[2]}${(t[0]=='cal'&&todo)||(t[0]=='mod'&&chest)?'<u></u>':''}</button>`).join('')}</div>
  ${NLTAB=='mod'?nlModH():NLTAB=='shop'?nlShopH():NLTAB=='prog'?nlProgH():nlCalH()}</div>`}
 function nlGo(t){if(t)NLTAB=t;if(view!='noel')show('noel');else nlView()}
 function nlBack(){nlGo('mod')}
 function nlRefresh(){try{if(view=='noel'&&!document.getElementById('bt'))nlView()}catch(e){}}
 XV.noel=()=>nlView();
+/* ---------- musique de Noël (synthèse Web Audio, aucun fichier) : boîte à musique, grelots, carillon, nappe et basse.
+   32 mesures en boucle, do majeur, 104 à la noire : un thème original (A), puis le refrain de « Jingle Bells » (J. Pierpont, 1857, domaine public) arrangé en deux moitiés.
+   Même interface que MUS28.engine : {out, tick(jusqu'à), stop} ; elle remplace la musique du jeu pendant Noël (réglable dans le Village). ---------- */
+function nlMusic(c){const out=c.createGain();out.gain.value=.5;const bus=c.createGain(),dl=c.createDelay(1),fb=c.createGain(),wet=c.createGain();dl.delayTime.value=.29;fb.gain.value=.26;wet.gain.value=.3;bus.connect(out);bus.connect(dl);dl.connect(fb);fb.connect(dl);dl.connect(wet);wet.connect(out);
+ const nb=c.createBuffer(1,c.sampleRate,c.sampleRate);{const d=nb.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1}
+ const hz=m=>440*Math.pow(2,(m-69)/12),live=new Set(),keep=o=>{live.add(o);o.onended=()=>live.delete(o);return o};
+ const osc=(ty,f,t,len,g0,dec,dest=bus)=>{const o=keep(c.createOscillator()),g=c.createGain();o.type=ty;o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(g0,t+.004);g.gain.exponentialRampToValueAtTime(.0008,t+dec);o.connect(g);g.connect(dest);o.start(t);o.stop(t+dec+.05)};
+ const boite=(t,m,v=1)=>{const f=hz(m);osc('sine',f,t,0,.2*v,1.3);osc('sine',f*3.01,t,0,.045*v,.5);osc('triangle',f*2,t,0,.05*v,.7)};
+ const cloche=(t,m,v=1)=>{const f=hz(m);[[1,.16,3.2],[2.76,.07,2],[5.4,.035,1.1]].forEach(([k,g,d])=>osc('sine',f*k,t,0,g*v,d))};
+ const nappe=(t,ms,len)=>{ms.forEach(m=>{const o=keep(c.createOscillator()),g=c.createGain(),lp=c.createBiquadFilter();o.type='triangle';o.frequency.value=hz(m);lp.type='lowpass';lp.frequency.value=1400;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.045,t+.35);g.gain.setValueAtTime(.045,t+len-.3);g.gain.linearRampToValueAtTime(0,t+len);o.connect(lp);lp.connect(g);g.connect(out);o.start(t);o.stop(t+len+.05)})};
+ const basse=(t,m,len)=>{const o=keep(c.createOscillator()),g=c.createGain();o.type='sine';o.frequency.value=hz(m);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.2,t+.02);g.gain.exponentialRampToValueAtTime(.001,t+len);o.connect(g);g.connect(out);o.start(t);o.stop(t+len+.05)};
+ const grelot=(t,v)=>{for(let k=0;k<3;k++){const s=keep(c.createBufferSource()),bp=c.createBiquadFilter(),g=c.createGain(),tt=t+k*.022;s.buffer=nb;s.loop=true;bp.type='bandpass';bp.frequency.value=6200+k*1300;bp.Q.value=9;g.gain.setValueAtTime(0,tt);g.gain.linearRampToValueAtTime(.09*v,tt+.003);g.gain.exponentialRampToValueAtTime(.0008,tt+.11);s.connect(bp);bp.connect(g);g.connect(bus);s.start(tt,Math.random()*.8);s.stop(tt+.14)}};
+ const bpm=104,st8=60/bpm/2,BAR=st8*8;
+ /* mélodies : [pas (croche), note MIDI, durée en croches] par mesure */
+ const A=[[[0,76,2],[2,79,2],[4,84,3],[7,79,1]],[[0,81,2],[2,76,2],[4,72,4]],[[0,77,2],[2,81,2],[4,84,2],[6,81,2]],[[0,79,3],[3,74,1],[4,71,4]],[[0,76,2],[2,79,2],[4,84,2],[6,88,2]],[[0,86,2],[2,84,2],[4,81,4]],[[0,77,2],[2,81,2],[4,79,2],[6,83,2]],[[0,84,6]]];
+ const J1=[[0,76,2],[2,76,2],[4,76,4]],J3=[[0,76,2],[2,79,2],[4,72,3],[7,74,1]],J4=[[0,76,8]],J5=[[0,77,2],[2,77,2],[4,77,3],[7,77,1]],J6=[[0,77,2],[2,76,2],[4,76,2],[6,76,1],[7,76,1]];
+ const B=[J1,J1,J3,J4,J5,J6,[[0,76,2],[2,74,2],[4,74,2],[6,76,2]],[[0,74,4],[4,79,4]]],C=[J1,J1,J3,J4,J5,J6,[[0,79,2],[2,79,2],[4,77,2],[6,74,2]],[[0,72,8]]];
+ const CA=[[48,[60,64,67]],[45,[57,60,64]],[41,[57,60,65]],[43,[59,62,67]],[48,[60,64,67]],[45,[57,60,64]],[41,[57,60,65]],[48,[60,64,67]]],CB=[[48,[60,64,67]],[48,[60,64,67]],[45,[57,60,64]],[48,[60,64,67]],[41,[57,60,65]],[48,[60,64,67]],[38,[57,62,66]],[43,[59,62,67]]],CC=CB.slice(0,6).concat([[43,[59,62,67]],[48,[60,64,67]]]);
+ const SEC=[[A,CA,0],[B,CB,12],[A,CA,12],[C,CC,12]];let nt=null,bi=0;
+ function bar(T){const s=SEC[Math.floor(bi/8)%4],k=bi%8,ch=s[1][k],oct=s[2],plein=Math.floor(bi/8)%4>0;
+  s[0][k].forEach(([p,m,l])=>{boite(T+p*st8,m+oct,p%4==0?1:.85);if(plein&&l>=4)boite(T+p*st8,m+oct-12,.35)});
+  nappe(T,ch[1],BAR);basse(T,ch[0],st8*3.6);basse(T+st8*4,ch[0]+7,st8*3.2);
+  for(let p=0;p<8;p++){if(p%2==0)grelot(T+p*st8,p%4==0?1:.6);else if(plein)grelot(T+p*st8,.28)}
+  if(k==0)cloche(T,ch[1][0]+12,1);if(k==7&&plein)cloche(T+st8*4,79,.6);
+  if(plein&&k%2==0)ch[1].forEach((m,i)=>boite(T+st8*(1+i*2),m+12,.3));bi++}
+ function tick(until){const now=c.currentTime;if(nt===null||nt<now)nt=now+.08;let n=0;while(nt<until&&n++<400){bar(nt);nt+=BAR}}
+ function stop(){live.forEach(o=>{try{o.stop()}catch(e){}});live.clear()}
+ return{out,tick,stop,bpm,st:{}}}
+/* branchement : pendant Noël, la musique de Noël remplace la musique du jeu (réglage s.mz, bouton dans le Village) */
+function nlMusSwap(){try{const M=MU28;if(!M.c||!M.vg)return;const veut=nlOn()&&nlS().mz!==0;if(!!M.nl==veut)return;try{M.E.stop()}catch(e){}try{M.E.out.disconnect()}catch(e){}
+ M.E=veut?nlMusic(M.c):MUS28.engine(M.c,(Date.now()^Math.floor(Math.random()*1e9))>>>0);M.E.out.connect(M.vg);M.nl=veut?1:0}catch(e){console.warn('[noel musique]',e)}}
+try{const _c=mus28Ctx;mus28Ctx=function(){const c=_c.apply(this,arguments);try{if(c)nlMusSwap()}catch(e){}return c}}catch(e){}
+function nlMusTog(){const s=nlS();s.mz=s.mz===0?1:0;save();nlMusSwap();toast(s.mz===0?nlT('Musique de Noël coupée : la musique habituelle revient','Christmas music off: the usual music is back'):nlT('Musique de Noël activée ♪','Christmas music on ♪'));nlRefresh()}
 /* ---------- thème : neige, guirlande, bonnet ---------- */
 function nlSnow(){const s=nlS();s.sn=s.sn===0?1:0;save();nlTheme();nlRefresh()}
 /* thème v2 : nuit d'hiver (aurore, étoiles, lune, collines enneigées et sapins), neige en profondeur sur un canvas,
@@ -20677,7 +20710,7 @@ function akCine(cards){return new Promise(res=>{const o=document.createElement('
 /* ================= MUGEN 27 · L'AUBE · partie A (2) : nouveau design (v26.9) =================
    - le Pack Aube s'ouvre avec la nouvelle ouverture 3D des boosters (celle de tous les packs du jeu), les cartes sont celles du jeu (card) ;
    - les objets de l'Aube (anneaux, yeux, coffres, sacs, spores, Pack Aube) ont leur modèle 3D (vignettes rendues dans media/aube-3f9a2c71/obj/). */
-const AKM='assets-b2be2805e1/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
+const AKM='assets-797fc1309c/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
 const akObjImg=(id,cls='')=>`<img class="ak3o ${cls}" src="${akObj(id)}" alt="" draggable="false" loading="lazy" data-oerror="this.style.visibility='hidden'">`;
 /* anneaux de l'Akatsuki : vignette 3D partout où le jeu dessine l'icône d'un objet */
 {const _gi=gIco;gIco=function(g){try{if(g&&/^akr\d$/.test(g.id))return akObjImg(g.id,'o3i'+(typeof gLv=='function'&&!gLv(g)?' o3lk':''))}catch(e){}return _gi.apply(this,arguments)}}
@@ -21614,7 +21647,7 @@ async g_nuage(X){const Q=await k2Q(X,true),T=Q.T,{ax,ay,tx,ty,ux,uy,mv,rec,shake
    (même moteur que les ultimes des cartes rares, recul de caméra en portrait). Le Jutsu de l'Aube y joue sa scène de groupe :
    chaque membre fait sa part, puis l'attaque combinée. La logique (dégâts, coût, effets) ne change pas : seules les images changent.
    Si le moteur 3D ne répond pas, les anciennes animations restent en secours. */
-const AK3_SRC='assets-b2be2805e1/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
+const AK3_SRC='assets-797fc1309c/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
 const AK3={f:null,rd:0,w:null};
 addEventListener('message',e=>{const m=e.data||{};if(!AK3.f||e.source!==AK3.f.contentWindow)return;if(m.t=='aube-ready')AK3.rd=1;if(m.t=='aube-done'&&AK3.w){const w=AK3.w;AK3.w=null;w(m.ok?1:0)}});
 function ak3Mount(){if(AK3.f&&document.body.contains(AK3.f))return;const f=document.createElement('iframe');f.id='ak3f';f.setAttribute('aria-hidden','true');f.tabIndex=-1;f.src=AK3_SRC;AK3.rd=0;AK3.f=f;document.body.append(f)}
@@ -21959,7 +21992,7 @@ try{[['akw','Sceller {n} Bijū (La Traque des Bijū)',1,'暁',null,5]].forEach(x
 /* ================= MUGEN 27 · L'AUBE · partie B (3) : « La Traque des Bijū » dans le nouveau design (v26.9) =================
    Même contenu et même déroulé que les parties B (1) et (2) : seules les pages changent.
    Le Repaire (page du mode) → la fiche de la cible (Alerte, renforts, contrat de Kakuzu) → le lobby (.lb3) → le combat dans l'arène 3D
-   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-b2be2805e1/aube-3f9a2c71/obj/). */
+   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-797fc1309c/aube-3f9a2c71/obj/). */
 const AKX_BG=id=>AKM+'bg/'+id+'.jpg';
 const akxE=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const akxJ=H=>(H.jid&&M[H.jid]&&imgOf(M[H.jid]))||AKT_IMG+H.ji,akxB=H=>AKT_IMG+H.bi;
@@ -22157,7 +22190,7 @@ const GRX_E=[['Cerf Turquoise','鹿','#4de1d0','Magie d’eau',1,'Rill Boismorti
  ['Démon des Mots','言','#b45cff','Magie des mots',4,'Zagred'],['Démone des Malédictions','呪','#ff3d9a','Magie de malédiction',4.4,'Megicula'],['Roi des Démons','魔','#ff2a2a','Magie de gravité',4.9,'Lucifero']];
 const grxDec=i=>GRX_E[i][6]??i;
 /* images 3D des épreuves (rendues par maquettes/blackclover/tuiles.js) ; à la sortie, apply.py les copie dans media/grimoire/ */
-const GRX_IMG='assets-b2be2805e1/grimoire/';
+const GRX_IMG='assets-797fc1309c/grimoire/';
 /* photo du capitaine : la carte du jeu si elle existe, sinon recherche par nom (même service que les images des cartes), gardée en mémoire sur l'appareil */
 const GRX_PH={'Rill Boismortier':'13/351522','Dorothy Unsworth':'9/351519','Kaiser Granvorka':'12/375247','Jack the Ripper':'4/337897','Charlotte Roselei':'7/337340','Fuegoleon Vermillion':'16/337233','Nozel Silva':'14/337231','William Vangeance':'14/338851','Zagred':'2/398999','Megicula':'8/440458','Lucifero':'16/462810'};
 let GRXI=null;
@@ -22928,7 +22961,7 @@ let IF=null,NAMES=/*NAMES*/["Shanks", "Edward Newgate", "Kaido", "Muzan Kibutsuj
 const fold=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const has=n=>{if(!NAMES)return false;const f=fold(n);return NAMES.some(x=>{const g=fold(x);return g==f||f.startsWith(g)||g.startsWith(f)})};
 addEventListener('message',e=>{const m=e.data||{};if(!IF||e.source!=IF.contentWindow)return;if(m.t=='ulti-ready'){RD=1}if(m.t=='ulti-done'&&WAIT){const w=WAIT;WAIT=null;w()}});
-function mount(){if(IF&&document.body.contains(IF))return;IF=document.createElement('iframe');IF.id='u3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;IF.src='assets-b2be2805e1/grimoire/ulti.html';document.body.append(IF)}
+function mount(){if(IF&&document.body.contains(IF))return;IF=document.createElement('iframe');IF.id='u3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;IF.src='assets-797fc1309c/grimoire/ulti.html';document.body.append(IF)}
 function hide(){if(IF)IF.classList.remove('on');const s=document.getElementById('u3sk');if(s)s.remove()}
 async function play(n,img,foe,myth){if(!myth&&!has(n)&&n.slice(0,2)!='G:')return 0;mount();if(!(await ready()))return 0;try{window.A3post&&A3post({t:'pause',v:1})}catch(e){}IF.classList.add('on');const sk=document.createElement('button');sk.id='u3sk';sk.type='button';sk.textContent='Passer ›';document.body.append(sk);
  await new Promise(r=>{WAIT=r;sk.onclick=()=>{WAIT=null;r()};setTimeout(()=>{if(WAIT===r){WAIT=null;r()}},14000);IF.contentWindow.postMessage({t:'ulti',n,img,foe,myth},'*')});hide();try{window.A3post&&A3post({t:'pause',v:0})}catch(e){}setTimeout(()=>{if(IF&&!IF.classList.contains('on')){IF.remove();IF=null;RD=0}},400);return 1}
@@ -23457,7 +23490,7 @@ packs(){S.fb=Math.max(S.fb||0,10);try{asS().pk=(asS().pk||0)+5}catch(e){}},
 camp(){S.cp=Math.max(S.cp||0,250)},
 async guild(){try{if(!GLD||!GLD.id)await gJoin('bot3')}catch(e){}try{GLD.lvl=10}catch(e){}},
 a3(){const off=!window.__A3OFF;window.__A3OFF=off;try{localStorage.setItem('a3off',off?'1':'0')}catch(e){}toast(off?'3D des combats coupée':'3D des combats activée');return 'x'},
-pportails(){try{V3OPEN('assets-b2be2805e1/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
+pportails(){try{V3OPEN('assets-797fc1309c/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
 navA(){V3NAV.set('a');return 'x'},navB(){V3NAV.set('b');return 'x'},navC(){V3NAV.set('c');return 'x'},
 lvl(){S.xp=Math.max(S.xp||0,400000)},
 reset(){if(!confirm('Effacer la sauvegarde TEST ?'))return 'x';localStorage.removeItem('animecards');location.reload();return 'x'}};
