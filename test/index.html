@@ -7179,14 +7179,32 @@ html.fd-pz .cx68w .f3c>.cx68-au,html.fd-pz .cx68w.cxw9 .f3c,html.fd-pz .cx68w.cx
 .wr.cx68-no{cursor:pointer;opacity:.82}
 
 /* ---------- v26.61 · Noël MUGEN ---------- */
-body.nl61 #appbg,body.nl61 #appbg2{filter:hue-rotate(185deg) saturate(.75) brightness(.9)}
-#nl61snow{position:fixed;inset:0;z-index:5;pointer-events:none;overflow:hidden}
-#nl61snow i{position:absolute;top:-14px;border-radius:50%;background:radial-gradient(circle,#fff 0 40%,#ffffff00 72%);animation:nl61fall linear infinite;will-change:transform}
-@keyframes nl61fall{0%{transform:translate3d(0,-20px,0)}100%{transform:translate3d(var(--dx,0),105vh,0)}}
-@media (prefers-reduced-motion:reduce){#nl61snow{display:none}.nl61gar i{animation:none!important}}
-.nl61gar{position:absolute;left:0;right:0;top:100%;height:16px;display:flex;justify-content:space-around;pointer-events:none;border-top:2px solid #1c3b2a;overflow:hidden}
-.nl61gar i{flex:none;width:8px;height:11px;margin-top:1px;border-radius:50% 50% 50% 50%/40% 40% 60% 60%;background:var(--c);box-shadow:0 0 9px var(--c);animation:nl61tw 1.8s ease-in-out infinite}
-@keyframes nl61tw{0%,100%{opacity:1}50%{opacity:.35}}
+body.nl61 #appbg,body.nl61 #appbg2{filter:hue-rotate(185deg) saturate(.6) brightness(.7);opacity:.22!important}
+body.nl61{background:#070b1f}
+body.nl61 #v>:first-child{margin-top:32px}
+@media (max-width:700px){body.nl61 #v>:first-child{margin-top:46px}.nl62-h{opacity:.5;height:min(24vh,220px)!important}.nl62-mo{opacity:.6}}
+#nl62bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:linear-gradient(180deg,#070b1f 0%,#0d1838 38%,#17285a 72%,#22407a 100%);opacity:.92}
+body:has(#bt) #nl62bg,body:has(#bt) #nl62fr{display:none}
+#nl62bg>*{position:absolute}
+.nl62-au{left:-10%;right:-10%;top:2vh;height:34vh;filter:blur(46px);opacity:.5;border-radius:50%}
+.nl62-au.a{background:linear-gradient(90deg,#3dffb000,#3dffb0aa 25%,#6ad7ff88 55%,#b18cff66 80%,#b18cff00);animation:nl62au 26s ease-in-out infinite alternate}
+.nl62-au.b{top:12vh;height:22vh;opacity:.35;background:linear-gradient(90deg,#6ad7ff00,#7dffcf88 30%,#ff8ad866 70%,#ff8ad800);animation:nl62au 34s ease-in-out infinite alternate-reverse}
+@keyframes nl62au{0%{transform:translateX(-6%) skewX(-12deg) scaleY(.85)}100%{transform:translateX(6%) skewX(10deg) scaleY(1.15)}}
+.nl62-st{inset:0 0 30% 0;background-image:radial-gradient(1.4px 1.4px at 12% 18%,#fff,#0000),radial-gradient(1px 1px at 31% 62%,#dff,#0000),radial-gradient(1.6px 1.6px at 47% 26%,#fff,#0000),radial-gradient(1px 1px at 63% 74%,#fff,#0000),radial-gradient(1.3px 1.3px at 78% 34%,#cfe,#0000),radial-gradient(1px 1px at 91% 58%,#fff,#0000),radial-gradient(1.2px 1.2px at 22% 86%,#fff,#0000),radial-gradient(1.5px 1.5px at 56% 8%,#fff,#0000);background-size:330px 260px;animation:nl62tw 4.5s ease-in-out infinite}
+.nl62-st.b{background-size:210px 190px;background-position:70px 40px;animation-duration:6.5s;animation-delay:-2s;opacity:.7}
+@keyframes nl62tw{50%{opacity:.35}}
+.nl62-mo{right:9%;top:7vh;width:min(150px,22vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 38% 36%,#fffdf2,#e9efff 55%,#c9d6f2 100%);box-shadow:0 0 60px 18px #cfe0ff55,0 0 160px 60px #9fc2ff33;opacity:.9}
+.nl62-h{left:0;right:0;bottom:0;width:100%;height:min(34vh,320px)}
+#nl62fr{position:fixed;inset:0;z-index:4;pointer-events:none;box-shadow:inset 0 0 90px 10px #cfeaff1f,inset 0 0 26px #ffffff14;background:radial-gradient(60% 40% at 0 0,#ffffff1c,#0000 70%),radial-gradient(60% 40% at 100% 0,#ffffff16,#0000 70%),radial-gradient(50% 30% at 0 100%,#ffffff12,#0000 70%),radial-gradient(50% 30% at 100% 100%,#ffffff12,#0000 70%)}
+#nl61snow{position:fixed;inset:0;width:100%;height:100%;z-index:5;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.nl62-au,.nl62-st,.nl62-b{animation:none!important}}
+html.fd-pz .nl62-au,html.fd-pz .nl62-st,html.fd-pz .nl62-b{animation-play-state:paused}
+.nl61gar{position:absolute;left:0;right:0;top:100%;height:46px;pointer-events:none;overflow:hidden;z-index:2}
+.nl61gar svg{display:block}
+.nl62-b{animation:nl61tw 1.9s ease-in-out infinite;filter:drop-shadow(0 0 5px var(--c)) drop-shadow(0 0 11px var(--c))}
+@keyframes nl61tw{0%,100%{opacity:1}50%{opacity:.4}}
+body.nl61 .pn{border-color:#cfeaff30;box-shadow:inset 0 1px 0 #ffffff26,0 10px 30px #0006}
+body.nl61 .btn:not(.gh){box-shadow:inset 0 2px 0 #ffffff55,0 6px 16px #0005}
 #tb .brand{position:relative}.nl61hat{position:absolute;left:-7px;top:-9px;width:30px;height:25px;transform:rotate(-14deg);pointer-events:none;z-index:3;filter:drop-shadow(0 2px 2px #0008)}
 /* page */
 .nl{max-width:1080px;margin:0 auto;padding:18px 0 60px;--nr:#e8433f;--ng:#1fa36b;--ny:#ffd36a;--ni:#bfe9ff}
@@ -12855,7 +12873,7 @@ function synFlash(){const y=B&&B.syn,bt=$('bt');if(!y||!bt||bt.querySelector('.s
 
 /* ---------- v24.8.3 : annonce de la grosse mise à jour de samedi (vidéo leak + compte à rebours) ---------- */
 /* annonces des prochaines grosses mises à jour : la première pas encore terminée est affichée */
-const ANNL=[{id:'grimoire-12dec',t:Date.UTC(2026,11,12,14,0,0),end:Date.UTC(2026,11,12,22,0,0),vid:'assets-f3de53369a/grimoire/leak-grimoire.mp4',img:'assets-f3de53369a/grimoire/leak-grimoire.jpg',
+const ANNL=[{id:'grimoire-12dec',t:Date.UTC(2026,11,12,14,0,0),end:Date.UTC(2026,11,12,22,0,0),vid:'assets-b2be2805e1/grimoire/leak-grimoire.mp4',img:'assets-b2be2805e1/grimoire/leak-grimoire.jpg',
  h:'Le <em>Royaume du Trèfle</em> arrive samedi 12',dt:'Samedi 12 décembre · 15 h',hp:'Black Clover <em>samedi 12 décembre</em> à 15 h',fin:'Ce que tu vois dans la vidéo n’est qu’un aperçu. Ouvre ton grimoire le 12 !',
  sp:[['魔','Nouvelle rareté','Grimoire · 8 cartes'],['試','Nouveau mode','L’Examen des Chevaliers-Mages'],['頁','Des pages au hasard','Un grimoire à 3, 4 ou 5 feuilles'],['技','8 ultis en 3D','Elles cassent l’arène'],['包','Pack Grimoire en 3D','Un grimoire scellé'],['悪','Après l’Empereur-Mage','Trois <s>██████</s>'],['他','Et plein d’autres choses…','On ne peut pas tout dire']]},
  {id:'ascendant-8nov',t:Date.UTC(2026,10,8,13,0,0),end:Date.UTC(2026,10,8,21,0,0),vid:'../media/leak-ascendant.mp4',img:'../media/leak-ascendant.jpg',
@@ -20211,9 +20229,38 @@ function nlRefresh(){try{if(view=='noel'&&!document.getElementById('bt'))nlView(
 XV.noel=()=>nlView();
 /* ---------- thème : neige, guirlande, bonnet ---------- */
 function nlSnow(){const s=nlS();s.sn=s.sn===0?1:0;save();nlTheme();nlRefresh()}
-function nlTheme(){try{const on=nlOn(),b=document.body;b.classList.toggle('nl61',on);let sn=document.getElementById('nl61snow');
- if(!on||nlS().sn===0){if(sn)sn.remove()}else if(!sn){sn=document.createElement('div');sn.id='nl61snow';sn.setAttribute('aria-hidden','true');const n=innerWidth<700?16:30;let h='';for(let i=0;i<n;i++){const z=6+((i*37)%9),x=(i*53+7)%100,d=9+((i*29)%10),dl=-((i*17)%19),o=.35+((i*13)%6)/10;h+=`<i style="left:${x}%;width:${z}px;height:${z}px;opacity:${o};animation-duration:${d}s;animation-delay:${dl}s;--dx:${((i*41)%60)-30}px"></i>`}sn.innerHTML=h;b.append(sn)}
- const tb=document.getElementById('tb');if(tb){let g=tb.querySelector('.nl61gar');if(!on){if(g)g.remove()}else if(!g){g=document.createElement('div');g.className='nl61gar';g.setAttribute('aria-hidden','true');let h='';for(let i=0;i<40;i++)h+=`<i style="--c:${['#e8433f','#ffd36a','#1fa36b','#7fd4ff'][i%4]};animation-delay:${-(i%4)*.45}s"></i>`;g.innerHTML=h;tb.append(g)}
+/* thème v2 : nuit d'hiver (aurore, étoiles, lune, collines enneigées et sapins), neige en profondeur sur un canvas,
+   guirlande de sapin lumineuse et glaçons sous la barre du haut, givre sur les bords, bonnet sur le logo */
+function nl62Scene(){let s=7;const rnd=()=>(s=(s*16807)%2147483647)/2147483647;
+ const sapin=(x,y,k,c,neige)=>{let h='';for(let i=0;i<3;i++){const w=(26-i*6)*k,t=y-(14+i*16)*k,b=y-(i*14)*k+2*k;h+=`<path d="M${x} ${t}L${x+w} ${b}H${x-w}Z" fill="${c}"/>`;if(neige)h+=`<path d="M${x} ${t}L${x+w*.45} ${t+(b-t)*.45}Q${x} ${t+(b-t)*.3} ${x-w*.45} ${t+(b-t)*.45}Z" fill="#eaf6ff" opacity=".9"/>`}return h+`<rect x="${x-2.5*k}" y="${y}" width="${5*k}" height="${7*k}" fill="#2a1a12"/>`};
+ let loin='',pres='';for(let i=0;i<26;i++)loin+=sapin(20+i*56+rnd()*30,196+Math.sin(i*.9)*14+rnd()*8,.7+rnd()*.5,'#16233f',0);for(let i=0;i<13;i++){const x=40+i*112+rnd()*60;if(x>560&&x<700)continue;pres+=sapin(x,262+Math.sin(i*1.7)*10,1.2+rnd()*.8,'#0f2a2a',1)}
+ return `<i class="nl62-au a"></i><i class="nl62-au b"></i><i class="nl62-st a"></i><i class="nl62-st b"></i><i class="nl62-mo"></i>
+ <svg class="nl62-h" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice"><defs><linearGradient id="nl62n" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4faff"/><stop offset="1" stop-color="#a9c6e6"/></linearGradient></defs>
+ <path d="M0 210C180 150 330 190 520 170S860 130 1060 176 1330 150 1440 180V320H0Z" fill="#1b2b4d"/>${loin}
+ <path d="M0 250C200 205 380 235 600 222S960 190 1180 232 1380 214 1440 228V320H0Z" fill="#2b4170"/>
+ <g transform="translate(610 214)"><path d="M0 34H56V10L28 -12 0 10Z" fill="#3a2418"/><path d="M-8 12 28 -18 64 12 58 16 28 -9 -2 16Z" fill="#eaf6ff"/><rect x="10" y="14" width="13" height="12" fill="#ffd36a"/><rect x="33" y="14" width="13" height="20" fill="#ffb347"/><rect x="38" y="-24" width="8" height="14" fill="#3a2418"/><path d="M36 -26H48V-22H36Z" fill="#eaf6ff"/><circle cx="16" cy="20" r="26" fill="#ffd36a" opacity=".12"/></g>
+ ${pres}<path d="M0 286C220 250 420 276 660 264S1040 240 1240 270 1400 262 1440 268V320H0Z" fill="url(#nl62n)"/></svg>`}
+const NL62={sn:null,raf:0};
+function nl62Snow(on){let cv=document.getElementById('nl61snow');let calme=false;try{calme=matchMedia('(prefers-reduced-motion: reduce)').matches||!!S.rm}catch(e){}
+ if(!on||calme){if(cv)cv.remove();NL62.sn=null;return}if(cv)return;
+ cv=document.createElement('canvas');cv.id='nl61snow';cv.setAttribute('aria-hidden','true');document.body.append(cv);const x=cv.getContext('2d'),sp=document.createElement('canvas');sp.width=sp.height=32;{const g=sp.getContext('2d'),gr=g.createRadialGradient(16,16,0,16,16,16);gr.addColorStop(0,'rgba(255,255,255,1)');gr.addColorStop(.35,'rgba(255,255,255,.85)');gr.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=gr;g.fillRect(0,0,32,32)}
+ const F=[],n=innerWidth<700?42:90;for(let i=0;i<n;i++){const z=Math.random();F.push({x:Math.random(),y:Math.random(),z,r:1.5+z*z*7,v:.018+z*.05,ph:Math.random()*6.28})}
+ let W=0,H=0,last=0;const me=NL62.sn={};
+ const loop=now=>{if(NL62.sn!==me||!cv.isConnected)return;requestAnimationFrame(loop);if(document.hidden||now-last<33)return;const dt=Math.min(.1,(now-last)/1000);last=now;
+  if(cv.width!=innerWidth||cv.height!=innerHeight){W=cv.width=innerWidth;H=cv.height=innerHeight}x.clearRect(0,0,W,H);const t=now/1000,vent=Math.sin(t*.25)*.012;
+  for(const f of F){f.y+=f.v*dt*(1+f.z);f.x+=(vent*(.4+f.z)+Math.sin(t*.8+f.ph)*.004)*dt*6;if(f.y>1.04){f.y=-.04;f.x=Math.random()}if(f.x>1.05)f.x=-.05;else if(f.x<-.05)f.x=1.05;
+   x.globalAlpha=.25+f.z*.65;const d=f.r*2;x.drawImage(sp,f.x*W-f.r,f.y*H-f.r,d,d)}x.globalAlpha=1};
+ requestAnimationFrame(loop)}
+function nl62Gar(tb,on){let g=tb.querySelector('.nl61gar');if(!on){if(g)g.remove();return}const w=Math.max(320,tb.clientWidth);if(g&&+g.dataset.w==w)return;if(!g){g=document.createElement('div');g.className='nl61gar';g.setAttribute('aria-hidden','true');tb.append(g)}g.dataset.w=w;
+ const pas=w<700?58:74,n=Math.ceil(w/pas),C=['#ff4d4d','#ffd36a','#39d98a','#6ad7ff','#ff8ad8'];let fil='M0 4',ice='',amp='',k=0;
+ for(let i=0;i<n;i++){const x0=i*pas,x1=x0+pas,cx=x0+pas/2;fil+=`Q${cx} 30 ${x1} 4`;for(const u of[.2,.5,.8]){const bx=x0+pas*u,by=4+26*2*u*(1-u)*1.02,c=C[k%C.length];amp+=`<g class="nl62-b" style="--c:${c};animation-delay:${-(k%5)*.37}s"><rect x="${bx-1.6}" y="${by}" width="3.2" height="4" fill="#3a3a44"/><ellipse cx="${bx}" cy="${by+8.5}" rx="4" ry="5.6" fill="${c}"/><ellipse cx="${bx-1.3}" cy="${by+6.6}" rx="1.1" ry="1.8" fill="#fff" opacity=".7"/></g>`;k++}
+  for(let j=0;j<3;j++){const ix=x0+pas*(.12+j*.33)+((i*7+j*13)%9),ih=7+((i*11+j*17)%13);ice+=`<path d="M${ix-2.6} 0H${ix+2.6}L${ix} ${ih}Z"/>`}}
+ g.innerHTML=`<svg width="${w}" height="46" viewBox="0 0 ${w} 46"><g fill="#dff1ff" opacity=".85">${ice}</g><path d="${fil}" fill="none" stroke="#0f3d2a" stroke-width="7" stroke-linecap="round"/><path d="${fil}" fill="none" stroke="#1f7a4d" stroke-width="5" stroke-dasharray="2 5" stroke-linecap="round"/><path d="${fil}" fill="none" stroke="#39a86a" stroke-width="2.5" stroke-dasharray="1 7" stroke-dashoffset="3" stroke-linecap="round"/>${amp}</svg>`}
+function nlTheme(){try{const on=nlOn(),b=document.body;b.classList.toggle('nl61',on);
+ let bg=document.getElementById('nl62bg');if(!on){if(bg)bg.remove()}else if(!bg){bg=document.createElement('div');bg.id='nl62bg';bg.setAttribute('aria-hidden','true');bg.innerHTML=nl62Scene();const ab=document.getElementById('appbg2')||document.getElementById('appbg');if(ab&&ab.parentNode)ab.after(bg);else b.prepend(bg)}
+ let fr=document.getElementById('nl62fr');if(!on){if(fr)fr.remove()}else if(!fr){fr=document.createElement('div');fr.id='nl62fr';fr.setAttribute('aria-hidden','true');b.append(fr)}
+ nl62Snow(on&&nlS().sn!==0);
+ const tb=document.getElementById('tb');if(tb){nl62Gar(tb,on);
   const br=tb.querySelector('.brand');if(br){let h=br.querySelector('.nl61hat');if(!on){if(h)h.remove()}else if(!h)br.insertAdjacentHTML('beforeend','<svg class="nl61hat" viewBox="0 0 48 40" aria-hidden="true"><path d="M6 30C8 14 20 4 34 8c6 2 9 8 10 14l-6 2c-2-6-6-9-11-8-7 2-11 8-12 15z" fill="#e8433f" stroke="#7a1414" stroke-width="2" stroke-linejoin="round"/><rect x="3" y="28" width="26" height="9" rx="4.5" fill="#fff" stroke="#c9d6e6" stroke-width="1.5"/><circle cx="41" cy="25" r="5" fill="#fff" stroke="#c9d6e6" stroke-width="1.5"/></svg>')}}}catch(e){console.warn(e)}}
 /* bandeau sur l’accueil */
 let NLHM=0;
@@ -20223,6 +20270,7 @@ function nlHome(){try{const v=$('v');if(!v||view!='home'||!nlOn())return;const e
  v.prepend(d)}catch(e){console.warn(e)}}
 try{new MutationObserver(nlHome).observe($('v'),{childList:true,subtree:true})}catch(e){}
 {const _s=show;show=function(){const r=_s.apply(this,arguments);try{nlTheme()}catch(e){}return r}}
+addEventListener('resize',()=>{clearTimeout(NL62.rz);NL62.rz=setTimeout(()=>{try{nlTheme()}catch(e){}},250)});
 setTimeout(()=>{try{nlTheme();if(!nlOn())return;const g=(window.NAV3||[]).find(c=>c[0]=='Événements');if(g&&!g[3].some(it=>it[0]=='noel'))g[3].unshift(['noel','Noël MUGEN','Calendrier, modes, boutique','雪','eventh',()=>show('noel')]);
  if(nlDec()){MODES.push(['nlt','Tempête de neige','Noël · tout le monde perd 4 % de vie par tour','#7fd4ff','#12305a',()=>nlT('Mode de Noël','Christmas mode'),1]);MODES.push(['nlb','Le Voleur de cadeaux','Noël · un boss par jour, 3 essais','#e8433f','#0d3a24',()=>nlT('Mode de Noël','Christmas mode'),1])}}catch(e){console.warn(e)}},0);
 {const _m=mode;mode=function(m){if(m=='nlt'||m=='nlb')return nlGo('mod');return _m.apply(this,arguments)}}
@@ -20629,7 +20677,7 @@ function akCine(cards){return new Promise(res=>{const o=document.createElement('
 /* ================= MUGEN 27 · L'AUBE · partie A (2) : nouveau design (v26.9) =================
    - le Pack Aube s'ouvre avec la nouvelle ouverture 3D des boosters (celle de tous les packs du jeu), les cartes sont celles du jeu (card) ;
    - les objets de l'Aube (anneaux, yeux, coffres, sacs, spores, Pack Aube) ont leur modèle 3D (vignettes rendues dans media/aube-3f9a2c71/obj/). */
-const AKM='assets-f3de53369a/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
+const AKM='assets-b2be2805e1/aube-3f9a2c71/',akObj=id=>AKM+'obj/'+id+'.webp';
 const akObjImg=(id,cls='')=>`<img class="ak3o ${cls}" src="${akObj(id)}" alt="" draggable="false" loading="lazy" data-oerror="this.style.visibility='hidden'">`;
 /* anneaux de l'Akatsuki : vignette 3D partout où le jeu dessine l'icône d'un objet */
 {const _gi=gIco;gIco=function(g){try{if(g&&/^akr\d$/.test(g.id))return akObjImg(g.id,'o3i'+(typeof gLv=='function'&&!gLv(g)?' o3lk':''))}catch(e){}return _gi.apply(this,arguments)}}
@@ -21566,7 +21614,7 @@ async g_nuage(X){const Q=await k2Q(X,true),T=Q.T,{ax,ay,tx,ty,ux,uy,mv,rec,shake
    (même moteur que les ultimes des cartes rares, recul de caméra en portrait). Le Jutsu de l'Aube y joue sa scène de groupe :
    chaque membre fait sa part, puis l'attaque combinée. La logique (dégâts, coût, effets) ne change pas : seules les images changent.
    Si le moteur 3D ne répond pas, les anciennes animations restent en secours. */
-const AK3_SRC='assets-f3de53369a/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
+const AK3_SRC='assets-b2be2805e1/aube-3f9a2c71/ulti.html',AK3_ID=['pain','konan','itachi','kisame','deidara','sasori','hidan','kakuzu','zetsu','tobi','orochimaru'];
 const AK3={f:null,rd:0,w:null};
 addEventListener('message',e=>{const m=e.data||{};if(!AK3.f||e.source!==AK3.f.contentWindow)return;if(m.t=='aube-ready')AK3.rd=1;if(m.t=='aube-done'&&AK3.w){const w=AK3.w;AK3.w=null;w(m.ok?1:0)}});
 function ak3Mount(){if(AK3.f&&document.body.contains(AK3.f))return;const f=document.createElement('iframe');f.id='ak3f';f.setAttribute('aria-hidden','true');f.tabIndex=-1;f.src=AK3_SRC;AK3.rd=0;AK3.f=f;document.body.append(f)}
@@ -21911,7 +21959,7 @@ try{[['akw','Sceller {n} Bijū (La Traque des Bijū)',1,'暁',null,5]].forEach(x
 /* ================= MUGEN 27 · L'AUBE · partie B (3) : « La Traque des Bijū » dans le nouveau design (v26.9) =================
    Même contenu et même déroulé que les parties B (1) et (2) : seules les pages changent.
    Le Repaire (page du mode) → la fiche de la cible (Alerte, renforts, contrat de Kakuzu) → le lobby (.lb3) → le combat dans l'arène 3D
-   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-f3de53369a/aube-3f9a2c71/obj/). */
+   (HUD du Scellement, Lecture du Sharingan) → l'écran de fin et le butin avec les objets 3D (assets-b2be2805e1/aube-3f9a2c71/obj/). */
 const AKX_BG=id=>AKM+'bg/'+id+'.jpg';
 const akxE=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const akxJ=H=>(H.jid&&M[H.jid]&&imgOf(M[H.jid]))||AKT_IMG+H.ji,akxB=H=>AKT_IMG+H.bi;
@@ -22109,7 +22157,7 @@ const GRX_E=[['Cerf Turquoise','鹿','#4de1d0','Magie d’eau',1,'Rill Boismorti
  ['Démon des Mots','言','#b45cff','Magie des mots',4,'Zagred'],['Démone des Malédictions','呪','#ff3d9a','Magie de malédiction',4.4,'Megicula'],['Roi des Démons','魔','#ff2a2a','Magie de gravité',4.9,'Lucifero']];
 const grxDec=i=>GRX_E[i][6]??i;
 /* images 3D des épreuves (rendues par maquettes/blackclover/tuiles.js) ; à la sortie, apply.py les copie dans media/grimoire/ */
-const GRX_IMG='assets-f3de53369a/grimoire/';
+const GRX_IMG='assets-b2be2805e1/grimoire/';
 /* photo du capitaine : la carte du jeu si elle existe, sinon recherche par nom (même service que les images des cartes), gardée en mémoire sur l'appareil */
 const GRX_PH={'Rill Boismortier':'13/351522','Dorothy Unsworth':'9/351519','Kaiser Granvorka':'12/375247','Jack the Ripper':'4/337897','Charlotte Roselei':'7/337340','Fuegoleon Vermillion':'16/337233','Nozel Silva':'14/337231','William Vangeance':'14/338851','Zagred':'2/398999','Megicula':'8/440458','Lucifero':'16/462810'};
 let GRXI=null;
@@ -22880,7 +22928,7 @@ let IF=null,NAMES=/*NAMES*/["Shanks", "Edward Newgate", "Kaido", "Muzan Kibutsuj
 const fold=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const has=n=>{if(!NAMES)return false;const f=fold(n);return NAMES.some(x=>{const g=fold(x);return g==f||f.startsWith(g)||g.startsWith(f)})};
 addEventListener('message',e=>{const m=e.data||{};if(!IF||e.source!=IF.contentWindow)return;if(m.t=='ulti-ready'){RD=1}if(m.t=='ulti-done'&&WAIT){const w=WAIT;WAIT=null;w()}});
-function mount(){if(IF&&document.body.contains(IF))return;IF=document.createElement('iframe');IF.id='u3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;IF.src='assets-f3de53369a/grimoire/ulti.html';document.body.append(IF)}
+function mount(){if(IF&&document.body.contains(IF))return;IF=document.createElement('iframe');IF.id='u3f';IF.setAttribute('aria-hidden','true');IF.tabIndex=-1;IF.src='assets-b2be2805e1/grimoire/ulti.html';document.body.append(IF)}
 function hide(){if(IF)IF.classList.remove('on');const s=document.getElementById('u3sk');if(s)s.remove()}
 async function play(n,img,foe,myth){if(!myth&&!has(n)&&n.slice(0,2)!='G:')return 0;mount();if(!(await ready()))return 0;try{window.A3post&&A3post({t:'pause',v:1})}catch(e){}IF.classList.add('on');const sk=document.createElement('button');sk.id='u3sk';sk.type='button';sk.textContent='Passer ›';document.body.append(sk);
  await new Promise(r=>{WAIT=r;sk.onclick=()=>{WAIT=null;r()};setTimeout(()=>{if(WAIT===r){WAIT=null;r()}},14000);IF.contentWindow.postMessage({t:'ulti',n,img,foe,myth},'*')});hide();try{window.A3post&&A3post({t:'pause',v:0})}catch(e){}setTimeout(()=>{if(IF&&!IF.classList.contains('on')){IF.remove();IF=null;RD=0}},400);return 1}
@@ -23409,7 +23457,7 @@ packs(){S.fb=Math.max(S.fb||0,10);try{asS().pk=(asS().pk||0)+5}catch(e){}},
 camp(){S.cp=Math.max(S.cp||0,250)},
 async guild(){try{if(!GLD||!GLD.id)await gJoin('bot3')}catch(e){}try{GLD.lvl=10}catch(e){}},
 a3(){const off=!window.__A3OFF;window.__A3OFF=off;try{localStorage.setItem('a3off',off?'1':'0')}catch(e){}toast(off?'3D des combats coupée':'3D des combats activée');return 'x'},
-pportails(){try{V3OPEN('assets-f3de53369a/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
+pportails(){try{V3OPEN('assets-b2be2805e1/portails.html','Portails de guilde')}catch(e){}P.classList.remove('on');return 'x'},
 navA(){V3NAV.set('a');return 'x'},navB(){V3NAV.set('b');return 'x'},navC(){V3NAV.set('c');return 'x'},
 lvl(){S.xp=Math.max(S.xp||0,400000)},
 reset(){if(!confirm('Effacer la sauvegarde TEST ?'))return 'x';localStorage.removeItem('animecards');location.reload();return 'x'}};
