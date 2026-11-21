@@ -8112,71 +8112,72 @@ body.cp97-big #v{visibility:hidden}body.cp97-big #cp84.wide{left:50%!important;r
 .au90-cd .sg2-mini{top:44%;z-index:2}.au90-cd .sg2-badge{bottom:14%;z-index:2}.mp20-ci .sg2-mini{z-index:2}.mp20-ci .sg2-badge{bottom:12%;z-index:2;font-size:7.5px}
 .sg98-ch.sm{margin:8px 0 0;justify-content:center}.sg98-ch.sm button{padding:6px 10px;font-size:11.5px}
 .sg98-w>div{flex-wrap:wrap}.sg99-o{color:#7be0a0!important}
-/* ob101 · ouverture de booster */
-#o2.ob{opacity:0;transition:opacity .35s;background:#040308;font-family:Inter,system-ui,sans-serif;color:#fff;user-select:none;-webkit-user-select:none;touch-action:manipulation}
-#o2.ob.in{opacity:1}
-#o2.ob .ob-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 48%,color-mix(in srgb,var(--g) 34%,#0a0712) 0%,#07050d 62%,#020104 100%);transition:filter .5s}
-#o2.ob .ob-hz{position:absolute;left:50%;top:46%;width:min(110vmin,900px);aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:conic-gradient(from 0deg,#0000,color-mix(in srgb,var(--g) 30%,#0000),#0000 30%,color-mix(in srgb,var(--g) 22%,#0000) 55%,#0000 70%);filter:blur(40px);animation:obsp 18s linear infinite;opacity:.8}
-#o2.ob .ob-fl{position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(180deg,#0000,#0008),repeating-linear-gradient(90deg,#ffffff06 0 1px,#0000 1px 60px);mask:linear-gradient(180deg,#0000,#000 40%);transform:perspective(500px) rotateX(55deg);transform-origin:50% 100%}
-@keyframes obsp{to{rotate:360deg}}
-#o2.ob.dim .ob-bg{filter:brightness(.35) saturate(.6)}
-#o2.ob .ob-cv{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4}
-#o2.ob .ob-hd{position:absolute;left:0;right:0;top:max(18px,env(safe-area-inset-top));text-align:center;z-index:6;pointer-events:none}
-#o2.ob .ob-hd small{display:block;font:800 10px ui-monospace,'Space Mono',monospace;letter-spacing:.35em;color:color-mix(in srgb,var(--g) 70%,#fff)}
-#o2.ob .ob-hd b{display:block;font-size:20px;font-weight:900;letter-spacing:.02em;text-shadow:0 2px 14px #000}
-#o2.ob .ob-st{position:absolute;inset:0;display:grid;place-items:center;perspective:1200px;z-index:3}
-#o2.ob .ob-pk{grid-area:1/1;position:relative;width:min(280px,62vw);cursor:pointer;animation:obfl 3.2s ease-in-out infinite;transition:opacity .5s,transform .5s}
-@keyframes obfl{0%,100%{translate:0 -8px}50%{translate:0 8px}}
-#o2.ob .ob-pki{position:relative;transform-style:preserve-3d;transition:transform .25s;container-type:inline-size;filter:drop-shadow(0 30px 40px #000a)}
-#o2.ob .ob-pki>.pkn,#o2.ob .ob-pki>*:first-child{width:100%!important;max-width:100%}
-#o2.ob .ob-sh{position:absolute;inset:0;border-radius:10px;pointer-events:none;background:linear-gradient(105deg,#0000 35%,#ffffff55 48%,#ffffff11 52%,#0000 62%);background-size:260% 100%;animation:obsh 3.4s ease-in-out infinite;mix-blend-mode:overlay}
-@keyframes obsh{0%,30%{background-position:120% 0}70%,100%{background-position:-60% 0}}
-#o2.ob .ob-gl{position:absolute;inset:-12%;border-radius:30%;z-index:-1;background:radial-gradient(closest-side,var(--b),#0000);opacity:0;filter:blur(18px);transition:opacity .3s}
-#o2.ob .ob-pk.chg{animation:none}
-#o2.ob .ob-pk.chg .ob-gl{opacity:calc(.25 + var(--k,0)*.75)}
-#o2.ob .ob-pk.chg .ob-pki{animation:obsk .08s linear infinite;scale:calc(1 + var(--k,0)*.06);filter:drop-shadow(0 0 calc(10px + var(--k,0)*40px) var(--b)) brightness(calc(1 + var(--k,0)*.5))}
-@keyframes obsk{0%{translate:-2px 1px}50%{translate:2px -1px}100%{translate:-1px 2px}}
-#o2.ob .ob-pk.tear .ob-pki{clip-path:inset(13% 0 0 0);filter:drop-shadow(0 0 30px var(--b)) brightness(1.3)}
-#o2.ob .ob-pk.tear .ob-gl{opacity:1}
-#o2.ob .ob-pk.gone{animation:obdn .7s cubic-bezier(.5,0,.8,.4) forwards}
-@keyframes obdn{to{transform:translateY(70vh) rotate(6deg);opacity:0}}
-#o2.ob .ob-top{position:fixed;z-index:5;clip-path:inset(0 0 87% 0);container-type:inline-size;pointer-events:none;animation:obtp 1s cubic-bezier(.2,.7,.4,1) forwards}
-#o2.ob .ob-top>*{width:100%!important}
-@keyframes obtp{to{transform:translate(38vw,-30vh) rotate(62deg);opacity:0}}
-#o2.ob .ob-wh{position:absolute;inset:0;z-index:7;pointer-events:none;background:radial-gradient(circle at 50% 48%,#fff 0%,var(--c,#fff) 30%,#0000 70%);opacity:0}
-#o2.ob .ob-wh.go{animation:obwh .7s ease-out}
-@keyframes obwh{0%{opacity:.85}100%{opacity:0}}
-#o2.ob .ob-dk{grid-area:1/1;position:relative;width:min(220px,52vw);aspect-ratio:2/3;cursor:pointer;transform:translateY(-6vh)}
-#o2.ob .ob-c{position:absolute;inset:0}
-#o2.ob .ob-ci{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.3,1.4,.5,1)}
-#o2.ob .ob-ci.flip{transform:rotateY(180deg)}
-#o2.ob .ob-ba,#o2.ob .ob-fa{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;container-type:inline-size}
-#o2.ob .ob-ba{box-shadow:0 14px 30px #000b}
-#o2.ob .ob-ba>*{width:100%;height:100%}
-#o2.ob .ob-fa{transform:rotateY(180deg)}
-#o2.ob .ob-fa .card{width:100%!important;height:100%!important;margin:0!important}
-#o2.ob .ob-c.lit .ob-fa{box-shadow:0 0 0 2px var(--c),0 0 40px color-mix(in srgb,var(--c) 70%,#0000)}
-#o2.ob .ob-c.lit.q3 .ob-fa,#o2.ob .ob-c.lit.q4 .ob-fa,#o2.ob .ob-c.lit.q5 .ob-fa,#o2.ob .ob-c.lit.q6 .ob-fa,#o2.ob .ob-c.lit.q7 .ob-fa,#o2.ob .ob-c.lit.q8 .ob-fa,#o2.ob .ob-c.lit.q9 .ob-fa{animation:obgw 1.6s ease-in-out infinite}
-@keyframes obgw{50%{box-shadow:0 0 0 3px var(--c),0 0 90px var(--c)}}
-#o2.ob .ob-c.done{pointer-events:none}
-#o2.ob .ob-c.done .ob-fa{animation:none;box-shadow:0 0 0 1px var(--c),0 0 14px color-mix(in srgb,var(--c) 60%,#0000)}
-#o2.ob .ob-lb{position:absolute;left:50%;bottom:-34px;translate:-50% 0;font:900 15px Inter,sans-serif;font-style:normal;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;text-shadow:0 0 14px currentColor;animation:upin .3s both}
-#o2.ob .ob-row{position:absolute;left:0;right:0;bottom:calc(86px + env(safe-area-inset-bottom));height:1px;z-index:2;pointer-events:none}
-#o2.ob .ob-ban{position:absolute;left:0;right:0;top:12%;text-align:center;z-index:8;pointer-events:none;opacity:0}
-#o2.ob .ob-ban.on{animation:obbn 1.9s cubic-bezier(.2,1,.3,1) forwards}
-@keyframes obbn{0%{opacity:0;transform:scale(1.6);letter-spacing:.5em}15%{opacity:1;transform:none;letter-spacing:.06em}85%{opacity:1}100%{opacity:0}}
-#o2.ob .ob-ban small{display:block;font:800 11px ui-monospace,monospace;letter-spacing:.5em;color:#fff;opacity:.8}
-#o2.ob .ob-ban b{display:block;font-size:clamp(34px,7vw,64px);font-weight:900;font-style:italic;line-height:1.05;color:#fff;text-shadow:0 0 18px var(--c),0 0 50px var(--c)}
-#o2.ob .ob-ban i{display:block;font-style:normal;font-weight:800;font-size:16px;margin-top:4px;color:color-mix(in srgb,var(--c) 40%,#fff)}
-#o2.ob .ob-tip{position:absolute;left:0;right:0;top:calc(50% + min(200px,46vw));margin:0;text-align:center;z-index:6;font:700 12px ui-monospace,'Space Mono',monospace;letter-spacing:.16em;color:#fffc;text-transform:uppercase;pointer-events:none;animation:obtip 1.6s ease-in-out infinite}
-@keyframes obtip{50%{opacity:.45}}
-#o2.ob .ob-act{position:absolute;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));display:flex;gap:8px;z-index:9}
-#o2.ob .ob-bt{position:static!important;padding:10px 18px;border-radius:999px;border:1px solid #ffffff33;background:#ffffff12;backdrop-filter:blur(8px);color:#fff;font:800 13px Inter,system-ui,sans-serif;cursor:pointer}
-#o2.ob .ob-bt:hover{background:#ffffff24}
-#o2.ob .ob-bt.go{background:var(--b);border-color:var(--b);color:#111;box-shadow:0 0 24px var(--b)}
-#o2.ob.shk .ob-st{animation:obsk .06s linear 7}
-@media (max-width:640px){#o2.ob .ob-row{bottom:calc(74px + env(safe-area-inset-bottom))}#o2.ob .ob-act{left:16px;justify-content:flex-end}}
-/* pass101 · passe de saison */
+/* ml104 · boîte aux lettres */
+.ml104{--bg:#111019;--ln:#ffffff14;--mu:#a9a3b8;font-family:Inter,system-ui,sans-serif;color:#fff;z-index:9000}
+.ml104-x{width:34px;height:34px;flex:none;border-radius:10px;border:1px solid var(--ln);background:#ffffff08;color:#fff;cursor:pointer;font-size:14px}
+.ml104-x:hover{background:#ffffff14}
+.ml104-0{margin:0;padding:28px 18px;text-align:center;color:var(--mu);line-height:1.5}
+.ml104-sw{display:flex;align-items:center;gap:4px}.ml104-sw small{font:800 9px 'Space Mono',monospace;letter-spacing:.2em;color:var(--mu);margin-right:4px}
+.ml104-sw button{width:28px;height:26px;border-radius:8px;border:1px solid var(--ln);background:#ffffff06;color:var(--mu);font:800 11px Inter,sans-serif;cursor:pointer}
+.ml104-sw button.on{background:#ff9a3c;border-color:#ff9a3c;color:#1a0a06}
+.ml104 [class$="-f"]>button:not(.ml104-sw button){border:0;background:none;color:var(--mu);font:700 12px Inter,sans-serif;text-decoration:underline;cursor:pointer}
+/* A · tiroir */
+.ml104a{position:fixed;inset:0}
+.ml104a-sh{position:absolute;inset:0;background:#0009;backdrop-filter:blur(3px);animation:fi .25s both}
+.ml104a-p{position:absolute;top:0;right:0;bottom:0;width:min(400px,100vw);display:flex;flex-direction:column;background:linear-gradient(180deg,#16131f,#0d0b12);border-left:1px solid var(--ln);box-shadow:-30px 0 60px #0008;animation:ml104in .32s cubic-bezier(.2,.9,.3,1) both;padding-top:env(safe-area-inset-top)}
+@keyframes ml104in{from{transform:translateX(100%)}}
+.ml104a.out .ml104a-p{animation:ml104ou .22s ease-in forwards}.ml104a.out .ml104a-sh{animation:fo .22s forwards}
+@keyframes ml104ou{to{transform:translateX(100%)}}@keyframes fo{to{opacity:0}}
+.ml104a-h{display:flex;justify-content:space-between;align-items:center;padding:20px 20px 12px}
+.ml104a-h small{font:900 12px 'Noto Sans JP',sans-serif;color:#ff9a3c;letter-spacing:.2em}.ml104a-h b{display:block;font-size:24px;font-weight:900}
+.ml104a-s{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 20px 14px}
+.ml104a-s div{padding:10px 12px;border-radius:14px;background:#ffffff07;border:1px solid var(--ln)}.ml104a-s b{font-size:22px;font-weight:900;margin-right:6px}.ml104a-s small{color:var(--mu);font-size:12px}
+.ml104a-s div:first-child b{color:#ff9a3c}
+.ml104a-l{flex:1;overflow:auto;padding:0 12px 12px}
+.ml104a-l h4{margin:14px 8px 6px;font:800 10px 'Space Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--mu)}
+.ml104a-i{position:relative;width:100%;display:flex;align-items:center;gap:12px;padding:12px;margin-bottom:6px;border-radius:16px;border:1px solid transparent;background:#ffffff05;color:#fff;text-align:left;cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
+.ml104a-i:hover{background:#ffffff0c;border-color:color-mix(in srgb,var(--c) 50%,#0000);transform:translateX(-2px)}
+.ml104a-i u{width:44px;height:44px;flex:none;display:grid;place-items:center;border-radius:14px;text-decoration:none;font:900 20px 'Noto Sans JP',sans-serif;color:var(--c);background:color-mix(in srgb,var(--c) 14%,#0000);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 40%,#0000)}
+.ml104a-i span{flex:1;min-width:0;display:grid;gap:2px}.ml104a-i b{font-size:14px}.ml104a-i small{font-size:12px;color:var(--mu);line-height:1.35}.ml104a-i span>i{font-style:normal;font-size:11px;color:#77718a}
+.ml104a-i em{font-style:normal;font-size:22px;color:#77718a}
+.ml104a-i.nw{background:color-mix(in srgb,var(--c) 8%,#ffffff05)}.ml104a-i.nw::before{content:"";position:absolute;left:4px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--c);box-shadow:0 0 8px var(--c)}
+.ml104a-f{display:flex;justify-content:space-between;align-items:center;padding:12px 20px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--ln)}
+/* B · menu déroulant */
+.ml104b{position:fixed;top:70px;right:12px;width:min(370px,calc(100vw - 24px));border-radius:18px;background:#14121b;border:1px solid #ffffff1f;box-shadow:0 24px 60px #000b;overflow:hidden;transform-origin:top right;animation:ml104dd .2s cubic-bezier(.2,.9,.3,1) both}
+.ml104b::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#ffd36a,#ff9a3c,#ff3d6e)}
+@keyframes ml104dd{from{opacity:0;transform:translateY(-6px) scale(.97)}}
+.ml104b.out{animation:fo .18s forwards}
+.ml104b-h{display:flex;align-items:center;gap:8px;padding:14px 14px 10px 16px}.ml104b-h b{font-size:16px;font-weight:900;flex:1}.ml104b-h em{font-style:normal;font:800 11px Inter,sans-serif;padding:3px 9px;border-radius:999px;background:#ff3d6e;color:#fff}
+.ml104b-h .ml104-x{width:30px;height:30px}
+.ml104b-l{max-height:min(420px,60vh);overflow:auto;padding:0 6px 6px}
+.ml104b-i{position:relative;width:100%;display:flex;align-items:center;gap:10px;padding:10px;border:0;border-radius:12px;background:none;color:#fff;text-align:left;cursor:pointer}
+.ml104b-i:hover{background:#ffffff0c}
+.ml104b-i u{width:34px;height:34px;flex:none;display:grid;place-items:center;border-radius:50%;text-decoration:none;font:900 15px 'Noto Sans JP',sans-serif;color:#111;background:var(--c)}
+.ml104b-i span{flex:1;min-width:0;display:grid}.ml104b-i b{font-size:13px}.ml104b-i small{font-size:11.5px;color:var(--mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ml104b-i>i{font-style:normal;font-size:10.5px;color:#77718a;white-space:nowrap;align-self:start;margin-top:2px}
+.ml104b-i.nw::after{content:"";position:absolute;right:10px;bottom:12px;width:8px;height:8px;border-radius:50%;background:#4aa8ff;box-shadow:0 0 8px #4aa8ff}
+.ml104b-f{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-top:1px solid var(--ln);background:#0003}
+/* C · lettres */
+.ml104c{position:fixed;inset:0;display:grid;place-items:center;padding:16px;background:#000a;backdrop-filter:blur(4px);animation:fi .25s both}
+.ml104c.out{animation:fo .2s forwards}
+.ml104c-bx{width:min(520px,100%);max-height:calc(100vh - 32px);display:flex;flex-direction:column;border-radius:22px;overflow:hidden;background:radial-gradient(120% 60% at 50% 0%,#3a1418,#0000 60%),linear-gradient(180deg,#1a1015,#0e0a0e);border:1px solid #ffd36a33;box-shadow:0 30px 80px #000c,inset 0 1px 0 #ffd36a22;animation:ml104pp .3s cubic-bezier(.2,1.2,.4,1) both}
+@keyframes ml104pp{from{opacity:0;transform:translateY(16px) scale(.96)}}
+.ml104c-h{display:flex;gap:14px;align-items:center;padding:20px 20px 16px;border-bottom:1px dashed #ffd36a2a}
+.ml104c-h>div{flex:1}.ml104c-h small{font:800 9px 'Space Mono',monospace;letter-spacing:.22em;color:#ffd36a}.ml104c-h b{display:block;font-size:24px;font-weight:900}.ml104c-h span{font-size:12px;color:var(--mu)}
+.ml104c-st{width:52px;height:52px;flex:none;display:grid;place-items:center;border-radius:12px;font:900 26px 'Noto Sans JP',serif;font-style:normal;color:#fff3e0;background:#c62f2f;box-shadow:inset 0 0 0 3px #ffffff33,0 6px 16px #c62f2f55;rotate:-6deg}
+.ml104c-l{overflow:auto;padding:14px 16px;display:grid;gap:10px}
+.ml104c-i{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:16px;background:linear-gradient(180deg,#f4ead6,#e6d7b8);color:#2a1d10;box-shadow:0 6px 16px #0006;animation:ml104li .35s var(--d) cubic-bezier(.2,1,.3,1) both}
+@keyframes ml104li{from{opacity:0;transform:translateY(10px) rotate(-1deg)}}
+.ml104c-i:not(.nw){filter:saturate(.6) brightness(.82)}
+.ml104c-env{position:relative;width:54px;height:40px;flex:none;border-radius:5px;background:#fffaf0;box-shadow:inset 0 0 0 1px #0002}
+.ml104c-fl{position:absolute;left:0;right:0;top:0;height:24px;background:#efe3c7;clip-path:polygon(0 0,100% 0,50% 100%);box-shadow:inset 0 0 0 1px #0002}
+.ml104c-wx{position:absolute;left:50%;top:14px;translate:-50% 0;width:24px;height:24px;display:grid;place-items:center;border-radius:50%;font:900 12px 'Noto Sans JP',sans-serif;font-style:normal;color:#fff;background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--c) 60%,#fff),var(--c) 55%,color-mix(in srgb,var(--c) 60%,#000));box-shadow:0 2px 4px #0005}
+.ml104c-t{flex:1;min-width:0;display:grid;gap:1px}.ml104c-t b{font-size:14px;font-weight:900}.ml104c-t span{font-size:12px;color:#5a4a36;line-height:1.35}.ml104c-t small{font-size:11px;color:#8a7658}
+.ml104c-go{flex:none;padding:8px 14px;border-radius:999px;border:0;background:#2a1d10;color:#ffe9c0;font:800 12px Inter,sans-serif;cursor:pointer}
+.ml104c-go:hover{background:#c62f2f;color:#fff}
+.ml104c-f{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;border-top:1px dashed #ffd36a2a}
+@media (max-width:640px){.ml104b{left:12px;right:12px!important;width:auto}}
+.mr102-n{font-style:normal;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:#ff3d2e;color:#fff;font:800 11px/18px Inter,sans-serif;text-align:center}.mr102-ck{display:flex!important;flex-direction:row!important;align-items:center;gap:8px;font:600 13px Inter,sans-serif;color:#d6d0e6;cursor:pointer}.mr102-ck input{width:18px;height:18px;accent-color:#ff5a36}/* pass101 · passe de saison */
 .p1{--pa:#ff9a3c;--pb:#ff3d6e;--pc:#ffd36a;display:grid;grid-template-columns:minmax(0,1fr);gap:18px}.p1 *{min-width:0}
 .p1-h{position:relative;overflow:hidden;border-radius:26px;padding:clamp(20px,3vw,34px);display:grid;grid-template-columns:1.3fr auto .9fr;gap:clamp(16px,2.4vw,32px);align-items:center;background:linear-gradient(135deg,#1a0f22,#0e0a16 55%,#1a0d10);border:1px solid #ffffff14;box-shadow:0 30px 80px #0008,inset 0 1px 0 #ffffff12}
 .p1-bg{position:absolute;inset:0;pointer-events:none}
@@ -9576,7 +9577,8 @@ qd();
 function showOdds(o,c,p){const d=document.createElement('div');d.className='odds'+(c.na?' aw':'');d.innerHTML=(c.na?'<b>ÉVEIL</b> · ':'')+oddsTxt(c,p);o.append(d)}
 
 /* ===== MISES À JOUR ===== */
-const VER='26.99.1',CHG=[
+const VER='26.99.2',CHG=[
+{v:'26.99.2',d:'21 novembre 2026',t:'Le Dojo, le Pass et la boîte aux lettres',n:['Le Dojo d’entraînement a sa propre page (Aventure › Dojo d’entraînement) : choisis un perso, il s’entraîne 6 h et gagne +1 niveau, même sans doublon. Grand chrono en direct, aura et étincelles pendant l’entraînement. L’Atelier ne garde que la fusion.','Le passe de saison est entièrement redessiné : ton palier dans un blason, le compte à rebours de la saison, le grand prix du palier 100, et les 100 paliers rangés en 10 chapitres.','La boîte aux lettres est redessinée : chaque message est une lettre avec un sceau de cire à la couleur de son type, et les lettres non lues ressortent.','Marché : nouveaux tris « Plus rares d’abord » et « Moins rares d’abord » dans Acheter, Vendre et Enchères.','Enchères : nouveau bouton Filtres comme dans Acheter (univers, tri, prix min et max, achat immédiat seulement, cartes que tu n’as pas, cartes que tu cherches).'],f:[]},
 {v:'26.99.1',d:'21 novembre 2026',t:'Officiers de guilde',n:['Les officiers peuvent maintenant exclure les membres simples de la guilde. Seul le chef nomme ou rétrograde les officiers, et personne ne peut exclure le chef.'],f:[]},
 {v:'26.99',d:'21 novembre 2026',t:'Cartes signées partout',n:['Tu peux mettre aux enchères, proposer au tableau des échanges ou donner dans une offre la version SIGNÉE d’une carte : celui qui la reçoit récupère la signature et le numéro.','Si l’enchère, l’échange ou l’offre est annulé ou refusé, ta signature te revient.','La fiche d’une carte montre maintenant le propriétaire actuel de chaque exemplaire signé.'],f:[]},
 {v:'26.98',d:'21 novembre 2026',t:'Cartes signées',big:1,n:['Nouveau : chaque carte tirée a 1 chance sur 500 d’être SIGNÉE. Une plume dorée signe la carte en direct, le sceau 署 tombe, et la carte reçoit un numéro unique (« Signée N° 0042 »).','La signature dorée en relief et le numéro restent visibles partout : collection, fiche, combat, profil et marché.','Tu peux vendre la version signée au marché (prix fixe). L’acheteur récupère la carte avec sa signature et son numéro.','La fiche d’une carte liste ses exemplaires signés et les joueurs qui les ont tirés.','Le bloc « Nouveaux animes » a été retiré de l’accueil.'],f:[]},
@@ -18078,7 +18080,7 @@ MODES.push(['duel1','Duel 1 contre 1','Une seule carte, 5 rounds · pour tester 
    images de persos réparées, vignettes des parcours, anti-farm des pièces */
 
 /* --- 1. numéro de version affiché : la numérotation repart de 1.0 (le numéro interne ne change pas : il sert aux sauvegardes) --- */
-const DVER={'26.12':'1.0','26.13':'1.1','26.14':'1.2','26.15':'1.3','26.16':'1.4','26.17':'1.5','26.18':'1.6','26.19':'1.7','26.20':'1.8','26.21':'1.9','26.22':'1.10','26.23':'1.11','26.24':'1.12','26.25':'1.13','26.26':'1.14','26.27':'1.15','26.28':'1.16','26.29':'1.17','26.30':'1.18','26.31':'1.19','26.32':'1.20','26.33':'1.21','26.34':'1.22','26.35':'1.23','26.36':'1.24','26.37':'1.25','26.38':'1.26','26.39':'1.27','26.40':'1.28','26.41':'1.29','26.42':'1.30','26.43':'1.31','26.44':'1.32','26.45':'1.33','26.46':'1.34','26.47':'1.35','26.48':'1.36','26.49':'1.37','26.50':'1.38','26.51':'1.39','26.52':'1.40','26.53':'1.41','26.54':'1.42','26.55':'1.43','26.56':'1.44','26.57':'1.45','26.58':'1.46','26.59':'1.47','26.60':'1.48','26.61':'1.49','26.62':'1.50','26.63':'1.51','26.64':'1.52','26.65':'1.53','26.66':'1.54','26.67':'1.55','26.68':'1.56','26.69':'1.57','26.70':'1.58','26.71':'1.59','26.72':'1.60','26.73':'1.61','26.74':'1.62','26.75':'1.63','26.76':'1.64','26.77':'1.65','26.78':'1.65.1','26.79':'1.65.2','26.80':'1.66','26.81':'1.66.1','26.82':'1.66.2','26.83':'1.66.3','26.84':'1.67','26.85':'1.67.1','26.86':'1.67.2','26.87':'1.68','26.88':'1.68.1','26.89':'1.68.2','26.90':'1.69','26.91':'1.70','26.92':'1.71','26.93':'1.71.1','26.94':'1.71.2','26.95':'1.71.3','26.96':'1.71.4','26.97':'1.72','26.98':'1.73','26.99':'1.73.1','26.99.1':'1.73.2'};
+const DVER={'26.12':'1.0','26.13':'1.1','26.14':'1.2','26.15':'1.3','26.16':'1.4','26.17':'1.5','26.18':'1.6','26.19':'1.7','26.20':'1.8','26.21':'1.9','26.22':'1.10','26.23':'1.11','26.24':'1.12','26.25':'1.13','26.26':'1.14','26.27':'1.15','26.28':'1.16','26.29':'1.17','26.30':'1.18','26.31':'1.19','26.32':'1.20','26.33':'1.21','26.34':'1.22','26.35':'1.23','26.36':'1.24','26.37':'1.25','26.38':'1.26','26.39':'1.27','26.40':'1.28','26.41':'1.29','26.42':'1.30','26.43':'1.31','26.44':'1.32','26.45':'1.33','26.46':'1.34','26.47':'1.35','26.48':'1.36','26.49':'1.37','26.50':'1.38','26.51':'1.39','26.52':'1.40','26.53':'1.41','26.54':'1.42','26.55':'1.43','26.56':'1.44','26.57':'1.45','26.58':'1.46','26.59':'1.47','26.60':'1.48','26.61':'1.49','26.62':'1.50','26.63':'1.51','26.64':'1.52','26.65':'1.53','26.66':'1.54','26.67':'1.55','26.68':'1.56','26.69':'1.57','26.70':'1.58','26.71':'1.59','26.72':'1.60','26.73':'1.61','26.74':'1.62','26.75':'1.63','26.76':'1.64','26.77':'1.65','26.78':'1.65.1','26.79':'1.65.2','26.80':'1.66','26.81':'1.66.1','26.82':'1.66.2','26.83':'1.66.3','26.84':'1.67','26.85':'1.67.1','26.86':'1.67.2','26.87':'1.68','26.88':'1.68.1','26.89':'1.68.2','26.90':'1.69','26.91':'1.70','26.92':'1.71','26.93':'1.71.1','26.94':'1.71.2','26.95':'1.71.3','26.96':'1.71.4','26.97':'1.72','26.98':'1.73','26.99':'1.73.1','26.99.1':'1.73.2','26.99.2':'1.73.3'};
 const dvRe=new RegExp('(^|[^0-9.])('+Object.keys(DVER).map(k=>k.replace(/\./g,'\\.')).join('|')+')(?![0-9]|\\.[0-9])','g');
 function dvFix(root){try{const w=document.createTreeWalker(root||document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){const t=n.nodeValue;if(t&&t.length<400&&/\d\.\d/.test(t)){dvRe.lastIndex=0;const u=t.replace(dvRe,(m,a,v)=>a+DVER[v]);if(u!==t)n.nodeValue=u}}}catch(e){}}
 {let dvT=0;try{new MutationObserver(()=>{if(dvT)return;dvT=setTimeout(()=>{dvT=0;dvFix()},120)}).observe(document.body,{childList:true,subtree:true,characterData:true})}catch(e){}setTimeout(dvFix,500)}
@@ -21739,11 +21741,10 @@ auLoad=async function(){const b=$('mp20-hb');if(!b)return;const now=Date.now();
   return `<div class="au90-t ${me?'mine':lead?'lead':''} ${on?'':'off'}">${au90Card(a.card)}<div class="au90-h"><span class="au90-tag">Enchère</span>${on?`<span class="au90-tm" data-au-end="${+a.end}">⏳ ${auLeft(a.end)}</span>`:'<span class="au90-end">Terminée</span>'}</div>
   <div class="au90-p"><b>${nInt(a.bid,1,1e7)}<i class="cn"></i></b><small>${a.bidder?(lead?'ta mise':'mise de '+nE(a.bname)):'mise de départ'}</small></div>
   <div class="au90-f"><span data-oclick="mpProf('${nE(a.seller)}')">${me?'toi':nE(a.sname)}</span>${pc==null?'':`<em class="${pc>0?'up':'dn'}">${pc>0?'+':''}${pc} % méd.</em>`}</div>${act}</div>`};
- const chips=`<button class="${AU90Q.r<0?'on':''}" data-oclick="AU90Q.r=-1;hdvLoad()"><i class="au90-all"></i>Toutes</button>`+R.map((x,r)=>{const [rn,rc]=RNAME(r);return `<button class="${AU90Q.r==r?'on':''}" title="${nE(rn)}" data-oclick="AU90Q.r=${r};hdvLoad()"><i style="background:${rc}">${nE(x[0])}</i></button>`}).join('');
+ const chips=`<button class="${AU90Q.r<0?'on':''}" data-oclick="AU90Q.r=-1;hdvLoad()"><i class="au90-all"></i>Toutes</button>`+R.map((x,r)=>{const [rn,rc]=RNAME(r);return `<button class="${AU90Q.r==r?'on':''}" title="${nE(rn)}" data-oclick="AU90Q.r=${r};hdvLoad()"><i style="background:${rc}">${nE(x[0])}</i>${AU90Q.r==r?nE(rn):''}</button>`}).join('');
  b.innerHTML=`<div class="au90-bar"><div class="au90-s"><input placeholder="Chercher un perso, un univers, un vendeur…" value="${nE(AU90Q.q)}" data-oinput="AU90Q.q=this.value;clearTimeout(window._auq);window._auq=setTimeout(()=>hdvLoad(),300)"><button data-oclick="toast('Les joueurs font monter le prix jusqu’à la fin du temps. Chaque offre dépasse la précédente d’au moins 5 %. Si quelqu’un te dépasse, tes pièces te sont rendues. Taxe de 5 % pour le vendeur.')" aria-label="Comment ça marche">i</button></div><div class="au90-r">${chips}</div>
- <select class="au90-o" data-ochange="AU90Q.o=this.value;hdvLoad()"><option value="end" ${AU90Q.o=='end'?'selected':''}>Fin proche</option><option value="new" ${AU90Q.o=='new'?'selected':''}>Plus récentes</option><option value="lo" ${AU90Q.o=='lo'?'selected':''}>Prix croissant</option><option value="hi" ${AU90Q.o=='hi'?'selected':''}>Prix décroissant</option><option value="rh" ${AU90Q.o=='rh'?'selected':''}>Plus rare</option><option value="rl" ${AU90Q.o=='rl'?'selected':''}>Moins rare</option></select>
- <button class="au90-mn mk92-fbt ${AU90Q.fo||auNf?'on':''}" data-oclick="AU90Q.fo=AU90Q.fo?0:1;hdvLoad()">☰ Filtres${auNf?' · '+auNf:''}</button><button class="au90-mn ${AU90Q.f?'on':''}" data-oclick="AU90Q.f=AU90Q.f?0:1;hdvLoad()">Mes enchères</button><button class="au90-new" data-oclick="auNew()">Mettre aux enchères</button></div>
- ${AU90Q.fo?`<div class="mk92-fp"><label>Univers<select id="au102u"><option value="">Tous</option>${auUniv.map(u=>`<option ${AU90Q.u==u?'selected':''}>${nE(u)}</option>`).join('')}</select></label><label class="mk92-pr">Mise<span><input id="au102a" type="number" min="0" placeholder="min" value="${nE(AU90Q.mn||'')}">–<input id="au102b" type="number" min="0" placeholder="max" value="${nE(AU90Q.mx||'')}"></span></label><div class="mk92-tg"><button class="${AU90Q.bn?'on':''}" data-oclick="AU90Q.bn=AU90Q.bn?0:1;this.classList.toggle('on')">Achat immédiat seulement</button><button class="${AU90Q.miss?'on':''}" data-oclick="AU90Q.miss=AU90Q.miss?0:1;this.classList.toggle('on')">Que je n’ai pas</button><button class="${AU90Q.want?'on':''}" data-oclick="AU90Q.want=AU90Q.want?0:1;this.classList.toggle('on')">Que je cherche</button></div><div class="mk92-fb"><button class="btn gh sm" data-oclick="Object.assign(AU90Q,{u:'',mn:'',mx:'',bn:0,miss:0,want:0});hdvLoad()">Réinitialiser</button><button class="btn sm" data-oclick="AU90Q.u=($('au102u')||{}).value||'';AU90Q.mn=($('au102a')||{}).value||'';AU90Q.mx=($('au102b')||{}).value||'';AU90Q.fo=0;hdvLoad()">Appliquer</button></div></div>`:''}
+ <button class="au90-mn mk92-fbt ${AU90Q.fo||auNf?'on':''}" data-oclick="AU90Q.fo=AU90Q.fo?0:1;hdvLoad()">☰ Filtres${auNf?`<em class="mr102-n">${auNf}</em>`:''}</button><button class="au90-mn ${AU90Q.f?'on':''}" data-oclick="AU90Q.f=AU90Q.f?0:1;hdvLoad()">Mes enchères</button><button class="au90-new" data-oclick="auNew()">Mettre aux enchères</button></div>
+ ${AU90Q.fo?`<div class="mk92-fp"><label>Univers<select id="au102u"><option value="">Tous</option>${auUniv.map(u=>`<option ${AU90Q.u==u?'selected':''}>${nE(u)}</option>`).join('')}</select></label><label>Tri<select id="au102o"><option value="end" ${AU90Q.o=='end'?'selected':''}>Fin imminente</option><option value="new" ${AU90Q.o=='new'?'selected':''}>Plus récentes</option><option value="lo" ${AU90Q.o=='lo'?'selected':''}>Prix croissant</option><option value="hi" ${AU90Q.o=='hi'?'selected':''}>Prix décroissant</option><option value="rh" ${AU90Q.o=='rh'?'selected':''}>Plus rares d’abord</option><option value="rl" ${AU90Q.o=='rl'?'selected':''}>Moins rares d’abord</option></select></label><label class="mk92-pr">Prix<span><input id="au102a" type="number" min="0" placeholder="min" value="${nE(AU90Q.mn||'')}">–<input id="au102b" type="number" min="0" placeholder="max" value="${nE(AU90Q.mx||'')}"></span></label><label class="mr102-ck"><input type="checkbox" id="au102c" ${AU90Q.bn?'checked':''}>Achat immédiat seulement</label><div class="mk92-tg"><button class="${AU90Q.miss?'on':''}" data-oclick="AU90Q.miss=AU90Q.miss?0:1;this.classList.toggle('on')">Que je n’ai pas</button><button class="${AU90Q.want?'on':''}" data-oclick="AU90Q.want=AU90Q.want?0:1;this.classList.toggle('on')">Que je cherche</button></div><div class="mk92-fb"><button class="btn gh sm" data-oclick="Object.assign(AU90Q,{u:'',mn:'',mx:'',bn:0,miss:0,want:0});hdvLoad()">Réinitialiser</button><button class="btn sm" data-oclick="AU90Q.u=($('au102u')||{}).value||'';AU90Q.mn=($('au102a')||{}).value||'';AU90Q.mx=($('au102b')||{}).value||'';AU90Q.o=($('au102o')||{}).value||'end';AU90Q.bn=($('au102c')||{}).checked?1:0;AU90Q.fo=0;hdvLoad()">Appliquer</button></div></div>`:''}
  <p class="au90-c">${run.length} enchère${run.length>1?'s':''}</p>${run.length?`<div class="au90-g">${run.map(tile).join('')}</div>`:'<p class="mp20-em">Aucune enchère ici pour l’instant. Lance la première !</p>'}`;
  auTick()};
 /* ---------- Vendre : nouvelle fenêtre « Mettre en vente » (prix fixe ou enchère) ---------- */
@@ -21876,7 +21877,7 @@ function mk92Ago(end){const s=Math.max(0,(+end-Date.now())/1000);if(s<=0)return 
 function mk92Tile(x,med){const me=x.seller==NET.uid,p=nInt(x.price,1,1e7),md=med[x.card.id],pc=md?Math.round((p-md)/md*100):null,end=+x.end||0;
  return `<div class="au90-t mk92-tl ${me?'mine':''}" data-oclick="hdvAd('${nE(x.id)}')">${au90Card(x.card)}<div class="au90-h"><span class="au90-tag mk92-pf">Prix fixe</span>${end?`<span class="au90-tm" data-au-end="${end}">⏳ ${auLeft(end)}</span>`:`<span class="au90-tm mk92-dp">depuis ${ad89Ago(x.t)}</span>`}</div>
  <div class="au90-p"><b>${p}<i class="cn"></i></b>${me?'<small>ton annonce</small>':S.inv[x.card.id]?`<small>tu l’as ×${S.inv[x.card.id]}</small>`:'<small class="mk92-mi">il te manque</small>'}</div><div class="au90-f"><span>${me?'toi':nE(x.sname)}</span>${pc==null?'<em>—</em>':`<em class="${pc>0?'up':pc<0?'dn':''}">${pc>0?'+':''}${pc} % méd.</em>`}</div></div>`}
-function mk92Bar(ph,extra){const chips=`<button class="${HR<0?'on':''}" data-oclick="HR=-1;hdvLoad()"><i class="au90-all"></i>Toutes</button>`+R.map((x,r)=>{const [rn,rc]=RNAME(r);return `<button class="${HR==r?'on':''}" title="${nE(rn)}" data-oclick="HR=${r};hdvLoad()"><i style="background:${rc}">${nE(x[0])}</i></button>`}).join('');
+function mk92Bar(ph,extra){const chips=`<button class="${HR<0?'on':''}" data-oclick="HR=-1;hdvLoad()"><i class="au90-all"></i>Toutes</button>`+R.map((x,r)=>{const [rn,rc]=RNAME(r);return `<button class="${HR==r?'on':''}" title="${nE(rn)}" data-oclick="HR=${r};hdvLoad()"><i style="background:${rc}">${nE(x[0])}</i>${HR==r?nE(rn):''}</button>`}).join('');
  return `<div class="au90-bar"><div class="au90-s"><input placeholder="${ph}" value="${nE(HQ)}" data-oinput="HQ=this.value;clearTimeout(window._hq);window._hq=setTimeout(()=>hdvLoad(),300)"><button data-oclick="toast('Clique sur une carte pour voir son annonce, son prix du marché et l’acheter. La taxe de 5 % est payée par le vendeur.')" aria-label="Aide">i</button></div><div class="au90-r">${chips}</div>${extra||''}</div>`}
 function mk92Filt(univ){if(!MK92.fo)return '';return `<div class="mk92-fp"><label>Univers<select id="mk92u"><option value="">Tous</option>${univ.map(u=>`<option ${MK92.u==u?'selected':''}>${nE(u)}</option>`).join('')}</select></label><label>Tri<select id="mk92o">${[['new','Plus récentes'],['end','Fin imminente'],['lo','Prix croissant'],['hi','Prix décroissant'],['md','Meilleures affaires'],['rh','Plus rare'],['rl','Moins rare']].map(([k,t])=>`<option value="${k}" ${MK92.o==k?'selected':''}>${t}</option>`).join('')}</select></label>
  <label class="mk92-pr">Prix<span><input id="mk92a" type="number" min="0" placeholder="min" value="${nE(MK92.min)}">–<input id="mk92b" type="number" min="0" placeholder="max" value="${nE(MK92.max)}"></span></label><div class="mk92-tg"><button class="${MK92.miss?'on':''}" data-oclick="MK92.miss=MK92.miss?0:1;this.classList.toggle('on')">Que je n’ai pas</button><button class="${MK92.want?'on':''}" data-oclick="MK92.want=MK92.want?0:1;this.classList.toggle('on')">Que je cherche</button></div>
@@ -21888,10 +21889,10 @@ async function mk92Buy(b){const now=Date.now();const [L,med]=await Promise.all([
  if(MK92.u)run=run.filter(x=>x.card.s==MK92.u);if(MK92.min!=='')run=run.filter(x=>x.price>=+MK92.min);if(MK92.max!=='')run=run.filter(x=>x.price<=+MK92.max);if(MK92.miss)run=run.filter(x=>!S.inv[x.card.id]);if(MK92.want&&MK92.myW)run=run.filter(x=>MK92.myW.has(x.card.id));
  const dv=x=>{const m=med[x.card.id];return m?(x.price-m)/m:9};run.sort((a,c)=>MK92.o=='lo'?a.price-c.price:MK92.o=='hi'?c.price-a.price:MK92.o=='end'?((+a.end||9e15)-(+c.end||9e15)):MK92.o=='md'?dv(a)-dv(c):MK92.o=='rh'?(c.card.r-a.card.r)||(a.price-c.price):MK92.o=='rl'?(a.card.r-c.card.r)||(a.price-c.price):c.t-a.t);
  const nf=(MK92.u?1:0)+(MK92.min!==''?1:0)+(MK92.max!==''?1:0)+MK92.miss+MK92.want;
- b.innerHTML=mk92Bar('Rechercher un perso…',`<button class="au90-mn mk92-fbt ${MK92.fo||nf?'on':''}" data-oclick="MK92.fo=MK92.fo?0:1;hdvLoad()">☰ Filtres${nf?' · '+nf:''}</button>`)+mk92Filt(univ)+`<p class="au90-c">${run.length} annonce${run.length>1?'s':''}</p>`+(run.length?`<div class="au90-g">${run.slice(0,120).map(x=>mk92Tile(x,med)).join('')}</div>`:'<p class="mp20-em">Aucune carte en vente avec ces filtres.</p>');auTick()}
+ b.innerHTML=mk92Bar('Rechercher un perso…',`<button class="au90-mn mk92-fbt ${MK92.fo||nf?'on':''}" data-oclick="MK92.fo=MK92.fo?0:1;hdvLoad()">☰ Filtres${nf?`<em class="mr102-n">${nf}</em>`:''}</button>`)+mk92Filt(univ)+`<p class="au90-c">${run.length} annonce${run.length>1?'s':''}</p>`+(run.length?`<div class="au90-g">${run.slice(0,120).map(x=>mk92Tile(x,med)).join('')}</div>`:'<p class="mp20-em">Aucune carte en vente avec ces filtres.</p>');auTick()}
 async function mk92Sell(b){const [mineL,med]=await Promise.all([NET.db.q('market',{w:[['seller','==',NET.uid]],l:20}),au90Med()]);if(!$('mp20-hb'))return;mk92Auto(mineL);
  let own=D.filter(c=>S.inv[c.id]&&hMatch(c));own.sort((a,c)=>MK92.so=='r'?(c.r-a.r)||(pw(c)-pw(a)):MK92.so=='rl'?(a.r-c.r)||(pw(a)-pw(c)):MK92.so=='a'?a.n.localeCompare(c.n):(S.inv[c.id]-S.inv[a.id])||(c.r-a.r));own=own.slice(0,160);
- const so=`<label class="mk92-so">Tri<select data-ochange="MK92.so=this.value;hdvLoad()">${[['n','Plus d’exemplaires d’abord'],['r','Plus rare'],['rl','Moins rare'],['a','Nom (A → Z)']].map(([k,t])=>`<option value="${k}" ${MK92.so==k?'selected':''}>${t}</option>`).join('')}</select></label>`;
+ const so=`<label class="mk92-so">Tri<select data-ochange="MK92.so=this.value;hdvLoad()">${[['n','Plus d’exemplaires d’abord'],['r','Plus rares d’abord'],['rl','Moins rares d’abord'],['a','Nom']].map(([k,t])=>`<option value="${k}" ${MK92.so==k?'selected':''}>${t}</option>`).join('')}</select></label>`;
  b.innerHTML=mk92Bar('Chercher un perso ou un univers…',so)+(mineL.length?`<div class="mk92-ms"><h4>En vente · ${mineL.length}/10</h4><div class="mk92-ml">${mineL.map(x=>`<div class="mk92-mi" data-oclick="hdvAd('${nE(x.id)}')">${sw89Th(x.card)}<div><b>${nE(x.card.n)}</b><small>${nInt(x.price,1,1e7)} <i class="cn"></i>${x.end?` · <span data-au-end="${+x.end}">⏳ ${auLeft(x.end)}</span>`:''}</small></div><button class="btn sm gh" data-oclick="event.stopPropagation();hdvCancel('${nE(x.id)}')">Retirer</button></div>`).join('')}</div></div>`:'')
  +`<p class="au90-c">${own.length} carte${own.length>1?'s':''} · clique sur une carte pour la mettre en vente</p><div class="au90-g mk92-sg">${own.map(c=>{const n=sellable(c.id),md=med[c.id];return `<div class="au90-t mk92-st ${n?'':'off'}" data-oclick="${n?`sl90Open('${c.id}')`:`toast('Cette carte n’est pas disponible à la vente')`}">${au90Card(netCard(c))}<span class="mk92-x">×${S.inv[c.id]}</span><div class="au90-f"><span>${md?'méd. '+md+' ◎':'méd. —'}</span><em>${n?'Vendre':'—'}</em></div></div>`}).join('')||'<p class="mp20-em">Aucune carte.</p>'}</div>`;auTick()}
 {const _l=hdvLoad;hdvLoad=async function(){const b=$('mp20-hb');if(b&&(HTAB=='buy'||HTAB=='sell')){try{if(HTAB=='buy')await mk92Buy(b);else await mk92Sell(b)}catch(e){console.warn(e);if($('mp20-hb'))$('mp20-hb').innerHTML='<p class="mp20-em">Erreur de connexion. Réessaie dans un instant.</p>'}return}return _l.apply(this,arguments)}}
@@ -22249,82 +22250,42 @@ async function sg99Own(n){try{if(!netOk()||!n)return;const d=await NET.db.get('s
 /* fiche : propriétaire actuel */
 {const _d=detail;detail=function(id){const r=_d.apply(this,arguments);setTimeout(async()=>{try{const w=document.querySelector('.sg98-w');if(!w)return;const L=await NET.db.q('signed',{w:[['cid','==',String(id)]],l:20});L.forEach(s=>{const row=[...w.querySelectorAll('div')].find(x=>x.firstElementChild&&x.firstElementChild.textContent==sgN(s.id));if(row&&s.own&&s.own!=s.uid&&!row.querySelector('.sg99-o'))row.insertAdjacentHTML('beforeend',`<em class="sg99-o" data-oclick="mpProf('${nE(s.own)}')">à ${nE(s.oname||'Joueur')}</em>`)})}catch(e){}},1200);return r}}
 
-/* ===== v26.99.2 · nouvelle ouverture de booster (ob101) =====
-   Le booster flotte au centre, on le touche : il se charge à la couleur de la meilleure carte, se déchire,
-   les cartes sortent en pile. On touche la pile pour retourner chaque carte (la meilleure en dernier, avec une
-   montée en tension), elle file ensuite dans la rangée du bas. Pas de rayons verticaux. Remplace OPEN2C. */
-const OB_COL=r=>r==9?'#ff8af0':r==6?'#a86bff':r==7?'#ff2d55':r==8?'#3dd9c4':(R[r]&&R[r][2])||'#ffe28a';
-const OB_NM=(c)=>c.na?'Éveil':(R[c.r]&&R[c.r][1])||'Primordial';
-function obFx(cv){const g=cv.getContext('2d'),P=[];let W=0,H=0,on=1;const dp=Math.min(2,devicePixelRatio||1);
- const rs=()=>{W=innerWidth;H=innerHeight;cv.width=W*dp;cv.height=H*dp;g.setTransform(dp,0,0,dp,0,0)};rs();addEventListener('resize',rs);
- const fr=()=>{if(!on)return;g.clearRect(0,0,W,H);g.globalCompositeOperation='lighter';
-  for(let i=P.length-1;i>=0;i--){const p=P[i];p.t+=1/60;if(p.t>p.l){P.splice(i,1);continue}const k=p.t/p.l;p.vx*=p.d;p.vy=p.vy*p.d+p.gr/60;p.x+=p.vx/60;p.y+=p.vy/60;
-   if(p.ring){g.strokeStyle=p.c;g.globalAlpha=(1-k)*.9;g.lineWidth=p.w*(1-k)+.5;g.beginPath();g.ellipse(p.x,p.y,p.r0+(p.r1-p.r0)*(1-Math.pow(1-k,3)),(p.r0+(p.r1-p.r0)*(1-Math.pow(1-k,3)))*p.sy,0,0,7);g.stroke();continue}
-   const a=(k<.1?k/.1:1-(k-.1)/.9),s=p.s*(p.sh?1-k*.6:1);g.globalAlpha=a*p.o;const gr=g.createRadialGradient(p.x,p.y,0,p.x,p.y,s);gr.addColorStop(0,'#fff');gr.addColorStop(.25,p.c);gr.addColorStop(1,p.c+'00');g.fillStyle=gr;g.beginPath();g.arc(p.x,p.y,s,0,7);g.fill()}
-  g.globalAlpha=1;g.globalCompositeOperation='source-over';requestAnimationFrame(fr)};requestAnimationFrame(fr);
- return {burst(x,y,n,o={}){for(let i=0;i<n;i++){const a=(o.a??Math.random()*6.283)+(o.a!=null?(Math.random()-.5)*(o.sp||1):0),v=(o.v||300)*(.35+Math.random()*.75);P.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,t:0,l:(o.l||1)*(.6+Math.random()*.6),s:(o.s||5)*(.5+Math.random()),c:Math.random()<.25?'#ffffff':(o.c||'#fff'),d:o.d??.95,gr:o.g??260,o:o.o??1,sh:1})}},
-  ring(x,y,c,r1,o={}){P.push({ring:1,x,y,vx:0,vy:0,t:0,l:o.l||.8,c,r0:o.r0||20,r1,w:o.w||6,sy:o.sy||1,d:1,gr:0})},
-  rise(x,y,w,c,n){for(let i=0;i<n;i++)P.push({x:x+(Math.random()-.5)*w,y,vx:(Math.random()-.5)*20,vy:-40-Math.random()*90,t:0,l:2+Math.random()*2,s:2+Math.random()*4,c,d:.995,gr:0,o:.7})},
-  stop(){on=0;removeEventListener('resize',rs)}}}
-function obOpen(p,cards){return new Promise(res=>{try{
- const rk=cards.map(c=>c.na?9:Math.min(8,c.r|0)),best=Math.max(...rk),bc=OB_COL(best),bi=rk.lastIndexOf(best),n=cards.length;
- const order=[...cards.keys()].filter(i=>i!=bi).sort((a,b)=>rk[a]-rk[b]).concat([bi]);
- document.querySelectorAll('#o2').forEach(e=>e.remove());
- const o=document.createElement('div');o.id='o2';o.className='ob';o.style.setProperty('--g',p.g||'#ff3d6e');o.style.setProperty('--b',bc);
- o.innerHTML=`<div class="ob-bg"><i class="ob-hz"></i><i class="ob-fl"></i></div><canvas class="ob-cv"></canvas>
- <div class="ob-hd"><small>${(window.__O2FAST?'TES MEILLEURES CARTES · ':'')+n} CARTE${n>1?'S':''}</small><b>${typeof pkN=='function'?pkN(p):p.n}</b></div>
- <div class="ob-st"><div class="ob-pk"><div class="ob-pki">${packFront(p)}<i class="ob-sh"></i></div><i class="ob-gl"></i></div><div class="ob-dk"></div></div>
- <div class="ob-row"></div><div class="ob-ban"><small></small><b></b><i></i></div>
- <p class="ob-tip">Touche le booster pour l’ouvrir</p><div class="ob-act"><button class="ob-bt ob-all" hidden>Tout révéler</button><button class="ob-bt o2sk">Passer ›</button></div><i class="ob-wh"></i>`;
- document.body.append(o);const q=s=>o.querySelector(s),F=obFx(q('.ob-cv')),pk=q('.ob-pk'),pki=q('.ob-pki'),tip=q('.ob-tip'),dk=q('.ob-dk'),row=q('.ob-row'),ban=q('.ob-ban'),wh=q('.ob-wh');
- let dead=0,stage=0,busy=0,fast=0;const W=innerWidth,H=innerHeight,mob=W<640;
- const sl=ms=>new Promise(r=>setTimeout(r,fast?Math.min(ms,90):ms));
- const end=()=>{if(dead)return;dead=1;F.stop();res()};o.addEventListener('ob-end',end);
- const snd2=(f,d,t,v,dl)=>{try{snd(f,d,t,v,dl)}catch(e){}};const sfx=r=>{try{if(typeof sp45Play=='function')sp45Play(r)}catch(e){}};
- const amb=setInterval(()=>{if(dead||!document.body.contains(o)){clearInterval(amb);end();return}F.rise(W/2,H+10,W*.9,stage<2?(p.g||bc):bc,1)},140);
- o.addEventListener('pointermove',e=>{if(stage)return;const r=pk.getBoundingClientRect(),x=CL((e.clientX-r.left)/r.width-.5,-.7,.7),y=CL((e.clientY-r.top)/r.height-.5,-.7,.7);pki.style.transform=`rotateY(${x*26}deg) rotateX(${-y*20}deg)`;pki.style.setProperty('--mx',(x+.5)*100+'%')});
- /* 1. ouverture du booster */
- const open=async()=>{if(stage)return;stage=1;tip.textContent='';pki.style.transform='';const r=pk.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
-  pk.classList.add('chg');snd2(90,1.2,'sawtooth',.06,0);const t0=Date.now(),dur=650+best*170;
-  while(Date.now()-t0<dur&&!fast){const k=(Date.now()-t0)/dur,a=Math.random()*6.283,d=170+Math.random()*120;F.burst(cx+Math.cos(a)*d,cy+Math.sin(a)*d,1,{a:a+Math.PI,sp:.2,v:d*2.2,l:.45,s:4+k*5,c:bc,g:0,d:.97});pk.style.setProperty('--k',k.toFixed(2));await sl(40)}
-  pk.classList.remove('chg');pk.classList.add('tear');wh.style.setProperty('--c',bc);wh.classList.add('go');snd2(55,.8,'sine',.4,0);snd2(900,.25,'triangle',.08,0);
-  F.ring(cx,cy,bc,Math.max(W,H)*.45,{w:10,l:.9});F.ring(cx,cy,'#ffffff',Math.max(W,H)*.3,{w:4,l:.7});F.burst(cx,r.top+r.height*.12,90+best*30,{v:700,l:1.1,s:6,c:bc,g:420});
-  const top=document.createElement('div');top.className='ob-top';top.innerHTML=packFront(p);top.style.cssText=`left:${r.left}px;top:${r.top}px;width:${r.width}px;height:${r.height}px`;o.append(top);setTimeout(()=>top.remove(),1100);
-  await sl(380);deal()};
- /* 2. les cartes sortent en pile */
- const els=order.map((ix,j)=>{const c=cards[ix],d=document.createElement('div');d.className='ob-c';d.style.setProperty('--c',OB_COL(rk[ix]));d.innerHTML=`<div class="ob-ci"><div class="ob-ba">${cardBack(c.na?'a':c.r)}</div><div class="ob-fa">${card(c)}</div></div>`;d.dataset.ix=ix;return d});
- const deal=async()=>{stage=2;els.slice().reverse().forEach((d,j)=>{dk.append(d);d.style.zIndex=j+1});
-  els.forEach((d,j)=>{d.animate([{transform:'translateY(60px) scale(.6)',opacity:0},{transform:'translateY(-120px) scale(.9)',opacity:1,offset:.55},{transform:`translate(${(j%2?1:-1)*j*.6}px,${-j*2.2}px) rotate(${(j%3-1)*1.8}deg)`,opacity:1}],{duration:fast?200:760,delay:fast?0:j*70,easing:'cubic-bezier(.2,.9,.3,1)',fill:'both'})});
-  setTimeout(()=>snd2(500,.12,'triangle',.08,0),200);pk.classList.add('gone');await sl(760+n*70);
-  tip.textContent=n>1?'Touche la pile pour révéler tes cartes':'Touche la carte pour la révéler';q('.ob-all').hidden=n<2;stage=3;if(fast)all()};
- /* 3. révélation, une par une */
- let at=0;const slot=j=>{const per=mob?Math.min(n,5):n,cw=Math.min(mob?62:86,(W-40)/per-8),r0=Math.floor(j/per),c0=j%per,inRow=Math.min(per,n-r0*per);return{cw,x:(c0-(inRow-1)/2)*(cw+8),y:-(Math.ceil(n/per)-1-r0)*(cw*1.5+8)}};
- const reveal=async()=>{if(busy||stage!=3||at>=n)return;busy=1;const d=els[at],ix=+d.dataset.ix,c=cards[ix],r=rk[ix],col=OB_COL(r),last=at==n-1,big=last&&(best>=3||c.na);
-  d.style.zIndex=99;const ci=d.querySelector('.ob-ci');
-  if(big&&!fast){tip.textContent='';o.classList.add('dim');ci.style.setProperty('--b',col);
-   const t0=Date.now(),dur=900+best*260;while(Date.now()-t0<dur&&!fast){const k=(Date.now()-t0)/dur,b=d.getBoundingClientRect();ci.style.transform=`translate(${(Math.random()-.5)*k*12}px,${(Math.random()-.5)*k*8}px) scale(${1+k*.12})`;ci.style.filter=`drop-shadow(0 0 ${10+k*50}px ${col})`;
-    const a=Math.random()*6.283,dd=160+Math.random()*140;F.burst(b.left+b.width/2+Math.cos(a)*dd,b.top+b.height/2+Math.sin(a)*dd,2,{a:a+Math.PI,sp:.2,v:dd*2.3,l:.42,s:5+k*6,c:col,g:0,d:.97});if(Math.random()<.18)snd2(200+k*600,.06,'square',.03,0);await sl(45)}
-   ci.style.transform='';ci.style.filter=''}
-  try{if(c.na&&!c.shown&&typeof awakeCine13=='function'){c.shown=1;await awakeCine13(c)}else if(c.r>=5&&!c.dv&&typeof divineCine=='function'){c.dv=1;await divineCine(c)}}catch(e){}
-  ci.classList.add('flip');sfx(c.na?5:c.r);snd2(480+r*120,.14,'triangle',.12,0);await sl(260);
-  const b=d.getBoundingClientRect(),cx=b.left+b.width/2,cy=b.top+b.height/2;d.classList.add('lit','q'+Math.min(r,9));
-  F.burst(cx,cy,24+r*22,{v:260+r*90,l:.9+r*.08,s:4+r,c:col,g:180});if(r>=1)F.ring(cx,cy,col,180+r*50,{w:5,l:.7});
-  if(r>=3||c.na){wh.style.setProperty('--c',col);wh.classList.remove('go');void wh.offsetWidth;wh.classList.add('go');F.ring(cx,cy,'#fff',Math.max(W,H)*.6,{w:12,l:1});F.burst(cx,cy,140,{v:900,l:1.5,s:7,c:col,g:300});o.classList.add('shk');setTimeout(()=>o.classList.remove('shk'),500)}
-  if(big||r>=3||c.na){ban.style.setProperty('--c',col);ban.querySelector('small').textContent=c.na?'ÉVEIL':'NOUVELLE CARTE';ban.querySelector('b').textContent=OB_NM(c).toUpperCase();ban.querySelector('i').textContent=c.n;ban.classList.remove('on');void ban.offsetWidth;ban.classList.add('on')}
-  else{const lb=document.createElement('em');lb.className='ob-lb';lb.style.color=col;lb.textContent=OB_NM(c);d.append(lb)}
-  await sl(big?1900:r>=3?1300:560);o.classList.remove('dim');ban.classList.remove('on');
-  /* la carte file dans la rangée du bas */
-  const s=slot(at),rb=row.getBoundingClientRect(),tx=rb.left+rb.width/2+s.x-cx,ty=rb.top+s.y-s.cw*.78-cy,sc=s.cw/b.width;d.querySelector('.ob-lb')?.remove();
-  d.animate([{transform:'none'},{transform:`translate(${tx}px,${ty}px) scale(${sc})`}],{duration:fast?160:420,easing:'cubic-bezier(.5,0,.2,1)',fill:'forwards'});snd2(300,.06,'sine',.05,0);
-  await sl(fast?160:420);d.classList.add('done');at++;busy=0;
-  if(at>=n){q('.ob-all').hidden=true;tip.textContent='';stage=4;const bb=q('.o2sk');bb.textContent='Continuer ›';bb.classList.add('go');await sl(fast?500:1500);end()}
-  else if(fast||pend){pend=0;reveal()}else tip.textContent=at==n-1&&best>=3?'La dernière… touche pour la révéler':'Touche la pile pour continuer'};
- const all=()=>{fast=1;q('.ob-all').hidden=true;if(stage==3&&!busy)reveal()};
- let pend=0;pk.onclick=open;dk.onclick=()=>{if(busy){pend=1;return}reveal()};q('.ob-all').onclick=all;
- o.addEventListener('keydown',e=>{if(e.key==' '||e.key=='Enter'){stage<1?open():reveal()}});
- requestAnimationFrame(()=>o.classList.add('in'));
-}catch(e){console.warn(e);res()}})}
-window.obOpen=obOpen;window.OPEN2C=obOpen;
+/* ===== ml104 · boîte aux lettres redessinée : style C retenu par le propriétaire (21/11) ; A et B gardés dans le code =====
+   A « Tiroir » : panneau qui glisse depuis la droite, groupé Aujourd'hui / Plus tôt.
+   B « Menu » : petit menu déroulant sous l'enveloppe, lignes compactes.
+   C « Lettres » : fenêtre au centre, chaque message est une enveloppe avec un sceau de cire. */
+const ML104C={mis:'#2ee67a',exp:'#3dd9c4',boo:'#ff9a3c',day:'#ffd36a',ret:'#ff6b9a'};
+let ML104V='c';
+function ml104Set(v){ML104V=v;try{localStorage.setItem('ml104v',v)}catch(e){}ml42Open()}
+function ml104Close(){document.querySelectorAll('.ml104').forEach(x=>{x.classList.add('out');setTimeout(()=>x.remove(),220)})}
+function ml104Sw(){return '<span></span>'}
+ml42Open=function(){const e=ml42En();document.querySelectorAll('.ov.ml42-ov,.ml104').forEach(x=>x.remove());
+ const day=new Date().toDateString(),it=S.mail.map((m,i)=>({m,i,K:ML42[m.k]})).filter(x=>x.K),un=S.mail.filter(m=>m.u).length;
+ const T=e?'Mailbox':'Boîte aux lettres',empty=e?'No message yet. Finished missions, expeditions and boosters will show up here.':'Aucun message pour l’instant. Tes missions terminées, tes expéditions et tes boosters arriveront ici.';
+ const col=m=>ML104C[m.k]||'#ff9a3c',go=i=>`ml104Close();ml42Go(${i})`;
+ let h='';
+ if(ML104V=='b'){
+  h=`<div class="ml104 ml104b" data-nolg="1"><div class="ml104b-h"><b>${T}</b>${un?`<em>${un} ${e?'new':'nouveau'+(un>1?'x':'')}</em>`:''}<button type="button" class="ml104-x" data-oclick="ml104Close()" aria-label="Fermer">✕</button></div>
+  <div class="ml104b-l">${it.length?it.map(({m,i,K})=>`<button type="button" class="ml104b-i ${m.u?'nw':''}" style="--c:${col(m)}" data-oclick="${go(i)}"><u>${K[0]}</u><span><b>${ml42Tt(m)}</b><small>${K[e?6:5]}</small></span><i>${ml42Ago(m.t)}</i></button>`).join(''):`<p class="ml104-0">${empty}</p>`}</div>
+  <div class="ml104b-f">${ml104Sw()}${it.length?`<button type="button" data-oclick="ml42Clear()">${e?'Clear all':'Tout effacer'}</button>`:''}</div></div>`;
+ }else if(ML104V=='c'){
+  h=`<div class="ml104 ml104c" data-nolg="1"><div class="ml104c-bx"><div class="ml104c-h"><i class="ml104c-st">郵</i><div><small>郵便 · ${e?'MAILBOX':'COURRIER'}</small><b>${T}</b><span>${it.length?(un?`${un} ${e?'unopened letter'+(un>1?'s':''):'lettre'+(un>1?'s':'')+' non lue'+(un>1?'s':'')}`:(e?'All read':'Tout est lu')):(e?'Empty':'Vide')}</span></div><button type="button" class="ml104-x" data-oclick="ml104Close()" aria-label="Fermer">✕</button></div>
+  <div class="ml104c-l">${it.length?it.map(({m,i,K},j)=>`<div class="ml104c-i ${m.u?'nw':''}" style="--c:${col(m)};--d:${j*.05}s"><div class="ml104c-env"><i class="ml104c-fl"></i><i class="ml104c-wx">${K[0]}</i></div><div class="ml104c-t"><b>${ml42Tt(m)}</b><span>${K[e?6:5]}</span><small>${ml42Ago(m.t)}</small></div><button type="button" class="ml104c-go" data-oclick="${go(i)}">${e?'Open':'Ouvrir'}</button></div>`).join(''):`<p class="ml104-0">${empty}</p>`}</div>
+  <div class="ml104c-f">${ml104Sw()}${it.length?`<button type="button" data-oclick="ml42Clear()">${e?'Clear all':'Tout effacer'}</button>`:''}</div></div></div>`;
+ }else{
+  const g=[[e?'Today':'Aujourd’hui',it.filter(x=>new Date(x.m.t).toDateString()==day)],[e?'Earlier':'Plus tôt',it.filter(x=>new Date(x.m.t).toDateString()!=day)]].filter(x=>x[1].length);
+  h=`<div class="ml104 ml104a" data-nolg="1"><i class="ml104a-sh" data-oclick="ml104Close()"></i><aside class="ml104a-p"><div class="ml104a-h"><div><small>郵便</small><b>${T}</b></div><button type="button" class="ml104-x" data-oclick="ml104Close()" aria-label="Fermer">✕</button></div>
+  <div class="ml104a-s"><div><b>${un}</b><small>${e?'new':'nouveau'+(un>1?'x':'')}</small></div><div><b>${it.length}</b><small>${e?'in total':'au total'}</small></div></div>
+  <div class="ml104a-l">${g.length?g.map(([t,L])=>`<h4>${t}</h4>`+L.map(({m,i,K})=>`<button type="button" class="ml104a-i ${m.u?'nw':''}" style="--c:${col(m)}" data-oclick="${go(i)}"><u>${K[0]}</u><span><b>${ml42Tt(m)}</b><small>${K[e?6:5]}</small><i>${ml42Ago(m.t)}</i></span><em>›</em></button>`).join('')).join(''):`<p class="ml104-0">${empty}</p>`}</div>
+  <div class="ml104a-f">${ml104Sw()}${it.length?`<button type="button" data-oclick="ml42Clear()">${e?'Clear all':'Tout effacer'}</button>`:''}</div></aside></div>`;
+ }
+ document.body.insertAdjacentHTML('beforeend',h);const box=document.querySelector('.ml104');
+ if(ML104V=='b'){const b=document.getElementById('ml42b'),p=box;if(b){const r=b.getBoundingClientRect();p.style.top=(r.bottom+10)+'px';p.style.right=Math.max(12,innerWidth-r.right-12)+'px'}
+  setTimeout(()=>{const f=ev=>{if(!p.isConnected){document.removeEventListener('pointerdown',f,true);return}if(!p.contains(ev.target)&&!ev.target.closest('#ml42b')){ml104Close();document.removeEventListener('pointerdown',f,true)}};document.addEventListener('pointerdown',f,true)},0)}
+ if(ML104V=='c')box.addEventListener('click',ev=>{if(ev.target==box)ml104Close()});
+ if(S.mail.some(m=>m.u)){setTimeout(()=>{S.mail.forEach(m=>{delete m.u});try{save()}catch(x){}ml42Btn()},1200)}};
+ml42Clear=function(){S.mail=[];try{save()}catch(e){}ml42Btn();ml42Open()};
+document.addEventListener('keydown',ev=>{if(ev.key=='Escape'&&document.querySelector('.ml104'))ml104Close()});
 
 /* ===== v26.99.2 · passe de saison redessiné (pass101) =====
    Bannière de saison avec blason de palier, chrono en direct et grand prix ; les 100 paliers sont rangés en 10 chapitres
@@ -22517,11 +22478,11 @@ async function OPEN2(p,cards){const ranks=cards.map(c=>c.na?9:c.r==9?5:Math.min(
   if(isBox)box.style.setProperty('--lift',(Math.abs(Math.sin(T*18))*k*.35).toFixed(3));pw.style.filter=`drop-shadow(0 0 ${8+k*40}px ${bc})`;
   if(Math.random()<.5)F.burst(cx+(Math.random()-.5)*500,cy+(Math.random()-.5)*400,1,{sw:[cx,cy-40],v:40,life:.9,s:12,c:bc,c2:'#fff',g:0,dr:.4})});
  // 3. ouverture
- flash(.85);F.flare(cx,cy-40,bc,520,.6);F.ring(cx,cy-40,bc,420,.7);F.ring(cx,cy-40,'#ffffff',300,.5,.06);
+ fl.style.background=`radial-gradient(circle at 50% 48%,#fff 0%,${bc} 35%,#0000 75%)`;flash(.5);F.flare(cx,cy-40,bc,520,.6);F.ring(cx,cy-40,bc,420,.7);F.ring(cx,cy-40,'#ffffff',300,.5,.06);
  OPENFX(F,best,bc,cx,cy,W,H,flash);
  if(isBox){box.style.setProperty('--lift','0');box.classList.add('bxopen')}
- else{pw.style.clipPath='inset(14% 0 0 0)';const top=document.createElement('div');top.className='pkw';top.innerHTML=packFront(p);top.style.clipPath='inset(0 0 86% 0)';o.querySelector('.stg').append(top);
-  tween(.7,k=>{top.style.transform=`translate(${k*220}px,${-k*260}px) rotate(${k*70}deg)`;top.style.opacity=1-k},E.o)}
+ else{const pk5=(box.getBoundingClientRect?box:pw).getBoundingClientRect(),pw5=pw.getBoundingClientRect(),W5=pw5.width,H5=pw5.height,y5=Math.max(4,pk5.top-pw5.top+pk5.height*.1),x0=Math.max(0,pk5.left-pw5.left),x1=Math.min(W5,pk5.right-pw5.left),N5=18,P5=[...Array(N5+1)].map((_,i)=>[x0+(x1-x0)*i/N5,y5+(i%2?-6:6)]);pw.style.clipPath='polygon(0px '+y5+'px,'+P5.map(q=>q[0]+'px '+q[1]+'px').join(',')+','+W5+'px '+y5+'px,'+W5+'px '+H5+'px,0px '+H5+'px)';const top=document.createElement('div');top.className='pkw';top.innerHTML=packFront(p);top.style.clipPath='polygon(0px 0px,'+W5+'px 0px,'+W5+'px '+y5+'px,'+P5.slice().reverse().map(q=>q[0]+'px '+q[1]+'px').join(',')+',0px '+y5+'px)';top.style.transformOrigin=(x1-12)+'px '+y5+'px';o.querySelector('.stg').append(top);
+  tween(.9,k=>{top.style.transform=`translate(${k*170}px,${-k*150+k*k*260}px) rotate(${k*48}deg)`;top.style.opacity=k<.6?1:1-(k-.6)/.4},E.o)}
  await wait(.45);
  // 4. les cartes jaillissent (dos du jeu)
  const n=cards.length,bi=ranks.indexOf(best),stg=o.querySelector('.stg');
@@ -22577,7 +22538,7 @@ async function OPEN2(p,cards){const ranks=cards.map(c=>c.na?9:c.r==9?5:Math.min(
  // 7. récapitulatif
  await tween(.6,k=>{els.forEach((x,j)=>{const q=st[j],m=(n-1)/2,sp=Math.min(150,W/(n+1));q.x=(GRID?fan(j).x:(j-m)*sp)*k+(j==bi?0:fan(j).x*(1-k));q.y=(j==bi?-10:fan(j).y+60)*(1-k)+k*(GRID?fan(j).y:-20);q.z=(j==bi?260:0)*(1-k);q.rz=(j==bi?0:fan(j).rz)*(1-k);q.s=(j==bi?1:.85)*(1-k)+.78*k;if(j!=bi)q.ry=180;x.children[0].style.filter=x.children[1].style.filter=j==bi?`drop-shadow(0 0 20px ${bc})`:'';put(x,q)});ban.style.opacity=1-k},E.io);
  await wait(1.2);await tween(.4,k=>o.style.opacity=1-k);alive=false;F.dispose();o.remove()}
-window.OPEN2C=window.obOpen||OPEN2;
+window.OPEN2C=OPEN2;
 /* temps piloté + animations CSS du jeu calées dessus */
 window.STEP=dt=>{T+=dt;document.getAnimations().forEach(a=>{if(!ANI.has(a))ANI.set(a,T);try{a.pause();a.currentTime=(T-ANI.get(a))*1000}catch(e){}});const q=Q.splice(0);q.forEach(f=>f())};
 if(!REC){let l=performance.now();const f=n=>{requestAnimationFrame(f);T+=Math.min(.05,(n-l)/1000)*(window.__O2FAST?1.8:1);l=n;const q=Q.splice(0);q.forEach(f=>f())};requestAnimationFrame(f)}
@@ -22589,7 +22550,7 @@ window.O2READY=1;
  if(!(window.OPEN2C&&p&&Array.isArray(packs)&&packs.length>=1&&packs[0]&&packs[0].length&&!document.hidden))return _s.apply(self,a);
  let cards=packs[0];if(packs.length>1){const fl=packs.flat().slice().sort((x,y)=>(y.na?99:y.r)-(x.na?99:x.r)).slice(0,8);cards=fl.sort(()=>Math.random()-.5);window.__O2FAST=1}else window.__O2FAST=0;
  window.__O2B=1;let done=0;const go=()=>{if(done)return;done=1;window.__O2B=0;window.__O2GO=null;const o=document.getElementById('o2');if(o)o.remove();(window.__O2R||[]).splice(0).forEach(r=>{try{r.render=()=>{};r.dispose();r.forceContextLoss()}catch(e){}});_s.apply(self,a);setTimeout(()=>{const b=document.getElementById('p13s')||document.getElementById('sk0');if(b)b.click()},120)};
- window.__O2GO=go;try{OPEN2C(p,cards).then(go,e=>{console.warn(e);go()});setTimeout(()=>{const b=document.querySelector('#o2 .o2sk');if(b)b.onclick=go},50);setTimeout(go,300000)}catch(e){console.warn(e);go()}}}
+ window.__O2GO=go;try{OPEN2C(p,cards).then(go,e=>{console.warn(e);go()});setTimeout(()=>{const b=document.querySelector('#o2 .o2sk');if(b)b.onclick=go},50);setTimeout(go,30000)}catch(e){console.warn(e);go()}}}
 
 
 /* module 1 */
