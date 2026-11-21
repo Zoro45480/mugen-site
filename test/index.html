@@ -8499,6 +8499,35 @@ body.cp97-big #v{visibility:hidden}body.cp97-big #cp84.wide{left:50%!important;r
 .ly-gw62 .lb3-hero,.ly-raid .lb3-hero,.ly-isk .lb3-hero{text-align:center}.ly-gw62 .lb3-ey,.ly-isk .lb3-ey{justify-content:center}
 @media (max-width:760px){.ly-surv .xm13,.ly-rush .xm13,.ly-wboss .xm13{grid-template-columns:1fr}.ly-surv .xm13>*,.ly-rush .xm13>*,.ly-wboss .xm13>*{grid-column:1!important}.sk-flasks{top:-70px;gap:10px}.sk-flasks i{width:30px}.ov.lb3.ly107.ly107>.mbox{transform:none!important}}
 @media (max-width:760px){.ov.ly107 .ly-sc{inset:0!important;height:auto!important}.ov.lb3.ly107>.mbox{margin:64px auto 30px!important}.ov.lb3.ly-alch>.mbox,.ov.lb3.ly-isk>.mbox,.ov.lb3.ly-cl12>.mbox,.ov.lb3.ly-gw62>.mbox{margin-top:110px!important}}
+/* ===== v3 ===== */
+/* noms des modes bien visibles : gros titre blanc en relief */
+.ov.ly107 .lb3-hero h2{font-size:clamp(42px,6vw,78px)!important;font-weight:900!important;color:#fff!important;-webkit-text-fill-color:#fff!important;background:none!important;text-shadow:0 2px 0 color-mix(in srgb,var(--la) 70%,#000),0 4px 0 color-mix(in srgb,var(--la) 50%,#000),0 6px 0 color-mix(in srgb,var(--la) 30%,#000),0 14px 30px #000c!important;letter-spacing:-.01em;filter:none!important}
+.ov.ly107 .lb3-hero h2 span{background:none!important;color:color-mix(in srgb,var(--la) 55%,#fff)!important;-webkit-text-fill-color:color-mix(in srgb,var(--la) 55%,#fff)!important}
+.ov.ly107 .lb3-ey{font-size:12px!important;letter-spacing:.3em!important;color:color-mix(in srgb,var(--la) 70%,#fff)!important}
+.ly-lot .lb3-hero h2{color:#1a0c2a!important;-webkit-text-fill-color:#1a0c2a!important;text-shadow:0 3px 0 #ffffff88!important}.ly-lot .lb3-hero h2 span{color:#7a2bff!important;-webkit-text-fill-color:#7a2bff!important}
+@media (min-width:1200px){.ov.lb3.ly107>.mbox{zoom:1.12}.ov.ly107>.ly-stage{zoom:1.1}}
+/* DÉFI DU JOUR refait : l'oracle (indigo et or, carte de tarot qui se retourne, compte à rebours, jours suivants) */
+.ov.lb3.ly-daily>.mbox{--skt:translateZ(0);margin:10px auto 30px!important;width:min(1000px,calc(100vw - 32px))!important;max-width:1000px!important;background:radial-gradient(120% 80% at 50% 0%,#2a1e5af2,#0e0a24f5 70%)!important;color:#fff!important;border:2px solid #ffd36a!important;border-radius:28px!important;padding-top:26px!important;box-shadow:0 0 0 6px #0e0a24,0 0 0 8px #ffd36a55,0 0 60px #ffb43a33,0 30px 80px #000c!important}
+.ly-daily .sk-cal,.ly-daily .sk-rule{display:none!important}
+.ly-daily .lb3-hero h2,.ly-daily .lb3-hero,.ly-daily .lb3-rw h4,.ly-daily .lb3-team h4,.ly-daily .lb3-tc small,.ly-daily .lb3-n small{color:#fff!important}
+.ly-daily .lb3-ey{color:#ffd36a!important}.ly-daily .lb3-n i{background:#1a1440!important;color:#ffd36a!important}
+.ly-daily .lb3-rw{background:#ffffff08!important;border:1px solid #ffd36a44!important}.ly-daily .lb3-rw li{background:#ffffff0a!important;color:#fff!important;border-color:#ffd36a33!important}
+.ly-daily .lb3-tc .xth{transform:perspective(500px) rotateY(calc((var(--ti,1) - 1)*-16deg)) translateZ(30px)!important;border:0!important}
+.ly-daily .lb3-go{background:linear-gradient(90deg,#ffd36a,#ff9a3c)!important;color:#1a0a06!important;border-radius:16px!important}
+.ly-daily .lb3-path{display:none!important}
+.sk-orc{display:grid;grid-template-columns:auto minmax(0,1fr);gap:26px;align-items:center;margin:8px 0 18px;padding:18px;border-radius:22px;background:linear-gradient(135deg,#ffd36a14,#0000);border:1px solid #ffd36a33}
+.sk-tar{width:150px;height:220px;perspective:900px}
+.sk-tari{position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:sktar 1.4s .3s cubic-bezier(.2,1.2,.4,1) both,sktf 6s 1.7s ease-in-out infinite}
+@keyframes sktar{from{transform:rotateY(180deg)}to{transform:rotateY(0)}}@keyframes sktf{50%{transform:rotateY(14deg) translateY(-6px)}}
+.sk-tf,.sk-tb{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.sk-tf{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(160deg,#fff6dc,#f0d8a0);border:4px solid #ffd36a;box-shadow:inset 0 0 0 3px #1a1440,0 20px 40px #000c,0 0 40px #ffb43a66;color:#1a1440;text-align:center;padding:12px}
+.sk-tf small{font:800 9px 'Noto Sans JP',sans-serif;letter-spacing:.2em;color:#7a2a08}.sk-tf b{font:900 72px/1 'Noto Sans JP',serif;color:#b8281a;text-shadow:0 3px 0 #0002}.sk-tf span{font:900 18px Inter,sans-serif}
+.sk-tb{transform:rotateY(180deg);background:repeating-conic-gradient(from 0deg,#2a1e5a 0 10deg,#3a2a7a 10deg 20deg);border:4px solid #ffd36a;display:grid;place-items:center}.sk-tb i{width:70px;height:70px;border-radius:50%;border:3px solid #ffd36a;box-shadow:0 0 20px #ffd36a}
+.sk-orx small{font:800 10px 'Space Mono',monospace;letter-spacing:.3em;color:#ffd36a}.sk-orx>b{display:block;margin:4px 0 6px;font:900 clamp(28px,4vw,46px)/1 Inter,sans-serif;color:#fff;text-shadow:0 3px 0 #b8281a,0 10px 24px #000}
+.sk-orx p{margin:0 0 12px;font-size:16px;color:#e0d8ff;line-height:1.5}
+.sk-cd{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:#0006;border:1px solid #ffd36a55;font:700 13px Inter,sans-serif}.sk-cd i{font-style:normal}.sk-cd em{font-style:normal;font-family:'Space Mono',monospace;color:#ffd36a}
+.sk-nx{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}.sk-nx small{width:100%;font:800 9px 'Space Mono',monospace;letter-spacing:.24em;color:#a99cdc}.sk-nx span{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border-radius:10px;background:#ffffff0c;border:1px solid #ffffff1a;font:700 12px Inter,sans-serif;color:#e0d8ff}.sk-nx u{text-decoration:none;font:900 10px 'Noto Sans JP',sans-serif;color:#ffd36a}
+@media (max-width:760px){.sk-orc{grid-template-columns:1fr;justify-items:center;text-align:center}.sk-nx{justify-content:center}}
 /* scène 3D au-dessus du menu */
 .ov.ly107>.ly-stage{position:relative;z-index:2;height:clamp(230px,34vh,330px);margin:56px auto -10px;width:min(700px,100%);perspective:1100px;pointer-events:none}
 .ly-sw{position:absolute;left:50%;top:46%;width:0;height:0;transform-style:preserve-3d;transform:rotateX(-12deg) scale(1.25)}
@@ -8520,7 +8549,7 @@ body.cp97-big #v{visibility:hidden}body.cp97-big #cp84.wide{left:50%!important;r
 @media (prefers-reduced-motion:reduce){.ly-obj{animation:none}}
 /* pg109 · pages-modes */
 .pg9{position:relative;overflow:hidden}
-.pg9>.lb3x-img,.pg9>.lb3x-vg,.pg9>.mm3bg,.pg9 .mm3bg{display:none!important}
+.pg9>.lb3x-img,.pg9>.lb3x-vg,.pg9>.mm3bg{display:none!important}
 .pg9>.lb3x-wk{opacity:.08!important}
 .pg9>.p3{position:absolute!important;margin:0!important;right:clamp(10px,4vw,60px);top:clamp(30px,5vw,70px);width:300px;height:280px;perspective:900px;pointer-events:none;z-index:0}
 .pg9:not(.pg9-hev):not(.pg9-event)>p{max-width:calc(100% - 340px)}
@@ -8591,6 +8620,15 @@ body.cp97-big #v{visibility:hidden}body.cp97-big #cp84.wide{left:50%!important;r
 .tw16 .lvr{background:linear-gradient(90deg,#c9a86a18,#0000)!important;border-left:4px solid #c9a86a!important;border-radius:4px!important;transition:transform .2s}.tw16 .lvr:hover{transform:translateX(6px) perspective(400px) rotateY(-6deg)}
 .tw16 .tw15{background:linear-gradient(180deg,#1e1a12,#100d08)!important;border:2px solid #c9a86a55!important;border-radius:18px!important}
 .tw16 .tw15 .top:nth-child(1){background:linear-gradient(90deg,#ffd36a2a,#0000)!important}.tw16 .tw15 .top:nth-child(2){background:linear-gradient(90deg,#d8d8e82a,#0000)!important}.tw16 .tw15 .top:nth-child(3){background:linear-gradient(90deg,#c9733a2a,#0000)!important}
+.p3-hg{right:clamp(330px,30vw,420px)!important;top:40px!important;width:200px!important;height:220px!important;opacity:.95}
+.p3-hg .ly-sw{top:50%}.p3-hg .ly-obj{animation:lyobj 12s linear infinite}
+/* Tour : la tour devient un vrai objet 3D qui tourne */
+.tw16 .ttower{display:none!important}
+.tw16 .tcol{position:relative;min-height:440px}
+.tw16-3d{position:absolute;inset:0;perspective:1100px;--la:#ffd36a}
+.tw16-3d .ly-sw{position:absolute;left:50%;top:58%;transform:rotateX(-10deg)}.tw16-3d .ly-obj{animation:lyobj 22s linear infinite}
+.tw16-3d .ly-ped{bottom:2%}
+@media (max-width:760px){.p3-hg{right:auto!important;left:50%!important;transform:translateX(-50%) scale(.7)}.tw16 .tcol{min-height:360px}}
 </style>
 <script>/*CLOS*/(function(){
 if(document.documentElement.hasAttribute('data-mv'))throw 'mugen-transfert';
@@ -22752,7 +22790,12 @@ function lyExp(){if(typeof view=='undefined'||view!='exp')return;const v=$('v'),
 function lySkin(ov,m){const mb=ov.querySelector(':scope>.mbox');if(!mb||mb.dataset.sk)return;mb.dataset.sk=1;const d=new Date();
  const tm=[...mb.querySelectorAll('.lb3-tc,.xm13-tm>div')];
  if(m=='quick'){const b=mb.querySelector('.lb3-go');const vs=document.createElement('div');vs.className='sk-vs';vs.innerHTML=`<div class="sk-vsl"><small>TON ÉQUIPE</small></div><b class="sk-vsb">VS</b><div class="sk-vsr"><small>ADVERSAIRE</small>${'<i class="sk-q">?</i>'.repeat(3)}</div>`;const team=mb.querySelector('.lb3-team,.xm13-tm');if(team){team.before(vs);vs.querySelector('.sk-vsl').append(team)}}
- if(m=='daily'){const h=document.createElement('div');h.className='sk-cal';h.innerHTML=`<i class="sk-rings">${'<u></u>'.repeat(6)}</i><div class="sk-calh">${d.toLocaleDateString('fr-FR',{weekday:'long'}).toUpperCase()} · ${d.toLocaleDateString('fr-FR',{month:'long'}).toUpperCase()}</div><b class="sk-day">${d.getDate()}</b>`;mb.prepend(h);let r=['',''];try{r=dMod()}catch(e){}if(r[0]){const st=document.createElement('div');st.className='sk-stamp';st.innerHTML=`<small>RÈGLE DU JOUR</small><b>${nE(r[0])}</b>`;h.append(st);const bx=document.createElement('div');bx.className='sk-rule';bx.innerHTML=`<i>今日</i><div><small>LE DÉFI D’AUJOURD’HUI</small><b>${nE(r[0])}</b><span>${nE(r[1]||'')}</span></div>`;const hero=mb.querySelector('.lb3-hero');(hero||h).after(bx)}}
+ if(m=='daily'){let r=['',''];try{r=dMod()}catch(e){}const n=(()=>{try{return MODS.length}catch(e){return 4}})(),k=Math.floor(Date.now()/864e5);
+  const nx=[1,2,3].map(j=>{try{return MODS[(k+j)%n][0]}catch(e){return '?'}}),mid=new Date();mid.setHours(24,0,0,0);
+  const bx=document.createElement('div');bx.className='sk-orc';bx.innerHTML=`<div class="sk-tar"><div class="sk-tari"><div class="sk-tf"><small>今日の試練</small><b>今</b><span>${nE(r[0])}</span></div><div class="sk-tb"><i></i></div></div></div>
+  <div class="sk-orx"><small>LE DÉFI D’AUJOURD’HUI</small><b>${nE(r[0])}</b><p>${nE(r[1]||'')}</p><div class="sk-cd"><i>⏳</i><span>Nouvelle règle dans <em data-sk-cd="${+mid}">${Math.floor((mid-Date.now())/36e5)} h ${String(Math.floor((mid-Date.now())%36e5/6e4)).padStart(2,'0')}</em></span></div>
+  <div class="sk-nx"><small>LES PROCHAINS JOURS</small>${nx.map((t,j)=>`<span><u>${['明日','明後日','三日後'][j]}</u>${nE(t)}</span>`).join('')}</div></div>`;
+  const hero=mb.querySelector('.lb3-hero');(hero||mb.firstChild).after(bx);clearInterval(window.__skcd);window.__skcd=setInterval(()=>{const e=document.querySelector('[data-sk-cd]');if(!e){clearInterval(window.__skcd);return}const l=+e.dataset.skCd-Date.now();e.textContent=Math.floor(l/36e5)+' h '+String(Math.floor(l%36e5/6e4)).padStart(2,'0')},30000)}
  if(m=='lot'){const s=document.createElement('div');s.className='sk-stub';s.innerHTML=`<b>N° ${String(d.getFullYear()).slice(2)}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}</b><small>TICKET · ADMIS 1</small>`;mb.append(s)}
  if(m=='wboss'){const h=document.createElement('div');h.className='sk-wbh';h.innerHTML='<small>⚠ ALERTE MONDIALE</small><b>UN SEUL BOSS · TOUS LES JOUEURS</b>';mb.prepend(h)}
  if(m=='raid'){const h=document.createElement('div');h.className='sk-crest';h.innerHTML='<i>襲</i>';mb.prepend(h)}
@@ -22772,7 +22815,7 @@ function lySkin(ov,m){const mb=ov.querySelector(':scope>.mbox');if(!mb||mb.datas
  tm.forEach((t,i)=>t.style.setProperty('--ti',i));
  /* relief 3D : le panneau suit la souris, ses couches sont à des profondeurs différentes */
  if(matchMedia('(hover:hover)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){let raf=0;ov.addEventListener('pointermove',e=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;mb.style.setProperty('--rx',(-y*5).toFixed(2)+'deg');mb.style.setProperty('--ry',(x*7).toFixed(2)+'deg')})});ov.addEventListener('pointerleave',()=>{mb.style.setProperty('--rx','0deg');mb.style.setProperty('--ry','0deg')})}}
-{const _d=lyDeco;lyDeco=function(ov){_d(ov);try{const m=[...ov.classList].find(c=>c.startsWith('ly-')&&c!='ly107');if(m)lySkin(ov,m.slice(3))}catch(e){}}}
+{const _d=lyDeco;lyDeco=function(ov){_d(ov);try{if(ov.classList.contains('ly107')&&!ov.dataset.nc){ov.dataset.nc=1;['click','pointerdown','mousedown'].forEach(t=>ov.addEventListener(t,e=>{if(e.target===ov)e.stopImmediatePropagation()},true))}const m=[...ov.classList].find(c=>c.startsWith('ly-')&&c!='ly107');if(m)lySkin(ov,m.slice(3))}catch(e){}}}
 
 /* ===== ly107 · scène 3D au-dessus de chaque menu de mode : un objet en relief (CSS 3D, pas de fond), sur un socle lumineux =====
    Primitives : boîte, cylindre, anneau, sphère filaire, carte. L'ombrage des faces dépend de leur angle. */
@@ -22790,7 +22833,7 @@ const P3={
 const LYG=(a,b)=>`linear-gradient(160deg,${a},${b})`;
 const LYO={
  quick:()=>P3.card(110,154,LYG('#ff7a45','#7a1a10')+'',LYG('#2a0a08','#120404'),-80,0,0,'rotateY(28deg)')+P3.card(110,154,LYG('#4aa8ff','#102a6a'),LYG('#06122a','#020814'),80,0,0,'rotateY(-28deg)')+P3.txt('VS','#ffd36a',64,0,0,40,'')+P3.ring(70,24,'#ffb43a',5,0,0,0,'rotateX(75deg)'),
- daily:()=>{const d=new Date().getDate();return P3.box(150,150,150,LYG('#fff8ea','#e8d8b8'),0,0,0)+P3.txt(d,'#b8281a',96,0,8,76)+P3.txt(['DIM','LUN','MAR','MER','JEU','VEN','SAM'][new Date().getDay()],'#fff',20,0,-58,76)+P3.box(150,34,152,'#d63a2a',0,-58,0)},
+ daily:()=>P3.sphere(70,10,'#ffd36a',0,0,0)+P3.disc(56,'radial-gradient(#fff6d0,#ffb43a 55%,#ff6a3a00 72%)',0,0,0)+Array.from({length:12},(_,i)=>P3.box(10,46,6,'linear-gradient(#ffe28a,#ff9a3c)',0,0,0,`rotateZ(${i*30}deg) translateY(-112px)`)).join('')+P3.txt('今','#7a2a08',64,0,4,58),
  hcp:()=>[0,1,2].map(i=>P3.box(60,60,60,LYG('#5a2a6a','#1a0820'),(i-1)*100,40,0)+P3.txt('壱弐参'[i],'#ff9af0',34,(i-1)*100,48,31)+P3.ring(8,1,'#0000',2)+Array.from({length:5},(_,j)=>P3.ring(9,12,'#b8b8c8',3,(i-1)*100,-10-j*16,0,`rotateY(${j%2?90:0}deg)`)).join('')).join(''),
  surv:()=>P3.cyl(34,170,14,'repeating-linear-gradient(180deg,#f4f0e8 0 34px,#d63a2a 34px 68px)',0,0,0)+P3.cyl(40,24,14,'#2a2a30',0,-96,0,'#3a3a40')+P3.disc(24,'radial-gradient(#fff6c0,#ffd36a 60%,#ffb43a00)',0,-118,0)+P3.ring(110,40,'#6ab0ff',4,0,90,0,'rotateX(90deg)')+P3.ring(140,48,'#6ab0ff88',3,0,92,0,'rotateX(90deg)'),
  raid:()=>P3.box(150,110,110,LYG('#3a1a2a','#1a0812'),0,30,0)+P3.cyl(28,150,10,LYG('#3a1a2a','#1a0812'),-80,0,0)+P3.cyl(28,150,10,LYG('#3a1a2a','#1a0812'),80,0,0)+P3.box(40,60,4,'#ff3d6e',0,55,56)+P3.box(4,40,4,'#ccc',-80,-95,0)+P3.box(30,18,2,'#ff3d6e',-64,-106,0)+P3.box(4,40,4,'#ccc',80,-95,0)+P3.box(30,18,2,'#ffd36a',96,-106,0),
@@ -22815,17 +22858,27 @@ function lyStage(ov,m){if(ov.querySelector(':scope>.ly-stage')||!LYO[m])return;l
 /* ===== pg109 · pages-modes redessinées : chaque page a son propre habillage et un objet en relief 3D (CSS) =====
    Origine : 3 portes qui s'ouvrent. Absolus : cube des Vérités. Ascension : escalier céleste. Pourfendeurs : katana.
    Défense des villages : palissade en anneau. Événement de l'heure : cadran en relief. Plus de photo d'arène derrière. */
-const PG9={ori:['.pt-page','gate'],abs:['.ab-page','cube'],asc:['.as-page','stairs'],dsm:['.ds-hero','katana'],event:['.evx-hd.evx-ev','wall'],hev:['.evx-hd.evx-hev','']};
+const PG9={ori:['.pt-page','gate'],abs:['.ab-page','cube'],asc:['.as-page','stairs'],dsm:['.ds-hero','katana'],event:['.evx-hd.evx-ev','wall'],hev:['.evx-hd.evx-hev','hour']};
 const PG9O={
  gate:()=>`<div class="p3 p3-gate">${[0,1,2].map(i=>`<div class="p3g" style="--i:${i}"><i class="p3g-l"></i><i class="p3g-d a"></i><i class="p3g-d b"></i><b>${'壱弐参'[i]}</b></div>`).join('')}</div>`,
  cube:()=>`<div class="p3 p3-cubew"><div class="p3-cube">${['絶','真','忘','永','罰','無'].map((k,i)=>`<i class="f${i}">${k}</i>`).join('')}</div><i class="p3-orb"></i></div>`,
  stairs:()=>`<div class="p3 p3-stw"><div class="p3-st">${Array.from({length:12},(_,i)=>`<i style="--i:${i}"><u>${i+1}</u></i>`).join('')}</div></div>`,
  katana:()=>`<div class="p3 p3-kw"><div class="p3-k"><i class="bl"></i><i class="ts"></i><i class="hd"></i></div>${Array.from({length:12},(_,i)=>`<u class="p3-pt" style="--i:${i}"></u>`).join('')}</div>`,
  wall:()=>`<div class="p3 p3-ww"><div class="p3-w">${Array.from({length:18},(_,i)=>`<i style="--i:${i}"></i>`).join('')}<b class="p3-hut"></b></div></div>`,
+ hour:()=>{let h='';for(let i=0;i<7;i++){const r=12+i*7;h+=P3.cyl(r,10,14,'linear-gradient(90deg,#7c8bff55,#c0c8ff88)',0,-12-i*10,0)+P3.cyl(r,10,14,'linear-gradient(90deg,#7c8bff55,#c0c8ff88)',0,12+i*10,0)}h+=P3.cyl(34,26,14,'linear-gradient(#ffd36a,#ffb43a)',0,58,0)+P3.cyl(58,8,16,'#c9a24a',0,-86,0,'#ffd36a')+P3.cyl(58,8,16,'#c9a24a',0,86,0,'#ffd36a')+[0,90,180,270].map(a=>P3.box(6,170,6,'#c9a24a',0,0,0,`rotateY(${a}deg) translateZ(60px)`)).join('');return `<div class="p3 p3-hg"><div class="ly-sw"><div class="ly-obj">${h}</div></div></div>`},
  dial:()=>`<div class="p3 p3-dw"><div class="p3-d"><i class="r1"></i><i class="r2"></i><i class="r3"></i></div></div>`};
-function pg9(){if(typeof view=='undefined')return;const vv=$('v');if(vv){vv.classList.toggle('tw16',view=='tower');if(view=='tower'){const sc=vv.querySelector('.tscene');if(sc&&!sc.querySelector('.tw16-st'))sc.insertAdjacentHTML('afterbegin','<i class="tw16-st"></i><i class="tw16-fog"></i>')}}const c=PG9[view];if(!c)return;const el=document.querySelector('#v '+c[0]);if(!el)return;
+function pg9(){if(typeof view=='undefined')return;const vv=$('v');if(vv){vv.classList.toggle('tw16',view=='tower');if(view=='tower'){const sc=vv.querySelector('.tscene');if(sc&&!sc.querySelector('.tw16-st'))sc.insertAdjacentHTML('afterbegin','<i class="tw16-st"></i><i class="tw16-fog"></i>');tw16Build(vv)}}const c=PG9[view];if(!c)return;const el=document.querySelector('#v '+c[0]);if(!el)return;
  el.classList.add('pg9','pg9-'+view);if(c[1]&&!el.querySelector(':scope>.p3'))el.insertAdjacentHTML('beforeend',PG9O[c[1]]())}
 setInterval(pg9,600);{const _s=show;show=function(){const r=_s.apply(this,arguments);setTimeout(pg9,30);return r}}
+
+/* La Tour : la tour devient un objet 3D (un cylindre de pierre par étage, l'étage actuel éclairé) */
+function tw16Build(vv){const tc=vv.querySelector('.tcol'),tt=tc&&tc.querySelector('.ttower');if(!tt||tc.querySelector('.tw16-3d'))return;
+ const fl=[...tt.querySelectorAll('.tf')];let h='',y=-fl.length*31;
+ fl.forEach((f,i)=>{const cur=f.classList.contains('cur'),n=(f.querySelector('b')||{}).textContent||'',c=cur?'linear-gradient(90deg,#8a7458,#d8c098,#8a7458)':'linear-gradient(90deg,#4a4036,#8a7a64,#4a4036)',yy=y+i*62;
+  h+=P3.cyl(64,58,16,c,0,yy,0)+P3.cyl(68,6,16,'#2a241c',0,yy+31,0)+P3.txt(n,cur?'#fff3c4':'#e8dcc0',30,0,yy,66)+P3.txt(n,cur?'#fff3c4':'#e8dcc0',30,0,yy,-66,'rotateY(180deg)');
+  if(cur)h+=P3.box(18,26,4,'radial-gradient(#fff3c4,#ffb43a)',-34,yy,58)+P3.box(18,26,4,'radial-gradient(#fff3c4,#ffb43a)',34,yy,58)});
+ h+=P3.cyl(72,22,16,'linear-gradient(90deg,#5a5044,#9a8a70,#5a5044)',0,y-40,0,'#3a3228')+Array.from({length:10},(_,i)=>P3.box(16,20,12,'#7a6a54',0,y-60,0,`rotateY(${i*36}deg) translateZ(66px)`)).join('');
+ tc.insertAdjacentHTML('afterbegin',`<div class="tw16-3d"><div class="ly-sw"><div class="ly-obj">${h}</div></div><i class="ly-ped"></i></div>`)}
 
 appBgSet(view);
 setTimeout(()=>{try{if(S.sv!=SPL.v&&!document.getElementById('bt'))splash()}catch(e){}},1400);
