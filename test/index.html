@@ -8623,7 +8623,6 @@ body.cp97-big #v{visibility:hidden}body.cp97-big #cp84.wide{left:50%!important;r
 .p3-hg{right:clamp(330px,30vw,420px)!important;top:40px!important;width:200px!important;height:220px!important;opacity:.95}
 .p3-hg .ly-sw{top:50%}.p3-hg .ly-obj{animation:lyobj 12s linear infinite}
 /* Tour : la tour devient un vrai objet 3D qui tourne */
-.tw16 .ttower{display:none!important}
 .tw16 .tcol{position:relative;min-height:440px}
 .tw16-3d{position:absolute;inset:0;perspective:1100px;--la:#ffd36a}
 .tw16-3d .ly-sw{position:absolute;left:50%;top:58%;transform:rotateX(-10deg)}.tw16-3d .ly-obj{animation:lyobj 22s linear infinite}
@@ -22878,7 +22877,7 @@ const PG9O={
  wall:()=>`<div class="p3 p3-ww"><div class="p3-w">${Array.from({length:18},(_,i)=>`<i style="--i:${i}"></i>`).join('')}<b class="p3-hut"></b></div></div>`,
  hour:()=>{let h='';for(let i=0;i<7;i++){const r=12+i*7;h+=P3.cyl(r,10,14,'linear-gradient(90deg,#7c8bff55,#c0c8ff88)',0,-12-i*10,0)+P3.cyl(r,10,14,'linear-gradient(90deg,#7c8bff55,#c0c8ff88)',0,12+i*10,0)}h+=P3.cyl(34,26,14,'linear-gradient(#ffd36a,#ffb43a)',0,58,0)+P3.cyl(58,8,16,'#c9a24a',0,-86,0,'#ffd36a')+P3.cyl(58,8,16,'#c9a24a',0,86,0,'#ffd36a')+[0,90,180,270].map(a=>P3.box(6,170,6,'#c9a24a',0,0,0,`rotateY(${a}deg) translateZ(60px)`)).join('');return `<div class="p3 p3-hg"><div class="ly-sw"><div class="ly-obj">${h}</div></div></div>`},
  dial:()=>`<div class="p3 p3-dw"><div class="p3-d"><i class="r1"></i><i class="r2"></i><i class="r3"></i></div></div>`};
-function pg9(){if(typeof view=='undefined')return;const vv=$('v');if(vv){const isT=!!vv.querySelector(':scope>.tscene');vv.classList.toggle('tw16',isT);if(isT){const sc=vv.querySelector('.tscene');if(sc&&!sc.querySelector('.tw16-st'))sc.insertAdjacentHTML('afterbegin','<i class="tw16-st"></i><i class="tw16-fog"></i>');tw16Build(vv)}}const c=PG9[view];if(!c)return;const el=document.querySelector('#v '+c[0]);if(!el)return;
+function pg9(){if(typeof view=='undefined')return;const vv=$('v');if(vv){const isT=!!vv.querySelector(':scope>.tscene');vv.classList.toggle('tw16',isT);if(isT){const sc=vv.querySelector('.tscene');if(sc&&!sc.querySelector('.tw16-st'))sc.insertAdjacentHTML('afterbegin','<i class="tw16-st"></i><i class="tw16-fog"></i>')}}const c=PG9[view];if(!c)return;const el=document.querySelector('#v '+c[0]);if(!el)return;
  el.classList.add('pg9','pg9-'+view);if(c[1]&&!el.querySelector(':scope>.p3'))el.insertAdjacentHTML('beforeend',PG9O[c[1]]())}
 setInterval(pg9,600);{const _s=show;show=function(){const r=_s.apply(this,arguments);setTimeout(pg9,30);return r}}
 
