@@ -8439,6 +8439,66 @@ body.cp97-big #v{visibility:hidden}body.cp97-big #cp84.wide{left:50%!important;r
 .ly-lot .ly-pat{background:radial-gradient(#7a2bff33 3px,#0000 4px) 0 0/40px 40px,radial-gradient(#ffd36a22 3px,#0000 4px) 20px 20px/40px 40px}
 @media (prefers-reduced-motion:reduce){.ly-p{display:none}}
 .ly-daily .lb3-hero h2{-webkit-text-fill-color:#2a1408;background:none!important}.ly-alch .lb3-hero h2{-webkit-text-fill-color:#1a3a2a;background:none!important}
+/* ===== v2 : relief 3D, mises en page corrigées, nouveaux modes ===== */
+.ov.lb3.ly107.ly107>.mbox{transform:perspective(1400px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) var(--skt,translateZ(0))!important;transition:transform .3s ease-out;transform-style:preserve-3d}
+.ov.lb3.ly-daily>.mbox{--skt:rotate(-1.2deg)}.ov.lb3.ly-hcp>.mbox{--skt:rotateX(4deg)}
+.ov.ly107 .lb3-hero{transform:translateZ(36px)}
+.ov.ly107 .lb3-go,.ov.ly107 .xm13 .btn:not(.gh):not(.lb3-sm){transform:translateZ(44px);box-shadow:0 7px 0 color-mix(in srgb,var(--la) 45%,#000),0 16px 34px #000a!important;transition:transform .12s,box-shadow .12s}
+.ov.ly107 .lb3-go:active,.ov.ly107 .xm13 .btn:not(.gh):active{transform:translateZ(44px) translateY(5px);box-shadow:0 2px 0 color-mix(in srgb,var(--la) 45%,#000),0 8px 20px #000a!important}
+.ov.ly107 .lb3-tc .xth,.ov.ly107 .xm13-tm .xth{transform:perspective(500px) rotateY(calc((var(--ti,1) - 1)*-16deg)) translateZ(30px);transition:transform .35s cubic-bezier(.2,1.4,.4,1);box-shadow:4px 8px 0 color-mix(in srgb,var(--la) 40%,#000),0 16px 30px #000b}
+.ov.ly107 .lb3-tc:hover .xth,.ov.ly107 .xm13-tm>div:hover .xth{transform:perspective(500px) rotateY(0) translateZ(60px) scale(1.08)}
+.ov.ly107 .card{transition:transform .4s}.ov.ly107 .rd13-c .card:hover{transform:perspective(700px) rotateY(0) scale(1.06)!important}
+/* barre de vie (boss mondial, raid) : le texte n'est plus une 2e barre */
+.ov.lb3 .rd13-hp{height:24px!important}.ov.lb3 .rd13-hp>b{background:none!important;box-shadow:none!important;font:800 11px/24px 'Space Mono',monospace!important;color:#fff;text-shadow:0 1px 3px #000}
+/* deux colonnes pour les panneaux larges : texte et récompenses à gauche, le reste à droite */
+.ly-surv .xm13,.ly-rush .xm13,.ly-wboss .xm13{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 26px;align-items:start;grid-auto-flow:dense}
+.ly-surv .xm13>*,.ly-rush .xm13>*,.ly-wboss .xm13>*{grid-column:2}
+.ly-surv .xm13>p,.ly-surv .xm13>.lb3-rw,.ly-rush .xm13>p,.ly-rush .xm13>.lb3-rw,.ly-wboss .xm13>p,.ly-wboss .xm13>.lb3-rw{grid-column:1}
+.ly-surv .xm13>.lb3-go,.ly-rush .xm13>.lb3-go,.ly-wboss .xm13>.lb3-go,.ly-surv .xm13>small,.ly-rush .xm13>small{grid-column:1/-1}
+.ly-wboss .xm13>.wb30-box{grid-column:1/-1}
+.ov.lb3.ly-surv>.mbox,.ov.lb3.ly-rush>.mbox{margin:70px auto 30px!important;width:min(1080px,calc(100vw - 32px))!important;max-width:1080px!important}
+.ly-surv .lb3-path{flex-direction:row!important;align-items:center!important}.ly-surv .lb3-path em{width:auto!important;height:2px!important;margin:0!important;flex:1}.ly-surv .lb3-n{flex-direction:column!important}
+.ov.lb3.ly-bounty>.mbox{margin:70px auto 30px!important;width:min(1120px,calc(100vw - 32px))!important;max-width:1120px!important}
+.ly-bounty .lb3-hero{text-align:center}.ly-bounty .lb3-ey{justify-content:center}
+.ov.lb3.ly-wboss>.mbox{margin:80px auto 30px!important}
+/* défi du jour : la règle expliquée en grand */
+.sk-rule{display:flex;gap:14px;align-items:center;margin:6px 0 14px;padding:14px 16px;border-radius:16px;background:#fff;border:2px solid #b8281a;box-shadow:0 6px 0 #b8281a33}
+.sk-rule>i{width:58px;height:58px;flex:none;display:grid;place-items:center;border-radius:14px;background:#b8281a;color:#fff;font:900 20px 'Noto Sans JP',serif;font-style:normal}
+.sk-rule small{display:block;font:800 9px 'Space Mono',monospace;letter-spacing:.2em;color:#a0522d}.sk-rule b{display:block;font:900 22px Inter,sans-serif;color:#2a1408}.sk-rule span{font-size:14px;color:#5a3a20}
+.ly-daily .xm13>p{display:none}
+/* chaudron : laboratoire d'alchimiste (verre sombre, cadre laiton, fioles) */
+.ov.lb3.ly-alch>.mbox{background:radial-gradient(120% 80% at 50% 0%,#12382aee,#06140ef5 70%)!important;color:#e8fff4!important;border:2px solid #c9a24a!important;border-radius:22px!important;box-shadow:0 0 0 6px #0a1a12,0 0 0 8px #c9a24a66,0 30px 80px #000c,0 0 60px #4dd6a033!important;width:min(1040px,calc(100vw - 32px))!important;max-width:1040px!important;margin:110px auto 30px!important}
+.ly-alch .sk-spine{display:none}
+.ly-alch .lb3-hero h2{color:#fff!important;-webkit-text-fill-color:#fff;font-family:Inter,sans-serif!important}.ly-alch .lb3-hero h2 span{color:#4dd6a0!important;-webkit-text-fill-color:#4dd6a0}
+.ly-alch .xm13>p,.ly-alch .al23 p,.ly-alch .lb3-n small,.ly-alch h4{color:#cfe8dc!important}
+.sk-flasks{position:absolute;left:50%;top:-86px;transform:translateX(-50%) translateZ(60px);display:flex;gap:18px;align-items:flex-end}
+.sk-flasks i{position:relative;width:44px;height:calc(56px + (var(--i) % 3)*14px);border-radius:8px 8px 22px 22px;background:#ffffff14;border:2px solid #ffffff55;overflow:hidden;box-shadow:0 0 20px color-mix(in srgb,var(--c) 50%,#0000)}
+.sk-flasks i::before{content:"";position:absolute;left:50%;top:-12px;width:16px;height:14px;transform:translateX(-50%);background:#ffffff33;border:2px solid #ffffff55;border-bottom:0}
+.sk-flasks u{position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(180deg,color-mix(in srgb,var(--c) 70%,#fff),var(--c));animation:skfl calc(2s + var(--i)*.4s) ease-in-out infinite alternate}
+@keyframes skfl{to{height:35%}}
+/* duel 1 contre 1 : ring de boxe */
+.ov.lb3.ly-duel1>.mbox{margin:80px auto 30px!important;width:min(1000px,calc(100vw - 32px))!important;max-width:1000px!important;background:linear-gradient(180deg,#1c0e0ef2,#0e0606f5)!important;border:0!important;border-radius:6px!important}
+.sk-rope{position:absolute;left:-14px;right:-14px;height:10px;border-radius:6px;background:repeating-linear-gradient(90deg,#ff3d3d 0 40px,#fff 40px 52px,#4aa8ff 52px 92px,#fff 92px 104px);box-shadow:0 4px 10px #000a}.sk-rope.t{top:-5px}.sk-rope.b{bottom:-5px}
+/* isekai : portail lumineux */
+.ov.lb3.ly-isk>.mbox{margin:150px auto 30px!important;background:radial-gradient(120% 90% at 50% 0%,#2a1450f0,#0a0618f5)!important;border:2px solid #a06bff88!important;border-radius:40px!important}
+.sk-portal{position:absolute;left:50%;top:-118px;width:150px;height:150px;transform:translateX(-50%) translateZ(-40px);border-radius:50%;background:conic-gradient(from 0deg,#a06bff,#4ad8ff,#ff6bf5,#a06bff);-webkit-mask:radial-gradient(circle,#0000 52%,#000 54% 64%,#0000 66%);animation:lysp2 6s linear infinite;filter:drop-shadow(0 0 20px #a06bff);z-index:-1}
+/* puzzle : plateau à encoches */
+.ov.lb3.ly-pzl>.mbox{margin:70px auto 30px!important;width:min(1040px,calc(100vw - 32px))!important;max-width:1040px!important;background:linear-gradient(#4ad8ff0d 1px,#0000 1px) 0 0/24px 24px,linear-gradient(90deg,#4ad8ff0d 1px,#0000 1px) 0 0/24px 24px,#06141ef2!important;border:2px solid #4ad8ff!important;border-radius:18px!important}
+/* une seule carte : projecteur */
+.ov.lb3.ly-usc>.mbox{margin:80px auto 30px!important;background:#0c0904f5!important;border:1px solid #ffb43a55!important;overflow:visible}
+.sk-spot{position:absolute;left:50%;top:-80px;width:120%;height:140%;transform:translateX(-50%);background:conic-gradient(from 160deg at 50% 0%,#0000 0deg,#fff3c41c 15deg,#fff3c42a 20deg,#fff3c41c 25deg,#0000 40deg);pointer-events:none;animation:lyal 4s ease-in-out infinite}
+/* cauchemar : bords déchirés, veines rouges */
+.ov.lb3.ly-ncm>.mbox{margin:70px auto 30px!important;background:radial-gradient(circle at 20% 10%,#ff2a4a22,#0000 40%),radial-gradient(circle at 80% 90%,#ff2a4a1a,#0000 40%),#0c0204f5!important;border:0!important;border-radius:0!important;clip-path:polygon(0 2%,6% 0,14% 2%,22% 0,31% 3%,40% 0,52% 2%,61% 0,70% 3%,80% 0,90% 2%,100% 0,99% 50%,100% 100%,92% 98%,83% 100%,72% 97%,61% 100%,50% 98%,38% 100%,27% 97%,16% 100%,7% 98%,0 100%,1% 50%);animation:skfk 5s steps(1) infinite}
+@keyframes skfk{0%,92%,100%{filter:none}94%{filter:brightness(1.6) hue-rotate(-10deg)}96%{filter:brightness(.7)}}
+/* colisée : arches de pierre */
+.ov.lb3.ly-cl12>.mbox{margin:110px auto 30px!important;width:min(1040px,calc(100vw - 32px))!important;max-width:1040px!important;background:linear-gradient(180deg,#2a1e10f2,#140e06f5)!important;border:3px solid #a08050!important;border-radius:6px!important}
+.sk-arch{position:absolute;left:-3px;right:-3px;top:-62px;height:62px;background:radial-gradient(circle at 50% 100%,#0000 22px,#a08050 23px 30px,#6a5030 31px) 0 0/70px 62px repeat-x;border-radius:8px 8px 0 0;transform:translateZ(20px)}
+/* gardien : blason bouclier */
+.ov.lb3.ly-gw62>.mbox{margin:110px auto 30px!important;background:linear-gradient(180deg,#0a2a1ef2,#04140ef5)!important;border:2px solid #2ee6a0!important;border-radius:22px 22px 50% 50%/22px 22px 60px 60px!important;padding-bottom:70px!important}
+.sk-shield{position:absolute;left:50%;top:-58px;width:96px;height:110px;display:grid;place-items:center;transform:translateX(-50%) translateZ(50px);background:linear-gradient(160deg,#4affc0,#0a6a4a);clip-path:polygon(50% 0,100% 14%,96% 60%,50% 100%,4% 60%,0 14%);font:900 44px 'Noto Sans JP',serif;font-style:normal;color:#fff;text-shadow:0 2px 0 #0006;filter:drop-shadow(0 0 20px #2ee6a0)}
+.ly-gw62 .lb3-hero,.ly-raid .lb3-hero,.ly-isk .lb3-hero{text-align:center}.ly-gw62 .lb3-ey,.ly-isk .lb3-ey{justify-content:center}
+@media (max-width:760px){.ly-surv .xm13,.ly-rush .xm13,.ly-wboss .xm13{grid-template-columns:1fr}.ly-surv .xm13>*,.ly-rush .xm13>*,.ly-wboss .xm13>*{grid-column:1!important}.sk-flasks{top:-70px;gap:10px}.sk-flasks i{width:30px}.ov.lb3.ly107.ly107>.mbox{transform:none!important}}
+@media (max-width:760px){.ov.ly107 .ly-sc{inset:0!important;height:auto!important}.ov.lb3.ly107>.mbox{margin:64px auto 30px!important}.ov.lb3.ly-alch>.mbox,.ov.lb3.ly-isk>.mbox,.ov.lb3.ly-cl12>.mbox,.ov.lb3.ly-gw62>.mbox{margin-top:110px!important}}
 </style>
 <script>/*CLOS*/(function(){
 if(document.documentElement.hasAttribute('data-mv'))throw 'mugen-transfert';
@@ -22521,7 +22581,7 @@ setInterval(()=>{try{if(view!='dojo')return;const d=S.dojo;const t=document.quer
    équipe, bouton), à droite une scène dessinée qui raconte le mode (arène, soleil du jour, chaînes, vagues, château…).
    Les mêmes scènes servent de vignettes aux cartes de la page Combat. */
 const LYD=()=>{try{return dMod()}catch(e){return ['Règle du jour','']}};
-const LYC={camp:['#2ee67a','#3dd9c4','#04140a'],tower:['#c9a86a','#ffd36a','#120e06'],ranked:['#ffc414','#ff8a2e','#140c02'],quick:['#ff5a3d','#ffb43a','#1a0806'],daily:['#ffb43a','#ff6a3d','#1a0d03'],hcp:['#d23cb8','#7a2bff','#14041a'],surv:['#ff7a2a','#ffd36a','#140803'],raid:['#ff3d6e','#7a2bff','#14030a'],
+const LYC={duel1:['#ff7a45','#4aa8ff','#120808'],isk:['#a06bff','#4ad8ff','#0a0618'],pzl:['#4ad8ff','#2ee6a0','#04101a'],usc:['#ffb43a','#fff3c4','#0e0a04'],ncm:['#ff2a4a','#7a0a1a','#0c0204'],cl12:['#e0a050','#ff5a3d','#120a04'],gw62:['#2ee6a0','#4aa8ff','#04140e'],camp:['#2ee67a','#3dd9c4','#04140a'],tower:['#c9a86a','#ffd36a','#120e06'],ranked:['#ffc414','#ff8a2e','#140c02'],quick:['#ff5a3d','#ffb43a','#1a0806'],daily:['#ffb43a','#ff6a3d','#1a0d03'],hcp:['#d23cb8','#7a2bff','#14041a'],surv:['#ff7a2a','#ffd36a','#140803'],raid:['#ff3d6e','#7a2bff','#14030a'],
  draft:['#7c8bff','#3dd9c4','#060a1a'],bounty:['#e0b050','#a0522d','#120c04'],rush:['#ff4d4d','#ff9a3c','#140404'],alch:['#4dd6a0','#b45cff','#04140e'],wboss:['#ff6a3d','#ffb03a','#140604'],trn:['#ffd36a','#ff8a2e','#121004'],lot:['#ffd36a','#7a2bff','#0c0614']};
 let LYN=0;const ly=(m,body)=>{const u=m+(++LYN);return `<svg class="ly-svg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="lyg-${m}" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="${LYC[m][0]}" stop-opacity=".55"/><stop offset="1" stop-color="${LYC[m][0]}" stop-opacity="0"/></radialGradient><linearGradient id="lyl-${m}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${LYC[m][1]}"/><stop offset="1" stop-color="${LYC[m][0]}"/></linearGradient></defs><rect width="600" height="600" fill="url(#lyg-${m})"/>${body}</svg>`.split('lyg-'+m).join('lyg-'+u).split('lyl-'+m).join('lyl-'+u)};
 const LYS={
@@ -22565,11 +22625,11 @@ const LYS={
   ${Array.from({length:10},(_,i)=>`<g class="ly-ball" style="animation-delay:${i*.23}s;transform-origin:300px 290px"><circle cx="${230+(i*37)%140}" cy="${230+(i*53)%120}" r="22" fill="${['#ffd36a','#ff3d6e','#4aa8ff','#2ee67a','#b45cff'][i%5]}"/><text x="${230+(i*37)%140}" y="${238+(i*53)%120}" text-anchor="middle" font-size="20" font-weight="900" fill="#111">${i*7%49+1}</text></g>`).join('')}
   <rect x="270" y="455" width="60" height="90" fill="#ffd36a"/><text x="300" y="580" text-anchor="middle" font-size="24" font-weight="900" fill="#fff">DIMANCHE 20 H</text>`)};
 window.LYS=LYS;
-const LYK={quick:'拳',daily:'日',hcp:'縛',surv:'生',raid:'襲',draft:'選',bounty:'賞',rush:'連',alch:'錬',wboss:'界',trn:'闘',lot:'籤'};
-const LYP={quick:['pt',18],daily:['mt',22],hcp:['sp',20],surv:['dr',26],raid:['em',24],draft:['cd',10],bounty:['du',18],rush:['em',30],alch:['bb',22],wboss:['em',34],trn:['gl',26],lot:['cf',34]};
+const LYK={duel1:'対',isk:'転',pzl:'謎',usc:'一',ncm:'悪',cl12:'闘',gw62:'守',quick:'拳',daily:'日',hcp:'縛',surv:'生',raid:'襲',draft:'選',bounty:'賞',rush:'連',alch:'錬',wboss:'界',trn:'闘',lot:'籤'};
+const LYP={duel1:['em',18],isk:['gl',30],pzl:['cd',8],usc:['mt',16],ncm:['em',30],cl12:['du',22],gw62:['sp',20],quick:['pt',18],daily:['mt',22],hcp:['sp',20],surv:['dr',26],raid:['em',24],draft:['cd',10],bounty:['du',18],rush:['em',30],alch:['bb',22],wboss:['em',34],trn:['gl',26],lot:['cf',34]};
 function lyAmb(m){const[p,n]=LYP[m]||['mt',16];return `<i class="ly-pat"></i><b class="ly-kj">${LYK[m]||''}</b><span class="ly-pts">${Array.from({length:n},(_,i)=>`<i class="ly-p ly-p-${p}" style="--x:${(i*37+11)%100};--d:${((i*.61)%7).toFixed(2)}s;--t:${(6+(i*1.7)%7).toFixed(1)}s;--s:${(.6+(i%5)*.22).toFixed(2)};--r:${(i*47)%360}deg"></i>`).join('')}</span><i class="ly-vg"></i>`}
-let LYM='';{const _m=mode;mode=function(m){LYM=m;return _m.apply(this,arguments)}}
-function lyMode(ov){const k=ov.dataset.fdk;if(k&&LYS[k])return k;return LYS[LYM]?LYM:''}
+let LYM='',LYT=0;{const _m=mode;mode=function(m){LYM=m;LYT=Date.now();return _m.apply(this,arguments)}}
+function lyMode(ov){const k=ov.dataset.fdk;if(k&&LYC[k])return k;return LYC[LYM]&&Date.now()-LYT<4000?LYM:''}
 function lyDeco(ov){if(ov.classList.contains('ly107'))return;const m=lyMode(ov);if(!m)return;const c=LYC[m];ov.classList.add('ly107','ly-'+m);ov.style.setProperty('--la',c[0]);ov.style.setProperty('--lb',c[1]);ov.style.setProperty('--lz',c[2]);
  const sc=document.createElement('div');sc.className='ly-sc';sc.innerHTML=lyAmb(m);ov.prepend(sc);
  const x=ov.querySelector(':scope>.btn.gh');if(x){x.classList.add('ly-back');x.textContent='‹ Retour'}}
@@ -22578,7 +22638,7 @@ new MutationObserver(()=>{if(!LYQ){LYQ=1;requestAnimationFrame(lyScan)}}).observ
 /* cartes de la page Combat : la scène du mode en vignette */
 function lyHub(){document.querySelectorAll('#v .md13:not([data-ly])').forEach(b=>{const oc=b.getAttribute('data-oclick')||'';const m=(oc.match(/mode\('([a-z0-9]+)'\)/)||oc.match(/show\('([a-z0-9]+)'\)/)||[])[1];b.dataset.ly=1;if(!m||!LYS[m])return;
  const d=document.createElement('div');d.className='ly-th';d.style.setProperty('--la',LYC[m][0]);d.innerHTML=LYS[m]();const im=b.querySelector('.lx39');if(im)im.before(d);else b.prepend(d);b.classList.add('ly-on')})}
-{const _s=show;show=function(){const r=_s.apply(this,arguments);setTimeout(lyHub,50);setTimeout(lyHub,400);return r}}
+
 /* Expéditions : bandeau-paysage (montagnes, sentier jusqu'au drapeau, feu de camp, boussole) à la place de l'ancien bandeau */
 function lyExp(){if(typeof view=='undefined'||view!='exp')return;const v=$('v'),h=v&&v.querySelector(':scope>.fd-hero');if(!h||v.querySelector('.ly-ex'))return;
  const n=(()=>{try{return (S.ex||[]).length}catch(e){return 0}})();
@@ -22600,7 +22660,7 @@ function lyExp(){if(typeof view=='undefined'||view!='exp')return;const v=$('v'),
 function lySkin(ov,m){const mb=ov.querySelector(':scope>.mbox');if(!mb||mb.dataset.sk)return;mb.dataset.sk=1;const d=new Date();
  const tm=[...mb.querySelectorAll('.lb3-tc,.xm13-tm>div')];
  if(m=='quick'){const b=mb.querySelector('.lb3-go');const vs=document.createElement('div');vs.className='sk-vs';vs.innerHTML=`<div class="sk-vsl"><small>TON ÉQUIPE</small></div><b class="sk-vsb">VS</b><div class="sk-vsr"><small>ADVERSAIRE</small>${'<i class="sk-q">?</i>'.repeat(3)}</div>`;const team=mb.querySelector('.lb3-team,.xm13-tm');if(team){team.before(vs);vs.querySelector('.sk-vsl').append(team)}}
- if(m=='daily'){const h=document.createElement('div');h.className='sk-cal';h.innerHTML=`<i class="sk-rings">${'<u></u>'.repeat(6)}</i><div class="sk-calh">${d.toLocaleDateString('fr-FR',{weekday:'long'}).toUpperCase()} · ${d.toLocaleDateString('fr-FR',{month:'long'}).toUpperCase()}</div><b class="sk-day">${d.getDate()}</b>`;mb.prepend(h);let r='';try{r=dMod()[0]}catch(e){}if(r){const st=document.createElement('div');st.className='sk-stamp';st.innerHTML=`<small>RÈGLE DU JOUR</small><b>${nE(r)}</b>`;h.append(st)}}
+ if(m=='daily'){const h=document.createElement('div');h.className='sk-cal';h.innerHTML=`<i class="sk-rings">${'<u></u>'.repeat(6)}</i><div class="sk-calh">${d.toLocaleDateString('fr-FR',{weekday:'long'}).toUpperCase()} · ${d.toLocaleDateString('fr-FR',{month:'long'}).toUpperCase()}</div><b class="sk-day">${d.getDate()}</b>`;mb.prepend(h);let r=['',''];try{r=dMod()}catch(e){}if(r[0]){const st=document.createElement('div');st.className='sk-stamp';st.innerHTML=`<small>RÈGLE DU JOUR</small><b>${nE(r[0])}</b>`;h.append(st);const bx=document.createElement('div');bx.className='sk-rule';bx.innerHTML=`<i>今日</i><div><small>LE DÉFI D’AUJOURD’HUI</small><b>${nE(r[0])}</b><span>${nE(r[1]||'')}</span></div>`;const hero=mb.querySelector('.lb3-hero');(hero||h).after(bx)}}
  if(m=='lot'){const s=document.createElement('div');s.className='sk-stub';s.innerHTML=`<b>N° ${String(d.getFullYear()).slice(2)}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}</b><small>TICKET · ADMIS 1</small>`;mb.append(s)}
  if(m=='wboss'){const h=document.createElement('div');h.className='sk-wbh';h.innerHTML='<small>⚠ ALERTE MONDIALE</small><b>UN SEUL BOSS · TOUS LES JOUEURS</b>';mb.prepend(h)}
  if(m=='raid'){const h=document.createElement('div');h.className='sk-crest';h.innerHTML='<i>襲</i>';mb.prepend(h)}
@@ -22611,7 +22671,15 @@ function lySkin(ov,m){const mb=ov.querySelector(':scope>.mbox');if(!mb||mb.datas
  if(m=='draft'){mb.insertAdjacentHTML('afterbegin','<i class="sk-deck"><u></u><u></u><u></u></i>')}
  if(m=='rush'){mb.insertAdjacentHTML('afterbegin',`<div class="sk-steps">${'壱弐参肆伍'.split('').map((k,i)=>`<i style="--i:${i}">${k}</i>`).join('')}</div>`)}
  if(m=='hcp'){mb.insertAdjacentHTML('afterbegin','<i class="sk-chain l"></i><i class="sk-chain r"></i>')}
- tm.forEach((t,i)=>t.style.setProperty('--ti',i))}
+ if(m=='duel1')mb.insertAdjacentHTML('afterbegin','<i class="sk-rope t"></i><i class="sk-rope b"></i>');
+ if(m=='isk')mb.insertAdjacentHTML('afterbegin','<i class="sk-portal"></i>');
+ if(m=='usc')mb.insertAdjacentHTML('afterbegin','<i class="sk-spot"></i>');
+ if(m=='cl12')mb.insertAdjacentHTML('afterbegin','<i class="sk-arch"></i>');
+ if(m=='gw62')mb.insertAdjacentHTML('afterbegin','<i class="sk-shield">守</i>');
+ if(m=='alch')mb.insertAdjacentHTML('afterbegin','<div class="sk-flasks">'+['#4dd6a0','#b45cff','#ff6b8a','#ffd36a','#4aa8ff'].map((c,i)=>`<i style="--c:${c};--i:${i}"><u></u></i>`).join('')+'</div>');
+ tm.forEach((t,i)=>t.style.setProperty('--ti',i));
+ /* relief 3D : le panneau suit la souris, ses couches sont à des profondeurs différentes */
+ if(matchMedia('(hover:hover)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){let raf=0;ov.addEventListener('pointermove',e=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;mb.style.setProperty('--rx',(-y*5).toFixed(2)+'deg');mb.style.setProperty('--ry',(x*7).toFixed(2)+'deg')})});ov.addEventListener('pointerleave',()=>{mb.style.setProperty('--rx','0deg');mb.style.setProperty('--ry','0deg')})}}
 {const _d=lyDeco;lyDeco=function(ov){_d(ov);try{const m=[...ov.classList].find(c=>c.startsWith('ly-')&&c!='ly107');if(m)lySkin(ov,m.slice(3))}catch(e){}}}
 
 appBgSet(view);
