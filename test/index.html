@@ -8499,6 +8499,25 @@ body.cp97-big #v{visibility:hidden}body.cp97-big #cp84.wide{left:50%!important;r
 .ly-gw62 .lb3-hero,.ly-raid .lb3-hero,.ly-isk .lb3-hero{text-align:center}.ly-gw62 .lb3-ey,.ly-isk .lb3-ey{justify-content:center}
 @media (max-width:760px){.ly-surv .xm13,.ly-rush .xm13,.ly-wboss .xm13{grid-template-columns:1fr}.ly-surv .xm13>*,.ly-rush .xm13>*,.ly-wboss .xm13>*{grid-column:1!important}.sk-flasks{top:-70px;gap:10px}.sk-flasks i{width:30px}.ov.lb3.ly107.ly107>.mbox{transform:none!important}}
 @media (max-width:760px){.ov.ly107 .ly-sc{inset:0!important;height:auto!important}.ov.lb3.ly107>.mbox{margin:64px auto 30px!important}.ov.lb3.ly-alch>.mbox,.ov.lb3.ly-isk>.mbox,.ov.lb3.ly-cl12>.mbox,.ov.lb3.ly-gw62>.mbox{margin-top:110px!important}}
+/* scène 3D au-dessus du menu */
+.ov.ly107>.ly-stage{position:relative;z-index:2;height:clamp(230px,34vh,330px);margin:56px auto -10px;width:min(700px,100%);perspective:1100px;pointer-events:none}
+.ly-sw{position:absolute;left:50%;top:46%;width:0;height:0;transform-style:preserve-3d;transform:rotateX(-12deg) scale(1.25)}
+.ly-obj{position:absolute;transform-style:preserve-3d;animation:lyobj 16s linear infinite}
+.ly-quick .ly-obj,.ly-duel1 .ly-obj,.ly-draft .ly-obj,.ly-usc .ly-obj,.ly-gw62 .ly-obj,.ly-bounty .ly-obj,.ly-rush .ly-obj{animation:lyobs 7s ease-in-out infinite}
+@keyframes lyobj{to{transform:rotateY(360deg)}}@keyframes lyobs{0%,100%{transform:rotateY(-24deg) translateY(0)}50%{transform:rotateY(24deg) translateY(-10px)}}
+.p3o{position:absolute;left:0;top:0;transform-style:preserve-3d}
+.p3f{position:absolute;left:0;top:0;display:block;backface-visibility:hidden}.p3c{border-radius:12px;border:3px solid #ffffffcc;box-shadow:0 0 30px #0008;backface-visibility:hidden}
+.ly-wboss .p3f,.ly-lot .p3f,.ly-ncm .p3f,.ly-isk .p3f,.ly-surv .p3f[style*="border-radius:50%"],.ly-alch .p3f[style*="border-radius:50%"]{backface-visibility:visible}
+.p3t{position:absolute;transform:translate(-50%,-50%);font-weight:900;font-family:'Noto Sans JP',Inter,sans-serif;white-space:nowrap;text-shadow:0 0 18px currentColor;backface-visibility:hidden}
+.ly-ped{position:absolute;left:50%;bottom:6%;width:min(460px,80%);height:70px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse,color-mix(in srgb,var(--la) 55%,#0000),#0000 70%);filter:blur(4px);animation:lyped 3s ease-in-out infinite}
+.ly-ped2{position:absolute;left:50%;bottom:9%;width:min(320px,60%);height:34px;transform:translateX(-50%);border-radius:50%;border:2px solid color-mix(in srgb,var(--la) 70%,#fff);box-shadow:0 0 30px var(--la),inset 0 0 20px var(--la)}
+@keyframes lyped{50%{opacity:.6;transform:translateX(-50%) scale(1.08)}}
+.ov.lb3.ly107.ly107>.mbox{margin-top:10px!important}
+.ov.ly107>.ly-back{z-index:6}
+.ly-alch .sk-flasks,.ly-isk .sk-portal{display:none}
+.ly-gw62 .sk-shield,.ly-raid .sk-crest{top:-40px}
+@media (max-width:760px){.ov.ly107>.ly-stage{height:210px;margin-top:50px;transform:scale(.72);transform-origin:50% 30%;margin-bottom:-60px}}
+@media (prefers-reduced-motion:reduce){.ly-obj{animation:none}}
 /* pg109 · pages-modes */
 .pg9{position:relative;overflow:hidden}
 .pg9>.lb3x-img,.pg9>.lb3x-vg,.pg9>.mm3bg,.pg9 .mm3bg{display:none!important}
@@ -22754,6 +22773,44 @@ function lySkin(ov,m){const mb=ov.querySelector(':scope>.mbox');if(!mb||mb.datas
  /* relief 3D : le panneau suit la souris, ses couches sont à des profondeurs différentes */
  if(matchMedia('(hover:hover)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){let raf=0;ov.addEventListener('pointermove',e=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;mb.style.setProperty('--rx',(-y*5).toFixed(2)+'deg');mb.style.setProperty('--ry',(x*7).toFixed(2)+'deg')})});ov.addEventListener('pointerleave',()=>{mb.style.setProperty('--rx','0deg');mb.style.setProperty('--ry','0deg')})}}
 {const _d=lyDeco;lyDeco=function(ov){_d(ov);try{const m=[...ov.classList].find(c=>c.startsWith('ly-')&&c!='ly107');if(m)lySkin(ov,m.slice(3))}catch(e){}}}
+
+/* ===== ly107 · scène 3D au-dessus de chaque menu de mode : un objet en relief (CSS 3D, pas de fond), sur un socle lumineux =====
+   Primitives : boîte, cylindre, anneau, sphère filaire, carte. L'ombrage des faces dépend de leur angle. */
+const P3={
+ sh:a=>(.55+.45*Math.max(0,Math.cos(a))).toFixed(2),
+ box(w,h,d,c,x=0,y=0,z=0,extra=''){const f=[[w,h,`translateZ(${d/2}px)`,0],[w,h,`rotateY(180deg) translateZ(${d/2}px)`,Math.PI],[d,h,`rotateY(90deg) translateZ(${w/2}px)`,Math.PI/2],[d,h,`rotateY(-90deg) translateZ(${w/2}px)`,-Math.PI/2],[w,d,`rotateX(90deg) translateZ(${h/2}px)`,-.3],[w,d,`rotateX(-90deg) translateZ(${h/2}px)`,2.6]];
+  return `<div class="p3o" style="transform:translate3d(${x}px,${y}px,${z}px) ${extra}">${f.map(([fw,fh,t,a])=>`<i class="p3f" style="width:${fw}px;height:${fh}px;margin:${-fh/2}px 0 0 ${-fw/2}px;transform:${t};background:${c};filter:brightness(${P3.sh(a)})"></i>`).join('')}</div>`},
+ cyl(r,h,n,c,x=0,y=0,z=0,cap,extra=''){const w=2*r*Math.sin(Math.PI/n)+1,tz=r*Math.cos(Math.PI/n);let s='';for(let i=0;i<n;i++){const a=i/n*Math.PI*2;s+=`<i class="p3f" style="width:${w}px;height:${h}px;margin:${-h/2}px 0 0 ${-w/2}px;transform:rotateY(${a}rad) translateZ(${tz}px);background:${c};filter:brightness(${P3.sh(a)})"></i>`}
+  if(cap)s+=`<i class="p3f" style="width:${2*r}px;height:${2*r}px;margin:${-r}px 0 0 ${-r}px;border-radius:50%;transform:rotateX(90deg) translateZ(${h/2}px);background:${cap}"></i>`;return `<div class="p3o" style="transform:translate3d(${x}px,${y}px,${z}px) ${extra}">${s}</div>`},
+ ring(r,n,c,t=6,x=0,y=0,z=0,extra=''){let s='';for(let i=0;i<n;i++){const a=i/n*360;s+=`<i class="p3f" style="width:${t}px;height:${t}px;margin:${-t/2}px 0 0 ${-t/2}px;border-radius:50%;transform:rotateZ(${a}deg) translateY(${-r}px);background:${c};box-shadow:0 0 8px ${c}"></i>`}return `<div class="p3o" style="transform:translate3d(${x}px,${y}px,${z}px) ${extra}">${s}</div>`},
+ sphere(r,n,c,x=0,y=0,z=0,extra=''){let s='';for(let i=0;i<n;i++)s+=`<i class="p3f" style="width:${2*r}px;height:${2*r}px;margin:${-r}px 0 0 ${-r}px;border-radius:50%;border:2px solid ${c};transform:rotateY(${i/n*180}deg)"></i>`;for(let j=1;j<4;j++){const rr=r*Math.sin(j/4*Math.PI);s+=`<i class="p3f" style="width:${2*rr}px;height:${2*rr}px;margin:${-rr}px 0 0 ${-rr}px;border-radius:50%;border:2px solid ${c};transform:rotateX(90deg) translateZ(${r*Math.cos(j/4*Math.PI)}px)"></i>`}return `<div class="p3o" style="transform:translate3d(${x}px,${y}px,${z}px) ${extra}">${s}</div>`},
+ disc(r,c,x=0,y=0,z=0,extra=''){return `<div class="p3o" style="transform:translate3d(${x}px,${y}px,${z}px) ${extra}"><i class="p3f" style="width:${2*r}px;height:${2*r}px;margin:${-r}px 0 0 ${-r}px;border-radius:50%;background:${c}"></i></div>`},
+ card(w,h,front,back,x=0,y=0,z=0,extra=''){return `<div class="p3o" style="transform:translate3d(${x}px,${y}px,${z}px) ${extra}"><i class="p3f p3c" style="width:${w}px;height:${h}px;margin:${-h/2}px 0 0 ${-w/2}px;background:${front}"></i><i class="p3f p3c" style="width:${w}px;height:${h}px;margin:${-h/2}px 0 0 ${-w/2}px;transform:rotateY(180deg);background:${back}"></i></div>`},
+ txt(t,c,sz,x=0,y=0,z=0,extra=''){return `<div class="p3o" style="transform:translate3d(${x}px,${y}px,${z}px) ${extra}"><b class="p3t" style="color:${c};font-size:${sz}px">${t}</b></div>`}};
+const LYG=(a,b)=>`linear-gradient(160deg,${a},${b})`;
+const LYO={
+ quick:()=>P3.card(110,154,LYG('#ff7a45','#7a1a10')+'',LYG('#2a0a08','#120404'),-80,0,0,'rotateY(28deg)')+P3.card(110,154,LYG('#4aa8ff','#102a6a'),LYG('#06122a','#020814'),80,0,0,'rotateY(-28deg)')+P3.txt('VS','#ffd36a',64,0,0,40,'')+P3.ring(70,24,'#ffb43a',5,0,0,0,'rotateX(75deg)'),
+ daily:()=>{const d=new Date().getDate();return P3.box(150,150,150,LYG('#fff8ea','#e8d8b8'),0,0,0)+P3.txt(d,'#b8281a',96,0,8,76)+P3.txt(['DIM','LUN','MAR','MER','JEU','VEN','SAM'][new Date().getDay()],'#fff',20,0,-58,76)+P3.box(150,34,152,'#d63a2a',0,-58,0)},
+ hcp:()=>[0,1,2].map(i=>P3.box(60,60,60,LYG('#5a2a6a','#1a0820'),(i-1)*100,40,0)+P3.txt('壱弐参'[i],'#ff9af0',34,(i-1)*100,48,31)+P3.ring(8,1,'#0000',2)+Array.from({length:5},(_,j)=>P3.ring(9,12,'#b8b8c8',3,(i-1)*100,-10-j*16,0,`rotateY(${j%2?90:0}deg)`)).join('')).join(''),
+ surv:()=>P3.cyl(34,170,14,'repeating-linear-gradient(180deg,#f4f0e8 0 34px,#d63a2a 34px 68px)',0,0,0)+P3.cyl(40,24,14,'#2a2a30',0,-96,0,'#3a3a40')+P3.disc(24,'radial-gradient(#fff6c0,#ffd36a 60%,#ffb43a00)',0,-118,0)+P3.ring(110,40,'#6ab0ff',4,0,90,0,'rotateX(90deg)')+P3.ring(140,48,'#6ab0ff88',3,0,92,0,'rotateX(90deg)'),
+ raid:()=>P3.box(150,110,110,LYG('#3a1a2a','#1a0812'),0,30,0)+P3.cyl(28,150,10,LYG('#3a1a2a','#1a0812'),-80,0,0)+P3.cyl(28,150,10,LYG('#3a1a2a','#1a0812'),80,0,0)+P3.box(40,60,4,'#ff3d6e',0,55,56)+P3.box(4,40,4,'#ccc',-80,-95,0)+P3.box(30,18,2,'#ff3d6e',-64,-106,0)+P3.box(4,40,4,'#ccc',80,-95,0)+P3.box(30,18,2,'#ffd36a',96,-106,0),
+ draft:()=>[-1,0,1].map(k=>P3.card(100,140,LYG('#2a3a8a','#101840'),LYG('#3dd9c4','#0a5a6a'),k*90,0,Math.abs(k)*-30,`rotateY(${k*-30}deg) rotateZ(${k*8}deg)`)).join('')+P3.txt('?','#3dd9c4',80,0,0,30),
+ bounty:()=>P3.cyl(80,22,28,'linear-gradient(90deg,#a07a20,#ffe28a,#a07a20)',0,0,0,'radial-gradient(#ffe28a,#c9a24a)','rotateX(90deg)')+P3.txt('賞','#7a4a10',70,0,6,12)+P3.box(190,240,6,'#e8d2a0',0,0,-70,'')+P3.txt('WANTED','#5a2a10',30,0,-90,-66),
+ rush:()=>[0,1,2,3,4].map(i=>P3.box(56,30+i*26,56,LYG('#5a1a1a','#200606'),-120+i*60,60-(30+i*26)/2,0)+P3.txt('壱弐参肆伍'[i],i==4?'#ffd36a':'#ff6a5a',26,-120+i*60,48-(30+i*26),30)).join(''),
+ alch:()=>P3.cyl(70,80,18,LYG('#2a3a34','#0a1410'),0,40,0,'radial-gradient(#7affc8,#4dd6a0 60%,#1a6a4a)')+P3.ring(72,30,'#4dd6a0',5,0,0,0,'rotateX(90deg)')+[0,1,2,3,4].map(i=>P3.disc(8+i%3*3,i%2?'#b45cff':'#4dd6a0',(i-2)*24,-20-i*22,0,'')).join('')+P3.cyl(14,40,8,'#ffb43a',-40,95,0)+P3.cyl(14,40,8,'#ff6a3a',40,95,0),
+ wboss:()=>P3.sphere(110,10,'#ff6a3d66',0,0,0)+P3.sphere(70,8,'#ffb03a99',0,0,0)+P3.disc(34,'radial-gradient(#fff,#ff3d1a 40%,#7a0a00 70%,#0000 72%)',0,0,0)+P3.ring(150,60,'#ffd36a',4,0,0,0,'rotateX(75deg)'),
+ trn:()=>P3.cyl(56,70,18,'linear-gradient(90deg,#a07a20,#ffe28a,#a07a20)',0,-40,0,'#3a2a08')+P3.cyl(14,60,10,'#c9a24a',0,25,0)+P3.cyl(50,24,16,'#5a4420',0,70,0,'#7a5a28')+P3.box(150,8,8,'#ffd36a',0,-60,0)+P3.txt('冠','#fff3c4',40,0,-40,58),
+ lot:()=>P3.sphere(110,12,'#ffd36a88',0,0,0)+[0,1,2,3,4,5,6,7].map(i=>P3.disc(16,['#ffd36a','#ff3d6e','#4aa8ff','#2ee67a','#b45cff'][i%5],Math.cos(i)*60,Math.sin(i*1.7)*50,Math.sin(i)*60,'')).join(''),
+ duel1:()=>P3.card(120,168,LYG('#ff7a45','#7a1a10'),LYG('#2a0a08','#120404'),-70,0,0,'rotateY(20deg)')+P3.card(120,168,LYG('#4aa8ff','#102a6a'),LYG('#06122a','#020814'),70,0,-20,'rotateY(-20deg)')+P3.ring(90,40,'#fff',3,0,80,0,'rotateX(90deg)'),
+ isk:()=>Array.from({length:6},(_,i)=>P3.ring(80+i*12,36,['#a06bff','#4ad8ff','#ff6bf5'][i%3],5,0,0,0,`rotateY(${i*30}deg)`)).join('')+P3.disc(60,'radial-gradient(#fff,#a06bff 40%,#0000 70%)',0,0,0),
+ pzl:()=>{let s='';for(let x=-1;x<=1;x++)for(let y=-1;y<=1;y++)for(let z=-1;z<=1;z++)if(x||y||z)s+=P3.box(52,52,52,['#4ad8ff','#2ee6a0','#ffd36a','#ff3d6e'][(x+y*2+z*3+9)%4],x*56,y*56,z*56);return s},
+ usc:()=>P3.card(140,196,LYG('#ffd36a','#7a4a10'),LYG('#2a1a06','#120a02'),0,0,0)+P3.disc(120,'radial-gradient(#fff3c455,#0000 70%)',0,100,0,'rotateX(90deg)'),
+ ncm:()=>P3.sphere(100,14,'#ff2a4a88',0,0,0)+P3.disc(40,'radial-gradient(#ff2a4a,#7a0a1a 60%,#0000 62%)',0,0,0)+P3.disc(14,'#000',0,0,2),
+ cl12:()=>Array.from({length:14},(_,i)=>P3.box(40,90,16,LYG('#c8a878','#7a5a38'),0,0,0,`rotateY(${i/14*360}deg) translateZ(120px)`)).join('')+P3.disc(110,'radial-gradient(#e8d0a0,#a07a4a)',0,45,0,'rotateX(90deg)'),
+ gw62:()=>P3.box(150,180,20,LYG('#4affc0','#0a6a4a'),0,0,0)+P3.txt('守','#fff',90,0,10,12)+P3.ring(120,40,'#2ee6a0',4,0,0,0,'')};
+function lyStage(ov,m){if(ov.querySelector(':scope>.ly-stage')||!LYO[m])return;let h='';try{h=LYO[m]()}catch(e){return}const s=document.createElement('div');s.className='ly-stage';s.innerHTML=`<div class="ly-sw"><div class="ly-obj">${h}</div></div><i class="ly-ped"></i><i class="ly-ped2"></i>`;
+ const mb=ov.querySelector(':scope>.mbox');if(mb)mb.before(s);else ov.prepend(s)}
+{const _d=lyDeco;lyDeco=function(ov){_d(ov);try{const m=[...ov.classList].find(c=>c.startsWith('ly-')&&c!='ly107');if(m)lyStage(ov,m.slice(3))}catch(e){}}}
 
 /* ===== pg109 · pages-modes redessinées : chaque page a son propre habillage et un objet en relief 3D (CSS) =====
    Origine : 3 portes qui s'ouvrent. Absolus : cube des Vérités. Ascension : escalier céleste. Pourfendeurs : katana.
