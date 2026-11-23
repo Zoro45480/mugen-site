@@ -73,6 +73,13 @@ html,body{height:100%;background:var(--bg);color:var(--tx);font-family:Inter,sys
 #c{width:100%!important;height:100%!important}</style><style>body.thumb>*:not(canvas){display:none!important}body.thumb,html{background:transparent!important}.vnav{position:fixed;bottom:18px;z-index:5;width:46px;height:52px;border-radius:14px;border:1px solid #ffffff33;background:#0c0914cc;color:#fff;font:900 28px system-ui;display:grid;place-items:center;cursor:pointer}
 .vnav.l{left:8px}.vnav.r{right:8px}
 @media(max-width:760px){.vnav{bottom:20px;width:40px;height:48px}}
+/* 23/11 : la liste des objets de l'Arsenal défile (avant : coupée, on ne voyait que les 19 premiers) */
+.inv{position:relative}
+.ig{overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;padding-bottom:6px;scrollbar-width:thin;scrollbar-color:#ffffff44 transparent;-webkit-overflow-scrolling:touch}
+.ig::-webkit-scrollbar{height:6px}.ig::-webkit-scrollbar-thumb{background:#ffffff44;border-radius:3px}
+.ig>*{flex:none}
+.ignv{position:absolute;bottom:22px;z-index:3;width:34px;height:64px;border-radius:12px;border:1px solid #ffffff33;background:#0c0914e6;color:#fff;font:900 24px system-ui;cursor:pointer;display:grid;place-items:center}
+.ignv.l{left:4px}.ignv.r{right:4px}
 </style></head><body>
 <canvas id="c"></canvas>
 <div class="top"><div class="lg">MUGEN · ARSENAL</div><div class="tabs" id="tabs"><b data-m="0" class="on">Vitrine</b><b data-m="1">Arsenal</b><b data-m="2">Réserve</b></div></div>
@@ -487,8 +494,9 @@ function arsUI(){const o=ALL[ai],it=o.it,c=GRA[it[4]][1];$('fi2').style.setPrope
  const A=ALL.filter(x=>x.it[1]=='a').sort((a,b)=>b.it[4]-a.it[4])[0],C2=ALL.filter(x=>x.it[1]=='c').sort((a,b)=>b.it[4]-a.it[4])[0];const eqA=it[1]=='a'?o:A,eqC=it[1]=='c'?o:C2;
  $('slots').innerHTML=[['ARTEFACT',eqA],['ACCESSOIRE',eqC]].map(([l,x])=>`<div class="slot" style="--c:${GRA[x.it[4]][1]}"><small>${l}</small><i>${KJ[x.it[3]]||'宝'}</i><b>${x.it[2]}</b></div>`).join('');
  $('pw').textContent='+'+((GP[eqA.it[4]]||0)+(GP[eqC.it[4]]||0))+' %';
- const L=ALL.slice().sort((a,b)=>b.it[4]-a.it[4]),idx=L.indexOf(o),n=Math.max(4,Math.floor(($('ig').clientWidth||800)/82));const st=Math.max(0,Math.min(L.length-n,idx-Math.floor(n/2)));
- $('ig').innerHTML=L.slice(st,st+n).map(x=>`<div class="it${x===o?' sel':''}" style="--c:${GRA[x.it[4]][1]}"><i>${KJ[x.it[3]]||'宝'}</i><small>${x.it[2]}</small></div>`).join('')}
+ const L=ALL.slice().sort((a,b)=>b.it[4]-a.it[4]); // 23/11 : tous les objets, la liste défile ; clic = on affiche l'objet
+ $('ig').innerHTML=L.map((x,k)=>`<div class="it${x===o?' sel':''}" data-i="${k}" style="--c:${GRA[x.it[4]][1]}"><i>${KJ[x.it[3]]||'宝'}</i><small>${x.it[2]}</small></div>`).join('');
+ $('ig').querySelectorAll('.it').forEach(d=>d.onclick=e=>{e.stopPropagation();go(1,+d.dataset.i)})}
 function resUI(){const x=RES[ri],c=GRA[x.r][1];$('lb2').innerHTML=`<span class="rk" style="--c:${c}">${x.k} ${GRA[x.r][0].toUpperCase()}</span><div class="nm">${x.n}</div><p>${x.d}</p>`}
 const ARS_SORTED=()=>ALL.slice().sort((a,b)=>b.it[4]-a.it[4]);
 function go(m,i){mode=m;document.querySelectorAll('#tabs b').forEach(b=>b.classList.toggle('on',+b.dataset.m==m));$('vit').style.display=m==0?'block':'none';$('ars').classList.toggle('on',m==1);$('res').style.display=m==2?'block':'none';
@@ -507,6 +515,16 @@ let drag=null;cv.addEventListener('pointerdown',e=>{drag={x:e.clientX,a:spinA}})
 /* 23/11 : flèches pour passer d'un objet à l'autre (avant : seulement les flèches du clavier) */
 (function(){const mk=(c,t,d)=>{const b=document.createElement('button');b.type='button';b.className='vnav '+c;b.textContent=t;b.setAttribute('aria-label',c=='l'?'Objet précédent':'Objet suivant');b.onclick=e=>{e.stopPropagation();if(mode==0)go(0,(vi+d+VIT.length)%VIT.length);else if(mode==2)go(2,(ri+d+RES.length)%RES.length);else{const L=ARS_SORTED();go(1,(L.indexOf(ALL[ai])+d+L.length)%L.length)}};document.body.append(b);return b};
  const L=mk('l','‹',-1),R=mk('r','›',1);setInterval(()=>{const v=mode==0;L.style.display=R.style.display=v?'grid':'none'},300)})();
+
+/* 23/11 : flèches et molette pour faire défiler la liste des objets de l'Arsenal */
+(function(){const ig=document.getElementById('ig');if(!ig)return;const inv=ig.closest('.inv')||ig.parentElement;
+ const mk=(c,t,d)=>{const b=document.createElement('button');b.type='button';b.className='ignv '+c;b.textContent=t;b.setAttribute('aria-label',d<0?'Objets précédents':'Objets suivants');b.onclick=e=>{e.stopPropagation();ig.scrollBy({left:d*ig.clientWidth*.8,behavior:'smooth'})};inv.append(b);return b};
+ const L=mk('l','‹',-1),R=mk('r','›',1);
+ const up=()=>{const more=ig.scrollWidth>ig.clientWidth+4;L.style.display=more&&ig.scrollLeft>4?'grid':'none';R.style.display=more&&ig.scrollLeft+ig.clientWidth<ig.scrollWidth-4?'grid':'none'};
+ ig.addEventListener('scroll',up,{passive:true});addEventListener('resize',up);setInterval(up,500);
+ ig.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)&&ig.scrollWidth>ig.clientWidth){ig.scrollLeft+=e.deltaY;e.preventDefault()}},{passive:false});
+ // l'objet affiché reste visible dans la liste
+ new MutationObserver(()=>{const on=ig.querySelector('.sel');if(on){const r=on.getBoundingClientRect(),g=ig.getBoundingClientRect();if(r.left<g.left||r.right>g.right)ig.scrollLeft+=r.left-g.left-g.width/2+r.width/2}up()}).observe(ig,{subtree:true,childList:true,attributes:true,attributeFilter:['class']})})();
 addEventListener('keydown',e=>{if(e.key=='ArrowRight'){if(mode==0)go(0,(vi+1)%VIT.length);else if(mode==2)go(2,(ri+1)%RES.length);else go(1,(ARS_SORTED().indexOf(ALL[ai])+1)%ALL.length)}if(e.key=='ArrowLeft'){if(mode==0)go(0,(vi-1+VIT.length)%VIT.length)}});
 /* ---------- boucle ---------- */
 let T=0,acc=0;
