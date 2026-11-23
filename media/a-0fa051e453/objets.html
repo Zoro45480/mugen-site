@@ -70,7 +70,10 @@ html,body{height:100%;background:var(--bg);color:var(--tx);font-family:Inter,sys
  .inv{grid-column:auto}.fi2 .btns{display:none}
  .tag2{display:none}
 }
-#c{width:100%!important;height:100%!important}</style><style>body.thumb>*:not(canvas){display:none!important}body.thumb,html{background:transparent!important}</style></head><body>
+#c{width:100%!important;height:100%!important}</style><style>body.thumb>*:not(canvas){display:none!important}body.thumb,html{background:transparent!important}.vnav{position:fixed;bottom:18px;z-index:5;width:46px;height:52px;border-radius:14px;border:1px solid #ffffff33;background:#0c0914cc;color:#fff;font:900 28px system-ui;display:grid;place-items:center;cursor:pointer}
+.vnav.l{left:8px}.vnav.r{right:8px}
+@media(max-width:760px){.vnav{bottom:20px;width:40px;height:48px}}
+</style></head><body>
 <canvas id="c"></canvas>
 <div class="top"><div class="lg">MUGEN · ARSENAL</div><div class="tabs" id="tabs"><b data-m="0" class="on">Vitrine</b><b data-m="1">Arsenal</b><b data-m="2">Réserve</b></div></div>
 <div id="vit"><div class="hd"><div class="ey">ARSENAL · 装備 · 3D</div><div class="h1">Les objets <em>en vrai</em></div><p class="lead">Chaque artefact et accessoire du jeu, modélisé en 3D d’après l’objet qu’il représente : matières, gravures, proportions. Ils tournent sur leur socle, éclairés comme en studio.</p></div>
@@ -477,7 +480,8 @@ const RES=[{n:'Sac de toile',k:'布',r:0,d:'Sac des Pourfendeurs (commun) : 60 �
 function vitUI(){const o=VIT[vi],it=o.it,c=GRA[it[4]][1];$('fic').style.setProperty('--c',c);
  $('fic').innerHTML=`<span class="rk" style="--c:${c}">${KJ[it[3]]||'宝'} ${GRA[it[4]][0].toUpperCase()}</span><div class="nm">${it[2]}</div><div class="un">${it[1]=='a'?'Artefact':'Accessoire'}${it[5]?' · univers '+it[5]:' · objet du jeu'}</div><div class="bon"><div><span>Effet</span><b>${effet(it)}</b></div><div><span>${it[5]?'Bonus d’univers':'Portée'}</span><b>${it[5]?'×1,4':'tous'}</b></div></div><div class="lv">${[1,2,3,4,5].map(i=>`<i class="${i<=3?'on':''}"></i>`).join('')}</div><p class="lk">${effet2(it)} · améliorable jusqu’au niveau 5 avec des éclats.</p>`;
  $('cnt').textContent=`${String(vi+1).padStart(2,'0')} / ${VIT.length} · ${ALL.length} OBJETS DANS LE JEU`;
- const st=$('strip'),n=innerWidth<760?5:11,h=Math.floor(n/2);let s='';for(let k=-h;k<=h;k++){const j=(vi+k+VIT.length)%VIT.length,x=VIT[j].it;s+=`<div class="ch${k==0?' on':''}" style="--c:${GRA[x[4]][1]}">${KJ[x[3]]||'宝'}</div>`}st.innerHTML=s}
+ const st=$('strip'),n=innerWidth<760?5:11,h=Math.floor(n/2);let s='';for(let k=-h;k<=h;k++){const j=(vi+k+VIT.length)%VIT.length,x=VIT[j].it;s+=`<div class="ch${k==0?' on':''}" data-j="${j}" style="--c:${GRA[x[4]][1]}">${KJ[x[3]]||'宝'}</div>`}st.innerHTML=s;
+ st.querySelectorAll('.ch').forEach(d=>d.onclick=e=>{e.stopPropagation();go(0,+d.dataset.j)})} // 23/11 : clic sur un objet de la bande = on y va
 function arsUI(){const o=ALL[ai],it=o.it,c=GRA[it[4]][1];$('fi2').style.setProperty('--c',c);
  $('fi2').innerHTML=`<span class="rk" style="--c:${c}">${GRA[it[4]][0].toUpperCase()} · ${it[1]=='a'?'ARTEFACT':'ACCESSOIRE'}</span><h2>${it[2]}</h2><p>${it[5]?'Objet de l’univers '+it[5]+'.':'Objet du jeu.'} ${effet2(it)}.</p><div class="bon"><div><span>Puissance</span><b>${effet(it)}</b></div><div><span>Niveau</span><b>3 / 5</b></div><div><span>Amélioration</span><b>${(it[4]+1)*36} éclats</b></div></div><div class="btns"><button class="p">Équiper</button><button>Améliorer</button></div>`;
  const A=ALL.filter(x=>x.it[1]=='a').sort((a,b)=>b.it[4]-a.it[4])[0],C2=ALL.filter(x=>x.it[1]=='c').sort((a,b)=>b.it[4]-a.it[4])[0];const eqA=it[1]=='a'?o:A,eqC=it[1]=='c'?o:C2;
@@ -499,6 +503,10 @@ function layout(){const w=innerWidth,h=innerHeight,mob=w<760;cam.clearViewOffset
 addEventListener('resize',()=>layout());
 document.querySelectorAll('#tabs b').forEach(b=>b.onclick=()=>go(+b.dataset.m,0));
 let drag=null;cv.addEventListener('pointerdown',e=>{drag={x:e.clientX,a:spinA}});addEventListener('pointerup',()=>drag=null);addEventListener('pointermove',e=>{if(drag)spinA=drag.a+(e.clientX-drag.x)*.01});
+
+/* 23/11 : flèches pour passer d'un objet à l'autre (avant : seulement les flèches du clavier) */
+(function(){const mk=(c,t,d)=>{const b=document.createElement('button');b.type='button';b.className='vnav '+c;b.textContent=t;b.setAttribute('aria-label',c=='l'?'Objet précédent':'Objet suivant');b.onclick=e=>{e.stopPropagation();if(mode==0)go(0,(vi+d+VIT.length)%VIT.length);else if(mode==2)go(2,(ri+d+RES.length)%RES.length);else{const L=ARS_SORTED();go(1,(L.indexOf(ALL[ai])+d+L.length)%L.length)}};document.body.append(b);return b};
+ const L=mk('l','‹',-1),R=mk('r','›',1);setInterval(()=>{const v=mode==0;L.style.display=R.style.display=v?'grid':'none'},300)})();
 addEventListener('keydown',e=>{if(e.key=='ArrowRight'){if(mode==0)go(0,(vi+1)%VIT.length);else if(mode==2)go(2,(ri+1)%RES.length);else go(1,(ARS_SORTED().indexOf(ALL[ai])+1)%ALL.length)}if(e.key=='ArrowLeft'){if(mode==0)go(0,(vi-1+VIT.length)%VIT.length)}});
 /* ---------- boucle ---------- */
 let T=0,acc=0;
